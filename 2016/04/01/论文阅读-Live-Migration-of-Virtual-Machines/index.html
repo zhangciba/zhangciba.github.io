@@ -10,26 +10,22 @@
     <meta name="author" content="ZHANGCHI">
   
   
-    <meta name="description" content="title: HPC论文阅读笔记tags: 论文阅读,HPC,笔记,高性能计算
-grammar_cjkRuby: trueLive Migration of Virtual Machines论文结构
-Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运">
+    <meta name="description" content="Live Migration of Virtual MachinesFrom NSDI 05 2nd论文结构
+Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的">
   
-  <meta name="description" content="title: HPC论文阅读笔记tags: 论文阅读,HPC,笔记,高性能计算
-grammar_cjkRuby: trueLive Migration of Virtual Machines论文结构
-Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运">
+  <meta name="description" content="Live Migration of Virtual MachinesFrom NSDI 05 2nd论文结构
+Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读:Live_Migration_of_Virtual_Machines">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/04/01/论文阅读-Live-Migration-of-Virtual-Machines/index.html">
 <meta property="og:site_name" content="糍粑的博客">
-<meta property="og:description" content="title: HPC论文阅读笔记tags: 论文阅读,HPC,笔记,高性能计算
-grammar_cjkRuby: trueLive Migration of Virtual Machines论文结构
-Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运">
-<meta property="og:updated_time" content="2016-04-01T09:39:16.000Z">
+<meta property="og:description" content="Live Migration of Virtual MachinesFrom NSDI 05 2nd论文结构
+Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的">
+<meta property="og:updated_time" content="2016-04-01T09:50:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读:Live_Migration_of_Virtual_Machines">
-<meta name="twitter:description" content="title: HPC论文阅读笔记tags: 论文阅读,HPC,笔记,高性能计算
-grammar_cjkRuby: trueLive Migration of Virtual Machines论文结构
-Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运">
+<meta name="twitter:description" content="Live Migration of Virtual MachinesFrom NSDI 05 2nd论文结构
+Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的">
   
     <link rel="alternate" href="/atom.xml" title="糍粑的博客" type="application/atom+xml">
   
@@ -82,9 +78,7 @@ Abstract操作系统实例的迁移是数据中心和集群管理员非常重要
   
   <div class="entry">
     
-      <hr>
-<p>title: HPC论文阅读笔记<br>tags: 论文阅读,HPC,笔记,高性能计算</p>
-<h2 id="grammar-cjkRuby-true"><a href="#grammar-cjkRuby-true" class="headerlink" title="grammar_cjkRuby: true"></a>grammar_cjkRuby: true</h2><h3 id="Live-Migration-of-Virtual-Machines"><a href="#Live-Migration-of-Virtual-Machines" class="headerlink" title="Live Migration of Virtual Machines"></a>Live Migration of Virtual Machines</h3><h3 id="论文结构"><a href="#论文结构" class="headerlink" title="论文结构"></a>论文结构</h3><ul>
+      <h3 id="Live-Migration-of-Virtual-Machines"><a href="#Live-Migration-of-Virtual-Machines" class="headerlink" title="Live Migration of Virtual Machines"></a>Live Migration of Virtual Machines</h3><h3 id="From-NSDI-05-2nd"><a href="#From-NSDI-05-2nd" class="headerlink" title="From NSDI 05 2nd"></a>From NSDI 05 2nd</h3><h3 id="论文结构"><a href="#论文结构" class="headerlink" title="论文结构"></a>论文结构</h3><ul>
 <li>Abstract<br>操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。<br>本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。</li>
 <li>Introduction<br>介绍了虚拟化技术带来了很多好处，在线系统迁移就是其中之一，系统迁移可以避免进程级别迁移带来的各种困难，其次系统迁移可以让整个内存状态得到转移，这意味着可以迁移一个在线的游戏服务器和流媒体服务器，第三，在线迁移能够将用户和数据中心或集群管理员的注意力分开。</li>
 <li>Realated Work<br>Collective projects研究了虚拟机迁移作为一个工具，但是不提供热迁移功能。进程迁移由于存在很多剩余的依赖问题而没有很好的解决，因此采用整个操作系统实例迁移是一个更好的办法。</li>
@@ -151,6 +145,10 @@ Abstract操作系统实例的迁移是数据中心和集群管理员非常重要
     
       
       
+  <div class="tags">
+    <a class="tags-link" href="/tags/论文阅读-HPC-笔记-高性能计算/">论文阅读,HPC,笔记,高性能计算</a>
+  </div>
+
     
     <div class="clearfix"></div>
   </footer>
