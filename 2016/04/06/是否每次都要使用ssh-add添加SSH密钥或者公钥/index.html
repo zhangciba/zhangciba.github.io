@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>是否每次都要使用ssh-add添加SSH密钥或者公钥 | 糍粑的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="ZHANGCHI">
+  
+  
+    <meta name="description" content="ssh-add 这个命令并不会永久性地记住你所使用的私钥。实际上，它的作用只是把你指定的私钥添加到 ssh-agent 所管理的一个 session 当中。而 ssh-agent 是一个用于存储私钥的临时性的 session 服务，也就是说当你重启之后，ssh-agent 服务也就重置了。
+下面以我日常使用的 Mac OS X 为例。Mac 系统内置了一个 Keychain 的服务及其管理程序，可">
+  
+  <meta name="description" content="ssh-add 这个命令并不会永久性地记住你所使用的私钥。实际上，它的作用只是把你指定的私钥添加到 ssh-agent 所管理的一个 session 当中。而 ssh-agent 是一个用于存储私钥的临时性的 session 服务，也就是说当你重启之后，ssh-agent 服务也就重置了。
+下面以我日常使用的 Mac OS X 为例。Mac 系统内置了一个 Keychain 的服务及其管理程序，可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="是否每次都要使用ssh-add添加SSH密钥或者公钥">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/04/06/是否每次都要使用ssh-add添加SSH密钥或者公钥/index.html">
+<meta property="og:site_name" content="糍粑的博客">
+<meta property="og:description" content="ssh-add 这个命令并不会永久性地记住你所使用的私钥。实际上，它的作用只是把你指定的私钥添加到 ssh-agent 所管理的一个 session 当中。而 ssh-agent 是一个用于存储私钥的临时性的 session 服务，也就是说当你重启之后，ssh-agent 服务也就重置了。
+下面以我日常使用的 Mac OS X 为例。Mac 系统内置了一个 Keychain 的服务及其管理程序，可">
+<meta property="og:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/keychain%20access.png">
+<meta property="og:updated_time" content="2016-04-06T01:18:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="是否每次都要使用ssh-add添加SSH密钥或者公钥">
+<meta name="twitter:description" content="ssh-add 这个命令并不会永久性地记住你所使用的私钥。实际上，它的作用只是把你指定的私钥添加到 ssh-agent 所管理的一个 session 当中。而 ssh-agent 是一个用于存储私钥的临时性的 session 服务，也就是说当你重启之后，ssh-agent 服务也就重置了。
+下面以我日常使用的 Mac OS X 为例。Mac 系统内置了一个 Keychain 的服务及其管理程序，可">
+<meta name="twitter:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/keychain%20access.png">
+  
+    <link rel="alternate" href="/atom.xml" title="糍粑的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">糍粑的博客</a></h1>
+    <p><a href="/">快乐学习、快乐工作、快乐生活</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2016/04/06/是否每次都要使用ssh-add添加SSH密钥或者公钥/">
+  <time datetime="2016-04-06T00:50:39.000Z">
+    2016-04-06
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">是否每次都要使用ssh-add添加SSH密钥或者公钥</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>ssh-add 这个命令并不会永久性地记住你所使用的私钥。实际上，它的作用只是把你指定的私钥添加到 ssh-agent 所管理的一个 session 当中。而 ssh-agent 是一个用于存储私钥的临时性的 session 服务，也就是说当你重启之后，ssh-agent 服务也就重置了。</p>
+<p>下面以我日常使用的 Mac OS X 为例。Mac 系统内置了一个 Keychain 的服务及其管理程序，可以方便的帮你管理各种秘钥，其中包括 ssh 秘钥。ssh-add 默认将指定的秘钥添加在当前运行的 ssh-agent 服务中，但是你可以改变这个默认行为让它将指定的密钥添加到 keychain 服务中，让 Mac 来帮你记住、管理并保障这些秘钥的安全性。</p>
+<p>执行如下命令，<br>‘$ ssh-add -K [path/to/your/ssh-key]’</p>
+<p>之后，其他的程序请求 ssh 秘钥的时候，会通过 Keychain 服务来请求。下面的截图里你可以看到我当前的机器上 Keychain 为我管理的有关 ssh 的秘钥，这其中包括我自己生成的四个，以及 Github Client App 自己使用的一个——前者几个都是供 ssh 相关的命令所使用，而后者则指明了仅供 Github.app 这个应用程序使用。 另外，它们都是 login keychains 也就是只有当前用户登录之后才会生效的，换了用户或是未登录状态是不能使用的，这就是 Keychain 服务所帮你做的事情。</p>
+<p><img src="http://7xsnoh.com2.z0.glb.clouddn.com/keychain%20access.png" alt="KeyChain Access" title="KeyChain Access"></p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">ZHANGCHI</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>
