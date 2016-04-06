@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Ubuntu14.04LTSJDK安装成功，Eclipse提示JVM找不到 | 糍粑的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="ZHANGCHI">
+  
+  
+    <meta name="description" content="问题描述Ubuntu14.04已经安装JDK成功，但是启动Eclipse的时候提示如下错误
+报 A Java Runtime Environment (JRE) or Java Development Kit (JDK)must be available in order to run Eclipse. No Java virtual machinewas found after searchin">
+  
+  <meta name="description" content="问题描述Ubuntu14.04已经安装JDK成功，但是启动Eclipse的时候提示如下错误
+报 A Java Runtime Environment (JRE) or Java Development Kit (JDK)must be available in order to run Eclipse. No Java virtual machinewas found after searchin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu14.04LTSJDK安装成功，Eclipse提示JVM找不到">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/04/03/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到/index.html">
+<meta property="og:site_name" content="糍粑的博客">
+<meta property="og:description" content="问题描述Ubuntu14.04已经安装JDK成功，但是启动Eclipse的时候提示如下错误
+报 A Java Runtime Environment (JRE) or Java Development Kit (JDK)must be available in order to run Eclipse. No Java virtual machinewas found after searchin">
+<meta property="og:updated_time" content="2016-04-03T12:29:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu14.04LTSJDK安装成功，Eclipse提示JVM找不到">
+<meta name="twitter:description" content="问题描述Ubuntu14.04已经安装JDK成功，但是启动Eclipse的时候提示如下错误
+报 A Java Runtime Environment (JRE) or Java Development Kit (JDK)must be available in order to run Eclipse. No Java virtual machinewas found after searchin">
+  
+    <link rel="alternate" href="/atom.xml" title="糍粑的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">糍粑的博客</a></h1>
+    <p><a href="/">快乐学习、快乐工作、快乐生活</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2016/04/03/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到/">
+  <time datetime="2016-04-03T01:30:26.000Z">
+    2016-04-03
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Ubuntu14.04LTSJDK安装成功，Eclipse提示JVM找不到</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>Ubuntu14.04已经安装JDK成功，但是启动Eclipse的时候提示如下错误</p>
+<p>报 A Java Runtime Environment (JRE) or Java Development Kit (JDK)<br>must be available in order to run Eclipse. No Java virtual machine<br>was found after searching the following locations:<br>/opt/eclipse/jre/bin/java<br>java in your current PATH这错误<br>但我在终端运行java -version<br>java version “1.6.0_26”<br>Java(TM) SE Runtime Environment (build 1.6.0_26-b03)<br>Java HotSpot(TM) Server VM (build 20.1-b02, mixed mode)</p>
+<h3 id="可能原因"><a href="#可能原因" class="headerlink" title="可能原因"></a>可能原因</h3><p>1.JDK版本和Eclipse版本不合适，例如JDK是32位，Eclipse是64位，或者JDK是64位，Eclipse是32位<br>2.JDK环境变量没有进行配置。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>Eclipse有个自动查找本地JVM环境，这个错误就是说eclipse没能找到必须得jvm运行环境，这个时候，我们可以手动为其指定jvm的路径，在eclipse安装文件夹下，有一个eclipse.ini的初始化配置文件，用文本编辑工具打开，追加“-vm”参数：<br>-vm $YOUR_JAVA_HOME/bin/javaw<br>这里的$YOUR_JAVA_HOME 是你的java安装路径。必须保证javaw程序在这个环境下，这样，eclipse启动时会通过指定的jvm启动IDE（有的机器上安装多个版本的java，也可以这样来配置）。</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">ZHANGCHI</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>
