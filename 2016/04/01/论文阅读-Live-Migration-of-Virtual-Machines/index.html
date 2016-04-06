@@ -1,255 +1,210 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
 
-
-
-  
-
-
-<html class="theme-next mist use-motion">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>HPC论文阅读笔记 | 糍粑的博客</title>
+  <meta name="description" content="快乐学习、快乐工作、快乐生活" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="糍粑的博客">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
 
+  
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="论文阅读,HPC,笔记,高性能计算," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="Live Migration of Virtual Machines论文结构
-Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。
-Int">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HPC论文阅读笔记">
-<meta property="og:url" content="http://blog.zhangciba.com/2016/04/01/论文阅读-Live-Migration-of-Virtual-Machines/index.html">
-<meta property="og:site_name" content="糍粑的博客">
-<meta property="og:description" content="Live Migration of Virtual Machines论文结构
-Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。
-Int">
-<meta property="og:updated_time" content="2016-04-05T11:59:17.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HPC论文阅读笔记">
-<meta name="twitter:description" content="Live Migration of Virtual Machines论文结构
-Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。
-Int">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: 'Author'
-    }
-  };
-</script>
-
-  <title> HPC论文阅读笔记 | 糍粑的博客 </title>
 </head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        Home</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Archive</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                Archive</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/04/06/生活小感悟/">生活小感悟</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/04/06/是否每次都要使用ssh-add添加SSH密钥或者公钥/">是否每次都要使用ssh-add添加SSH密钥或者公钥</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/04/03/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到/">Ubuntu14.04LTSJDK安装成功，Eclipse提示JVM找不到</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/04/01/论文阅读-Live-Migration-of-Virtual-Machines/">HPC论文阅读笔记</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/31/坚韧的意志是后天培养的/">坚韧的意志是后天培养的</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2016/03/31/hello-world/">Hello World</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Categories</a>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                Categories</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Tags</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                Tags</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/SSH、密钥、公钥/">&nbsp;&nbsp;&nbsp;SSH、密钥、公钥</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/生活、感悟/">&nbsp;&nbsp;&nbsp;生活、感悟</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/论文阅读-HPC-笔记-高性能计算/">&nbsp;&nbsp;&nbsp;论文阅读,HPC,笔记,高性能计算</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
+                    <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
 
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2016/04/06/生活小感悟/">生活小感悟</a>
+                
+                    <a  data-pjax href="/2016/04/06/是否每次都要使用ssh-add添加SSH密钥或者公钥/">是否每次都要使用ssh-add添加SSH密钥或者公钥</a>
+                
+                    <a  data-pjax href="/2016/04/03/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到/">Ubuntu14.04LTSJDK安装成功，Eclipse提示JVM找不到</a>
+                
+                    <a  data-pjax href="/2016/04/01/论文阅读-Live-Migration-of-Virtual-Machines/">HPC论文阅读笔记</a>
+                
+                    <a  data-pjax href="/2016/03/31/坚韧的意志是后天培养的/">坚韧的意志是后天培养的</a>
+                
+                    <a  data-pjax href="/2016/03/31/hello-world/">Hello World</a>
+                
+                
+                
+                    <a data-pjax href="/tags/SSH、密钥、公钥/">&nbsp;&nbsp;SSH、密钥、公钥</a>
+                
+                    <a data-pjax href="/tags/生活、感悟/">&nbsp;&nbsp;生活、感悟</a>
+                
+                    <a data-pjax href="/tags/论文阅读-HPC-笔记-高性能计算/">&nbsp;&nbsp;论文阅读,HPC,笔记,高性能计算</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">糍粑的博客</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">HPC论文阅读笔记</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
   
 
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/论文阅读-HPC-笔记-高性能计算/' style='color:#D5D5D5'>论文阅读,HPC,笔记,高性能计算</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">HPC论文阅读笔记</h1>
 
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2016-04-01T09:38:16.000Z"
+                              itemprop="datePublished">2016-04-01</time>
+                    </div>
+    </span>
 
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">糍粑的博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                HPC论文阅读笔记
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-04-01T17:38:16+08:00" content="2016-04-01">
-              2016-04-01
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h3 id="Live-Migration-of-Virtual-Machines"><a href="#Live-Migration-of-Virtual-Machines" class="headerlink" title="Live Migration of Virtual Machines"></a>Live Migration of Virtual Machines</h3><h3 id="论文结构"><a href="#论文结构" class="headerlink" title="论文结构"></a>论文结构</h3><ul>
+        <section class="post-content">
+            <h3 id="Live-Migration-of-Virtual-Machines"><a href="#Live-Migration-of-Virtual-Machines" class="headerlink" title="Live Migration of Virtual Machines"></a>Live Migration of Virtual Machines</h3><h3 id="论文结构"><a href="#论文结构" class="headerlink" title="论文结构"></a>论文结构</h3><ul>
 <li>Abstract<br>操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。<br>本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。</li>
 <li>Introduction<br>介绍了虚拟化技术带来了很多好处，在线系统迁移就是其中之一，系统迁移可以避免进程级别迁移带来的各种困难，其次系统迁移可以让整个内存状态得到转移，这意味着可以迁移一个在线的游戏服务器和流媒体服务器，第三，在线迁移能够将用户和数据中心或集群管理员的注意力分开。</li>
 <li>Realated Work<br>Collective projects研究了虚拟机迁移作为一个工具，但是不提供热迁移功能。进程迁移由于存在很多剩余的依赖问题而没有很好的解决，因此采用整个操作系统实例迁移是一个更好的办法。</li>
@@ -313,263 +268,71 @@ Int">
 <li>Conclusion<br>  通过在Xen虚拟机管理器中加入了热系统迁移，作者实现了集群和数据中心交互工作负载的迁移。作者的动态网络带宽适应保证了迁移工作对于正在运行的服务的影响最小以及将拓机时间减少至最低。</li>
 </ul>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/论文阅读-HPC-笔记-高性能计算/" rel="tag">#论文阅读,HPC,笔记,高性能计算</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/03/31/坚韧的意志是后天培养的/" rel="next" title="坚韧的意志是后天培养的">
-                <i class="fa fa-chevron-left"></i> 坚韧的意志是后天培养的
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/03/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到/" rel="prev" title="Ubuntu14.04LTSJDK安装成功，Eclipse提示JVM找不到">
-                Ubuntu14.04LTSJDK安装成功，Eclipse提示JVM找不到 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/default_avatar.jpg"
-               alt="ZHANGCHI" />
-          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
-          <p class="site-description motion-element" itemprop="description">欢迎大家一起来学习</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Live-Migration-of-Virtual-Machines"><span class="nav-number">1.</span> <span class="nav-text">Live Migration of Virtual Machines</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#论文结构"><span class="nav-number">2.</span> <span class="nav-text">论文结构</span></a></li></ol></div>
-            
-          </div>
         </section>
-      
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a data-pjax class="newer-posts" href="/2016/04/03/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到/">← Prev Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2016/03/31/坚韧的意志是后天培养的/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
 
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; 糍粑的博客 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
     </div>
-  </aside>
+</footer>
+</div>
+</div><!-- /scroller -->
 
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div><!-- /pusher -->
+</div><!-- /container -->
 </div>
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
-</div>
+<!-- Easter eggs -->
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
     </div>
-  </div>
-
+</div>
   
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
 </script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
 
 
 
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
 
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-  
-  
-  
-
-  
-
-  
 
 </body>
 </html>
