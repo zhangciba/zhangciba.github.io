@@ -4,17 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: 论文阅读，HPC，笔记，高性能计算 | 糍粑的博客</title>
+  <title>Docker集群物理机系统安装 | 糍粑的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎大家一起来学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="糍粑的博客">
-<meta property="og:url" content="http://blog.zhangciba.com/tags/论文阅读，HPC，笔记，高性能计算/index.html">
+  <meta name="description" content="安装系统之后的配置过程：
+1.配置IP地址，修改默认启动网卡sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
+2.安装锐捷客户端，并配置开机联网#将锐捷客户端拷贝到usr目录下sudo cp -r /run/meida/zhangchi/ZHANGHI/Su /usr/local/Susudo chmod -R 755 /usr/local/Su">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker集群物理机系统安装">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/04/07/Docker集群物理机系统安装/index.html">
 <meta property="og:site_name" content="糍粑的博客">
-<meta property="og:description" content="欢迎大家一起来学习">
+<meta property="og:description" content="安装系统之后的配置过程：
+1.配置IP地址，修改默认启动网卡sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
+2.安装锐捷客户端，并配置开机联网#将锐捷客户端拷贝到usr目录下sudo cp -r /run/meida/zhangchi/ZHANGHI/Su /usr/local/Susudo chmod -R 755 /usr/local/Su">
+<meta property="og:updated_time" content="2016-04-07T13:03:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="糍粑的博客">
-<meta name="twitter:description" content="欢迎大家一起来学习">
+<meta name="twitter:title" content="Docker集群物理机系统安装">
+<meta name="twitter:description" content="安装系统之后的配置过程：
+1.配置IP地址，修改默认启动网卡sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
+2.安装锐捷客户端，并配置开机联网#将锐捷客户端拷贝到usr目录下sudo cp -r /run/meida/zhangchi/ZHANGHI/Su /usr/local/Susudo chmod -R 755 /usr/local/Su">
   
     <link rel="alternative" href="/atom.xml" title="糍粑的博客" type="application/atom+xml">
   
@@ -187,53 +194,126 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Docker集群物理机系统安装" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/01/论文阅读-Live-Migration-of-Virtual-Machines/" class="archive-article-date">
-  	<time datetime="2016-04-01T09:38:16.000Z" itemprop="datePublished">4月 1</time>
+    <div class="article-meta">
+      <a href="/2016/04/07/Docker集群物理机系统安装/" class="article-date">
+  	<time datetime="2016-04-07T12:48:56.000Z" itemprop="datePublished">2016-04-07</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/01/论文阅读-Live-Migration-of-Virtual-Machines/">HPC论文阅读笔记</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker集群物理机系统安装
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文阅读，HPC，笔记，高性能计算/">论文阅读，HPC，笔记，高性能计算</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装系统之后的配置过程：</p>
+<h3 id="1-配置IP地址，修改默认启动网卡"><a href="#1-配置IP地址，修改默认启动网卡" class="headerlink" title="1.配置IP地址，修改默认启动网卡"></a>1.配置IP地址，修改默认启动网卡</h3><p>sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33</p>
+<h3 id="2-安装锐捷客户端，并配置开机联网"><a href="#2-安装锐捷客户端，并配置开机联网" class="headerlink" title="2.安装锐捷客户端，并配置开机联网"></a>2.安装锐捷客户端，并配置开机联网</h3><p>#将锐捷客户端拷贝到usr目录下<br>sudo cp -r /run/meida/zhangchi/ZHANGHI/Su /usr/local/Su<br>sudo chmod -R 755 /usr/local/Su</p>
+<p>#将联网的服务脚本拷贝到开机启动目录，并赋予执行权限<br>sudo cp /run/media/zhangchi/ZHAGNCHI/rjnetwork /etc/init.d/<br>sudo chomod -R 755 /etc/init.d/rjnetwork<br>sudo vi /etc/init.d/rjnetwork</p>
+<p>#将联网的服务配置为开机启动<br>sudo chkconfig –add /etc/init.d/rjnetwork<br>sudo chkconfig rjnetwork on</p>
+<h3 id="关闭SELinux"><a href="#关闭SELinux" class="headerlink" title="关闭SELinux"></a>关闭SELinux</h3><p>sudo vi /etc/selinux/config<br>将SELINUX=enforcing改为SELINUX=disable</p>
+<h3 id="开启sshd服务"><a href="#开启sshd服务" class="headerlink" title="开启sshd服务"></a>开启sshd服务</h3><p>sudo systemctl enables sshd<br>sudo systemctl start sshd</p>
+<h3 id="开放22号端口"><a href="#开放22号端口" class="headerlink" title="开放22号端口"></a>开放22号端口</h3><p>firewall-cmd –zone=public –add-port=22/tcp –permanent</p>
+<h3 id="重启系统之后默认联网，并开放了SSH服务"><a href="#重启系统之后默认联网，并开放了SSH服务" class="headerlink" title="重启系统之后默认联网，并开放了SSH服务"></a>重启系统之后默认联网，并开放了SSH服务</h3><p>reboot</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/08/CentOS设置开机直接进入命令行界面/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          设置开机直接进入命令行界面
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/06/使用易我数据恢复软件恢复已删除的文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用易我数据恢复软件恢复已删除的文件</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Docker集群物理机系统安装" data-title="Docker集群物理机系统安装" data-url="http://blog.zhangciba.com/2016/04/07/Docker集群物理机系统安装/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -259,9 +339,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
