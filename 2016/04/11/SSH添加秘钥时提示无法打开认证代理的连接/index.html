@@ -4,17 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: 生活、感悟 | 糍粑的博客</title>
+  <title>SSH添加秘钥时提示无法打开认证代理的连接 | 糍粑的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎大家一起来学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="糍粑的博客">
-<meta property="og:url" content="http://blog.zhangciba.com/tags/生活、感悟/index.html">
+  <meta name="description" content="我们在配置SSH客户端免密码登录时，需要在登录节点的SSH客户端中添加RSA秘钥才可以免密码登录到另外一台服务器。但是我们在使用ssh-add命令添加时，会遇到这个错误。1could not open a connection to your authentication agent
+这是时候可以执行1eval &amp;apos;ssh-agent -s&amp;apos;
+查看ssh-agent是否启动了，如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH添加秘钥时提示无法打开认证代理的连接">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/index.html">
 <meta property="og:site_name" content="糍粑的博客">
-<meta property="og:description" content="欢迎大家一起来学习">
+<meta property="og:description" content="我们在配置SSH客户端免密码登录时，需要在登录节点的SSH客户端中添加RSA秘钥才可以免密码登录到另外一台服务器。但是我们在使用ssh-add命令添加时，会遇到这个错误。1could not open a connection to your authentication agent
+这是时候可以执行1eval &amp;apos;ssh-agent -s&amp;apos;
+查看ssh-agent是否启动了，如">
+<meta property="og:updated_time" content="2016-04-11T13:02:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="糍粑的博客">
-<meta name="twitter:description" content="欢迎大家一起来学习">
+<meta name="twitter:title" content="SSH添加秘钥时提示无法打开认证代理的连接">
+<meta name="twitter:description" content="我们在配置SSH客户端免密码登录时，需要在登录节点的SSH客户端中添加RSA秘钥才可以免密码登录到另外一台服务器。但是我们在使用ssh-add命令添加时，会遇到这个错误。1could not open a connection to your authentication agent
+这是时候可以执行1eval &amp;apos;ssh-agent -s&amp;apos;
+查看ssh-agent是否启动了，如">
   
     <link rel="alternative" href="/atom.xml" title="糍粑的博客" type="application/atom+xml">
   
@@ -189,53 +196,113 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-SSH添加秘钥时提示无法打开认证代理的连接" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/06/生活小感悟/" class="archive-article-date">
-  	<time datetime="2016-04-06T01:35:36.000Z" itemprop="datePublished">4月 6</time>
+    <div class="article-meta">
+      <a href="/2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/" class="article-date">
+  	<time datetime="2016-04-11T12:52:02.000Z" itemprop="datePublished">2016-04-11</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/06/生活小感悟/">生活小感悟</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SSH添加秘钥时提示无法打开认证代理的连接
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活、感悟/">生活、感悟</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们在配置SSH客户端免密码登录时，需要在登录节点的SSH客户端中添加RSA秘钥才可以免密码登录到另外一台服务器。但是我们在使用ssh-add命令添加时，会遇到这个错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">could not open a connection to your authentication agent</span><br></pre></td></tr></table></figure></p>
+<p>这是时候可以执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &apos;ssh-agent -s&apos;</span><br></pre></td></tr></table></figure></p>
+<p>查看ssh-agent是否启动了，如果启动了，一般是不会报错的。再执行一次’ssh-add ./.ssh/id_rsa’命令，如果还是报错，则执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec ssh-agent bash</span><br></pre></td></tr></table></figure></p>
+<p>这样问题就可以解决了。但是这样每次关闭终端之后或者重启之后，都需要重新添加秘钥才行，因为之前的添加是临时的，可以将添加秘钥的命令写入到系统配置文件中Ubuntu的.profile或者CentOS的/etc/.profile文件中。这样开机之后，就自动为我们将秘钥添加到ssh-agent中去了。省去了每次都需要添加的麻烦。</p>
+<p>注：如果是在Windows或者MacOSX中，大部分的SSH工具(Secure Shell Client、SecureCRT、Putty)等都可以直接在配置中添加id_rsa秘钥，如果是Mac OSX系统，则可以在钥匙串中添加该秘钥，这样就可以不用每次都需要进行秘钥添加的操作了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/11/CentOS7安装Openvswitch-2-3-0-LTS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CentOS7安装Openvswitch 2.3.0 LTS</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SSH添加秘钥时提示无法打开认证代理的连接" data-title="SSH添加秘钥时提示无法打开认证代理的连接" data-url="http://blog.zhangciba.com/2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -261,9 +328,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}

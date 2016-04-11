@@ -113,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenVSwitch/" style="font-size: 10px;">OpenVSwitch</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
+						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenVSwitch/" style="font-size: 10px;">OpenVSwitch</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
 					</div>
 				</section>
 				
@@ -190,6 +190,67 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-SSH添加秘钥时提示无法打开认证代理的连接" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/" class="article-date">
+  	<time datetime="2016-04-11T12:52:02.000Z" itemprop="datePublished">2016-04-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/">SSH添加秘钥时提示无法打开认证代理的连接</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们在配置SSH客户端免密码登录时，需要在登录节点的SSH客户端中添加RSA秘钥才可以免密码登录到另外一台服务器。但是我们在使用ssh-add命令添加时，会遇到这个错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">could not open a connection to your authentication agent</span><br></pre></td></tr></table></figure></p>
+<p>这是时候可以执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &apos;ssh-agent -s&apos;</span><br></pre></td></tr></table></figure></p>
+<p>查看ssh-agent是否启动了，如果启动了，一般是不会报错的。再执行一次’ssh-add ./.ssh/id_rsa’命令，如果还是报错，则执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec ssh-agent bash</span><br></pre></td></tr></table></figure></p>
+<p>这样问题就可以解决了。但是这样每次关闭终端之后或者重启之后，都需要重新添加秘钥才行，因为之前的添加是临时的，可以将添加秘钥的命令写入到系统配置文件中Ubuntu的.profile或者CentOS的/etc/.profile文件中。这样开机之后，就自动为我们将秘钥添加到ssh-agent中去了。省去了每次都需要添加的麻烦。</p>
+<p>注：如果是在Windows或者MacOSX中，大部分的SSH工具(Secure Shell Client、SecureCRT、Putty)等都可以直接在配置中添加id_rsa秘钥，如果是Mac OSX系统，则可以在钥匙串中添加该秘钥，这样就可以不用每次都需要进行秘钥添加的操作了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-CentOS7安装Openvswitch-2-3-0-LTS" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -726,67 +787,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生活、感悟/">生活、感悟</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-是否每次都要使用ssh-add添加SSH密钥或者公钥" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/06/是否每次都要使用ssh-add添加SSH密钥或者公钥/" class="article-date">
-  	<time datetime="2016-04-06T00:50:39.000Z" itemprop="datePublished">2016-04-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/06/是否每次都要使用ssh-add添加SSH密钥或者公钥/">是否每次都要使用ssh-add添加SSH密钥或者公钥</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;ssh-add 这个命令并不会永久性地记住你所使用的私钥。实际上，它的作用只是把你指定的私钥添加到 ssh-agent 所管理的一个 session 当中。而 ssh-agent 是一个用于存储私钥的临时性的 session 服务，也就是说当你重启之后，ssh-agent 服务也就重置了。</p>
-<p>&#160; &#160; &#160; &#160;下面以我日常使用的 Mac OS X 为例。Mac 系统内置了一个 Keychain 的服务及其管理程序，可以方便的帮你管理各种秘钥，其中包括 ssh 秘钥。ssh-add 默认将指定的秘钥添加在当前运行的 ssh-agent 服务中，但是你可以改变这个默认行为让它将指定的密钥添加到 keychain 服务中，让 Mac 来帮你记住、管理并保障这些秘钥的安全性。</p>
-<p>&#160; &#160; &#160; &#160;执行如下命令，<br><code>$ ssh-add -K [path/to/your/ssh-key]</code></p>
-<p>&#160; &#160; &#160; &#160;之后，其他的程序请求 ssh 秘钥的时候，会通过 Keychain 服务来请求。下面的截图里你可以看到我当前的机器上 Keychain 为我管理的有关 ssh 的秘钥，这其中包括我自己生成的四个，以及 Github Client App 自己使用的一个——前者几个都是供 ssh 相关的命令所使用，而后者则指明了仅供 Github.app 这个应用程序使用。 另外，它们都是 login keychains 也就是只有当前用户登录之后才会生效的，换了用户或是未登录状态是不能使用的，这就是 Keychain 服务所帮你做的事情。</p>
-<p><img src="http://7xsnoh.com2.z0.glb.clouddn.com/keychain%20access.png" alt="KeyChain Access" title="KeyChain Access"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH、密钥、公钥/">SSH、密钥、公钥</a></li></ul>
 	</div>
 
       
