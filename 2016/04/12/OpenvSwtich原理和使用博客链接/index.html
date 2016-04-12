@@ -4,27 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Docker集群物理机系统安装 | 糍粑的博客</title>
+  <title>OpenvSwtich原理和使用博客链接 | 糍粑的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先在物理机器上安装CentOS7，安装类型选择为计算节点。
-安装系统之后的配置过程：
-1.配置IP地址，修改默认启动网卡1sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
-2.安装锐捷客户端，并配置开机联网#将锐捷客户端拷贝到usr目录下12sudo cp -r /run/meida/zhangchi/ZHANGHI/Su /usr/local">
+  <meta name="description" content="官方资料1.
+原理以及安装1.介绍基本原理http://blog.163.com/s_zhchluo/blog/static/15014708201411234648954/2.OpenvSwitch安装教程http://www.sdnlab.com/3166.html3.开源中国Open vSwitch资料汇总http://www.oschina.net/p/openvswitch
+使用介绍1.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker集群物理机系统安装">
-<meta property="og:url" content="http://blog.zhangciba.com/2016/04/07/Docker集群物理机系统安装/index.html">
+<meta property="og:title" content="OpenvSwtich原理和使用博客链接">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/04/12/OpenvSwtich原理和使用博客链接/index.html">
 <meta property="og:site_name" content="糍粑的博客">
-<meta property="og:description" content="首先在物理机器上安装CentOS7，安装类型选择为计算节点。
-安装系统之后的配置过程：
-1.配置IP地址，修改默认启动网卡1sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
-2.安装锐捷客户端，并配置开机联网#将锐捷客户端拷贝到usr目录下12sudo cp -r /run/meida/zhangchi/ZHANGHI/Su /usr/local">
-<meta property="og:updated_time" content="2016-04-11T00:39:10.000Z">
+<meta property="og:description" content="官方资料1.
+原理以及安装1.介绍基本原理http://blog.163.com/s_zhchluo/blog/static/15014708201411234648954/2.OpenvSwitch安装教程http://www.sdnlab.com/3166.html3.开源中国Open vSwitch资料汇总http://www.oschina.net/p/openvswitch
+使用介绍1.">
+<meta property="og:updated_time" content="2016-04-12T09:34:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker集群物理机系统安装">
-<meta name="twitter:description" content="首先在物理机器上安装CentOS7，安装类型选择为计算节点。
-安装系统之后的配置过程：
-1.配置IP地址，修改默认启动网卡1sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
-2.安装锐捷客户端，并配置开机联网#将锐捷客户端拷贝到usr目录下12sudo cp -r /run/meida/zhangchi/ZHANGHI/Su /usr/local">
+<meta name="twitter:title" content="OpenvSwtich原理和使用博客链接">
+<meta name="twitter:description" content="官方资料1.
+原理以及安装1.介绍基本原理http://blog.163.com/s_zhchluo/blog/static/15014708201411234648954/2.OpenvSwitch安装教程http://www.sdnlab.com/3166.html3.开源中国Open vSwitch资料汇总http://www.oschina.net/p/openvswitch
+使用介绍1.">
   
     <link rel="alternative" href="/atom.xml" title="糍粑的博客" type="application/atom+xml">
   
@@ -209,11 +206,11 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Docker集群物理机系统安装" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-OpenvSwtich原理和使用博客链接" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/07/Docker集群物理机系统安装/" class="article-date">
-  	<time datetime="2016-04-07T12:48:56.000Z" itemprop="datePublished">2016-04-07</time>
+      <a href="/2016/04/12/OpenvSwtich原理和使用博客链接/" class="article-date">
+  	<time datetime="2016-04-12T09:13:11.000Z" itemprop="datePublished">2016-04-12</time>
 </a>
     </div>
   
@@ -226,7 +223,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      Docker集群物理机系统安装
+      OpenvSwtich原理和使用博客链接
     </h1>
   
 
@@ -235,7 +232,7 @@ var _hmt = _hmt || [];
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenvSwitch/">OpenvSwitch</a></li></ul>
 	</div>
 
         
@@ -246,17 +243,9 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先在物理机器上安装CentOS7，安装类型选择为计算节点。</p>
-<p>安装系统之后的配置过程：</p>
-<h3 id="1-配置IP地址，修改默认启动网卡"><a href="#1-配置IP地址，修改默认启动网卡" class="headerlink" title="1.配置IP地址，修改默认启动网卡"></a>1.配置IP地址，修改默认启动网卡</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
-<h3 id="2-安装锐捷客户端，并配置开机联网"><a href="#2-安装锐捷客户端，并配置开机联网" class="headerlink" title="2.安装锐捷客户端，并配置开机联网"></a>2.安装锐捷客户端，并配置开机联网</h3><p>#将锐捷客户端拷贝到usr目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -r /run/meida/zhangchi/ZHANGHI/Su /usr/local/Su</span><br><span class="line">sudo chmod -R 755 /usr/local/Su</span><br></pre></td></tr></table></figure></p>
-<p>#将联网的服务脚本拷贝到开机启动目录，并赋予执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /run/media/zhangchi/ZHAGNCHI/rjnetwork /etc/init.d/ </span><br><span class="line">sudo chomod -R 755 /etc/init.d/rjnetwork</span><br><span class="line">sudo vi /etc/init.d/rjnetwork</span><br></pre></td></tr></table></figure></p>
-<p>注：rjnetwork是我编写的使用锐捷认证客户端进行校园网连接的自启动脚本，功能就是每次系统开机之后首先进行网络连接。其代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">#chkconfig:2345 80 90 设置何种模式下进行启动，以及开机启动顺序以及关机关闭顺序。</span><br><span class="line">#description:login to internet 对该服务的描述</span><br><span class="line">#processname:rjnetwork 进行名称</span><br><span class="line">cd /usr/local/Su</span><br><span class="line">sh rjsupplicant.sh -a 1 -d 0 -u yourusernameXXX -S 1 -p yourpasswordXXX</span><br></pre></td></tr></table></figure></p>
-<p>#将联网的服务配置为开机启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig --add /etc/init.d/rjnetwork</span><br><span class="line">sudo chkconfig rjnetwork on</span><br></pre></td></tr></table></figure></p>
-<h3 id="关闭SELinux"><a href="#关闭SELinux" class="headerlink" title="关闭SELinux"></a>关闭SELinux</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/selinux/config</span><br><span class="line">将SELINUX=enforcing改为SELINUX=disable</span><br></pre></td></tr></table></figure>
-<h3 id="开启sshd服务"><a href="#开启sshd服务" class="headerlink" title="开启sshd服务"></a>开启sshd服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enables sshd</span><br><span class="line">sudo systemctl start sshd</span><br></pre></td></tr></table></figure>
-<h3 id="开放22号端口"><a href="#开放22号端口" class="headerlink" title="开放22号端口"></a>开放22号端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=22/tcp --permanent</span><br></pre></td></tr></table></figure>
-<h3 id="重启系统之后默认联网，并开放了SSH服务"><a href="#重启系统之后默认联网，并开放了SSH服务" class="headerlink" title="重启系统之后默认联网，并开放了SSH服务"></a>重启系统之后默认联网，并开放了SSH服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+        <h1 id="官方资料"><a href="#官方资料" class="headerlink" title="官方资料"></a>官方资料</h1><p>1.</p>
+<h1 id="原理以及安装"><a href="#原理以及安装" class="headerlink" title="原理以及安装"></a>原理以及安装</h1><p>1.介绍基本原理<a href="http://blog.163.com/s_zhchluo/blog/static/15014708201411234648954/" target="_blank" rel="external">http://blog.163.com/s_zhchluo/blog/static/15014708201411234648954/</a><br>2.OpenvSwitch安装教程<a href="http://www.sdnlab.com/3166.html" target="_blank" rel="external">http://www.sdnlab.com/3166.html</a><br>3.开源中国Open vSwitch资料汇总<a href="http://www.oschina.net/p/openvswitch" target="_blank" rel="external">http://www.oschina.net/p/openvswitch</a></p>
+<h1 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h1><p>1.构建虚拟网络<a href="http://www.sdnap.com/sdnap-post/3520.html" target="_blank" rel="external">http://www.sdnap.com/sdnap-post/3520.html</a><br>  上面这篇文章写得还可以，简单易懂，逻辑清晰。</p>
 
       
     </div>
@@ -266,18 +255,9 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2016/04/08/CentOS设置开机直接进入命令行界面/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          CentOS设置开机直接进入命令行界面
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/04/06/使用易我数据恢复软件恢复已删除的文件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用易我数据恢复软件恢复已删除的文件</div>
+    <a href="/2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SSH添加秘钥时提示无法打开认证代理的连接</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -312,7 +292,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Docker集群物理机系统安装" data-title="Docker集群物理机系统安装" data-url="http://blog.zhangciba.com/2016/04/07/Docker集群物理机系统安装/"></div>
+	<div class="ds-thread" data-thread-key="OpenvSwtich原理和使用博客链接" data-title="OpenvSwtich原理和使用博客链接" data-url="http://blog.zhangciba.com/2016/04/12/OpenvSwtich原理和使用博客链接/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
