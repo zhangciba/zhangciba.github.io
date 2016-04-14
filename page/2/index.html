@@ -123,7 +123,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenVSwitch/" style="font-size: 10px;">OpenVSwitch</a> <a href="/tags/OpenvSwitch/" style="font-size: 10px;">OpenvSwitch</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
+						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenVSwitch/" style="font-size: 10px;">OpenVSwitch</a> <a href="/tags/OpenvSwitch/" style="font-size: 10px;">OpenvSwitch</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
 					</div>
 				</section>
 				
@@ -200,6 +200,67 @@ var _hmt = _hmt || [];
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Docker发布新的跨容器的分布式应用编排服务" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/06/Docker发布新的跨容器的分布式应用编排服务/" class="article-date">
+  	<time datetime="2016-04-06T09:16:07.000Z" itemprop="datePublished">2016-04-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/06/Docker发布新的跨容器的分布式应用编排服务/">Docker发布新的跨容器的分布式应用编排服务</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Docker平台加强了跨容器的分布式应用能力"><a href="#Docker平台加强了跨容器的分布式应用能力" class="headerlink" title="Docker平台加强了跨容器的分布式应用能力"></a>Docker平台加强了跨容器的分布式应用能力</h1><p>Docker编排功能在开放平台的基础上构建，开放平台能够创建企业级标准的Docker容器：将分散的应用服务打包到可交互、可迭代、可随处运行的容器中。Docker编排服务可以满足企业从整体式的应用转移到容器化的分布式应用的需求，因为编排这些分布式应用需要多个容器、多个主机以及可以在这些设设施中运行的工具和通用UI。</p>
+<h1 id="编排服务为应用的开发和运维提供了一种新的方式"><a href="#编排服务为应用的开发和运维提供了一种新的方式" class="headerlink" title="编排服务为应用的开发和运维提供了一种新的方式"></a>编排服务为应用的开发和运维提供了一种新的方式</h1><p>Docker的编排功能由3个新的平台服务组成，它们覆盖了分布式应用的所有动态生命周期。<br>这三个新的编排服务分别是：</p>
+<h2 id="Docker-Machine："><a href="#Docker-Machine：" class="headerlink" title="Docker Machine："></a>Docker Machine：</h2><p>这项服务进一步扩展了分布式应用的可移植能力，它为用户提供了灵活的功能，用户可以在任意主机上运行Docker容器，无论是笔记本、数据中心VM还是云端。这大幅加少了开发者在手动瞥视、自定义脚本的时间，可以加快迭代和研发周期。</p>
+<h2 id="Docker-Swarm"><a href="#Docker-Swarm" class="headerlink" title="Docker Swarm:"></a>Docker Swarm:</h2><p>Docker Swarm是一个支持Docker容器（由Docker Machine提供）的原生的集群服务，它在分布式的应用运行额主机提供了一个资源池。相比于手动管理资源的低效率以及易出错的问题，Docker Swarm可以自动平衡容器的工作负载和分配资源，它更加高效。在行业中，Docker Swarm是独一无二的，它是专门为从开发到运维的一个持续的声明周期而设计的。开发者可以在生产环境的几台机器上测试集群服务，同时运维团队可以使用相同的工具在不同的架构中的上百台主机上扩展相同的应用程序。</p>
+<h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose:"></a>Docker Compose:</h2><p>这项服务为开发者提供了引用组合的能力，这些应用基于独立于任何底层基础设施的分散的、可交互的Docker容器之上构建，以便于分布式的应用栈可以随机随地部署并迁移。Docker Compose通过一个简单的YAML配置文件来定义分布式的应用程序栈以及依赖，这样一个复杂的过程通过几次键盘输入就可以完成。这个强大的功能也就意味着一个新的集群应用可以在几分钟之内构建完成，而这在之前是不可思议的。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-生活小感悟" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -521,67 +582,6 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>坚韧的意志属于人性中后天的成份，所以是可以培养的。<br>培养过程的四个步骤：<br>第一，在确定志向的基础上，不停地给欲望火上浇油；<br>第二，制定一份切实的计划，使自己追求成功的行动永不停止；<br>第三，关闭心扉，不受外界一切消极因素的影响，包括至爱亲朋的干扰；<br>第四，与鼓励你和相信你的人结成坚强的事业同盟。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/31/hello-world/" class="article-date">
-  	<time datetime="2016-03-31T07:34:55.000Z" itemprop="datePublished">2016-03-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
       
     </div>
