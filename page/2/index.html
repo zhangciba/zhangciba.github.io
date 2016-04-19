@@ -123,7 +123,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Kubernetes-Docker/" style="font-size: 10px;">Kubernetes,Docker</a> <a href="/tags/Linux安全/" style="font-size: 10px;">Linux安全</a> <a href="/tags/MacBook-SSH/" style="font-size: 10px;">MacBook SSH</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenVSwitch/" style="font-size: 10px;">OpenVSwitch</a> <a href="/tags/OpenvSwitch/" style="font-size: 10px;">OpenvSwitch</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
+						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Flannel/" style="font-size: 10px;">Flannel</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Kubernetes-Docker/" style="font-size: 10px;">Kubernetes,Docker</a> <a href="/tags/Linux安全/" style="font-size: 10px;">Linux安全</a> <a href="/tags/MacBook-SSH/" style="font-size: 10px;">MacBook SSH</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenVSwitch/" style="font-size: 10px;">OpenVSwitch</a> <a href="/tags/OpenvSwitch/" style="font-size: 10px;">OpenvSwitch</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
 					</div>
 				</section>
 				
@@ -200,6 +200,72 @@ var _hmt = _hmt || [];
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-SSH连接Linux服务器免密码登录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/11/SSH连接Linux服务器免密码登录/" class="article-date">
+  	<time datetime="2016-04-11T02:03:40.000Z" itemprop="datePublished">2016-04-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/11/SSH连接Linux服务器免密码登录/">SSH连接Linux服务器免密码登录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们平时在使用Linux服务器时，一般都会采用SSH方式进行远程连接。这种方式给我们带来了很多便利。但是由于经常要输入密码，所以有点麻烦，采用RSA秘钥的方式进行配置，以后登录就只需要提供RSA私钥就可以了，不同再次输入密码。是不是很方便。</p>
+<p>那么下面我们来说说具体的配置吧。例如，我们要使用电脑A(Windows或者Mac OSX或Linux系统)的SSH工具(Secure Shell Client、SecureCRT、Pitty、iTerm等)登录到服务器B，那么我们需要做哪些工作呢。</p>
+<h1 id="1-使用sshd-keygen命令生成密钥对"><a href="#1-使用sshd-keygen命令生成密钥对" class="headerlink" title="1.使用sshd-keygen命令生成密钥对"></a>1.使用sshd-keygen命令生成密钥对</h1><p>我们可以在任何一台机Linux服务器上生成，例如，我们就是在服务器B上面进行生成。具体命令是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></p>
+<p>回车之后，首先会让你输入文件名，然后提示你输入密钥的口令。之后就会在~/.ssh/ 目录下生成两个文件，一般默认文件名为id_rsa和id_rsa.pub，id_rsa是秘钥，id_rsa.pub是公钥。<br>id_rsa.pub需要放在服务器B上面，而id_rsa需要放在我们登录时使用的机器上面，也就是说，id_rsa就是我们平时要随身携带在U盘中的。</p>
+<h1 id="2-将id-rsa-pub中的公钥加入到authorized-keys中"><a href="#2-将id-rsa-pub中的公钥加入到authorized-keys中" class="headerlink" title="2.将id_rsa.pub中的公钥加入到authorized_keys中"></a>2.将id_rsa.pub中的公钥加入到authorized_keys中</h1><p>使用如下命令，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh/ #进入到id_rsa.pub所在的目录</span><br><span class="line">cat id_rsa.pub &gt;&gt;authorized_keys</span><br></pre></td></tr></table></figure></p>
+<h1 id="3-修改authorized-keys文件的权限"><a href="#3-修改authorized-keys文件的权限" class="headerlink" title="3.修改authorized_keys文件的权限"></a>3.修改authorized_keys文件的权限</h1><p>让本用户组之外的其他用户都不可以读取和修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 600 authorized-keys</span><br></pre></td></tr></table></figure></p>
+<h1 id="4-配置SSH，允许使用RSA秘钥登录"><a href="#4-配置SSH，允许使用RSA秘钥登录" class="headerlink" title="4.配置SSH，允许使用RSA秘钥登录"></a>4.配置SSH，允许使用RSA秘钥登录</h1><p>修改ssh的配置文件，配置文件是/etc/ssh/sshd_config，将RSAAuthentication和<br>PubkeyAuthentication两个选项的前面的’#’号去掉，也就是允许使用秘钥或者公钥进行登录，如果想同时禁止使用密码登录，那么可以将PasswordAuthentication yes修改为PasswordAuthentication no就可以了，以后就可以只使用公钥和秘钥登录了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#将这两个选项前面的#去掉，</span><br><span class="line">#RSAAuthentication yes</span><br><span class="line">#PubkeyAuthentication yes</span><br><span class="line">这样子就是的啦</span><br><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#希望以后可以使用密码登录，那么可以保持这个选项不变</span><br><span class="line">PasswordAuthentication yes</span><br><span class="line">#希望以后不可以使用密码登录，将这个选项修改为no</span><br><span class="line">PasswordAuthentication no</span><br></pre></td></tr></table></figure>
+<h1 id="5-重启SSH服务"><a href="#5-重启SSH服务" class="headerlink" title="5.重启SSH服务"></a>5.重启SSH服务</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service ssd restart</span><br><span class="line">#重启SSH服务</span><br></pre></td></tr></table></figure>
+<h1 id="6-将id-rsa文件拷贝到需要登录到服务器B的机器上面"><a href="#6-将id-rsa文件拷贝到需要登录到服务器B的机器上面" class="headerlink" title="6.将id_rsa文件拷贝到需要登录到服务器B的机器上面"></a>6.将id_rsa文件拷贝到需要登录到服务器B的机器上面</h1><p>可以使用scp命令，或者直接从服务器拷贝等方式将id_rsa文件复制到需要登录到服务器B的机器上面，在使用SSH工具的时候，在选项里面添加id_rsa这个秘钥，登录的时候就不需要输入密码了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH配置/">SSH配置</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-CentOS设置开机直接进入命令行界面" class="article article-type-post" itemscope itemprop="blogPost">
   
