@@ -125,7 +125,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Flannel/" style="font-size: 10px;">Flannel</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Kubernetes-Docker/" style="font-size: 10px;">Kubernetes,Docker</a> <a href="/tags/Linux安全/" style="font-size: 10px;">Linux安全</a> <a href="/tags/MacBook-SSH/" style="font-size: 10px;">MacBook SSH</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenvSwitch/" style="font-size: 10px;">OpenvSwitch</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
+						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Flannel/" style="font-size: 10px;">Flannel</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Kubernetes-Docker/" style="font-size: 10px;">Kubernetes,Docker</a> <a href="/tags/Linux安全/" style="font-size: 10px;">Linux安全</a> <a href="/tags/MacBook-SSH/" style="font-size: 10px;">MacBook SSH</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenvSwitch/" style="font-size: 10px;">OpenvSwitch</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/ssh连接超时/" style="font-size: 10px;">ssh连接超时</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
 					</div>
 				</section>
 				
@@ -231,13 +231,20 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>ssh连接超时问题解决方案：<br>1.修改server端的etc/ssh/sshd_config<br>ClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接<br>ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应</p>
+<p>2.修改client端的etc/ssh/ssh_config添加以下：（在没有权限改server配置的情形下）<br>ServerAliveInterval 60 ＃client每隔60秒发送一次请求给server，然后server响应，从而保持连接<br>ServerAliveCountMax 3  ＃client发出请求后，服务器端没有响应得次数达到3，就自动断开连接，正常情况下，server不会不响应</p>
+<p>3.另一种方式：<br>不修改配置文件<br>在命令参数里ssh -o ServerAliveInterval=60 这样子只会在需要的连接中保持持久连接， 毕竟不是所有连接都要保持持久的</p>
+
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh连接超时/">ssh连接超时</a></li></ul>
+	</div>
+
       
 
       
