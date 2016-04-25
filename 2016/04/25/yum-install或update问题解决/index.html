@@ -4,18 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>标签 | 糍粑的博客</title>
+  <title>yum install或update问题解决 | 糍粑的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="糍粑的博客，张糍粑，CIBA">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://blog.zhangciba.com/tags/index.html">
+  <meta name="description" content="当我们在使用yum进行软件安装或者软件更新时，经常会遇到这个错误。1Cannot find a valid baseurl for repo: base/7/x86_64
+如果提示这个错误，先检查一下网络是不是通的，可以ping测试一下能够连接到国内的网络。1ping www.baidu.com
+如果可以连通，可以再试试国外的网站，1ping www.github.com
+如果也可以连通国外的网站">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yum install或update问题解决">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/04/25/yum-install或update问题解决/index.html">
 <meta property="og:site_name" content="糍粑的博客">
-<meta property="og:description" content="糍粑的博客，张糍粑，CIBA">
-<meta property="og:updated_time" content="2016-04-25T01:35:32.000Z">
+<meta property="og:description" content="当我们在使用yum进行软件安装或者软件更新时，经常会遇到这个错误。1Cannot find a valid baseurl for repo: base/7/x86_64
+如果提示这个错误，先检查一下网络是不是通的，可以ping测试一下能够连接到国内的网络。1ping www.baidu.com
+如果可以连通，可以再试试国外的网站，1ping www.github.com
+如果也可以连通国外的网站">
+<meta property="og:updated_time" content="2016-04-25T07:28:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
-<meta name="twitter:description" content="糍粑的博客，张糍粑，CIBA">
+<meta name="twitter:title" content="yum install或update问题解决">
+<meta name="twitter:description" content="当我们在使用yum进行软件安装或者软件更新时，经常会遇到这个错误。1Cannot find a valid baseurl for repo: base/7/x86_64
+如果提示这个错误，先检查一下网络是不是通的，可以ping测试一下能够连接到国内的网络。1ping www.baidu.com
+如果可以连通，可以再试试国外的网站，1ping www.github.com
+如果也可以连通国外的网站">
   
     <link rel="alternative" href="/atom.xml" title="糍粑的博客" type="application/atom+xml">
   
@@ -204,11 +213,11 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-yum-install或update问题解决" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-  	<time datetime="2016-04-25T01:31:19.000Z" itemprop="datePublished">2016-04-25</time>
+      <a href="/2016/04/25/yum-install或update问题解决/" class="article-date">
+  	<time datetime="2016-04-25T07:25:06.000Z" itemprop="datePublished">2016-04-25</time>
 </a>
     </div>
   
@@ -221,7 +230,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      标签
+      yum install或update问题解决
     </h1>
   
 
@@ -229,6 +238,10 @@ var _hmt = _hmt || [];
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yum/">yum</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -237,13 +250,27 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>当我们在使用yum进行软件安装或者软件更新时，经常会遇到这个错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cannot find a valid baseurl for repo: base/7/x86_64</span><br></pre></td></tr></table></figure></p>
+<p>如果提示这个错误，先检查一下网络是不是通的，可以ping测试一下能够连接到国内的网络。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure></p>
+<p>如果可以连通，可以再试试国外的网站，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.github.com</span><br></pre></td></tr></table></figure></p>
+<p>如果也可以连通国外的网站那么执行下面的命令重新建立repo缓存。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all #清除缓存</span><br><span class="line">yum makecache #建立缓存</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/25/解决ssh会话连接超时问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">解决ssh会话连接超时问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
@@ -273,7 +300,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="undefined" data-title="标签" data-url="http://blog.zhangciba.com/tags/index.html"></div>
+	<div class="ds-thread" data-thread-key="yum-install或update问题解决" data-title="yum install或update问题解决" data-url="http://blog.zhangciba.com/2016/04/25/yum-install或update问题解决/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -317,7 +344,7 @@ var _hmt = _hmt || [];
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
