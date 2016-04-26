@@ -204,7 +204,122 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Kubernetes搭建Docker集群-原创" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/14/Kubernetes搭建Docker集群-原创/" class="article-date">
+  	<time datetime="2016-04-14T12:42:33.000Z" itemprop="datePublished">2016-04-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kubernetes搭建Docker集群(原创)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kubernetes-Docker/">Kubernetes,Docker</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#160; &#160; &#160; &#160;这几天因为实验需要，准备搭建一个Kubernetes搭建一个由10台物理机组成的Docker集群来进行HPC运算并测试基于Docker的操作系统级虚拟化技术对于HPC运算能力的影响。<br>&#160; &#160; &#160; &#160;在网上百度了一下，基本上不到5篇文章，这些文章都有一个特点，有国内较早的Docker布道者刘天斯写的文章，由于文章写的比较早，整个Kubernetes变化比较大，安装方法本来就不是很详细，另外版本变化太大，已经不适应现在的安装情况了。还有一些版本比较新的安装方法，但是都没有讲解的比较详细，本人一直都觉得国内写的博文和教程不够全面，就是没有把一些可能出现的问题，以及安装的途径以及方法写的比较全。<br>&#160; &#160; &#160; &#160;我也是看了这些文章很久，至今没有一篇文章可以把集群搭建起来。于是去看官方文档，官方文档更加简单，根本没法安装要求来搭建自己的集群。<br>&#160; &#160; &#160; &#160;无赖，只有求救自己手上国内所有的Docker书籍，大概有5本左右。发现也是一笔带过，而且基本都是抄的网上的教程。已醉。<br>&#160; &#160; &#160; &#160;所以只有自己写啦。集群还没有完全搭建起来，不过正在天天进步，估计几天后可以完全搭建成功。这中间遇到了很多问题，暂时还没有时间写出来，不过本文会陆续更新，力求给大家呈现一个原理与实践兼具，而且将其中可能会遇到的问题和大家一起进行分析与探讨，让大家能够通过这个教程就可以大致了解Kubernetes的特点以及Docer容器的特点，为以后的进一步使用和研究打基础。</p>
+<p>附录：网上写得比较好的安装Kubernetes集群的文章<br>1.Creating a kubernetes cluster to run docker formatted container images<br>     <a href="https://access.redhat.com/documentation/en/red-hat-enterprise-linux-atomic-host/7/getting-started-with-containers/chapter-4-creating-a-kubernetes-cluster-to-run-docker-formatted-container-images" target="_blank" rel="external">https://access.redhat.com/documentation/en/red-hat-enterprise-linux-atomic-host/7/getting-started-with-containers/chapter-4-creating-a-kubernetes-cluster-to-run-docker-formatted-container-images</a></p>
+<p>2.Kubernetes 1.01 the build<br>    <a href="http://www.dasblinkenlichten.com/kubernetes-101-the-build/" target="_blank" rel="external">http://www.dasblinkenlichten.com/kubernetes-101-the-build/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/17/Linux系统安全策略文章汇总/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Linux系统安全策略文章汇总
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/14/MacBook开启远程登录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MacBook开启远程登录</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Kubernetes搭建Docker集群-原创" data-title="Kubernetes搭建Docker集群(原创)" data-url="http://blog.zhangciba.com/2016/04/14/Kubernetes搭建Docker集群-原创/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
 </div>
       <footer id="footer">
   <div class="outer">
