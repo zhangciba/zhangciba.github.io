@@ -2292,3 +2292,36 @@ pre .css ~ * .id {
   height: 100%;
   overflow: hidden;
 }
+.toc-article {
+  background: #eee;
+  padding: 1em;
+  position: relative;
+  left: 2em;
+}
+.toc-article .toc-title {
+  padding-bottom: 0.8em;
+  font-weight: bold;
+}
+#toc {
+  line-height: 1.1em;
+  font-size: 0.8em;
+  float: right;
+}
+@media screen and (max-width: 600px) {
+  #toc {
+    display: none;
+  }
+}
+#toc .toc {
+  padding: 0;
+}
+#toc li,
+.toc li {
+  list-style-type: none;
+}
+#toc ol {
+  margin: 0;
+}
+#toc .toc-child {
+  padding-left: 1.5em;
+}
