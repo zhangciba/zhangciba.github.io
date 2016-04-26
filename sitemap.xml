@@ -9,6 +9,13 @@
   </url>
   
   <url>
+    <loc>http://blog.zhangciba.com/categories/index.html</loc>
+    
+    <lastmod>2016-04-26T08:59:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangciba.com/2016/04/06/%E7%94%9F%E6%B4%BB%E5%B0%8F%E6%84%9F%E6%82%9F/</loc>
     
     <lastmod>2016-04-26T08:50:31.000Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://blog.zhangciba.com/2016/04/14/Kubernetes%E6%90%AD%E5%BB%BADocker%E9%9B%86%E7%BE%A4-%E5%8E%9F%E5%88%9B/</loc>
     
     <lastmod>2016-04-26T08:38:23.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangciba.com/categories/index.html</loc>
-    
-    <lastmod>2016-04-26T08:37:34.000Z</lastmod>
     
   </url>
   
