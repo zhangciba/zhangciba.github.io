@@ -125,7 +125,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Flannel/" style="font-size: 10px;">Flannel</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Kubernetes-Docker/" style="font-size: 10px;">Kubernetes,Docker</a> <a href="/tags/Linux安全/" style="font-size: 10px;">Linux安全</a> <a href="/tags/MacBook-SSH/" style="font-size: 10px;">MacBook SSH</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenvSwitch/" style="font-size: 10px;">OpenvSwitch</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/ssh连接超时/" style="font-size: 10px;">ssh连接超时</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
+						<a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/Flannel/" style="font-size: 10px;">Flannel</a> <a href="/tags/JSON格式化输出/" style="font-size: 10px;">JSON格式化输出</a> <a href="/tags/Kubernetes-Docker/" style="font-size: 10px;">Kubernetes,Docker</a> <a href="/tags/Linux安全/" style="font-size: 10px;">Linux安全</a> <a href="/tags/MacBook-SSH/" style="font-size: 10px;">MacBook SSH</a> <a href="/tags/MapReduce/" style="font-size: 10px;">MapReduce</a> <a href="/tags/Mono/" style="font-size: 10px;">Mono</a> <a href="/tags/OpenvSwitch/" style="font-size: 10px;">OpenvSwitch</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH、密钥、公钥/" style="font-size: 10px;">SSH、密钥、公钥</a> <a href="/tags/SSH配置/" style="font-size: 10px;">SSH配置</a> <a href="/tags/etcd/" style="font-size: 10px;">etcd</a> <a href="/tags/ssh连接超时/" style="font-size: 10px;">ssh连接超时</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/数据恢复/" style="font-size: 10px;">数据恢复</a> <a href="/tags/生活、感悟/" style="font-size: 10px;">生活、感悟</a> <a href="/tags/论文阅读，HPC，笔记，高性能计算/" style="font-size: 10px;">论文阅读，HPC，笔记，高性能计算</a>
 					</div>
 				</section>
 				
@@ -204,6 +204,69 @@ var _hmt = _hmt || [];
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-论文阅读之MapReduce-simplified-data-processing-on-large-clusters" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/26/论文阅读之MapReduce-simplified-data-processing-on-large-clusters/" class="article-date">
+  	<time datetime="2016-04-26T02:44:54.000Z" itemprop="datePublished">2016-04-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/26/论文阅读之MapReduce-simplified-data-processing-on-large-clusters/">论文阅读之MapReduce_simplified data processing on large clusters</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MapReduce是谷歌公司提出的一种新的并行程序开发框架，其主要是为了满足谷歌公司搜索引擎数据的分析和索引，数据挖掘。<br>这篇文章已经发布很久了，今天读了一下，把最后一章总结翻译一下，就是对文章的最好说明了。具体MapReduce细节可以查阅网上的资料。MapReduce有一个开源的实现版本，就是Apache的Hadoop。可以参考官方网站进行了解。<a href="http://hadoop.apache.org/" target="_blank" rel="external">http://hadoop.apache.org/</a></p>
+<p>以下部分是对该文章Related Work和Conclusion两章的翻译。========================================================</p>
+<p>#相关工作#<br>许多异同也提供了受限的编程模式以及使用限制来进行自动化地并行计算。例如，使用并行前缀计算，一个在由N个元素的数组的所有前缀的关联函数计算可以在logN的时间内完成。MapReduce可以认为是基于我们在大量真实世界计算的经验上对这些模型的简化和升华。更为重要的是，我们提供了一个可以扩展至几千个处理器规模的容错机制的实现。相反，大部分的并行处理系统仅仅实现了小规模的容错机制，而将大量的处理机器失败的细节留给了程序员。<br>我们本地优化策略的灵感来源于诸如活跃磁盘等技术，即计算任务分配到离本地磁盘很近的处理元素，从而减少I/O子系统或者网络发送的数据量。<br>MapReduce库中的排序模块与NOW-Sort的操作相似。源机器（Map工作者）将要进行排序的数据进行拆分，然后将它分发到R个Reduce工作者中的一个。每个Reduce工作者在本地（如果可能，那么是内存）对这些数据进行排序。当然，NOW-Sort不能提供用户自定义的Map和Reduce函数，因此我们的MapReduce库能够广泛的应用。<br>BAD-FS和TACC是使用重新执行来实现容错的两个系统。<br>原文章有更加全面的有关工作的描述。</p>
+<p>#结论#<br>MapReduce编程模型已经成功运用在谷歌的各个方面。我们将这归功于一下几个原因。<br>1.首先，这个模型很容易使用，即使是没有并行与分布式系统开发经验的程序员也会使用，因为它隐藏了并行、容错、本地优化以及负载均衡等方面的细节。<br>2.其次，一个非常大问题很容易使用MapReduce计算模型来进行表述。例如，MapReduce被用来为谷歌生产Web搜索引擎产生数据，排序、数据挖掘、机器学习以及其他的系统。<br>3.再者，我们在上万台机器组成的大集群上面进行了MapReduce的实现。这个实现充分利用了机器资源并且非常适合解决谷歌大规模计算问题。</p>
+<p>我们通过限制编程模型从而使的并行与分布式计算变得简单，并且让这些计算具有容错性。其次，网络带宽是稀有资源，我们系统中的一些优化目的在于减少通过网络发送的数据量。本地优化策略允许沃恩从本地磁盘读取数据，并将一份中间数据的拷贝写入到本地磁盘从而能节省网络带宽。最后，冗余执行任务能够用来减少慢速机器的影响、处理机器错误以及数据丢失。</p>
+<p>========================================================</p>
+<p>翻译结束，希望对大家有用，欢迎指正。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MapReduce/">MapReduce</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-yum-install或update问题解决" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -719,64 +782,6 @@ var _hmt = _hmt || [];
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Linux终端格式化输出JSON" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/11/Linux终端格式化输出JSON/" class="article-date">
-  	<time datetime="2016-04-11T10:47:21.000Z" itemprop="datePublished">2016-04-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/11/Linux终端格式化输出JSON/">Linux终端格式化输出JSON</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160;&#160;我们在使用curl命令访问某一个页面时，往往会返回一个JSON字符串，默认情况下，Linux、Unix、MacOSX等系统下面的终端是不会格式化输出的，我们在查看结果的时候会比较吃力。有什么办法可以让JSON可以格式化输出呢。以CentOS7为例，CentOS7默认会安装Python2,我们在使用curl命令时，在它后面加入一下命令即可.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://www.xxx.com|python -m json.tool</span><br></pre></td></tr></table></figure></p>
-<p>&#160;&#160;后来在网上又看到了另外一个比较好用的工具，jq，<a href="https://stedolan.github.io/jq/" target="_blank" rel="external">https://stedolan.github.io/jq/</a>，具体的使用方法可以参考我给的链接啦。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSON格式化输出/">JSON格式化输出</a></li></ul>
 	</div>
 
       
