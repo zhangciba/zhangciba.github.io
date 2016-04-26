@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Kubernetes,Docker," />
+  <meta name="keywords" content="糍粑的博客, 张糍粑, 博客" />
 
 
 
@@ -57,16 +57,15 @@
 
 
 
-<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;这几天因为实验需要，准备搭建一个Kubernetes搭建一个由10台物理机组成的Docker集群来进行HPC运算并测试基于Docker的操作系统级虚拟化技术对于HPC运算能力的影响。&amp;#160; &amp;#160; &amp;#160; &amp;#160;在网上百度了一下，基本上不到5篇文章，这些文章都有一个特点，有国内较早的Docker布道者刘天斯写的文章，由于">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Kubernetes搭建Docker集群(原创)">
-<meta property="og:url" content="http://blog.zhangciba.com/2016/04/14/Kubernetes搭建Docker集群-原创/index.html">
+<meta name="description" content="糍粑的博客，张糍粑，CIBA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="糍粑的博客">
+<meta property="og:url" content="http://blog.zhangciba.com/categories/云计算/index.html">
 <meta property="og:site_name" content="糍粑的博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;这几天因为实验需要，准备搭建一个Kubernetes搭建一个由10台物理机组成的Docker集群来进行HPC运算并测试基于Docker的操作系统级虚拟化技术对于HPC运算能力的影响。&amp;#160; &amp;#160; &amp;#160; &amp;#160;在网上百度了一下，基本上不到5篇文章，这些文章都有一个特点，有国内较早的Docker布道者刘天斯写的文章，由于">
-<meta property="og:updated_time" content="2016-04-19T12:44:16.000Z">
+<meta property="og:description" content="糍粑的博客，张糍粑，CIBA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kubernetes搭建Docker集群(原创)">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;这几天因为实验需要，准备搭建一个Kubernetes搭建一个由10台物理机组成的Docker集群来进行HPC运算并测试基于Docker的操作系统级虚拟化技术对于HPC运算能力的影响。&amp;#160; &amp;#160; &amp;#160; &amp;#160;在网上百度了一下，基本上不到5篇文章，这些文章都有一个特点，有国内较早的Docker布道者刘天斯写的文章，由于">
+<meta name="twitter:title" content="糍粑的博客">
+<meta name="twitter:description" content="糍粑的博客，张糍粑，CIBA">
 
 
 
@@ -84,7 +83,7 @@
   };
 </script>
 
-  <title> Kubernetes搭建Docker集群(原创) | 糍粑的博客 </title>
+  <title> Category: 云计算 | 糍粑的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -105,7 +104,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -193,119 +192,47 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Kubernetes搭建Docker集群(原创)
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T20:42:33+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>&#160; &#160; &#160; &#160;这几天因为实验需要，准备搭建一个Kubernetes搭建一个由10台物理机组成的Docker集群来进行HPC运算并测试基于Docker的操作系统级虚拟化技术对于HPC运算能力的影响。<br>&#160; &#160; &#160; &#160;在网上百度了一下，基本上不到5篇文章，这些文章都有一个特点，有国内较早的Docker布道者刘天斯写的文章，由于文章写的比较早，整个Kubernetes变化比较大，安装方法本来就不是很详细，另外版本变化太大，已经不适应现在的安装情况了。还有一些版本比较新的安装方法，但是都没有讲解的比较详细，本人一直都觉得国内写的博文和教程不够全面，就是没有把一些可能出现的问题，以及安装的途径以及方法写的比较全。<br>&#160; &#160; &#160; &#160;我也是看了这些文章很久，至今没有一篇文章可以把集群搭建起来。于是去看官方文档，官方文档更加简单，根本没法安装要求来搭建自己的集群。<br>&#160; &#160; &#160; &#160;无赖，只有求救自己手上国内所有的Docker书籍，大概有5本左右。发现也是一笔带过，而且基本都是抄的网上的教程。已醉。<br>&#160; &#160; &#160; &#160;所以只有自己写啦。集群还没有完全搭建起来，不过正在天天进步，估计几天后可以完全搭建成功。这中间遇到了很多问题，暂时还没有时间写出来，不过本文会陆续更新，力求给大家呈现一个原理与实践兼具，而且将其中可能会遇到的问题和大家一起进行分析与探讨，让大家能够通过这个教程就可以大致了解Kubernetes的特点以及Docer容器的特点，为以后的进一步使用和研究打基础。</p>
-<p>附录：网上写得比较好的安装Kubernetes集群的文章<br>1.Creating a kubernetes cluster to run docker formatted container images<br>     <a href="https://access.redhat.com/documentation/en/red-hat-enterprise-linux-atomic-host/7/getting-started-with-containers/chapter-4-creating-a-kubernetes-cluster-to-run-docker-formatted-container-images" target="_blank" rel="external">https://access.redhat.com/documentation/en/red-hat-enterprise-linux-atomic-host/7/getting-started-with-containers/chapter-4-creating-a-kubernetes-cluster-to-run-docker-formatted-container-images</a></p>
-<p>2.Kubernetes 1.01 the build<br>    <a href="http://www.dasblinkenlichten.com/kubernetes-101-the-build/" target="_blank" rel="external">http://www.dasblinkenlichten.com/kubernetes-101-the-build/</a></p>
-
-      
+  <section id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        云计算
+        <small>Category</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-      
-    </div>
+            <a class="post-title-link" href="/2016/04/19/Flannel介绍及安装使用方法/" itemprop="url">
+              
+                <span itemprop="name">Flannel介绍及安装使用方法</span>
+              
+            </a>
+        
+      </h1>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Kubernetes-Docker/" rel="tag">#Kubernetes,Docker</a>
-          
-        </div>
-      
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-04-19T20:01:56+08:00"
+              content="2016-04-19" >
+          04-19
+        </time>
+      </div>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/14/MacBook开启远程登录/" rel="next" title="MacBook开启远程登录">
-                <i class="fa fa-chevron-left"></i> MacBook开启远程登录
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/17/Linux系统安全策略文章汇总/" rel="prev" title="Linux系统安全策略文章汇总">
-                Linux系统安全策略文章汇总 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+
 
 
           </div>
@@ -313,10 +240,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -336,17 +259,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/IMG_0049.JPG"
@@ -438,17 +352,6 @@
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
-            
-          </div>
-        </section>
-      
 
     </div>
   </aside>
@@ -532,11 +435,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
-
-
 
   
 
