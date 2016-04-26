@@ -390,6 +390,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -419,13 +438,13 @@
 
       
         
-          
-            <p>当我们在使用yum进行软件安装或者软件更新时，经常会遇到这个错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cannot find a valid baseurl for repo: base/7/x86_64</span><br></pre></td></tr></table></figure></p>
+          <p>当我们在使用yum进行软件安装或者软件更新时，经常会遇到这个错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cannot find a valid baseurl for repo: base/7/x86_64</span><br></pre></td></tr></table></figure></p>
 <p>如果提示这个错误，先检查一下网络是不是通的，可以ping测试一下能够连接到国内的网络。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure></p>
-<p>如果可以连通，可以再试试国外的网站，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.github.com</span><br></pre></td></tr></table></figure></p>
-<p>如果也可以连通国外的网站那么执行下面的命令重新建立repo缓存。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all #清除缓存</span><br><span class="line">yum makecache #建立缓存</span><br></pre></td></tr></table></figure></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/25/yum-install或update问题解决/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -497,8 +516,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/ssh/" itemprop="url" rel="index">
+                    <span itemprop="name">ssh</span>
                   </a>
                 </span>
 
@@ -537,12 +556,12 @@
 
       
         
-          
-            <p>ssh连接超时问题解决方案：<br>1.修改server端的etc/ssh/sshd_config<br>ClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接<br>ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应</p>
-<p>2.修改client端的etc/ssh/ssh_config添加以下：（在没有权限改server配置的情形下）<br>ServerAliveInterval 60 ＃client每隔60秒发送一次请求给server，然后server响应，从而保持连接<br>ServerAliveCountMax 3  ＃client发出请求后，服务器端没有响应得次数达到3，就自动断开连接，正常情况下，server不会不响应</p>
-<p>3.另一种方式：<br>不修改配置文件<br>在命令参数里ssh -o ServerAliveInterval=60 这样子只会在需要的连接中保持持久连接， 毕竟不是所有连接都要保持持久的</p>
-
-          
+          <p>ssh连接超时问题解决方案：<br>1.修改server端的etc/ssh/sshd_config<br>ClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接<br>ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/25/解决ssh会话连接超时问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -654,10 +673,12 @@
 
       
         
-          
-            <p>这篇文章写得还行，基本了解没问题。<br><a href="http://www.open-open.com/news/view/1aa473a" target="_blank" rel="external">http://www.open-open.com/news/view/1aa473a</a></p>
-
-          
+          <p>这篇文章写得还行，基本了解没问题。<br><a href="http://www.open-open.com/news/view/1aa473a">http://www.open-open.com/news/view/1aa473a</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/19/Flannel介绍及安装使用方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -721,6 +742,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -750,11 +790,13 @@
 
       
         
-          
-            <p>最近在搭建Linux集群，工作量大，也很辛苦，考虑到了后期工作的稳定性，决定开始学习Linux安全方面的知识。因此将网上看到的一些比较好的博客收藏下来，和大家一起分享。</p>
-<p>1.ClamAV软件基本安全配置的文章<br>    <a href="http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html" target="_blank" rel="external">http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html</a></p>
-
-          
+          <p>最近在搭建Linux集群，工作量大，也很辛苦，考虑到了后期工作的稳定性，决定开始学习Linux安全方面的知识。因此将网上看到的一些比较好的博客收藏下来，和大家一起分享。</p>
+<p>1.ClamAV软件基本安全配置的文章<br>    <a href="http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html">http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/17/Linux系统安全策略文章汇总/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -866,12 +908,12 @@
 
       
         
-          
-            <p>&#160; &#160; &#160; &#160;这几天因为实验需要，准备搭建一个Kubernetes搭建一个由10台物理机组成的Docker集群来进行HPC运算并测试基于Docker的操作系统级虚拟化技术对于HPC运算能力的影响。<br>&#160; &#160; &#160; &#160;在网上百度了一下，基本上不到5篇文章，这些文章都有一个特点，有国内较早的Docker布道者刘天斯写的文章，由于文章写的比较早，整个Kubernetes变化比较大，安装方法本来就不是很详细，另外版本变化太大，已经不适应现在的安装情况了。还有一些版本比较新的安装方法，但是都没有讲解的比较详细，本人一直都觉得国内写的博文和教程不够全面，就是没有把一些可能出现的问题，以及安装的途径以及方法写的比较全。<br>&#160; &#160; &#160; &#160;我也是看了这些文章很久，至今没有一篇文章可以把集群搭建起来。于是去看官方文档，官方文档更加简单，根本没法安装要求来搭建自己的集群。<br>&#160; &#160; &#160; &#160;无赖，只有求救自己手上国内所有的Docker书籍，大概有5本左右。发现也是一笔带过，而且基本都是抄的网上的教程。已醉。<br>&#160; &#160; &#160; &#160;所以只有自己写啦。集群还没有完全搭建起来，不过正在天天进步，估计几天后可以完全搭建成功。这中间遇到了很多问题，暂时还没有时间写出来，不过本文会陆续更新，力求给大家呈现一个原理与实践兼具，而且将其中可能会遇到的问题和大家一起进行分析与探讨，让大家能够通过这个教程就可以大致了解Kubernetes的特点以及Docer容器的特点，为以后的进一步使用和研究打基础。</p>
-<p>附录：网上写得比较好的安装Kubernetes集群的文章<br>1.Creating a kubernetes cluster to run docker formatted container images<br>     <a href="https://access.redhat.com/documentation/en/red-hat-enterprise-linux-atomic-host/7/getting-started-with-containers/chapter-4-creating-a-kubernetes-cluster-to-run-docker-formatted-container-images" target="_blank" rel="external">https://access.redhat.com/documentation/en/red-hat-enterprise-linux-atomic-host/7/getting-started-with-containers/chapter-4-creating-a-kubernetes-cluster-to-run-docker-formatted-container-images</a></p>
-<p>2.Kubernetes 1.01 the build<br>    <a href="http://www.dasblinkenlichten.com/kubernetes-101-the-build/" target="_blank" rel="external">http://www.dasblinkenlichten.com/kubernetes-101-the-build/</a></p>
-
-          
+          <p>&#160; &#160; &#160; &#160;这几天因为实验需要，准备搭建一个Kubernetes搭建一个由10台物理机组成的Docker集群来进行HPC运算并测试基于Docker的操作系统级虚拟化技术对于HPC运算能力的影响。<br>&#160; &#160; &#160; &#160;在网上百度了一下，基本上不到5篇文章，这些文章都有一个特点，有国内较早的Docker布道者刘天斯写的文章，由于文章写的比较早，整个Kubernetes变化比较大，安装方法本来就不是很详细，另外版本变化太大，已经不适应现在的安装情况了。还有一些版本比较新的安装方法，但是都没有讲解的比较详细，本人一直都觉得国内写的博文和教程不够全面，就是没有把一些可能出现的问题，以及安装的途径以及方法写的比较全。<br>&#160; &#160; &#160; &#160;我也是看了这些文章很久，至今没有一篇文章可以把集群搭建起来。于是去看官方文档，官方文档更加简单，根本没法安装要求来搭建自己的集群。<br>&#160; &#160; &#160; &#160;无赖，只有求救自己手上国内所有的Docker书籍，大概有5本左右。发现也是一笔带过，而且基本都是抄的网上的教程。已醉。<br>&#160; &#160; &#160; &#160;所以只有自己写啦。集群还没有完全搭建起来，不过正在天天进步，估计几天后可以完全搭建成功。这中间遇到了很多问题，暂时还没有时间写出来，不过本文会陆续更新，力求给大家呈现一个原理与实践兼具，而且将其中可能会遇到的问题和大家一起进行分析与探讨，让大家能够通过这个教程就可以大致了解Kubernetes的特点以及Docer容器的特点，为以后的进一步使用和研究打基础。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/14/Kubernetes搭建Docker集群-原创/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -934,6 +976,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Mac-OSX/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac OSX</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -1031,6 +1092,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/云计算/" itemprop="url" rel="index">
+                    <span itemprop="name">云计算</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1060,13 +1140,15 @@
 
       
         
-          
-            <p>好东西不多说了，收藏起来，之所以不自己写教程，是因为别人写的已经很详细了，以后用到了更加高级的东西，会自己总结给大家分享出来。</p>
-<p>官方链接<br><a href="https://github.com/coreos/etcd/" target="_blank" rel="external">https://github.com/coreos/etcd/</a></p>
-<p>etcd原理<br><a href="http://www.infoq.com/cn/articles/coreos-analyse-etcd/" target="_blank" rel="external">http://www.infoq.com/cn/articles/coreos-analyse-etcd/</a></p>
-<p>Etcd安装教程<br><a href="http://www.aixchina.net/home/space.php?uid=408689&amp;do=blog&amp;id=135619" target="_blank" rel="external">http://www.aixchina.net/home/space.php?uid=408689&amp;do=blog&amp;id=135619</a></p>
-
-          
+          <p>好东西不多说了，收藏起来，之所以不自己写教程，是因为别人写的已经很详细了，以后用到了更加高级的东西，会自己总结给大家分享出来。</p>
+<p>官方链接<br><a href="https://github.com/coreos/etcd/">https://github.com/coreos/etcd/</a></p>
+<p>etcd原理<br><a href="http://www.infoq.com/cn/articles/coreos-analyse-etcd/">http://www.infoq.com/cn/articles/coreos-analyse-etcd/</a></p>
+<p>Etcd安装教程<br><a href="http://www.aixchina.net/home/space.php?uid=408689&amp;do=blog&amp;id=135619">http://www.aixchina.net/home/space.php?uid=408689&amp;do=blog&amp;id=135619</a><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/13/etcd安装教程链接/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1130,6 +1212,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/云计算/" itemprop="url" rel="index">
+                    <span itemprop="name">云计算</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1159,16 +1260,14 @@
 
       
         
-          
-            <h1 id="官方资料"><a href="#官方资料" class="headerlink" title="官方资料"></a>官方资料</h1><p>1.官网<br>    <a href="http://openvswitch.org/" target="_blank" rel="external">http://openvswitch.org/</a><br>2.配置手册<br>    <a href="http://openvswitch.org/support/config-cookbooks/" target="_blank" rel="external">http://openvswitch.org/support/config-cookbooks/</a><br>3.15年秋季OVS会议<br>    <a href="http://openvswitch.org/support/ovscon2015/" target="_blank" rel="external">http://openvswitch.org/support/ovscon2015/</a></p>
-<h1 id="原理以及安装"><a href="#原理以及安装" class="headerlink" title="原理以及安装"></a>原理以及安装</h1><p>1.介绍基本原理<br>    <a href="http://blog.163.com/s_zhchluo/blog/static/15014708201411234648954/" target="_blank" rel="external">http://blog.163.com/s_zhchluo/blog/static/15014708201411234648954/</a></p>
-<p>2.安装教程英文版链接地址<br>    <a href="https://n40lab.wordpress.com/2014/09/04/openvswitch-2-3-0-lts-and-centos-7/" target="_blank" rel="external">https://n40lab.wordpress.com/2014/09/04/openvswitch-2-3-0-lts-and-centos-7/</a></p>
-<p>3.安装教程中文版链接地址<br>    <a href="http://www.linuxidc.com/Linux/2014-12/110272.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2014-12/110272.htm</a></p>
-<p>4.开源中国Open vSwitch资料汇总<br>    <a href="http://www.oschina.net/p/openvswitch" target="_blank" rel="external">http://www.oschina.net/p/openvswitch</a></p>
-<p>5.How to user openvswtich with docker<br>    <a href="http://cloudgeekz.com/400/how-to-use-openvswitch-with-docker.html" target="_blank" rel="external">http://cloudgeekz.com/400/how-to-use-openvswitch-with-docker.html</a></p>
-<h1 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h1><p>1.构建虚拟网络<br>    <a href="http://www.sdnap.com/sdnap-post/3520.html" target="_blank" rel="external">http://www.sdnap.com/sdnap-post/3520.html</a><br>  上面这篇文章写得还可以，简单易懂，逻辑清晰。<br>2.利用OpenVSwitch构建多主机Docker网络<br>    <a href="http://www.sdnlab.com/9923.html" target="_blank" rel="external">http://www.sdnlab.com/9923.html</a><br>3.利用Openvswitch实现不同物理机中的Docker容器互连<br>    <a href="http://www.bubuko.com/infodetail-1006745.html" target="_blank" rel="external">http://www.bubuko.com/infodetail-1006745.html</a><br>4.配置Docker多台宿主机间的容器互联<br>    <a href="http://ylw6006.blog.51cto.com/470441/1606239/" target="_blank" rel="external">http://ylw6006.blog.51cto.com/470441/1606239/</a><br>5.CentOS 7实战Kubernetes部署<br>    <a href="http://www.infoq.com/cn/articles/centos7-practical-kubernetes-deployment" target="_blank" rel="external">http://www.infoq.com/cn/articles/centos7-practical-kubernetes-deployment</a><br>6.轻松搭建Kubernetes运行环境<br>    <a href="http://qinghua.github.io/kubernetes-installation/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">http://qinghua.github.io/kubernetes-installation/?utm_source=tuicool&amp;utm_medium=referral</a></p>
-
-          
+          <h1 id="官方资料"><a href="#官方资料" class="headerlink" title="官方资料"></a>官方资料</h1><p>1.官网<br>    <a href="http://openvswitch.org/">http://openvswitch.org/</a><br>2.配置手册<br>    <a href="http://openvswitch.org/support/config-cookbooks/">http://openvswitch.org/support/config-cookbooks/</a><br>3.15年秋季OVS会议<br>    <a href="http://openvswitch.org/support/ovscon2015/">http://openvswitch.org/support/ovscon2015/</a></p>
+<h1 id="原理以及安装"><a href="#原理以及安装" class="headerlink" title="原理以及安装"></a>原理以及安装</h1><p>1.介绍基本原理<br>    <a href="http://blog.163.com/s_zhchluo/blog/static/15014708201411234648954/">http://blog.163.com/s_zhchluo/blog/static/15014708201411234648954/</a></p>
+<p>2.安装教程英文版链接地址<br>    <a href="https://n40lab.wordpress.com/2014/09/04/openvswitch-2-3-0-lts-and-centos-7/">https://n40lab.wordpress.com/2014/09/04/openvswitch-2-3-0-lts-and-centos-7/</a><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/12/Open vSwtich原理和使用博客链接/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1232,6 +1331,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ssh/" itemprop="url" rel="index">
+                    <span itemprop="name">ssh</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -1261,15 +1379,14 @@
 
       
         
-          
-            <p>我们在配置SSH客户端免密码登录时，需要在登录节点的SSH客户端中添加RSA秘钥才可以免密码登录到另外一台服务器。但是我们在使用ssh-add命令添加时，会遇到这个错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">could not open a connection to your authentication agent</span><br></pre></td></tr></table></figure></p>
+          <p>我们在配置SSH客户端免密码登录时，需要在登录节点的SSH客户端中添加RSA秘钥才可以免密码登录到另外一台服务器。但是我们在使用ssh-add命令添加时，会遇到这个错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">could not open a connection to your authentication agent</span><br></pre></td></tr></table></figure></p>
 <p>这是时候可以执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &apos;ssh-agent -s&apos;</span><br></pre></td></tr></table></figure></p>
 <p>查看ssh-agent是否启动了，如果启动了，一般是不会报错的。再执行一次’ssh-add ./.ssh/id_rsa’命令，如果还是报错，则执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec ssh-agent bash</span><br></pre></td></tr></table></figure></p>
-<p>这样问题就可以解决了。</p>
-<p>但是这样每次关闭终端之后或者重启之后，都需要重新添加秘钥才行，因为之前的添加是临时的，可以将添加秘钥的命令写入到系统配置文件中Ubuntu的.profile或者CentOS的/etc/profile文件中。这样系统开机之后，就自动为我们将秘钥添加到ssh-agent中去了。省去了每次都需要添加的麻烦。</p>
-<p>注：如果是在Windows或者MacOSX中，大部分的SSH工具(Secure Shell Client、SecureCRT、Putty)等都可以直接在配置中添加id_rsa秘钥，如果是Mac OSX系统，则可以在钥匙串中添加该秘钥，这样就可以不用每次都需要进行秘钥添加的操作了。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1345,7 +1462,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1354,7 +1471,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

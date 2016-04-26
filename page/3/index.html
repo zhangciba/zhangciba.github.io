@@ -342,12 +342,7 @@
         
           <h3 id="Live-Migration-of-Virtual-Machines"><a href="#Live-Migration-of-Virtual-Machines" class="headerlink" title="Live Migration of Virtual Machines"></a>Live Migration of Virtual Machines</h3><h3 id="论文结构"><a href="#论文结构" class="headerlink" title="论文结构"></a>论文结构</h3><ul>
 <li>Abstract<br>操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。<br>本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。</li>
-<li>Introduction<br>介绍了虚拟化技术带来了很多好处，在线系统迁移就是其中之一，系统迁移可以避免进程级别迁移带来的各种困难，其次系统迁移可以让整个内存状态得到转移，这意味着可以迁移一个在线的游戏服务器和流媒体服务器，第三，在线迁移能够将用户和数据中心或集群管理员的注意力分开。</li>
-<li>Realated Work<br>Collective projects研究了虚拟机迁移作为一个工具，但是不提供热迁移功能。进程迁移由于存在很多剩余的依赖问题而没有很好的解决，因此采用整个操作系统实例迁移是一个更好的办法。</li>
-<li><p>Design</p>
-<ul>
-<li><p>Migrating Memory<br>内存迁移分为三个过程：推、停止与拷贝、拉<br>将一部分内存页传输到目的机器；<br>停止机器，并将一部分内存拷贝到目的机器<br>新机器开始运行，并将没有转移的内存pull过来</p>
-<p>也有单纯停止与拷贝、按需迁移，它们分别会导致整体拓机和迁移时间过长、整体迁移时间过长的问题。
+<li>Introduction<br>介绍了虚拟化技术带来了很多好处，在线系统迁移就是其中之一，系统迁移可以避免进程级别迁移带来的各种困难，其次系统迁移可以让整个内存状态得到转移，这意味着可以迁移一个在线的游戏服务器和流媒体服务器，第三，在线迁移能够将用户和数据中心或集群管理员的注意力分开。
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/01/论文阅读-Live-Migration-of-Virtual-Machines/#more" rel="contents">
               阅读全文 &raquo;
@@ -445,10 +440,12 @@
 
       
         
-          
-            <p>坚韧的意志属于人性中后天的成份，所以是可以培养的。<br>培养过程的四个步骤：<br>第一，在确定志向的基础上，不停地给欲望火上浇油；<br>第二，制定一份切实的计划，使自己追求成功的行动永不停止；<br>第三，关闭心扉，不受外界一切消极因素的影响，包括至爱亲朋的干扰；<br>第四，与鼓励你和相信你的人结成坚强的事业同盟。</p>
-
-          
+          <p>坚韧的意志属于人性中后天的成份，所以是可以培养的。<br>培养过程的四个步骤：<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/31/坚韧的意志是后天培养的/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -524,7 +521,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -533,7 +530,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

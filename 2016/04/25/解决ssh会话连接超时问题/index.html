@@ -57,19 +57,16 @@
 
 
 
-<meta name="description" content="ssh连接超时问题解决方案：1.修改server端的etc/ssh/sshd_configClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应
-2.修改client端的et">
+<meta name="description" content="ssh连接超时问题解决方案：1.修改server端的etc/ssh/sshd_configClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决ssh会话连接超时问题">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/04/25/解决ssh会话连接超时问题/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="ssh连接超时问题解决方案：1.修改server端的etc/ssh/sshd_configClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应
-2.修改client端的et">
-<meta property="og:updated_time" content="2016-04-26T08:44:43.000Z">
+<meta property="og:description" content="ssh连接超时问题解决方案：1.修改server端的etc/ssh/sshd_configClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应">
+<meta property="og:updated_time" content="2016-04-26T13:39:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决ssh会话连接超时问题">
-<meta name="twitter:description" content="ssh连接超时问题解决方案：1.修改server端的etc/ssh/sshd_configClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应
-2.修改client端的et">
+<meta name="twitter:description" content="ssh连接超时问题解决方案：1.修改server端的etc/ssh/sshd_configClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应">
 
 
 
@@ -299,8 +296,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/ssh/" itemprop="url" rel="index">
+                    <span itemprop="name">ssh</span>
                   </a>
                 </span>
 
@@ -338,8 +335,7 @@
       
 
       
-        <p>ssh连接超时问题解决方案：<br>1.修改server端的etc/ssh/sshd_config<br>ClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接<br>ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应</p>
-<p>2.修改client端的etc/ssh/ssh_config添加以下：（在没有权限改server配置的情形下）<br>ServerAliveInterval 60 ＃client每隔60秒发送一次请求给server，然后server响应，从而保持连接<br>ServerAliveCountMax 3  ＃client发出请求后，服务器端没有响应得次数达到3，就自动断开连接，正常情况下，server不会不响应</p>
+        <p>ssh连接超时问题解决方案：<br>1.修改server端的etc/ssh/sshd_config<br>ClientAliveInterval 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接<br>ClientAliveCountMax 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应<br><a id="more"></a><br>2.修改client端的etc/ssh/ssh_config添加以下：（在没有权限改server配置的情形下）<br>ServerAliveInterval 60 ＃client每隔60秒发送一次请求给server，然后server响应，从而保持连接<br>ServerAliveCountMax 3  ＃client发出请求后，服务器端没有响应得次数达到3，就自动断开连接，正常情况下，server不会不响应</p>
 <p>3.另一种方式：<br>不修改配置文件<br>在命令参数里ssh -o ServerAliveInterval=60 这样子只会在需要的连接中保持持久连接， 毕竟不是所有连接都要保持持久的</p>
 
       
@@ -495,7 +491,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -504,7 +500,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

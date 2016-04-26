@@ -67,7 +67,7 @@ Int">
 <meta property="og:description" content="Live Migration of Virtual Machines论文结构
 Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。
 Int">
-<meta property="og:updated_time" content="2016-04-26T13:33:09.000Z">
+<meta property="og:updated_time" content="2016-04-26T13:40:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HPC论文阅读笔记">
 <meta name="twitter:description" content="Live Migration of Virtual Machines论文结构
@@ -343,12 +343,12 @@ Int">
       
         <h3 id="Live-Migration-of-Virtual-Machines"><a href="#Live-Migration-of-Virtual-Machines" class="headerlink" title="Live Migration of Virtual Machines"></a>Live Migration of Virtual Machines</h3><h3 id="论文结构"><a href="#论文结构" class="headerlink" title="论文结构"></a>论文结构</h3><ul>
 <li>Abstract<br>操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。<br>本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。</li>
-<li>Introduction<br>介绍了虚拟化技术带来了很多好处，在线系统迁移就是其中之一，系统迁移可以避免进程级别迁移带来的各种困难，其次系统迁移可以让整个内存状态得到转移，这意味着可以迁移一个在线的游戏服务器和流媒体服务器，第三，在线迁移能够将用户和数据中心或集群管理员的注意力分开。</li>
+<li>Introduction<br>介绍了虚拟化技术带来了很多好处，在线系统迁移就是其中之一，系统迁移可以避免进程级别迁移带来的各种困难，其次系统迁移可以让整个内存状态得到转移，这意味着可以迁移一个在线的游戏服务器和流媒体服务器，第三，在线迁移能够将用户和数据中心或集群管理员的注意力分开。<a id="more"></a></li>
 <li>Realated Work<br>Collective projects研究了虚拟机迁移作为一个工具，但是不提供热迁移功能。进程迁移由于存在很多剩余的依赖问题而没有很好的解决，因此采用整个操作系统实例迁移是一个更好的办法。</li>
 <li><p>Design</p>
 <ul>
 <li><p>Migrating Memory<br>内存迁移分为三个过程：推、停止与拷贝、拉<br>将一部分内存页传输到目的机器；<br>停止机器，并将一部分内存拷贝到目的机器<br>新机器开始运行，并将没有转移的内存pull过来</p>
-<p>也有单纯停止与拷贝、按需迁移，它们分别会导致整体拓机和迁移时间过长、整体迁移时间过长的问题。<a id="more"></a></p>
+<p>也有单纯停止与拷贝、按需迁移，它们分别会导致整体拓机和迁移时间过长、整体迁移时间过长的问题。</p>
 </li>
 <li>Local Resource<br>  虚拟机中的网络资源和本地存储的迁移是两个最重要的问题。<br>  迁移过程中要保持所有的网络连接数据都在新机器上面重现，需要在已经迁移的机器上面发出一个ARP回复，告诉其他机器，该IP地址已经改变了，其他机器将会把IP数据报发送到新的机器。但是有的路由器拒绝接受APR回复，所以该方案不适用于所情况。在交换机网络，迁移机器可以保持它的MAC地址，交换机可以检测到它迁移到了另外的端口。<br>  本文没有解决本地化磁盘迁移的问题，但是提出了几种可能的解决方案。</li>
 <li><p>Design Overview<br>  作者为了达到使虚拟机迁移之后的失败几率减小，将两台虚拟机之间的迁移当作事务。</p>
@@ -558,7 +558,7 @@ Int">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -567,7 +567,7 @@ Int">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
