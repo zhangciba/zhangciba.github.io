@@ -272,107 +272,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/" itemprop="url">
-                  SSH添加秘钥时提示无法打开认证代理的连接
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T20:52:02+08:00" content="2016-04-11">
-              2016-04-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/SSH添加秘钥时提示无法打开认证代理的连接/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我们在配置SSH客户端免密码登录时，需要在登录节点的SSH客户端中添加RSA秘钥才可以免密码登录到另外一台服务器。但是我们在使用ssh-add命令添加时，会遇到这个错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">could not open a connection to your authentication agent</span><br></pre></td></tr></table></figure></p>
-<p>这是时候可以执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &apos;ssh-agent -s&apos;</span><br></pre></td></tr></table></figure></p>
-<p>查看ssh-agent是否启动了，如果启动了，一般是不会报错的。再执行一次’ssh-add ./.ssh/id_rsa’命令，如果还是报错，则执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec ssh-agent bash</span><br></pre></td></tr></table></figure></p>
-<p>这样问题就可以解决了。</p>
-<p>但是这样每次关闭终端之后或者重启之后，都需要重新添加秘钥才行，因为之前的添加是临时的，可以将添加秘钥的命令写入到系统配置文件中Ubuntu的.profile或者CentOS的/etc/profile文件中。这样系统开机之后，就自动为我们将秘钥添加到ssh-agent中去了。省去了每次都需要添加的麻烦。</p>
-<p>注：如果是在Windows或者MacOSX中，大部分的SSH工具(Secure Shell Client、SecureCRT、Putty)等都可以直接在配置中添加id_rsa秘钥，如果是Mac OSX系统，则可以在钥匙串中添加该秘钥，这样就可以不用每次都需要进行秘钥添加的操作了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/04/11/Linux终端格式化输出JSON/" itemprop="url">
                   Linux终端格式化输出JSON
                 </a>
@@ -1282,6 +1181,105 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/03/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到/" itemprop="url">
+                  Ubuntu14.04LTSJDK安装成功，Eclipse提示JVM找不到
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-03T09:30:26+08:00" content="2016-04-03">
+              2016-04-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/03/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>Ubuntu14.04已经安装JDK成功，但是启动Eclipse的时候提示如下错误</p>
+<p>报 A Java Runtime Environment (JRE) or Java Development Kit (JDK)<br>must be available in order to run Eclipse. No Java virtual machine<br>was found after searching the following locations:<br>/opt/eclipse/jre/bin/java<br>java in your current PATH这错误<br>但我在终端运行java -version<br>java version “1.6.0_26”<br>Java(TM) SE Runtime Environment (build 1.6.0_26-b03)<br>Java HotSpot(TM) Server VM (build 20.1-b02, mixed mode)</p>
+<h3 id="可能原因"><a href="#可能原因" class="headerlink" title="可能原因"></a>可能原因</h3><p>1.JDK版本和Eclipse版本不合适，例如JDK是32位，Eclipse是64位，或者JDK是64位，Eclipse是32位<br>2.JDK环境变量没有进行配置。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>Eclipse有个自动查找本地JVM环境，这个错误就是说eclipse没能找到必须得jvm运行环境，这个时候，我们可以手动为其指定jvm的路径，在eclipse安装文件夹下，有一个eclipse.ini的初始化配置文件，用文本编辑工具打开，追加“-vm”参数：<br>-vm $YOUR_JAVA_HOME/bin/javaw<br>这里的$YOUR_JAVA_HOME 是你的java安装路径。必须保证javaw程序在这个环境下，这样，eclipse启动时会通过指定的jvm启动IDE（有的机器上安装多个版本的java，也可以这样来配置）。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1327,7 +1325,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1335,7 +1333,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1344,7 +1342,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
