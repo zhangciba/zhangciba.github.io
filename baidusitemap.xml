@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/04/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BMapReduce-simplified-data-processing-on-large-clusters/</loc>
+    <lastmod>2016-04-26T13:37:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>论文阅读之MapReduce_simplified data processing on large clusters</title>
+        <pubTime>2016-04-26T02:44:54.000Z</pubTime>
+        
+        <tag>MapReduce</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/04/11/SSH%E8%BF%9E%E6%8E%A5Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/</loc>
     <lastmod>2016-04-26T13:33:24.000Z</lastmod>
     <data>
@@ -118,23 +135,6 @@
              
               <breadCrumb title="云计算" url="http://blog.zhangciba.com/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangciba.com/2016/04/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BMapReduce-simplified-data-processing-on-large-clusters/</loc>
-    <lastmod>2016-04-26T04:49:28.000Z</lastmod>
-    <data>
-        <display>
-        <title>论文阅读之MapReduce_simplified data processing on large clusters</title>
-        <pubTime>2016-04-26T02:44:54.000Z</pubTime>
-        
-        <tag>MapReduce</tag>
-         
-         
-           
         </display>
     </data>
     </url>
