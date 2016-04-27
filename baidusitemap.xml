@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/04/06/MacOSX%E9%81%BF%E5%85%8D%E6%AF%8F%E6%AC%A1%E9%83%BD%E7%94%A8ssh-add%E6%B7%BB%E5%8A%A0SSH%E7%A7%98%E9%92%A5/</loc>
+    <lastmod>2016-04-27T01:18:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>MacOSX避免每次都用ssh-add添加SSH秘钥</title>
+        <pubTime>2016-04-06T00:50:39.000Z</pubTime>
+        
+        <tag>SSH, 密钥, 公钥</tag>
+         
+         
+           
+             
+              <breadCrumb title="ssh" url="http://blog.zhangciba.com/categories/ssh/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/04/25/yum-install%E6%88%96update%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</loc>
     <lastmod>2016-04-26T13:47:05.000Z</lastmod>
     <data>
@@ -97,26 +117,6 @@
            
              
               <breadCrumb title="云计算" url="http://blog.zhangciba.com/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangciba.com/2016/04/06/MacOSX%E9%81%BF%E5%85%8D%E6%AF%8F%E6%AC%A1%E9%83%BD%E7%94%A8ssh-add%E6%B7%BB%E5%8A%A0SSH%E7%A7%98%E9%92%A5/</loc>
-    <lastmod>2016-04-26T13:45:23.000Z</lastmod>
-    <data>
-        <display>
-        <title>MacOSX避免每次都用ssh-add添加SSH秘钥</title>
-        <pubTime>2016-04-06T00:50:39.000Z</pubTime>
-        
-        <tag>SSH、密钥、公钥</tag>
-         
-         
-           
-             
-              <breadCrumb title="shh" url="http://blog.zhangciba.com/categories/shh/"/>
           
         </display>
     </data>
