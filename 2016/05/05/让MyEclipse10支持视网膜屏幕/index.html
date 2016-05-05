@@ -63,18 +63,18 @@
 <meta property="og:url" content="http://blog.zhangciba.com/2016/05/05/让MyEclipse10支持视网膜屏幕/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="#摘要#自从苹果除了视网膜屏之后，视觉效果提升了一个档次。但是很多软件在开发时就没有支持视网膜屏幕，而另外的一些软件在开发时做了对支持视网膜屏幕，但是默认设置是不开启高分辨率的，需要进行修改才可以支持视网膜屏幕。">
-<meta property="og:image" content="http://blog.zhangciba.com/编辑Info.plist文件">
-<meta property="og:image" content="http://blog.zhangciba.com/显示包内容">
-<meta property="og:image" content="http://blog.zhangciba.com/显示包内容">
-<meta property="og:image" content="http://blog.zhangciba.com/打开Profile文件夹">
-<meta property="og:image" content="http://blog.zhangciba.com/再次显示包内容">
-<meta property="og:image" content="http://blog.zhangciba.com/编辑Info.plist文件">
-<meta property="og:image" content="http://blog.zhangciba.com/编辑Info.plist文件">
-<meta property="og:updated_time" content="2016-05-05T11:36:49.000Z">
+<meta property="og:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse01.png">
+<meta property="og:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse02.png">
+<meta property="og:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse03.png">
+<meta property="og:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse04.png">
+<meta property="og:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse05.png">
+<meta property="og:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse06.png">
+<meta property="og:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse07.png">
+<meta property="og:updated_time" content="2016-05-05T11:44:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="让MyEclipse10支持视网膜屏幕">
 <meta name="twitter:description" content="#摘要#自从苹果除了视网膜屏之后，视觉效果提升了一个档次。但是很多软件在开发时就没有支持视网膜屏幕，而另外的一些软件在开发时做了对支持视网膜屏幕，但是默认设置是不开启高分辨率的，需要进行修改才可以支持视网膜屏幕。">
-<meta name="twitter:image" content="http://blog.zhangciba.com/编辑Info.plist文件">
+<meta name="twitter:image" content="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse01.png">
 
 
 
@@ -354,13 +354,13 @@
       
         <p>#摘要#<br>自从苹果除了视网膜屏之后，视觉效果提升了一个档次。但是很多软件在开发时就没有支持视网膜屏幕，而另外的一些软件在开发时做了对支持视网膜屏幕，但是默认设置是不开启高分辨率的，需要进行修改才可以支持视网膜屏幕。<br><a id="more"></a><br>其实视网膜屏幕就是一块分辨率比我们现在使用的屏幕更高的屏幕罢了，它的像素点个数是普通屏幕的四倍以上，所以显示更加清晰。<br>所以当大家使用其他的软件时，遇到模糊的问题也可以按照我的思路来进行参考。</p>
 <p>#具体解决办法如下：#</p>
-<p>##首先打开Finder，进入到应用程序的目录。##<br>如图1所示<br><img src="编辑Info.plist文件" alt="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse01.png"></p>
+<p>##首先打开Finder，进入到应用程序的目录。##<br>如图1所示<br><img src="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse01.png" alt="打开应用程序目录"></p>
 <p>##编辑Info.plist文件##<br>然后进入MyEclipse的目录下面，可以看到MyEclipse10的图标，双手指点按，出来菜单，选择显示包内容，我们可以看到Info.plist文件，用XCode打开，点击‘+’号，添加一个键NSHighResolution Capable，并设置值为YES，保存，然后退出XCode。<br>如果使用其他编辑软件打开的，那么在’‘之前，加入如下内容（不包含单引号）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;NSHighResolutionCapable&lt;/key&gt;</span><br><span class="line">	&lt;true/&gt;</span><br></pre></td></tr></table></figure></p>
 <p>##进入Profile文件夹编辑另外一个Info.plist##<br>这个时候并没有结束，网上很多都只介绍到这里，导致很多人都没有成功。接下来，打开Profile文件夹，可以看到，还有一个MyEclipse，按照之前的方法，也是讲Info.plist文件中加入NSHighResolutionCapable这个键，并设置值为YES即可。</p>
 <p>##拷贝一份程序，删除原来的程序##<br>最后一步，就是把MyEclipse.app这个文件复制一份，得到MyEclipse副本.app，然后把MyEclipse.app删除，再把MyEclipse副本重命名为MyEclipse即可，重新打开之后，就可以看到MyEclipse10界面变得很清晰了。</p>
 <p>##过程截图##</p>
-<p><img src="显示包内容" alt="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse02.png"><br><img src="显示包内容" alt="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse03.png"><br><img src="打开Profile文件夹" alt="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse04.png"></p>
-<p><img src="再次显示包内容" alt="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse05.png"><br><img src="编辑Info.plist文件" alt="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse06.png"><br><img src="编辑Info.plist文件" alt="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse07.png"></p>
+<p><img src="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse02.png" alt="显示包内容"><br><img src="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse03.png" alt="显示包内容"><br><img src="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse04.png" alt="打开Profile文件夹"></p>
+<p><img src="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse05.png" alt="再次显示包内容"><br><img src="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse06.png" alt="编辑Info.plist文件"><br><img src="http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse07.png" alt="编辑Info.plist文件"></p>
 
       
     </div>
