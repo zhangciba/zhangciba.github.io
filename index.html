@@ -281,6 +281,122 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/" itemprop="url">
+                  论文阅读之A new technique for efficient live migration of multiple virtual machines
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-17T14:19:33+08:00" content="2016-05-17">
+              2016-05-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题名"><a href="#题名" class="headerlink" title="题名"></a>题名</h1><p>一种多虚拟机有效热迁移的新技术</p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>数据中心虚拟化技术收到了越来越多的关注，虚拟机迁移能够帮助服务提供商实现诸如节能、提高服务质量等。然而目前很多的研究都关注于单个虚拟机迁移的技术，很少有人关注多虚拟机迁移的问题。在本文中，作者介绍了改进的串行迁移策略和过后拷贝迁移模式，并提出了m混合迁移策略以及并行迁移策略。</p>
+<h1 id="介绍部分"><a href="#介绍部分" class="headerlink" title="介绍部分"></a>介绍部分</h1><h1 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h1><h2 id="虚拟机迁移机制"><a href="#虚拟机迁移机制" class="headerlink" title="虚拟机迁移机制"></a>虚拟机迁移机制</h2><h3 id="预拷贝"><a href="#预拷贝" class="headerlink" title="预拷贝"></a>预拷贝</h3><h3 id="后拷贝"><a href="#后拷贝" class="headerlink" title="后拷贝"></a>后拷贝</h3><h2 id="单机热迁移"><a href="#单机热迁移" class="headerlink" title="单机热迁移"></a>单机热迁移</h2><h2 id="多机热迁移"><a href="#多机热迁移" class="headerlink" title="多机热迁移"></a>多机热迁移</h2><h2 id="虚拟机迁移快照"><a href="#虚拟机迁移快照" class="headerlink" title="虚拟机迁移快照"></a>虚拟机迁移快照</h2><h1 id="虚拟机迁移策略"><a href="#虚拟机迁移策略" class="headerlink" title="虚拟机迁移策略"></a>虚拟机迁移策略</h1><h2 id="现有的迁移策略"><a href="#现有的迁移策略" class="headerlink" title="现有的迁移策略"></a>现有的迁移策略</h2><h2 id="改进的多机串行迁移"><a href="#改进的多机串行迁移" class="headerlink" title="改进的多机串行迁移"></a>改进的多机串行迁移</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/13/Linux-keychain使用/" itemprop="url">
                   Linux keychain使用
                 </a>
@@ -350,7 +466,8 @@
       
         
           
-            <p>一篇不错的讲解Linux ssh-agent和keychain的文章，很实用。<br><a href="http://www.linuxidc.com/Linux/2011-08/39872p2.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2011-08/39872p2.htm</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/keychain --clear ~/.ssh/keyOf191 ##开启一个新的shell的时候提示输入密码，提高安全性</span><br><span class="line">~/.keychain/$HOSTNAME-sh &gt; /dev/null  ##开启一个新的shel启用keychain</span><br></pre></td></tr></table></figure></p>
+            <p>一篇不错的讲解Linux ssh-agent和keychain的文章，很实用。<br><a href="http://www.linuxidc.com/Linux/2011-08/39872p2.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2011-08/39872p2.htm</a><br><a href="http://bbs.chinaunix.net/thread-2197964-1-1.html" target="_blank" rel="external">http://bbs.chinaunix.net/thread-2197964-1-1.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/keychain --clear ~/.ssh/keyOf191 ##开启一个新的shell的时候提示输入密码，提高安全性</span><br><span class="line">~/.keychain/$HOSTNAME-sh &gt; /dev/null  ##开启一个新的shel启用keychain</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1295,124 +1412,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/17/Linux系统安全策略文章汇总/" itemprop="url">
-                  Linux系统安全策略文章汇总
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T11:24:08+08:00" content="2016-04-17">
-              2016-04-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/17/Linux系统安全策略文章汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/Linux系统安全策略文章汇总/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近在搭建Linux集群，工作量大，也很辛苦，考虑到了后期工作的稳定性，决定开始学习Linux安全方面的知识。因此将网上看到的一些比较好的博客收藏下来，和大家一起分享。</p>
-<p>1.ClamAV软件基本安全配置的文章<br>    <a href="http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html">http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/17/Linux系统安全策略文章汇总/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1458,7 +1457,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1475,7 +1474,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

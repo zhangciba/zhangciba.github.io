@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/05/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BA-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/</loc>
+    <lastmod>2016-05-17T10:32:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>论文阅读之A new technique for efficient live migration of multiple virtual machines</title>
+        <pubTime>2016-05-17T06:19:33.000Z</pubTime>
+        
+        <tag>live-migration</tag>
+         
+         
+           
+             
+              <breadCrumb title="论文阅读" url="http://blog.zhangciba.com/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/05/13/Linux-keychain%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2016-05-13T13:00:17.000Z</lastmod>
+    <lastmod>2016-05-13T13:01:45.000Z</lastmod>
     <data>
         <display>
         <title>Linux keychain使用</title>
