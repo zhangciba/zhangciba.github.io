@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/05/18/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BComparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/</loc>
+    <lastmod>2016-05-19T11:38:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>论文阅读之Comparing Containers versus Virtual Machines for Achieving High Availability</title>
+        <pubTime>2016-05-18T09:36:51.000Z</pubTime>
+        
+        <tag>High Availability</tag>
+         
+         
+           
+             
+              <breadCrumb title="论文阅读" url="http://blog.zhangciba.com/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/05/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BA-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/</loc>
     <lastmod>2016-05-17T10:32:56.000Z</lastmod>
     <data>

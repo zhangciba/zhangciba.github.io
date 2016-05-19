@@ -281,6 +281,132 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/" itemprop="url">
+                  论文阅读之Comparing Containers versus Virtual Machines for Achieving High Availability
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-18T17:36:51+08:00" content="2016-05-18">
+              2016-05-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="初步了解"><a href="#初步了解" class="headerlink" title="初步了解"></a>初步了解</h1><p>程序分为有状态和无状态的程序，无状态的程序能够保存自己的状态，当节点失败时，可以使用负载均衡将请求转发至其他健康副本<br>而有状态的程序需要维护网络和程序的状态，因此需要采用不同的策略。</p>
+<p>在虚拟机环境达到高可用性，需要有如下能力</p>
+<ul>
+<li>能够遍历和保存虚拟机的状态；</li>
+<li>能够实现虚拟机热迁移的能力；</li>
+<li>在节点失败后转向备用节点的恢复机制。</li>
+</ul>
+<p>虚拟机提供商提供了不同的HA/FT（Fault Tolerance）方案给他们的客户。在这些方案中，高可用性一般是通过松散耦合的自我包含的服务器池和不间断的监控来实现。而对容错来说，负载均衡是不够的，为了保证服务的连续性，需要提供一个与主要节点一致的副本，这样就可以保在服务不中断、数据不丢失的情况下，一直有服务器来接手下面的工作。</p>
+<h1 id="管理平台的高可用性"><a href="#管理平台的高可用性" class="headerlink" title="管理平台的高可用性"></a>管理平台的高可用性</h1><h2 id="高可用性概览"><a href="#高可用性概览" class="headerlink" title="高可用性概览"></a>高可用性概览</h2><p>VMWare<br>Citrix XenServer<br>Marathon everRun MX<br>所有的这些供应商都提供了高可用性的方案，一般都是通过故障转移策略来实现的。</p>
+<p>VMware和XenServer分别通过vMtoion和XenMotion来支持虚拟机的热迁移了。但是CPU的兼容性是保证虚拟机在目标机器上正常运转的保证。目标机器的CPU最好能够提供一样的特性给虚拟机，这样随之而来的应用程序不会崩溃。同时，它们也支持检查点及恢复功能，从而允许虚拟机快照的功能。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/" itemprop="url">
                   论文阅读之A new technique for efficient live migration of multiple virtual machines
                 </a>
@@ -1295,123 +1421,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/19/Flannel介绍及安装使用方法/" itemprop="url">
-                  Flannel介绍及安装使用方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-19T20:01:56+08:00" content="2016-04-19">
-              2016-04-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/云计算/" itemprop="url" rel="index">
-                    <span itemprop="name">云计算</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/19/Flannel介绍及安装使用方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/19/Flannel介绍及安装使用方法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这篇文章写得还行，基本了解没问题。<br><a href="http://www.open-open.com/news/view/1aa473a">http://www.open-open.com/news/view/1aa473a</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/19/Flannel介绍及安装使用方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1457,7 +1466,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1474,7 +1483,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
