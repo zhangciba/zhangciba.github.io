@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangciba.com/2016/05/21/Linux%E6%8C%82%E8%BD%BD%E5%85%89%E9%A9%B1%E5%92%8CISO%E6%96%87%E4%BB%B6/</loc>
+    
+    <lastmod>2016-05-21T02:27:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangciba.com/2016/05/18/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BComparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/</loc>
     
-    <lastmod>2016-05-19T11:38:18.000Z</lastmod>
+    <lastmod>2016-05-19T11:55:09.000Z</lastmod>
     
   </url>
   
