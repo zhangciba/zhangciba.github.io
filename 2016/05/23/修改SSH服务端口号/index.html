@@ -57,22 +57,16 @@
 
 
 
-<meta name="description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出
-重启SSH服务执行1/etc/init.d/sshd restart
-这样SSH端口将同时工作与22和50000上。">
+<meta name="description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修改SSH服务端口号">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/05/23/修改SSH服务端口号/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出
-重启SSH服务执行1/etc/init.d/sshd restart
-这样SSH端口将同时工作与22和50000上。">
-<meta property="og:updated_time" content="2016-05-23T09:25:22.000Z">
+<meta property="og:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出">
+<meta property="og:updated_time" content="2016-05-23T13:43:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修改SSH服务端口号">
-<meta name="twitter:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出
-重启SSH服务执行1/etc/init.d/sshd restart
-这样SSH端口将同时工作与22和50000上。">
+<meta name="twitter:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出">
 
 
 
@@ -350,9 +344,9 @@
       
 
       
-        <h3 id="首先修改配置文件"><a href="#首先修改配置文件" class="headerlink" title="首先修改配置文件"></a>首先修改配置文件</h3><p>vi /etc/ssh/sshd_config<br>找到#Port 22一段，这里是标识默认使用22端口，修改为如下：<br>Port 22<br>Port 50000<br>然后保存退出</p>
+        <h3 id="首先修改配置文件"><a href="#首先修改配置文件" class="headerlink" title="首先修改配置文件"></a>首先修改配置文件</h3><p>vi /etc/ssh/sshd_config<br>找到#Port 22一段，这里是标识默认使用22端口，修改为如下：<br>Port 22<br>Port 50000<br>然后保存退出<br><a id="more"></a></p>
 <h3 id="重启SSH服务"><a href="#重启SSH服务" class="headerlink" title="重启SSH服务"></a>重启SSH服务</h3><p>执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/sshd restart</span><br></pre></td></tr></table></figure></p>
-<p>这样SSH端口将同时工作与22和50000上。<br><a id="more"></a></p>
+<p>这样SSH端口将同时工作与22和50000上。<br><!-- more --></p>
 <h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><p>备注，使用了防火墙软件的需要在防火墙服务上面开启50000端口，否则会导致无法连接上。</p>
 <h4 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h4><p>编辑防火墙配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/iptables</span><br><span class="line">-A INPUT -p tcp -m tcp --dport 50000 -j ACCEPT</span><br><span class="line">/etc/init.d/iptables restart</span><br></pre></td></tr></table></figure></p>
 <h4 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h4><p>如果使用的是firewalld,执行如下命令开放50000端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port=50000/tcp --permanent</span><br><span class="line">#--permanent是永久开放，重启之后还会有效，不加，重启之后就会关闭。</span><br></pre></td></tr></table></figure></p>

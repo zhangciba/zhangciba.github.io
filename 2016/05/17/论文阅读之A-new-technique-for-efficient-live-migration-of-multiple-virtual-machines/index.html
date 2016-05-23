@@ -57,22 +57,16 @@
 
 
 
-<meta name="description" content="题名一种多虚拟机有效热迁移的新技术
-摘要数据中心虚拟化技术收到了越来越多的关注，虚拟机迁移能够帮助服务提供商实现诸如节能、提高服务质量等。然而目前很多的研究都关注于单个虚拟机迁移的技术，很少有人关注多虚拟机迁移的问题。在本文中，作者介绍了改进的串行迁移策略和过后拷贝迁移模式，并提出了m混合迁移策略以及并行迁移策略。
-介绍部分相关工作虚拟机迁移机制预拷贝后拷贝单机热迁移多机热迁移虚拟机迁移快照虚拟机">
+<meta name="description" content="题名一种多虚拟机有效热迁移的新技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读之A new technique for efficient live migration of multiple virtual machines">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="题名一种多虚拟机有效热迁移的新技术
-摘要数据中心虚拟化技术收到了越来越多的关注，虚拟机迁移能够帮助服务提供商实现诸如节能、提高服务质量等。然而目前很多的研究都关注于单个虚拟机迁移的技术，很少有人关注多虚拟机迁移的问题。在本文中，作者介绍了改进的串行迁移策略和过后拷贝迁移模式，并提出了m混合迁移策略以及并行迁移策略。
-介绍部分相关工作虚拟机迁移机制预拷贝后拷贝单机热迁移多机热迁移虚拟机迁移快照虚拟机">
-<meta property="og:updated_time" content="2016-05-17T10:32:56.000Z">
+<meta property="og:description" content="题名一种多虚拟机有效热迁移的新技术">
+<meta property="og:updated_time" content="2016-05-23T13:43:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读之A new technique for efficient live migration of multiple virtual machines">
-<meta name="twitter:description" content="题名一种多虚拟机有效热迁移的新技术
-摘要数据中心虚拟化技术收到了越来越多的关注，虚拟机迁移能够帮助服务提供商实现诸如节能、提高服务质量等。然而目前很多的研究都关注于单个虚拟机迁移的技术，很少有人关注多虚拟机迁移的问题。在本文中，作者介绍了改进的串行迁移策略和过后拷贝迁移模式，并提出了m混合迁移策略以及并行迁移策略。
-介绍部分相关工作虚拟机迁移机制预拷贝后拷贝单机热迁移多机热迁移虚拟机迁移快照虚拟机">
+<meta name="twitter:description" content="题名一种多虚拟机有效热迁移的新技术">
 
 
 
@@ -350,9 +344,10 @@
       
 
       
-        <h1 id="题名"><a href="#题名" class="headerlink" title="题名"></a>题名</h1><p>一种多虚拟机有效热迁移的新技术</p>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>数据中心虚拟化技术收到了越来越多的关注，虚拟机迁移能够帮助服务提供商实现诸如节能、提高服务质量等。然而目前很多的研究都关注于单个虚拟机迁移的技术，很少有人关注多虚拟机迁移的问题。在本文中，作者介绍了改进的串行迁移策略和过后拷贝迁移模式，并提出了m混合迁移策略以及并行迁移策略。</p>
-<h1 id="介绍部分"><a href="#介绍部分" class="headerlink" title="介绍部分"></a>介绍部分</h1><h1 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h1><h2 id="虚拟机迁移机制"><a href="#虚拟机迁移机制" class="headerlink" title="虚拟机迁移机制"></a>虚拟机迁移机制</h2><h3 id="预拷贝"><a href="#预拷贝" class="headerlink" title="预拷贝"></a>预拷贝</h3><h3 id="后拷贝"><a href="#后拷贝" class="headerlink" title="后拷贝"></a>后拷贝</h3><h2 id="单机热迁移"><a href="#单机热迁移" class="headerlink" title="单机热迁移"></a>单机热迁移</h2><h2 id="多机热迁移"><a href="#多机热迁移" class="headerlink" title="多机热迁移"></a>多机热迁移</h2><h2 id="虚拟机迁移快照"><a href="#虚拟机迁移快照" class="headerlink" title="虚拟机迁移快照"></a>虚拟机迁移快照</h2><h1 id="虚拟机迁移策略"><a href="#虚拟机迁移策略" class="headerlink" title="虚拟机迁移策略"></a>虚拟机迁移策略</h1><h2 id="现有的迁移策略"><a href="#现有的迁移策略" class="headerlink" title="现有的迁移策略"></a>现有的迁移策略</h2><h2 id="改进的多机串行迁移"><a href="#改进的多机串行迁移" class="headerlink" title="改进的多机串行迁移"></a>改进的多机串行迁移</h2>
+        <h3 id="题名"><a href="#题名" class="headerlink" title="题名"></a>题名</h3><p>一种多虚拟机有效热迁移的新技术</p>
+<a id="more"></a>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>数据中心虚拟化技术收到了越来越多的关注，虚拟机迁移能够帮助服务提供商实现诸如节能、提高服务质量等。然而目前很多的研究都关注于单个虚拟机迁移的技术，很少有人关注多虚拟机迁移的问题。在本文中，作者介绍了改进的串行迁移策略和过后拷贝迁移模式，并提出了m混合迁移策略以及并行迁移策略。</p>
+<h3 id="介绍部分"><a href="#介绍部分" class="headerlink" title="介绍部分"></a>介绍部分</h3><h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><h4 id="虚拟机迁移机制"><a href="#虚拟机迁移机制" class="headerlink" title="虚拟机迁移机制"></a>虚拟机迁移机制</h4><h5 id="预拷贝"><a href="#预拷贝" class="headerlink" title="预拷贝"></a>预拷贝</h5><h5 id="后拷贝"><a href="#后拷贝" class="headerlink" title="后拷贝"></a>后拷贝</h5><h4 id="单机热迁移"><a href="#单机热迁移" class="headerlink" title="单机热迁移"></a>单机热迁移</h4><h4 id="多机热迁移"><a href="#多机热迁移" class="headerlink" title="多机热迁移"></a>多机热迁移</h4><h4 id="虚拟机迁移快照"><a href="#虚拟机迁移快照" class="headerlink" title="虚拟机迁移快照"></a>虚拟机迁移快照</h4><h3 id="虚拟机迁移策略"><a href="#虚拟机迁移策略" class="headerlink" title="虚拟机迁移策略"></a>虚拟机迁移策略</h3><h4 id="现有的迁移策略"><a href="#现有的迁移策略" class="headerlink" title="现有的迁移策略"></a>现有的迁移策略</h4><h4 id="改进的多机串行迁移"><a href="#改进的多机串行迁移" class="headerlink" title="改进的多机串行迁移"></a>改进的多机串行迁移</h4>
       
     </div>
 
@@ -605,7 +600,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题名"><span class="nav-number">1.</span> <span class="nav-text">题名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">2.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍部分"><span class="nav-number">3.</span> <span class="nav-text">介绍部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关工作"><span class="nav-number">4.</span> <span class="nav-text">相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机迁移机制"><span class="nav-number">4.1.</span> <span class="nav-text">虚拟机迁移机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#预拷贝"><span class="nav-number">4.1.1.</span> <span class="nav-text">预拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后拷贝"><span class="nav-number">4.1.2.</span> <span class="nav-text">后拷贝</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单机热迁移"><span class="nav-number">4.2.</span> <span class="nav-text">单机热迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多机热迁移"><span class="nav-number">4.3.</span> <span class="nav-text">多机热迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机迁移快照"><span class="nav-number">4.4.</span> <span class="nav-text">虚拟机迁移快照</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟机迁移策略"><span class="nav-number">5.</span> <span class="nav-text">虚拟机迁移策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#现有的迁移策略"><span class="nav-number">5.1.</span> <span class="nav-text">现有的迁移策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进的多机串行迁移"><span class="nav-number">5.2.</span> <span class="nav-text">改进的多机串行迁移</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题名"><span class="nav-number">1.</span> <span class="nav-text">题名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">2.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍部分"><span class="nav-number">3.</span> <span class="nav-text">介绍部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关工作"><span class="nav-number">4.</span> <span class="nav-text">相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机迁移机制"><span class="nav-number">4.1.</span> <span class="nav-text">虚拟机迁移机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#预拷贝"><span class="nav-number">4.1.1.</span> <span class="nav-text">预拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后拷贝"><span class="nav-number">4.1.2.</span> <span class="nav-text">后拷贝</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单机热迁移"><span class="nav-number">4.2.</span> <span class="nav-text">单机热迁移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多机热迁移"><span class="nav-number">4.3.</span> <span class="nav-text">多机热迁移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机迁移快照"><span class="nav-number">4.4.</span> <span class="nav-text">虚拟机迁移快照</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟机迁移策略"><span class="nav-number">5.</span> <span class="nav-text">虚拟机迁移策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#现有的迁移策略"><span class="nav-number">5.1.</span> <span class="nav-text">现有的迁移策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进的多机串行迁移"><span class="nav-number">5.2.</span> <span class="nav-text">改进的多机串行迁移</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
