@@ -57,16 +57,19 @@
 
 
 
-<meta name="description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出执行/etc/init.d/sshd restart这样SSH端口将同时工作与22和50000上。">
+<meta name="description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出
+重启SSH服务执行restart1234567891011```这样SSH端口将同时工作与22和50000上。&amp;lt;!-- more --&amp;gt;### 开放端口备注，使用了防火墙软件的需要在防火墙服务上面开启50000端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修改SSH服务端口号">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/05/23/修改SSH服务端口号/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出执行/etc/init.d/sshd restart这样SSH端口将同时工作与22和50000上。">
-<meta property="og:updated_time" content="2016-05-23T04:38:19.000Z">
+<meta property="og:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出
+重启SSH服务执行restart1234567891011```这样SSH端口将同时工作与22和50000上。&amp;lt;!-- more --&amp;gt;### 开放端口备注，使用了防火墙软件的需要在防火墙服务上面开启50000端">
+<meta property="og:updated_time" content="2016-05-23T04:41:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修改SSH服务端口号">
-<meta name="twitter:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出执行/etc/init.d/sshd restart这样SSH端口将同时工作与22和50000上。">
+<meta name="twitter:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出
+重启SSH服务执行restart1234567891011```这样SSH端口将同时工作与22和50000上。&amp;lt;!-- more --&amp;gt;### 开放端口备注，使用了防火墙软件的需要在防火墙服务上面开启50000端">
 
 
 
@@ -344,12 +347,11 @@
       
 
       
-        <h3 id="首先修改配置文件"><a href="#首先修改配置文件" class="headerlink" title="首先修改配置文件"></a>首先修改配置文件</h3><p>vi /etc/ssh/sshd_config<br>找到#Port 22一段，这里是标识默认使用22端口，修改为如下：<br>Port 22<br>Port 50000<br>然后保存退出<br>执行/etc/init.d/sshd restart<br>这样SSH端口将同时工作与22和50000上。<br><a id="more"></a></p>
-<h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><p>备注，使用了防火墙软件的需要在防火墙服务上面开启50000端口，否则会导致无法连接上。</p>
-<h4 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h4><p>编辑防火墙配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/iptables</span><br><span class="line">-A INPUT -p tcp -m tcp --dport 50000 -j ACCEPT</span><br><span class="line">/etc/init.d/iptables restart</span><br></pre></td></tr></table></figure></p>
-<h4 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h4><p>如果使用的是firewalld,执行如下命令开放50000端口</p>
-<pre><code>
-</code></pre><h3 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h3><p>现在请使用ssh工具连接50000端口，来测试是否成功。<br>如果连接成功了，则再次编辑sshd_config的设置，将里边的Port22删除（dd掉），即可。<br>之所以先设置成两个端口，测试成功后再关闭一个端口，是为了方式在修改conf的过程中，<br>万一出现掉线、断网、误操作等未知情况时候，还能通过另外一个端口连接上去调试<br>以免发生连接不上必须派人去机房，导致问题更加复杂麻烦。</p>
+        <h3 id="首先修改配置文件"><a href="#首先修改配置文件" class="headerlink" title="首先修改配置文件"></a>首先修改配置文件</h3><p>vi /etc/ssh/sshd_config<br>找到#Port 22一段，这里是标识默认使用22端口，修改为如下：<br>Port 22<br>Port 50000<br>然后保存退出</p>
+<h3 id="重启SSH服务"><a href="#重启SSH服务" class="headerlink" title="重启SSH服务"></a>重启SSH服务</h3><p>执行<br><figure class="highlight plain"><figcaption><span>restart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">这样SSH端口将同时工作与22和50000上。</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">### 开放端口</span><br><span class="line">备注，使用了防火墙软件的需要在防火墙服务上面开启50000端口，否则会导致无法连接上。</span><br><span class="line">#### iptables</span><br><span class="line">编辑防火墙配置：</span><br><span class="line">``` </span><br><span class="line">vi /etc/sysconfig/iptables</span><br><span class="line">-A INPUT -p tcp -m tcp --dport 50000 -j ACCEPT</span><br><span class="line">/etc/init.d/iptables restart</span><br></pre></td></tr></table></figure></p>
+<h4 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h4><p>如果使用的是firewalld,执行如下命令开放50000端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">### 测试连接</span><br><span class="line">现在请使用ssh工具连接50000端口，来测试是否成功。</span><br></pre></td></tr></table></figure></p>
+<p>ssh -p 50000 root@yourhostname</p>
+<h1 id="p指定连接端口"><a href="#p指定连接端口" class="headerlink" title="-p指定连接端口"></a>-p指定连接端口</h1><p>```<br>如果连接成功了，则再次编辑sshd_config的设置，将里边的Port22删除（dd掉），即可。<br>之所以先设置成两个端口，测试成功后再关闭一个端口，是为了方式在修改conf的过程中，<br>万一出现掉线、断网、误操作等未知情况时候，还能通过另外一个端口连接上去调试<br>以免发生连接不上必须派人去机房，导致问题更加复杂麻烦。</p>
 
       
     </div>
@@ -599,7 +601,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先修改配置文件"><span class="nav-number">1.</span> <span class="nav-text">首先修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开放端口"><span class="nav-number">2.</span> <span class="nav-text">开放端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iptables"><span class="nav-number">2.1.</span> <span class="nav-text">iptables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#firewall"><span class="nav-number">2.2.</span> <span class="nav-text">firewall</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试连接"><span class="nav-number">3.</span> <span class="nav-text">测试连接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先修改配置文件"><span class="nav-number">1.</span> <span class="nav-text">首先修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启SSH服务"><span class="nav-number">2.</span> <span class="nav-text">重启SSH服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#firewall"><span class="nav-number">2.1.</span> <span class="nav-text">firewall</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#p指定连接端口"><span class="nav-number"></span> <span class="nav-text">-p指定连接端口</span></a></div>
             
           </div>
         </section>
