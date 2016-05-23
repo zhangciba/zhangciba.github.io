@@ -349,14 +349,14 @@
 
       
         
-          
-            <h3 id="首先修改配置文件"><a href="#首先修改配置文件" class="headerlink" title="首先修改配置文件"></a>首先修改配置文件</h3><p>vi /etc/ssh/sshd_config<br>找到#Port 22一段，这里是标识默认使用22端口，修改为如下：<br>Port 22<br>Port 50000<br>然后保存退出</p>
-<h3 id="重启SSH服务"><a href="#重启SSH服务" class="headerlink" title="重启SSH服务"></a>重启SSH服务</h3><p>执行<br><figure class="highlight plain"><figcaption><span>restart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">这样SSH端口将同时工作与22和50000上。</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">### 开放端口</span><br><span class="line">备注，使用了防火墙软件的需要在防火墙服务上面开启50000端口，否则会导致无法连接上。</span><br><span class="line">#### iptables</span><br><span class="line">编辑防火墙配置：</span><br><span class="line">``` </span><br><span class="line">vi /etc/sysconfig/iptables</span><br><span class="line">-A INPUT -p tcp -m tcp --dport 50000 -j ACCEPT</span><br><span class="line">/etc/init.d/iptables restart</span><br></pre></td></tr></table></figure></p>
-<h4 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h4><p>如果使用的是firewalld,执行如下命令开放50000端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">### 测试连接</span><br><span class="line">现在请使用ssh工具连接50000端口，来测试是否成功。</span><br></pre></td></tr></table></figure></p>
-<p>ssh -p 50000 root@yourhostname</p>
-<h1 id="p指定连接端口"><a href="#p指定连接端口" class="headerlink" title="-p指定连接端口"></a>-p指定连接端口</h1><p>```<br>如果连接成功了，则再次编辑sshd_config的设置，将里边的Port22删除（dd掉），即可。<br>之所以先设置成两个端口，测试成功后再关闭一个端口，是为了方式在修改conf的过程中，<br>万一出现掉线、断网、误操作等未知情况时候，还能通过另外一个端口连接上去调试<br>以免发生连接不上必须派人去机房，导致问题更加复杂麻烦。</p>
-
-          
+          <h3 id="首先修改配置文件"><a href="#首先修改配置文件" class="headerlink" title="首先修改配置文件"></a>首先修改配置文件</h3><p>vi /etc/ssh/sshd_config<br>找到#Port 22一段，这里是标识默认使用22端口，修改为如下：<br>Port 22<br>Port 50000<br>然后保存退出</p>
+<h3 id="重启SSH服务"><a href="#重启SSH服务" class="headerlink" title="重启SSH服务"></a>重启SSH服务</h3><p>执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/sshd restart</span><br></pre></td></tr></table></figure></p>
+<p>这样SSH端口将同时工作与22和50000上。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/23/修改SSH服务端口号/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
