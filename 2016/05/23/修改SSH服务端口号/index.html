@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DIYER糍粑,DIYER,GEEK,杏林极客,DIYER糍粑的博客" />
+  <meta name="keywords" content="ssh," />
 
 
 
@@ -57,15 +57,16 @@
 
 
 
-<meta name="description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DIYER糍粑的博客">
-<meta property="og:url" content="http://blog.zhangciba.com/tags/SSH-密钥-公钥/index.html">
+<meta name="description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出执行/etc/init.d/sshd restart这样SSH端口将同时工作与22和50000上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修改SSH服务端口号">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/05/23/修改SSH服务端口号/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta property="og:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出执行/etc/init.d/sshd restart这样SSH端口将同时工作与22和50000上。">
+<meta property="og:updated_time" content="2016-05-23T04:38:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DIYER糍粑的博客">
-<meta name="twitter:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta name="twitter:title" content="修改SSH服务端口号">
+<meta name="twitter:description" content="首先修改配置文件vi /etc/ssh/sshd_config找到#Port 22一段，这里是标识默认使用22端口，修改为如下：Port 22Port 50000然后保存退出执行/etc/init.d/sshd restart这样SSH端口将同时工作与22和50000上。">
 
 
 
@@ -83,7 +84,7 @@
   };
 </script>
 
-  <title> 标签: SSH, 密钥, 公钥 | DIYER糍粑的博客 </title>
+  <title> 修改SSH服务端口号 | DIYER糍粑的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -129,7 +130,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,53 +258,200 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        SSH, 密钥, 公钥
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                修改SSH服务端口号
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-23T12:32:06+08:00" content="2016-05-23">
+              2016-05-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/23/修改SSH服务端口号/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/23/修改SSH服务端口号/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h3 id="首先修改配置文件"><a href="#首先修改配置文件" class="headerlink" title="首先修改配置文件"></a>首先修改配置文件</h3><p>vi /etc/ssh/sshd_config<br>找到#Port 22一段，这里是标识默认使用22端口，修改为如下：<br>Port 22<br>Port 50000<br>然后保存退出<br>执行/etc/init.d/sshd restart<br>这样SSH端口将同时工作与22和50000上。<br><a id="more"></a></p>
+<h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><p>备注，使用了防火墙软件的需要在防火墙服务上面开启50000端口，否则会导致无法连接上。</p>
+<h4 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h4><p>编辑防火墙配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/iptables</span><br><span class="line">-A INPUT -p tcp -m tcp --dport 50000 -j ACCEPT</span><br><span class="line">/etc/init.d/iptables restart</span><br></pre></td></tr></table></figure></p>
+<h4 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h4><p>如果使用的是firewalld,执行如下命令开放50000端口</p>
+<pre><code>
+</code></pre><h3 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h3><p>现在请使用ssh工具连接50000端口，来测试是否成功。<br>如果连接成功了，则再次编辑sshd_config的设置，将里边的Port22删除（dd掉），即可。<br>之所以先设置成两个端口，测试成功后再关闭一个端口，是为了方式在修改conf的过程中，<br>万一出现掉线、断网、误操作等未知情况时候，还能通过另外一个端口连接上去调试<br>以免发生连接不上必须派人去机房，导致问题更加复杂麻烦。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/04/06/MacOSX避免每次都用ssh-add添加SSH秘钥/" itemprop="url">
-              
-                <span itemprop="name">MacOSX避免每次都用ssh-add添加SSH秘钥</span>
-              
-            </a>
-        
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-06T08:50:39+08:00"
-              content="2016-04-06" >
-          04-06
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ssh/" rel="tag">#ssh</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/21/Linux挂载光驱和ISO文件/" rel="next" title="Linux挂载光驱和ISO文件">
+                <i class="fa fa-chevron-left"></i> Linux挂载光驱和ISO文件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/23/修改SSH服务端口号/"
+           data-title="修改SSH服务端口号" data-url="http://blog.zhangciba.com/2016/05/23/修改SSH服务端口号/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -323,8 +471,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -436,6 +593,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先修改配置文件"><span class="nav-number">1.</span> <span class="nav-text">首先修改配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开放端口"><span class="nav-number">2.</span> <span class="nav-text">开放端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iptables"><span class="nav-number">2.1.</span> <span class="nav-text">iptables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#firewall"><span class="nav-number">2.2.</span> <span class="nav-text">firewall</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试连接"><span class="nav-number">3.</span> <span class="nav-text">测试连接</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -519,6 +687,11 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
