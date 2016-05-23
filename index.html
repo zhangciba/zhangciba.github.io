@@ -589,11 +589,7 @@
 <ul>
 <li>能够遍历和保存虚拟机的状态；</li>
 <li>能够实现虚拟机热迁移的能力；</li>
-<li>在节点失败后转向备用节点的恢复机制。</li>
-</ul>
-<p>虚拟机提供商提供了不同的HA/FT（Fault Tolerance）方案给他们的客户。在这些方案中，高可用性一般是通过松散耦合的自我包含的服务器池和不间断的监控来实现。而对容错来说，负载均衡是不够的，为了保证服务的连续性，需要提供一个与主要节点一致的副本，这样就可以保在服务不中断、数据不丢失的情况下，一直有服务器来接手下面的工作。</p>
-<h1 id="管理平台的高可用性"><a href="#管理平台的高可用性" class="headerlink" title="管理平台的高可用性"></a>管理平台的高可用性</h1><h2 id="高可用性概览"><a href="#高可用性概览" class="headerlink" title="高可用性概览"></a>高可用性概览</h2><p>VMWare<br>Citrix XenServer<br>Marathon everRun MX<br>所有的这些供应商都提供了高可用性的方案，一般都是通过故障转移策略来实现的。</p>
-<p>VMware和XenServer分别通过vMtoion和XenMotion来支持虚拟机的热迁移了。但是CPU的兼容性是保证虚拟机在目标机器上正常运转的保证。目标机器的CPU最好能够提供一样的特性给虚拟机，这样随之而来的应用程序不会崩溃。同时，它们也支持检查点及恢复功能，从而允许虚拟机快照的功能。<br>
+<li>在节点失败后转向备用节点的恢复机制。
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/#more" rel="contents">
               阅读全文 &raquo;
