@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://blog.zhangciba.com/2016/05/24/论文阅读之Performance-of-an-IaaS-Cloud-with-Live-Migration-of-Virtual-Machines/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="摘要云计算中心一般都会使用虚拟化技术，但是需要使用虚拟机热迁移技术来提高性能表现以及可用性。本文建立了一种分析表现模型，用于衡量一些重要的性能指标，例如在进行虚拟机热迁移时的拒绝可能性以及整体延时。通过使用这种模型，发现，虚拟机热迁移可以减少任务被拒绝可能性同时也将超大任务的延时独立于任务中小型任务的平均服务时间。">
-<meta property="og:updated_time" content="2016-05-24T05:05:18.000Z">
+<meta property="og:updated_time" content="2016-05-24T11:44:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读之Performance of an IaaS Cloud with Live Migration of Virtual Machines">
 <meta name="twitter:description" content="摘要云计算中心一般都会使用虚拟化技术，但是需要使用虚拟机热迁移技术来提高性能表现以及可用性。本文建立了一种分析表现模型，用于衡量一些重要的性能指标，例如在进行虚拟机热迁移时的拒绝可能性以及整体延时。通过使用这种模型，发现，虚拟机热迁移可以减少任务被拒绝可能性同时也将超大任务的延时独立于任务中小型任务的平均服务时间。">
@@ -347,6 +347,15 @@
         <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>云计算中心一般都会使用虚拟化技术，但是需要使用虚拟机热迁移技术来提高性能表现以及可用性。本文建立了一种分析表现模型，用于衡量一些重要的性能指标，例如在进行虚拟机热迁移时的拒绝可能性以及整体延时。通过使用这种模型，发现，虚拟机热迁移可以减少任务被拒绝可能性同时也将超大任务的延时独立于任务中小型任务的平均服务时间。<br><a id="more"></a></p>
 <h3 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h3><p>许多云计算解决方案依赖于虚拟化技术，通过部署在数据中心不同物理服务器上面的虚拟机的形式来提供计算资源。由于在同一主机之间的虚拟机通信效率要比跨主机虚拟机进程通信效率高，因此虚拟机通常在多主机之间进行迁移，从而提高资源利用率以及性能。目前虚拟机热迁移技术已经可行，尽管在进行迁移的时候执行速度会变慢，但是不会中断正在执行的程序。</p>
 <p>本文使用Markov链式模型和可能性分析来对云计算系统中虚拟机热迁移性能进行评估。由于开发一个巨大的模型是非常困难的，而且它的分析是非常单调乏味的，因此建议将这个模型分为两个部分，这两个部分和与云计算系统中在线任务迁移的服务步骤是一致的，然后两个模型合并用来得到最后的解决方案。</p>
+<h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><p>在之前的工作中，作者提出了用户分析云服务端对端性能的通用分析模型，使用服务可用性以及供应延迟作为两个重要的服务质量指标。这个模型将性能分析划分为两个子模型，通过子模型的不断迭代来获取整体的解决方案，但是这个模型没有考虑虚拟机热迁移和不同的服务策略。</p>
+<p>科学计算任务在云平台上面的性能分析在文献6中有所体现。作者在包括Amazon EC2的四个云平台上面通过运行实际科学计算任务来进行了完整的性能评估，并量化了多任务计算的性能。</p>
+<p>当虚拟机迁移技术可以时间时，它和它的性能表现变得越来越受关注。尽管目前存在着一些热迁移方面性能分析的工具，但是还是相对比较少。因此有必要对本文作者之前的性能分析模型进行继续研究。</p>
+<h3 id="分析模型之资源管理"><a href="#分析模型之资源管理" class="headerlink" title="分析模型之资源管理"></a>分析模型之资源管理</h3><p>云中心一般都有许多物理主机，并且物理主机上有许多虚拟机，但是有的一定的上限。用户请求通过通过一个全局有限的队列提交给云计算中心，并采用FIFO策略进行处理。如果在全局队列中缺乏空间，将会导致任务会被拒绝。通过在一个或者多个物理机上实例化多个虚拟机来满足用户的请求。我们认为虚拟机实例应该通过预构建或者自定义磁盘镜像来创建。为了不失去通用性，这些与构建的镜像应该能够满足所有的用户请求。</p>
+<p>当用户请求处于队列头部时，系统先检查是否有足够的资源来满足，如果可实例化虚拟机的数量少于用户请求的数量，那么任务将会被拒绝。我们认为，一个被接受的用户请求应该分为几个小的任务，并分发到合适的物理机上来实例化一样的虚拟机。这样在一个任务之下的用于提供虚拟机的子任务可能运行于各自的物理机。这种方式不仅灵活，而且减少了由于资源不充足导致一个大任务被拒绝的可能性。当然，这种方式带来的任务之间的通信开销要比所有任务在同一台物理机上执行是要大。</p>
+<p>由于同一时刻可能到达的用户数量非常大，而单个用户在某一个时刻发送请求的几率非常小，因此超级任务到达可以采用泊松分布来进行建模。马科夫链的每个状态被标记为(i,j),i表示队列中超级任务的个数，j代表控制模式，A表示接受模式，R代表拒绝模式。</p>
+<p>一个空系统的初始化状态(0,A)表示队列中没有请求，到达的请求将会被接受。当j的值为R的时候，表示最后的物理机提供失败，全局的队列大小是Lq。</p>
+<p>Ps代表找到一个物理机能够处理当前用户任务的可能性。</p>
+<h3 id="分析模型：虚拟机供应"><a href="#分析模型：虚拟机供应" class="headerlink" title="分析模型：虚拟机供应"></a>分析模型：虚拟机供应</h3><p>虚拟机供应模型主要提供在一个物理机上实例化、部署、热迁移以及提供虚拟机的功能，以及任务在指定虚拟机上面的实际服务时间。该模型主要是尝试在一个物理机上面提供所有的虚拟机，如果不能实现，那么它将会把不同的任务分为多个任务，从而在不同的物理机上面提供相同的虚拟机。虚拟机迁移将会定时执行以减少在同一个物理机上面的虚拟机额数量，从而提高性能，在文献8中有提到。</p>
 
       
     </div>
@@ -600,7 +609,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">2.</span> <span class="nav-text">序言</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">2.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关工作"><span class="nav-number">3.</span> <span class="nav-text">相关工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析模型之资源管理"><span class="nav-number">4.</span> <span class="nav-text">分析模型之资源管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析模型：虚拟机供应"><span class="nav-number">5.</span> <span class="nav-text">分析模型：虚拟机供应</span></a></li></ol></div>
             
           </div>
         </section>
