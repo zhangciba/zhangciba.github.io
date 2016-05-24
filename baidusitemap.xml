@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/05/18/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BComparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/</loc>
+    <lastmod>2016-05-24T05:21:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>论文阅读之Comparing Containers versus Virtual Machines for Achieving High Availability</title>
+        <pubTime>2016-05-18T09:36:51.000Z</pubTime>
+        
+        <tag>High Availability</tag>
+         
+         
+           
+             
+              <breadCrumb title="论文阅读" url="http://blog.zhangciba.com/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/05/24/iptables%E5%88%A9%E7%94%A8connlimit%E6%A8%A1%E5%9D%97%E9%99%90%E5%88%B6%E5%90%8C%E4%B8%80IP%E8%BF%9E%E6%8E%A5%E6%95%B0/</loc>
     <lastmod>2016-05-24T05:20:45.000Z</lastmod>
     <data>
