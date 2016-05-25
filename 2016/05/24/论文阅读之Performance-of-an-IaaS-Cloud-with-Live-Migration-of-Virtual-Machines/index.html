@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://blog.zhangciba.com/2016/05/24/论文阅读之Performance-of-an-IaaS-Cloud-with-Live-Migration-of-Virtual-Machines/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="摘要云计算中心一般都会使用虚拟化技术，但是需要使用虚拟机热迁移技术来提高性能表现以及可用性。本文建立了一种分析表现模型，用于衡量一些重要的性能指标，例如在进行虚拟机热迁移时的拒绝可能性以及整体延时。通过使用这种模型，发现，虚拟机热迁移可以减少任务被拒绝可能性同时也将超大任务的延时独立于任务中小型任务的平均服务时间。">
-<meta property="og:updated_time" content="2016-05-24T11:44:42.000Z">
+<meta property="og:updated_time" content="2016-05-25T07:12:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读之Performance of an IaaS Cloud with Live Migration of Virtual Machines">
 <meta name="twitter:description" content="摘要云计算中心一般都会使用虚拟化技术，但是需要使用虚拟机热迁移技术来提高性能表现以及可用性。本文建立了一种分析表现模型，用于衡量一些重要的性能指标，例如在进行虚拟机热迁移时的拒绝可能性以及整体延时。通过使用这种模型，发现，虚拟机热迁移可以减少任务被拒绝可能性同时也将超大任务的延时独立于任务中小型任务的平均服务时间。">
@@ -356,6 +356,7 @@
 <p>一个空系统的初始化状态(0,A)表示队列中没有请求，到达的请求将会被接受。当j的值为R的时候，表示最后的物理机提供失败，全局的队列大小是Lq。</p>
 <p>Ps代表找到一个物理机能够处理当前用户任务的可能性。</p>
 <h3 id="分析模型：虚拟机供应"><a href="#分析模型：虚拟机供应" class="headerlink" title="分析模型：虚拟机供应"></a>分析模型：虚拟机供应</h3><p>虚拟机供应模型主要提供在一个物理机上实例化、部署、热迁移以及提供虚拟机的功能，以及任务在指定虚拟机上面的实际服务时间。该模型主要是尝试在一个物理机上面提供所有的虚拟机，如果不能实现，那么它将会把不同的任务分为多个任务，从而在不同的物理机上面提供相同的虚拟机。虚拟机迁移将会定时执行以减少在同一个物理机上面的虚拟机额数量，从而提高性能，在文献8中有提到。</p>
+<h3 id="数字认可"><a href="#数字认可" class="headerlink" title="数字认可"></a>数字认可</h3><p>在实验环境中，我们验证了改变任务服务时间以及任务到达率对服务拒绝可能性的影响，如图所示。在没有热迁移时，任务拒绝概率与任务服务时间成线性关系。当引入热迁移之后，超级任务的服务时间的变化对任务拒绝概率的没有特别大影响，因为在线迁移作为一个有效的负载均衡方法，可以防止物理机到达它们的容量上限。增加任务的服务时间实际上对于整体延时没有特别大的影响，能够想象是由于虚拟机迁移导致的最近的持续拒绝率，如图2(a)所示。然而具有热迁移的系统的整体延时减少，仅仅是因为许多超级任务被拒绝了，这些被接受的任务则会执行速度稍微加快。:wq</p>
 
       
     </div>
@@ -502,7 +503,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -510,7 +511,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -519,7 +520,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -609,7 +610,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">2.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关工作"><span class="nav-number">3.</span> <span class="nav-text">相关工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析模型之资源管理"><span class="nav-number">4.</span> <span class="nav-text">分析模型之资源管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析模型：虚拟机供应"><span class="nav-number">5.</span> <span class="nav-text">分析模型：虚拟机供应</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">2.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关工作"><span class="nav-number">3.</span> <span class="nav-text">相关工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析模型之资源管理"><span class="nav-number">4.</span> <span class="nav-text">分析模型之资源管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析模型：虚拟机供应"><span class="nav-number">5.</span> <span class="nav-text">分析模型：虚拟机供应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字认可"><span class="nav-number">6.</span> <span class="nav-text">数字认可</span></a></li></ol></div>
             
           </div>
         </section>
