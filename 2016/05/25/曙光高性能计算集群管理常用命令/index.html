@@ -57,25 +57,16 @@
 
 
 
-<meta name="description" content="查看负载情况1pssh -i -h node-list -o outputs/ uptime
-查看每个节点在线用户人数1pssh -i -h node-list -o outputs/ &amp;apos;w| wc -l&amp;apos;
-查看电源情况1ipmitool -H 172.10.10.45 -U admin -P admin chassis power status
-批量启动服务或加载模块1pss">
+<meta name="description" content="查看负载情况1pssh -i -h node-list -o outputs/ uptime">
 <meta property="og:type" content="article">
 <meta property="og:title" content="曙光高性能计算集群管理常用命令">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/05/25/曙光高性能计算集群管理常用命令/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="查看负载情况1pssh -i -h node-list -o outputs/ uptime
-查看每个节点在线用户人数1pssh -i -h node-list -o outputs/ &amp;apos;w| wc -l&amp;apos;
-查看电源情况1ipmitool -H 172.10.10.45 -U admin -P admin chassis power status
-批量启动服务或加载模块1pss">
-<meta property="og:updated_time" content="2016-05-25T08:47:09.000Z">
+<meta property="og:description" content="查看负载情况1pssh -i -h node-list -o outputs/ uptime">
+<meta property="og:updated_time" content="2016-05-25T09:14:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="曙光高性能计算集群管理常用命令">
-<meta name="twitter:description" content="查看负载情况1pssh -i -h node-list -o outputs/ uptime
-查看每个节点在线用户人数1pssh -i -h node-list -o outputs/ &amp;apos;w| wc -l&amp;apos;
-查看电源情况1ipmitool -H 172.10.10.45 -U admin -P admin chassis power status
-批量启动服务或加载模块1pss">
+<meta name="twitter:description" content="查看负载情况1pssh -i -h node-list -o outputs/ uptime">
 
 
 
@@ -354,6 +345,7 @@
 
       
         <h3 id="查看负载情况"><a href="#查看负载情况" class="headerlink" title="查看负载情况"></a>查看负载情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pssh -i -h node-list -o outputs/ uptime</span><br></pre></td></tr></table></figure>
+<a id="more"></a> 
 <h3 id="查看每个节点在线用户人数"><a href="#查看每个节点在线用户人数" class="headerlink" title="查看每个节点在线用户人数"></a>查看每个节点在线用户人数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pssh -i -h node-list -o outputs/ &apos;w| wc -l&apos;</span><br></pre></td></tr></table></figure>
 <h3 id="查看电源情况"><a href="#查看电源情况" class="headerlink" title="查看电源情况"></a>查看电源情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipmitool -H 172.10.10.45 -U admin -P admin chassis power status</span><br></pre></td></tr></table></figure>
 <h3 id="批量启动服务或加载模块"><a href="#批量启动服务或加载模块" class="headerlink" title="批量启动服务或加载模块"></a>批量启动服务或加载模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pssh -i -h gpu-node-list -o outputs/ &apos;modprobe ipmi_watchdog;modeprobe ipmi_si;modprobe ipmi_poweroff;modeprobe ipmi_msghandler;modeprobe ipmi_devintf;service ipmi restart&apos;</span><br></pre></td></tr></table></figure>
