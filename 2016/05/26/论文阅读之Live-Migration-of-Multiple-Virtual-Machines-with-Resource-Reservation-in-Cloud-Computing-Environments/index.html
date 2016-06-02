@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DIYER糍粑,DIYER,GEEK,杏林极客,DIYER糍粑的博客" />
+  <meta name="keywords" content="Live-Migration," />
 
 
 
@@ -57,16 +57,42 @@
 
 
 
-<meta name="description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta name="description" content="基于资源预留策略的多虚拟机在线迁移虚拟机在线迁移框架如图1所示
+[LMMVM]:主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
+
+迁移决策模块： 核心模块，负责迁移的决策，它会通过机器学习历史数据来进行智能决策。目前的迁移策略有顺序迁移、并行迁移、工作量感应迁移策略。
+
+迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读之Live Migration of Multiple Virtual Machines with Resource Reservation in Cloud Computing Environments">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/05/26/论文阅读之Live-Migration-of-Multiple-Virtual-Machines-with-Resource-Reservation-in-Cloud-Computing-Environments/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
-<meta property="og:updated_time" content="2016-05-26T03:24:15.000Z">
+<meta property="og:description" content="基于资源预留策略的多虚拟机在线迁移虚拟机在线迁移框架如图1所示
+[LMMVM]:主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
+
+迁移决策模块： 核心模块，负责迁移的决策，它会通过机器学习历史数据来进行智能决策。目前的迁移策略有顺序迁移、并行迁移、工作量感应迁移策略。
+
+迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table1.png">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table2.png">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig2.png">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig3.png">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig5.png">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig6.png">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig7.png">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig8.png">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig9.png">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table3.png">
+<meta property="og:updated_time" content="2016-06-02T09:01:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读之Live Migration of Multiple Virtual Machines with Resource Reservation in Cloud Computing Environments">
-<meta name="twitter:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta name="twitter:description" content="基于资源预留策略的多虚拟机在线迁移虚拟机在线迁移框架如图1所示
+[LMMVM]:主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
+
+迁移决策模块： 核心模块，负责迁移的决策，它会通过机器学习历史数据来进行智能决策。目前的迁移策略有顺序迁移、并行迁移、工作量感应迁移策略。
+
+迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来">
+<meta name="twitter:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table1.png">
 
 
 
@@ -297,6 +323,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -325,7 +370,47 @@
       
 
       
-        
+        <h3 id="基于资源预留策略的多虚拟机在线迁移"><a href="#基于资源预留策略的多虚拟机在线迁移" class="headerlink" title="基于资源预留策略的多虚拟机在线迁移"></a>基于资源预留策略的多虚拟机在线迁移</h3><h4 id="虚拟机在线迁移框架"><a href="#虚拟机在线迁移框架" class="headerlink" title="虚拟机在线迁移框架"></a>虚拟机在线迁移框架</h4><p>如图<a href="LMMVM">1</a>所示</p>
+<p>[LMMVM]:<br>主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。</p>
+<ul>
+<li><p>迁移决策模块： 核心模块，负责迁移的决策，它会通过机器学习历史数据来进行智能决策。目前的迁移策略有顺序迁移、并行迁移、工作量感应迁移策略。</p>
+</li>
+<li><p>迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来实现的。</p>
+</li>
+<li><p>资源预留模块：在源宿主机和目的宿主机之间实现不同的资源预留策略。主要资源包括CPU、内存以及整个虚拟机的资源。该模块非常重要，因为它能够有效防止由于资源不足导致的迁移失败。在源主机上通过不断调整虚拟机的CPU周期以及内存资源，在目的主机上通过临时创建一个特殊的虚拟机来为即将迁移的虚拟机占用资源。</p>
+</li>
+<li><p>资源监控器：主要负责监控虚拟机以及物理机上的资源使用情况、虚拟机的配置信息等。它同样能够用户分析负载的稳定性，从而防止迁移过程中出现的不稳定情况。该模块通过vTestkit toolkit来实现。</p>
+</li>
+</ul>
+<h4 id="资源预留方法"><a href="#资源预留方法" class="headerlink" title="资源预留方法"></a>资源预留方法</h4><p>文章作者已经分别在源主机以及目标主机上面实现了资源分配方法。</p>
+<ul>
+<li><p>在源主机上的资源预留。使用Xen虚拟平台调整CAP的值来限制CPU资源的最大使用率，以及不断调整虚拟机的内存大小来预留内存资源。</p>
+</li>
+<li><p>在目标机器上的资源预留。<br>使用C语言写了一个CPU捆绑程序来持续消耗100%的CPU资源，根据要迁移的虚拟机的实际负载，创建一定数量的虚拟机来运行这些CPU捆绑程序来达到CPU资源预留的目的。内存预留是通过创建虚拟机并分配一定的内存来实现的。当要迁移的虚拟机准备迁移时，所有的这些虚拟机将会关闭从而腾出资源。</p>
+</li>
+</ul>
+<h3 id="实验评估与分析"><a href="#实验评估与分析" class="headerlink" title="实验评估与分析"></a>实验评估与分析</h3><h4 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h4><p>实验是两台在Dell OPTIPLEX 755机器上进行的，该机器配置为Intel酷睿2四核CPU 2.4GHz，2GB物理内存。一台作为源迁移服务器，另外一台作为目标迁移服务器，虚拟机镜像存储在NFS中，使用Ubuntu8.0，内核2.6.27，Xen管理器3.3.1。</p>
+<p>虚拟机配置1个虚拟CPU、512MB内存</p>
+<p>基准测试程序为SPECjbb2005，IOZone，Sysbench，Webbench</p>
+<p>目前主要有三个衡量虚拟机热迁移的指标：宕机时间、总体延期时间、工作性能开销。</p>
+<ul>
+<li>工作性能开销是指为了进行迁移而多消耗的资源导致正在运行的虚拟机工作负载性能的减少。</li>
+</ul>
+<p>为了保证数据的准确性，作者对每一个实验配置进行了五次相同的实验，并删除了最大与最小数据，取平均值。</p>
+<h4 id="单个虚拟机迁移的性能开销"><a href="#单个虚拟机迁移的性能开销" class="headerlink" title="单个虚拟机迁移的性能开销"></a>单个虚拟机迁移的性能开销</h4><p><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table1.png" alt="THE WORKLOAD PERFORMANCE OVERHEADS OF LIVE MIGRATION OF VIRTUAL MACHINES"></p>
+<p><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table2.png" alt="DOWNTIME AND MIGRATION TIME OF DIFFERENT VIRTUAL MACHINE WORKLOADS UNDER LIVE MIGRATION"></p>
+<p>表中可以看出由于SPECjbb和sysbench的工作量更加复杂，可能会消耗更多的内存，导致了整体迁移时间更长。</p>
+<h4 id="在源主机中进行资源预留"><a href="#在源主机中进行资源预留" class="headerlink" title="在源主机中进行资源预留"></a>在源主机中进行资源预留</h4><p>本小节中，将会研究在源主机中采取资源预留策略之后对虚拟机热迁移性能的影响。<br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig2.png" alt="图2"><br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig3.png" alt="图3"></p>
+<p>图2和图3中阐述了当源主机中采取不同的资源预留策略时对迁移性能的影响。通过改变CAP的值来限制被迁移虚拟机消耗的CPU资源，内存资源的预留是通过使用Xen中的xm mem-set接口来动态调整的。</p>
+<p>通过图2和图3可以发现，CPU预留对于空闲虚拟机迁移和宕机时间没有太大影响，而随着预留内存的增加，虚拟机迁移的时间会随着增加，这是因为更多的内存会消耗更多的时间来转移内存数据。<br><a href="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig4.png" target="_blank" rel="external">图4</a><br>而在迁移运行SPECjbb任务的虚拟机时，预留的CPU资源越多，那么迁移的时间越短，但是操作50%之后，迁移时间不受影响，这是因为SPECjbb只需要一定数量的CPU。</p>
+<h4 id="在目标机器上采取资源预留策略"><a href="#在目标机器上采取资源预留策略" class="headerlink" title="在目标机器上采取资源预留策略"></a>在目标机器上采取资源预留策略</h4><p><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig5.png" alt="图5"><br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig6.png" alt="图6"><br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig7.png" alt="图7"><br>在目标机器上是通过创建CPU捆绑的虚拟机来实现CPU资源预留，而通过创建空闲虚拟机并分配一定的内存来实现内存资源的预留。</p>
+<p>图5和6展示了在目标机器上使用不同的CPU和内存资源预留策略时对虚拟机在线迁移的性能影响。显然，宕机时间和迁移时间都维持在一个稳定的状态。图7展示了对一个运行ApacheWeb服务器的虚拟机进行迁移时Webbench测试的结果，还是非常稳定的。这是因为资源消耗仅仅与源机器相关。但是在目标机器上进行资源预留是不可或缺的，因为在多虚拟机迁移的情况下，不知道目标机器的情况会导致迁移失败。</p>
+<h4 id="多虚拟机在线并行迁移"><a href="#多虚拟机在线并行迁移" class="headerlink" title="多虚拟机在线并行迁移"></a>多虚拟机在线并行迁移</h4><p>多虚拟机的在线热迁移，包括并行迁移在当今的数据中心是非常常见的。图8展示了将空闲虚拟机从4核机器迁移到8核机器的整体迁移时间。真实时间表示所有虚拟机迁移的平均时间，而计算时间指基于一个虚拟机迁移计算得到的时间。通过图8可以看出，实际时间比计算时间要长，而且两者之间的间隔随着虚拟机数量的增加而增加。<br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig8.png" alt="图8"><br>造成这些的原因是4核机器上的资源有限，当机器数量较多时，系统资源不足以支持迁移程序，导致时间增加。当虚拟机数量较少时，由于没有达到资源的瓶颈，因此对虚拟机迁移的时间不会造成影响。</p>
+<p><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig9.png" alt="图9"><br>这个结论在图9中可以得到证明。把虚拟机从8核机器迁移到4核机器上时，由于机器上面的资源丰富，并行在线迁移的性能表现较好，实际迁移时间要比计算时间短。在比较图8和图9时，我们可以发现一个非常有趣的事情，从8核机器迁移到4核机器比从4核机器迁移到8核机器的时间要短，例如将8个虚拟机从8核迁移到4核机器时间是78.33秒，而从4核迁移到8核时间是117.18秒，从这个实验我们可以得出结论，当源机器上的资源充足时，可以提高多个虚拟机并行迁移的效率，否则导致性能还不足顺序迁移。</p>
+<h4 id="工作量感知的在线迁移策略"><a href="#工作量感知的在线迁移策略" class="headerlink" title="工作量感知的在线迁移策略"></a>工作量感知的在线迁移策略</h4><p><img src="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table3.png" alt="表3"><br>在传统的迁移方案下，如果目标机器资源充足，则可进行迁移，这是非常简单和方便的。如果我们将工作量因素考虑进去，可以得到更加具有效率的迁移方案。本节我们将考虑在迁移时协调了不同虚拟机之间工作量时的虚拟机工作量性能表现。</p>
+<p>表3比较了在不同迁移策略下，SPECjbb,IOZone,Sysbench,Webbench的性能表现，基线模式表示将虚拟机迁移至一个没有运行任何虚拟机的空闲机器。</p>
+<p>很显然，将虚拟机迁移至与其他工作量进行协调时都会导致不能程度的性能损失，这是由于同类资源竞争导致的。从表中可以知道，当虚拟机迁移至运行同样工作的的宿主机时，性能最差。有的任务之间天生不相容，迁移到一起会导致性能的严重下降，而有的任务由于消耗的资源互补，迁移到一起不会造成性能的损失。</p>
+<h4 id="实验分析与优化方法"><a href="#实验分析与优化方法" class="headerlink" title="实验分析与优化方法"></a>实验分析与优化方法</h4>
       
     </div>
 
@@ -336,6 +421,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Live-Migration/" rel="tag">#Live-Migration</a>
+          
+        </div>
       
 
       
@@ -572,7 +663,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于资源预留策略的多虚拟机在线迁移"><span class="nav-number">1.</span> <span class="nav-text">基于资源预留策略的多虚拟机在线迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机在线迁移框架"><span class="nav-number">1.1.</span> <span class="nav-text">虚拟机在线迁移框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#资源预留方法"><span class="nav-number">1.2.</span> <span class="nav-text">资源预留方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验评估与分析"><span class="nav-number">2.</span> <span class="nav-text">实验评估与分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实验设置"><span class="nav-number">2.1.</span> <span class="nav-text">实验设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单个虚拟机迁移的性能开销"><span class="nav-number">2.2.</span> <span class="nav-text">单个虚拟机迁移的性能开销</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在源主机中进行资源预留"><span class="nav-number">2.3.</span> <span class="nav-text">在源主机中进行资源预留</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在目标机器上采取资源预留策略"><span class="nav-number">2.4.</span> <span class="nav-text">在目标机器上采取资源预留策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多虚拟机在线并行迁移"><span class="nav-number">2.5.</span> <span class="nav-text">多虚拟机在线并行迁移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工作量感知的在线迁移策略"><span class="nav-number">2.6.</span> <span class="nav-text">工作量感知的在线迁移策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验分析与优化方法"><span class="nav-number">2.7.</span> <span class="nav-text">实验分析与优化方法</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
