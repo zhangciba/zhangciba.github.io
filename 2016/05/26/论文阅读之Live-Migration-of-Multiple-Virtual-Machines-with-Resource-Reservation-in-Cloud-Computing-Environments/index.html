@@ -58,21 +58,25 @@
 
 
 <meta name="description" content="基于资源预留策略的多虚拟机在线迁移虚拟机在线迁移框架如图1所示
-[LMMVM]:主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
+主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
 
 迁移决策模块： 核心模块，负责迁移的决策，它会通过机器学习历史数据来进行智能决策。目前的迁移策略有顺序迁移、并行迁移、工作量感应迁移策略。
 
-迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来">
+迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来实现的。
+
+资源">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读之Live Migration of Multiple Virtual Machines with Resource Reservation in Cloud Computing Environments">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/05/26/论文阅读之Live-Migration-of-Multiple-Virtual-Machines-with-Resource-Reservation-in-Cloud-Computing-Environments/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="基于资源预留策略的多虚拟机在线迁移虚拟机在线迁移框架如图1所示
-[LMMVM]:主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
+主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
 
 迁移决策模块： 核心模块，负责迁移的决策，它会通过机器学习历史数据来进行智能决策。目前的迁移策略有顺序迁移、并行迁移、工作量感应迁移策略。
 
-迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来">
+迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来实现的。
+
+资源">
 <meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table1.png">
 <meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table2.png">
 <meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig2.png">
@@ -83,15 +87,17 @@
 <meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig8.png">
 <meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig9.png">
 <meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table3.png">
-<meta property="og:updated_time" content="2016-06-02T09:01:24.000Z">
+<meta property="og:updated_time" content="2016-06-03T05:04:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读之Live Migration of Multiple Virtual Machines with Resource Reservation in Cloud Computing Environments">
 <meta name="twitter:description" content="基于资源预留策略的多虚拟机在线迁移虚拟机在线迁移框架如图1所示
-[LMMVM]:主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
+主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
 
 迁移决策模块： 核心模块，负责迁移的决策，它会通过机器学习历史数据来进行智能决策。目前的迁移策略有顺序迁移、并行迁移、工作量感应迁移策略。
 
-迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来">
+迁移控制模块：控制实际的迁移进程，根绝决策模块的策略来进行迁移，是通过封装Xen平台的迁移接口来实现的。
+
+资源">
 <meta name="twitter:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/lv-table1.png">
 
 
@@ -371,7 +377,7 @@
 
       
         <h3 id="基于资源预留策略的多虚拟机在线迁移"><a href="#基于资源预留策略的多虚拟机在线迁移" class="headerlink" title="基于资源预留策略的多虚拟机在线迁移"></a>基于资源预留策略的多虚拟机在线迁移</h3><h4 id="虚拟机在线迁移框架"><a href="#虚拟机在线迁移框架" class="headerlink" title="虚拟机在线迁移框架"></a>虚拟机在线迁移框架</h4><p>如图<a href="LMMVM">1</a>所示</p>
-<p>[LMMVM]:<br>主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。</p>
+<p>主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。</p>
 <ul>
 <li><p>迁移决策模块： 核心模块，负责迁移的决策，它会通过机器学习历史数据来进行智能决策。目前的迁移策略有顺序迁移、并行迁移、工作量感应迁移策略。</p>
 </li>
@@ -380,10 +386,9 @@
 <li><p>资源预留模块：在源宿主机和目的宿主机之间实现不同的资源预留策略。主要资源包括CPU、内存以及整个虚拟机的资源。该模块非常重要，因为它能够有效防止由于资源不足导致的迁移失败。在源主机上通过不断调整虚拟机的CPU周期以及内存资源，在目的主机上通过临时创建一个特殊的虚拟机来为即将迁移的虚拟机占用资源。</p>
 </li>
 <li><p>资源监控器：主要负责监控虚拟机以及物理机上的资源使用情况、虚拟机的配置信息等。它同样能够用户分析负载的稳定性，从而防止迁移过程中出现的不稳定情况。该模块通过vTestkit toolkit来实现。</p>
-</li>
-</ul>
+<a id="more"></a>
 <h4 id="资源预留方法"><a href="#资源预留方法" class="headerlink" title="资源预留方法"></a>资源预留方法</h4><p>文章作者已经分别在源主机以及目标主机上面实现了资源分配方法。</p>
-<ul>
+</li>
 <li><p>在源主机上的资源预留。使用Xen虚拟平台调整CAP的值来限制CPU资源的最大使用率，以及不断调整虚拟机的内存大小来预留内存资源。</p>
 </li>
 <li><p>在目标机器上的资源预留。<br>使用C语言写了一个CPU捆绑程序来持续消耗100%的CPU资源，根据要迁移的虚拟机的实际负载，创建一定数量的虚拟机来运行这些CPU捆绑程序来达到CPU资源预留的目的。内存预留是通过创建虚拟机并分配一定的内存来实现的。当要迁移的虚拟机准备迁移时，所有的这些虚拟机将会关闭从而腾出资源。</p>
