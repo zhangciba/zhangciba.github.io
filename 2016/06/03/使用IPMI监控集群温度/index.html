@@ -63,13 +63,14 @@
 <meta property="og:url" content="http://blog.zhangciba.com/2016/06/03/使用IPMI监控集群温度/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="在管理曙光高性能集群的时候，机房空调出问题了，由于集群的密度非常大，一间容纳60人教室大小的房间放着360个节点还有，IB交换机等设备，产热量非常的大，为了防止机器温度过高导致整个机房起火等危险，特地写了一个集群监控脚本，每隔一定的时间扫描集群的节点温度，当温度超过报警阈值时，提示该节点的所有用户，当节点的温度超过关机阈值时，提醒用户，并延时1分钟后并自动进行关机处理。">
+<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-1.png">
 <meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-2.png">
 <meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-3.png">
-<meta property="og:updated_time" content="2016-06-03T01:28:02.000Z">
+<meta property="og:updated_time" content="2016-06-03T01:42:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用IPMI监控集群温度">
 <meta name="twitter:description" content="在管理曙光高性能集群的时候，机房空调出问题了，由于集群的密度非常大，一间容纳60人教室大小的房间放着360个节点还有，IB交换机等设备，产热量非常的大，为了防止机器温度过高导致整个机房起火等危险，特地写了一个集群监控脚本，每隔一定的时间扫描集群的节点温度，当温度超过报警阈值时，提示该节点的所有用户，当节点的温度超过关机阈值时，提醒用户，并延时1分钟后并自动进行关机处理。">
-<meta name="twitter:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-2.png">
+<meta name="twitter:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-1.png">
 
 
 
@@ -351,7 +352,7 @@
 <a id="more"></a>
 <p>由于用户对于节点的计算需求非常大，如果长时间关机，将会导致节点长期不能使用，因此，每隔2-4个小时，当节点温度稍微安全之后，对关机列表中的节点进行自动开机处理。</p>
 <p>脚本监控的截图如下。后期会对脚本进行拆分，划分为多个模块。例如温度监控模块、开关机模块、日志模块、统计报表模块，基于这个基础上，可以很容易开发一个集群监控系统，通过Web或者桌面App的形式来展示集群的历史信息，从而实现集群的科学管理。</p>
-<p>![monitor.sh-1]1(<a href="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-1.png" target="_blank" rel="external">http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-1.png</a>)<br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-2.png" alt="monitor.sh-2"><br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-3.png" alt="monitor.sh-3"></p>
+<p><img src="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-1.png" alt="monitor.sh-1"><br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-2.png" alt="monitor.sh-2"><br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-3.png" alt="monitor.sh-3"></p>
 
       
     </div>
