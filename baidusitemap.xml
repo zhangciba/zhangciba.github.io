@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/06/03/%E4%BD%BF%E7%94%A8IPMI%E7%9B%91%E6%8E%A7%E9%9B%86%E7%BE%A4%E6%B8%A9%E5%BA%A6/</loc>
+    <lastmod>2016-06-03T01:28:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用IPMI监控集群温度</title>
+        <pubTime>2016-06-03T01:11:09.000Z</pubTime>
+        
+        <tag>集群自动监控</tag>
+         
+         
+           
+             
+              <breadCrumb title="集群管理" url="http://blog.zhangciba.com/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/06/03/Ubuntu%E4%BF%AE%E6%94%B9grub%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F/</loc>
     <lastmod>2016-06-03T00:51:18.000Z</lastmod>
     <data>
