@@ -281,6 +281,124 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/06/Linux服务器安装ipmitool简要过程/" itemprop="url">
+                  Linux服务器安装ipmitool简要过程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-06T12:52:04+08:00" content="2016-06-06">
+              2016-06-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/06/Linux服务器安装ipmitool简要过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/Linux服务器安装ipmitool简要过程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="下载ipmitool：http-ipmitool-sourceforge-net"><a href="#下载ipmitool：http-ipmitool-sourceforge-net" class="headerlink" title="下载ipmitool：http://ipmitool.sourceforge.net/"></a>下载ipmitool：<a href="http://ipmitool.sourceforge.net/" target="_blank" rel="external">http://ipmitool.sourceforge.net/</a></h4><h4 id="确定gcc工具已经安装好"><a href="#确定gcc工具已经安装好" class="headerlink" title="确定gcc工具已经安装好"></a>确定gcc工具已经安装好</h4><h4 id="在Linux系统上加载启用IPMI驱动："><a href="#在Linux系统上加载启用IPMI驱动：" class="headerlink" title="在Linux系统上加载启用IPMI驱动："></a>在Linux系统上加载启用IPMI驱动：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insmod /lib/modules/2.6.32-220.el6.x86_64/kernel/drivers/char/ipmi/ipmi_msghandler.ko</span><br><span class="line">insmod /lib/modules/2.6.32-220.el6.x86_64/kernel/drivers/char/ipmi/ipmi_devintf.ko</span><br><span class="line">insmod /lib/modules/2.6.32-220.el6.x86_64/kernel/drivers/char/ipmi/ipmi_si.ko</span><br></pre></td></tr></table></figure>
+<h4 id="检查你的-dev目录下出现了ipmi0这个设备："><a href="#检查你的-dev目录下出现了ipmi0这个设备：" class="headerlink" title="检查你的/dev目录下出现了ipmi0这个设备："></a>检查你的/dev目录下出现了ipmi0这个设备：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /dev/ipmi*</span><br></pre></td></tr></table></figure>
+<h4 id="解压缩ipmitool-1-8-11-tar-gz"><a href="#解压缩ipmitool-1-8-11-tar-gz" class="headerlink" title="解压缩ipmitool-1.8.11.tar.gz"></a>解压缩ipmitool-1.8.11.tar.gz</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf ipmitool-1.8.11.tar.gz</span><br><span class="line">cd ipmitool-1.8.11</span><br></pre></td></tr></table></figure>
+<h4 id="开始安装ipmitool："><a href="#开始安装ipmitool：" class="headerlink" title="开始安装ipmitool："></a>开始安装ipmitool：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h4 id="ipmitool命令将被安装到-usr-local-bin-ipmitool"><a href="#ipmitool命令将被安装到-usr-local-bin-ipmitool" class="headerlink" title="ipmitool命令将被安装到/usr/local/bin/ipmitool"></a>ipmitool命令将被安装到/usr/local/bin/ipmitool</h4><h4 id="现在你就可以用了"><a href="#现在你就可以用了" class="headerlink" title="现在你就可以用了"></a>现在你就可以用了</h4>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/03/使用IPMI监控集群温度/" itemprop="url">
                   使用IPMI监控集群温度
                 </a>
@@ -1288,124 +1406,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/24/iptables利用connlimit模块限制同一IP连接数/" itemprop="url">
-                  iptables利用connlimit模块限制同一IP连接数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T13:05:36+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/24/iptables利用connlimit模块限制同一IP连接数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/iptables利用connlimit模块限制同一IP连接数/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>connlimit功能：<br>　　connlimit模块允许你限制每个客户端IP的并发连接数，即每个IP同时连接到一个服务器个数。<br>　　connlimit模块主要可以限制内网用户的网络使用，对服务器而言则可以限制每个IP发起的连接数。</p>
-<p>connlimit参数：<br>　　–connlimit-above n 　　　＃限制为多少个<br>　　–connlimit-mask n 　　　 ＃这组主机的掩码,默认是connlimit-mask 32 ,即每个IP.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/24/iptables利用connlimit模块限制同一IP连接数/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1451,7 +1451,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1468,7 +1468,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
