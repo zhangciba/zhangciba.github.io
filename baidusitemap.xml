@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/05/25/ipmitool%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99-Could-not-open-device-at-dev-ipmi0-or-dev-ipmi-0-or-dev-ipmidev-0-No/</loc>
+    <lastmod>2016-06-06T05:31:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>ipmitool启动报错-Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No</title>
+        <pubTime>2016-05-25T03:05:51.000Z</pubTime>
+        
+        <tag>ipmitool</tag>
+         
+         
+           
+             
+              <breadCrumb title="集群管理" url="http://blog.zhangciba.com/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/06/06/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85ipmitool%E7%AE%80%E8%A6%81%E8%BF%87%E7%A8%8B/</loc>
     <lastmod>2016-06-06T04:54:06.000Z</lastmod>
     <data>
@@ -193,21 +213,6 @@
              
               <breadCrumb title="集群管理" url="http://blog.zhangciba.com/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangciba.com/2016/05/25/ipmitool%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99-Could-not-open-device-at-dev-ipmi0-or-dev-ipmi-0-or-dev-ipmidev-0-No/</loc>
-    <lastmod>2016-05-25T03:05:51.000Z</lastmod>
-    <data>
-        <display>
-        <title>ipmitool启动报错-Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No</title>
-        <pubTime>2016-05-25T03:05:51.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
