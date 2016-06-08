@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DIYER糍粑,DIYER,GEEK,杏林极客,DIYER糍粑的博客" />
+  <meta name="keywords" content="读取配置文件," />
 
 
 
@@ -57,15 +57,19 @@
 
 
 
-<meta name="description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DIYER糍粑的博客">
-<meta property="og:url" content="http://blog.zhangciba.com/tags/Linux安全/index.html">
+<meta name="description" content="还有另外一种形式的配置文件，可能没有分段，稍微简单一点，因此，也可以用简单一点的方法进行读取配置文件的信息。
+例如config.ini的内容如下：1234ip=8.8.8.8username=Jimpassword=123456dir=/root/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux Shell读取配置文件2">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/06/08/Linux-Shell读取配置文件2/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta property="og:description" content="还有另外一种形式的配置文件，可能没有分段，稍微简单一点，因此，也可以用简单一点的方法进行读取配置文件的信息。
+例如config.ini的内容如下：1234ip=8.8.8.8username=Jimpassword=123456dir=/root/">
+<meta property="og:updated_time" content="2016-06-08T16:08:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DIYER糍粑的博客">
-<meta name="twitter:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta name="twitter:title" content="Linux Shell读取配置文件2">
+<meta name="twitter:description" content="还有另外一种形式的配置文件，可能没有分段，稍微简单一点，因此，也可以用简单一点的方法进行读取配置文件的信息。
+例如config.ini的内容如下：1234ip=8.8.8.8username=Jimpassword=123456dir=/root/">
 
 
 
@@ -83,7 +87,7 @@
   };
 </script>
 
-  <title> 标签: Linux安全 | DIYER糍粑的博客 </title>
+  <title> Linux Shell读取配置文件2 | DIYER糍粑的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -129,7 +133,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,53 +261,201 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Linux安全
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux Shell读取配置文件2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-08T23:58:08+08:00" content="2016-06-08">
+              2016-06-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux-Shell/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux-Shell</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/08/Linux-Shell读取配置文件2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/08/Linux-Shell读取配置文件2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>还有另外一种形式的配置文件，可能没有分段，稍微简单一点，因此，也可以用简单一点的方法进行读取配置文件的信息。</p>
+<p>例如config.ini的内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip=8.8.8.8</span><br><span class="line">username=Jim</span><br><span class="line">password=123456</span><br><span class="line">dir=/root/</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>这种形式的配置文件的读取方法如read.sh脚本所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">#DIR变量为当前shell脚本的目录</span><br><span class="line">DIR=&quot;$( cd &quot;$( dirname &quot;$&#123;BASH_SOURCE[0]&#125;&quot; )&quot; &amp;&amp; pwd )&quot;</span><br><span class="line">#使用source命令导入平级目录下的配置文件,引入以后就可以直接用配置中的变量名来获取文件中的值了</span><br><span class="line">source $DIR&quot;/&quot;config.ini</span><br><span class="line">echo &quot;ip=$&#123;ip&#125;&quot;;</span><br><span class="line">echo &quot;usernmae=$&#123;username&#125;&quot;;</span><br><span class="line">echo &quot;password=$&#123;password&#125;&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>需要说明的是，配置文件和脚本放在同一个目录下，所以需要获取到当前目录的路径。然后在读取配置文件。这种方式读取配置文件要比使用正则表达是稍微简单一些，但是复杂一点的程序的配置文件一般没有这么简单，所以还是学习正则表达式之后来灵活处理这种配置文件更加实用一些。</p>
+<p>下面附录一段通过这种简单配置文件来实现备份mysql数据库的shell脚本。如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># Name:bak_ftp_daily.sh</span><br><span class="line"># 自动备份数据库，并删除旧的备份文件</span><br><span class="line"># DIR变量为当前shell脚本的目录</span><br><span class="line">DIR=&quot;$( cd &quot;$( dirname &quot;$&#123;BASH_SOURCE[0]&#125;&quot; )&quot; &amp;&amp; pwd )&quot;</span><br><span class="line"># 使用source命令导入平级目录下的配置文件,引入以后就可以直接用配置中的变量名来获取文件中的值了</span><br><span class="line">source $DIR&quot;/&quot;db_config</span><br><span class="line"></span><br><span class="line"># 生成时间戳</span><br><span class="line">time=_` date +%Y_%m_%d_%H_%M_%S `_</span><br><span class="line">echo &quot;------bakup---&lt;&lt;&lt;--`date +%Y-%m-%d-%H-%M-%S`----begin---&gt;&gt;&gt;---&quot;;</span><br><span class="line"></span><br><span class="line"># 生成备份文件名</span><br><span class="line">echo $day_backupdir/$db_name$time$day_backup_fix.sql.gz&quot;---is --begin---&quot;;</span><br><span class="line"></span><br><span class="line"># 执行备份命令并压缩文件</span><br><span class="line">mysqldump -u $db_user -p $db_pass $db_name | gzip &gt; $day_backupdir/$db_name$time$day_backup_fix.sql.gz</span><br><span class="line"></span><br><span class="line">echo $day_backupdir/$db_name$time$day_backup_fix.sql.gz&quot;---is --finsh---&quot;;</span><br><span class="line"></span><br><span class="line">#查找早些的配置文件，并删除</span><br><span class="line">find $day_backupdir -name $db_name&quot;*.sql.gz&quot; -type f -mmin +$day_interval -exec rm -rf &#123;&#125; \; &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">echo &quot;------bakup----&lt;&lt;&lt;---`date +%Y-%m-%d-%H-%M-%S`----finsh---&gt;&gt;&gt;---&quot;;</span><br><span class="line">echo &quot;&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>将这个脚本添加到Linux Crontab中，配置好执行频率，即可实现自动备份了。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/04/17/Linux系统安全策略文章汇总/" itemprop="url">
-              
-                <span itemprop="name">Linux系统安全策略文章汇总</span>
-              
-            </a>
-        
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-17T11:24:08+08:00"
-              content="2016-04-17" >
-          04-17
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读取配置文件/" rel="tag">#读取配置文件</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/08/Linux-Shell读取-ini形式的配置文件/" rel="next" title="Linux Shell读取.ini形式的配置文件">
+                <i class="fa fa-chevron-left"></i> Linux Shell读取.ini形式的配置文件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/08/Linux-Shell读取配置文件2/"
+           data-title="Linux Shell读取配置文件2" data-url="http://blog.zhangciba.com/2016/06/08/Linux-Shell读取配置文件2/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -323,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -440,6 +601,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -523,6 +695,11 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
