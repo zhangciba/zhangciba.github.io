@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangciba.com/2016/04/29/Homebrew-install%E6%97%B6%E9%81%87%E5%88%B0github%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/</loc>
+    
+    <lastmod>2016-06-08T00:56:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangciba.com/2016/06/06/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85ipmitool%E7%AE%80%E8%A6%81%E8%BF%87%E7%A8%8B/</loc>
     
     <lastmod>2016-06-08T00:47:51.000Z</lastmod>
@@ -152,13 +159,6 @@
     <loc>http://blog.zhangciba.com/2016/05/05/%E8%AE%A9MyEclipse10%E6%94%AF%E6%8C%81%E8%A7%86%E7%BD%91%E8%86%9C%E5%B1%8F%E5%B9%95/</loc>
     
     <lastmod>2016-05-07T01:22:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangciba.com/2016/04/29/Homebrew-install%E6%97%B6%E9%81%87%E5%88%B0github%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/</loc>
-    
-    <lastmod>2016-04-29T08:31:37.000Z</lastmod>
     
   </url>
   

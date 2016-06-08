@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/04/29/Homebrew-install%E6%97%B6%E9%81%87%E5%88%B0github%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/</loc>
+    <lastmod>2016-06-08T00:56:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>Homebrew install时遇到github权限不足</title>
+        <pubTime>2016-04-29T08:29:57.000Z</pubTime>
+        
+        <tag>Homebrew</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mac OSX" url="http://blog.zhangciba.com/categories/Mac-OSX/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/06/06/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85ipmitool%E7%AE%80%E8%A6%81%E8%BF%87%E7%A8%8B/</loc>
     <lastmod>2016-06-08T00:47:51.000Z</lastmod>
     <data>
@@ -432,26 +452,6 @@
            
              
               <breadCrumb title="Mac OSX" url="http://blog.zhangciba.com/categories/Mac-OSX/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangciba.com/2016/04/29/Homebrew-install%E6%97%B6%E9%81%87%E5%88%B0github%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/</loc>
-    <lastmod>2016-04-29T08:31:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>Homebrew install时遇到github权限不足</title>
-        <pubTime>2016-04-29T08:29:57.000Z</pubTime>
-        
-        <tag>Homebrew</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mac" url="http://blog.zhangciba.com/categories/Mac/"/>
           
         </display>
     </data>
