@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DIYER糍粑,DIYER,GEEK,杏林极客,DIYER糍粑的博客" />
+  <meta name="keywords" content="读取配置文件," />
 
 
 
@@ -57,15 +57,16 @@
 
 
 
-<meta name="description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DIYER糍粑的博客">
-<meta property="og:url" content="http://blog.zhangciba.com/tags/集群自动监控/index.html">
+<meta name="description" content="在使用Linux Shell编程或者是使用其他语言进行编程的时候，我们经常会遇到要读取配置文件的情况，配置文件是一个软件的必要组成部分，例如config.ini的内容如下:123[temperature]warning=85shutdown=93">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux Shell读取.ini形式的配置文件">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/06/08/Linux-Shell读取-ini形式的配置文件/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta property="og:description" content="在使用Linux Shell编程或者是使用其他语言进行编程的时候，我们经常会遇到要读取配置文件的情况，配置文件是一个软件的必要组成部分，例如config.ini的内容如下:123[temperature]warning=85shutdown=93">
+<meta property="og:updated_time" content="2016-06-08T15:41:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DIYER糍粑的博客">
-<meta name="twitter:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta name="twitter:title" content="Linux Shell读取.ini形式的配置文件">
+<meta name="twitter:description" content="在使用Linux Shell编程或者是使用其他语言进行编程的时候，我们经常会遇到要读取配置文件的情况，配置文件是一个软件的必要组成部分，例如config.ini的内容如下:123[temperature]warning=85shutdown=93">
 
 
 
@@ -83,7 +84,7 @@
   };
 </script>
 
-  <title> 标签: 集群自动监控 | DIYER糍粑的博客 </title>
+  <title> Linux Shell读取.ini形式的配置文件 | DIYER糍粑的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -129,7 +130,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,53 +258,201 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        集群自动监控
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux Shell读取.ini形式的配置文件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-08T23:29:06+08:00" content="2016-06-08">
+              2016-06-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Linux-Shell/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux-Shell</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/08/Linux-Shell读取-ini形式的配置文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/08/Linux-Shell读取-ini形式的配置文件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>在使用Linux Shell编程或者是使用其他语言进行编程的时候，我们经常会遇到要读取配置文件的情况，配置文件是一个软件的必要组成部分，例如config.ini的内容如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[temperature]</span><br><span class="line">warning=85</span><br><span class="line">shutdown=93</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>那么如何读取这个配置文件的信息呢，其实很简单，采用正则表达式就可以很好的解决这个问题了。读取配置文件的属性的值的脚本read.sh的内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#！/bin/sh</span><br><span class="line"></span><br><span class="line">#定义一个函数</span><br><span class="line">GetKey()&#123;</span><br><span class="line">    #获取参数中的段</span><br><span class="line">    section=$(echo $1 | cut -d &apos;.&apos; -f 1);</span><br><span class="line">    #获取参数中的key</span><br><span class="line">    key=$(echo $1 | cut -d &apos;.&apos; -f 2);</span><br><span class="line">    #使用正则表达是获取key所对应的value</span><br><span class="line">    sed -n &quot;/\[$section\]/,/\[.*\]/&#123;</span><br><span class="line">      /^\[.*\]/d</span><br><span class="line">      /^[ \t]*$/d</span><br><span class="line">      /^$/d</span><br><span class="line">      /^#.*$/d</span><br><span class="line">      s/^[ \t]*$key[ \t]*=[ \t]*\(.*\)[ \t]*/\1/p</span><br><span class="line">    &#125;&quot; config.ini</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#读取实例</span><br><span class="line">warning=$(GetKey &quot;temperature.warning&quot;)</span><br><span class="line">shutdown=$(GetKey &quot;temperature.shutdown&quot;)</span><br><span class="line">#下面以两种方式来输出获取的配置文件中section.key对应的值</span><br><span class="line">echo &quot;========================&quot;</span><br><span class="line">echo &quot;warning=$&#123;warning&#125;&quot;</span><br><span class="line">echo &quot;shutdown=$&#123;shutdown&#125;&quot;</span><br><span class="line">printf &quot;%s\n&quot; $warning</span><br><span class="line">printf &quot;%s\n&quot; $shutdown</span><br><span class="line">echo &quot;========================&quot;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果如下所示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">========================</span><br><span class="line">warning=85</span><br><span class="line">shutdown=93</span><br><span class="line">85</span><br><span class="line">93</span><br><span class="line">========================</span><br></pre></td></tr></table></figure></p>
+<p>需要具体说明的是，如果不懂上面的正则表达式，你可以去学习一下，无论是Shell脚本、C语言、C++、Java、PHP还是其他的语言，基本上都支持正则表达式，也就是说，只要是支持读取文件并且支持正则表达式的语言，你都可以用类似上面的方法来获取配置文件的内容。</p>
+<p>也就是说，读取配置文件的方法不限于shell脚本啦。<br>举一反三。在我们平时的编程当中我们会遇到很多这种情况，一个功能其实很多语言都可以来实现，重要的是思想，想法，具体到程序语言当中，就是算法了，因此在平时的编程当中，我们要多提炼一些经典的算法，多学习，多理解，同时加以改进，这样才是程序员的提升之道。</p>
+<p>ps:正则表达式真的很重要，对于文本的高效处理具有不可替代的地位，大家都好好补补吧。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/06/03/使用IPMI监控集群温度/" itemprop="url">
-              
-                <span itemprop="name">使用IPMI监控集群温度</span>
-              
-            </a>
-        
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-03T09:11:09+08:00"
-              content="2016-06-03" >
-          06-03
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读取配置文件/" rel="tag">#读取配置文件</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/08/论文阅读之Live-Migration-of-Virtual-Machines/" rel="next" title="论文阅读之Live Migration of Virtual Machines">
+                <i class="fa fa-chevron-left"></i> 论文阅读之Live Migration of Virtual Machines
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/08/Linux-Shell读取-ini形式的配置文件/"
+           data-title="Linux Shell读取.ini形式的配置文件" data-url="http://blog.zhangciba.com/2016/06/08/Linux-Shell读取-ini形式的配置文件/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -323,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -440,6 +598,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -523,6 +692,11 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
