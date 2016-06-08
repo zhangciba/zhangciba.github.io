@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangciba.com/2016/04/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BMapReduce-simplified-data-processing-on-large-clusters/</loc>
+    
+    <lastmod>2016-06-08T01:15:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.zhangciba.com/2016/06/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BLive-Migration-of-Virtual-Machines/</loc>
+    
+    <lastmod>2016-06-08T01:10:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangciba.com/2016/03/31/%E5%9D%9A%E9%9F%A7%E7%9A%84%E6%84%8F%E5%BF%97%E6%98%AF%E5%90%8E%E5%A4%A9%E5%9F%B9%E5%85%BB%E7%9A%84/</loc>
     
     <lastmod>2016-06-08T01:08:32.000Z</lastmod>
@@ -191,13 +205,6 @@
   </url>
   
   <url>
-    <loc>http://blog.zhangciba.com/2016/04/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Live-Migration-of-Virtual-Machines/</loc>
-    
-    <lastmod>2016-04-27T01:19:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.zhangciba.com/2016/04/06/MacOSX%E9%81%BF%E5%85%8D%E6%AF%8F%E6%AC%A1%E9%83%BD%E7%94%A8ssh-add%E6%B7%BB%E5%8A%A0SSH%E7%A7%98%E9%92%A5/</loc>
     
     <lastmod>2016-04-27T01:18:34.000Z</lastmod>
@@ -320,13 +327,6 @@
     <loc>http://blog.zhangciba.com/2016/04/25/%E8%A7%A3%E5%86%B3ssh%E4%BC%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2016-04-26T13:39:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangciba.com/2016/04/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BMapReduce-simplified-data-processing-on-large-clusters/</loc>
-    
-    <lastmod>2016-04-26T13:37:30.000Z</lastmod>
     
   </url>
   
