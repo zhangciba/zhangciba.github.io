@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/05/25/ipmitool%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2016-06-08T04:53:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>ipmitool使用总结</title>
+        <pubTime>2016-05-25T08:02:55.000Z</pubTime>
+        
+        <tag>ipmitool</tag>
+         
+         
+           
+             
+              <breadCrumb title="集群管理" url="http://blog.zhangciba.com/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/04/26/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BMapReduce-simplified-data-processing-on-large-clusters/</loc>
     <lastmod>2016-06-08T01:15:53.000Z</lastmod>
     <data>
@@ -358,21 +378,6 @@
              
               <breadCrumb title="集群管理" url="http://blog.zhangciba.com/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangciba.com/2016/05/25/ipmitool%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2016-05-25T09:34:02.000Z</lastmod>
-    <data>
-        <display>
-        <title>ipmitool使用总结</title>
-        <pubTime>2016-05-25T08:02:55.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
