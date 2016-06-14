@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangciba.com/2016/04/07/Docker%E9%9B%86%E7%BE%A4%E7%89%A9%E7%90%86%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2016-06-14T01:45:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangciba.com/2016/06/08/Linux-Shell%E8%AF%BB%E5%8F%96-ini%E5%BD%A2%E5%BC%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2016-06-08T16:13:37.000Z</lastmod>
@@ -292,13 +299,6 @@
     <loc>http://blog.zhangciba.com/2016/04/13/etcd%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E9%93%BE%E6%8E%A5/</loc>
     
     <lastmod>2016-04-26T13:43:40.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangciba.com/2016/04/07/Docker%E9%9B%86%E7%BE%A4%E7%89%A9%E7%90%86%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2016-04-26T13:43:14.000Z</lastmod>
     
   </url>
   

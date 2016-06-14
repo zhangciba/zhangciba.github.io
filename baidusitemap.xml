@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/04/07/Docker%E9%9B%86%E7%BE%A4%E7%89%A9%E7%90%86%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2016-06-14T01:45:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>Docker集群物理机系统安装笔记</title>
+        <pubTime>2016-04-07T12:48:56.000Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="云计算" url="http://blog.zhangciba.com/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/06/08/Linux-Shell%E8%AF%BB%E5%8F%96-ini%E5%BD%A2%E5%BC%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2016-06-08T16:13:37.000Z</lastmod>
     <data>
@@ -813,26 +833,6 @@
         <pubTime>2016-04-13T04:22:48.000Z</pubTime>
         
         <tag>etcd</tag>
-         
-         
-           
-             
-              <breadCrumb title="云计算" url="http://blog.zhangciba.com/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangciba.com/2016/04/07/Docker%E9%9B%86%E7%BE%A4%E7%89%A9%E7%90%86%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2016-04-26T13:43:14.000Z</lastmod>
-    <data>
-        <display>
-        <title>Docker集群物理机系统安装笔记</title>
-        <pubTime>2016-04-07T12:48:56.000Z</pubTime>
-        
-        <tag>Docker</tag>
          
          
            
