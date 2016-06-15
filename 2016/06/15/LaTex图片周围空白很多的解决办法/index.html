@@ -69,7 +69,7 @@
 
 图片本身空白空间很大。
 当有图表时，如果图表占用的空间超过70%，则LaTeX不会再页面中添加文本">
-<meta property="og:updated_time" content="2016-06-15T01:45:40.000Z">
+<meta property="og:updated_time" content="2016-06-15T01:46:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaTex图片周围空白很多">
 <meta name="twitter:description" content="插入至LaTeX中的图片的周围的空白占用的空间很多，是什么愿意导致的呢。可能有一下几种原因：
@@ -362,7 +362,7 @@
 <p>对于第一种情况，先把图片进行裁剪之后，然后再插入，如果还是占用很大空白空间，则按第二种情况进行处理。</p>
 <p>对于第二种情况，首先尝试使用下面的办法来解决，代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[H]</span><br><span class="line">\centering</span><br><span class="line">\includegraphics[width=4.in]&#123;1.eps&#125;</span><br><span class="line">\caption&#123;XXXXXXX&#125;\label&#123;1&#125;</span><br><span class="line">\end</span><br></pre></td></tr></table></figure></p>
 <p>就是在begin{figure}后面加’[H]’一般可以解决。</p>
-<p>如果还是不行，可以在导言区加入以下代码进行解决，课参考[博客园](<a href="http://www.cnblogs.com/yishuiliunian/archive/2011/03/23/1992073.html）" target="_blank" rel="external">http://www.cnblogs.com/yishuiliunian/archive/2011/03/23/1992073.html）</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\renewcommand\floatpagefraction&#123;.9&#125;</span><br><span class="line">\renewcommand\topfraction&#123;.9&#125;</span><br><span class="line">\renewcommand\bottomfraction&#123;.9&#125;</span><br><span class="line">\renewcommand\textfraction&#123;.1&#125;</span><br><span class="line">\setcounter&#123;totalnumber&#125;&#123;50&#125;</span><br><span class="line">\setcounter&#123;topnumber&#125;&#123;50&#125;</span><br><span class="line">\setcounter&#123;bottomnumber&#125;&#123;50&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果还是不行，可以在导言区加入以下代码进行解决，课参考<a href="http://www.cnblogs.com/yishuiliunian/archive/2011/03/23/1992073.html" target="_blank" rel="external">博客园</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\renewcommand\floatpagefraction&#123;.9&#125;</span><br><span class="line">\renewcommand\topfraction&#123;.9&#125;</span><br><span class="line">\renewcommand\bottomfraction&#123;.9&#125;</span><br><span class="line">\renewcommand\textfraction&#123;.1&#125;</span><br><span class="line">\setcounter&#123;totalnumber&#125;&#123;50&#125;</span><br><span class="line">\setcounter&#123;topnumber&#125;&#123;50&#125;</span><br><span class="line">\setcounter&#123;bottomnumber&#125;&#123;50&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
