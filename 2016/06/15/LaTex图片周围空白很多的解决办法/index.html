@@ -60,10 +60,7 @@
 <meta name="description" content="插入至LaTeX中的图片的周围的空白占用的空间很多，是什么愿意导致的呢。可能有一下几种原因：
 
 图片本身空白空间很大。
-当有图表时，如果图表占用的空间超过70%，则LaTeX不会再页面中添加文本
-
-对于第一种情况，先把图片进行裁剪之后，然后再插入，如果还是占用很大空白空间，则按第二种情况进行处理。
-对于第二种情况，首先尝试使用下面的办法来解决，代码如下:12345\begin&amp;#123;figur">
+当有图表时，如果图表占用的空间超过70%，则LaTeX不会再页面中添加文本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LaTex图片周围空白很多">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/06/15/LaTex图片周围空白很多的解决办法/index.html">
@@ -71,20 +68,14 @@
 <meta property="og:description" content="插入至LaTeX中的图片的周围的空白占用的空间很多，是什么愿意导致的呢。可能有一下几种原因：
 
 图片本身空白空间很大。
-当有图表时，如果图表占用的空间超过70%，则LaTeX不会再页面中添加文本
-
-对于第一种情况，先把图片进行裁剪之后，然后再插入，如果还是占用很大空白空间，则按第二种情况进行处理。
-对于第二种情况，首先尝试使用下面的办法来解决，代码如下:12345\begin&amp;#123;figur">
-<meta property="og:updated_time" content="2016-06-15T01:14:21.000Z">
+当有图表时，如果图表占用的空间超过70%，则LaTeX不会再页面中添加文本">
+<meta property="og:updated_time" content="2016-06-15T01:45:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaTex图片周围空白很多">
 <meta name="twitter:description" content="插入至LaTeX中的图片的周围的空白占用的空间很多，是什么愿意导致的呢。可能有一下几种原因：
 
 图片本身空白空间很大。
-当有图表时，如果图表占用的空间超过70%，则LaTeX不会再页面中添加文本
-
-对于第一种情况，先把图片进行裁剪之后，然后再插入，如果还是占用很大空白空间，则按第二种情况进行处理。
-对于第二种情况，首先尝试使用下面的办法来解决，代码如下:12345\begin&amp;#123;figur">
+当有图表时，如果图表占用的空间超过70%，则LaTeX不会再页面中添加文本">
 
 
 
@@ -367,6 +358,7 @@
 <li>图片本身空白空间很大。</li>
 <li>当有图表时，如果图表占用的空间超过70%，则LaTeX不会再页面中添加文本</li>
 </ul>
+<a id="more"></a>
 <p>对于第一种情况，先把图片进行裁剪之后，然后再插入，如果还是占用很大空白空间，则按第二种情况进行处理。</p>
 <p>对于第二种情况，首先尝试使用下面的办法来解决，代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[H]</span><br><span class="line">\centering</span><br><span class="line">\includegraphics[width=4.in]&#123;1.eps&#125;</span><br><span class="line">\caption&#123;XXXXXXX&#125;\label&#123;1&#125;</span><br><span class="line">\end</span><br></pre></td></tr></table></figure></p>
 <p>就是在begin{figure}后面加’[H]’一般可以解决。</p>
