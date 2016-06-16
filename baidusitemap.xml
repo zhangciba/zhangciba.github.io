@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/06/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BLive-Migration-of-Virtual-Machines/</loc>
+    <lastmod>2016-06-16T03:26:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>论文阅读之Live Migration of Virtual Machines</title>
+        <pubTime>2016-06-16T03:26:00.000Z</pubTime>
+        
+        <tag>-tag1 论文阅读 -tag2 HPC -tag3 高性能计算</tag>
+         
+         
+           
+             
+              <breadCrumb title="论文阅读" url="http://blog.zhangciba.com/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.zhangciba.com/2016/06/15/Debian%E4%B8%8B%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2016-06-15T01:52:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>Debian下配置网络的方法</title>
+        <pubTime>2016-06-15T01:47:34.000Z</pubTime>
+        
+        <tag>Debian网络</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://blog.zhangciba.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/06/15/LaTex%E5%9B%BE%E7%89%87%E5%91%A8%E5%9B%B4%E7%A9%BA%E7%99%BD%E5%BE%88%E5%A4%9A%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
     <lastmod>2016-06-15T01:46:44.000Z</lastmod>
     <data>
@@ -152,26 +192,6 @@
         <pubTime>2016-04-26T02:44:54.000Z</pubTime>
         
         <tag>MapReduce</tag>
-         
-         
-           
-             
-              <breadCrumb title="论文阅读" url="http://blog.zhangciba.com/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangciba.com/2016/06/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BLive-Migration-of-Virtual-Machines/</loc>
-    <lastmod>2016-06-08T01:10:56.000Z</lastmod>
-    <data>
-        <display>
-        <title>论文阅读之Live Migration of Virtual Machines</title>
-        <pubTime>2016-06-08T01:10:56.000Z</pubTime>
-        
-        <tag>论文阅读, HPC, 笔记, 高性能计算</tag>
          
          
            
