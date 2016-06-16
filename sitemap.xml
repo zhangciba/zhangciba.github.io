@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangciba.com/2016/06/07/%E4%BD%BF%E7%94%A8%E7%A3%81%E7%9B%98%E5%AF%B9%E6%8B%B7%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E8%8A%82%E7%82%B9%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/</loc>
+    
+    <lastmod>2016-06-16T06:45:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangciba.com/2016/06/16/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E4%B9%8BLive-Migration-of-Virtual-Machines/</loc>
     
     <lastmod>2016-06-16T04:45:44.000Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>http://blog.zhangciba.com/2016/06/06/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85ipmitool%E7%AE%80%E8%A6%81%E8%BF%87%E7%A8%8B/</loc>
     
     <lastmod>2016-06-08T00:47:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangciba.com/2016/06/07/%E4%BD%BF%E7%94%A8%E7%A3%81%E7%9B%98%E5%AF%B9%E6%8B%B7%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E8%8A%82%E7%82%B9%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/</loc>
-    
-    <lastmod>2016-06-07T12:35:51.000Z</lastmod>
     
   </url>
   
