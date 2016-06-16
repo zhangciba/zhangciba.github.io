@@ -57,16 +57,16 @@
 
 
 
-<meta name="description" content="高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得杂乱无章，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性">
+<meta name="description" content="高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得更加复杂，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用磁盘对拷实现计算节点系统重装">
 <meta property="og:url" content="http://blog.zhangciba.com/2016/06/07/使用磁盘对拷实现计算节点系统重装/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得杂乱无章，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性">
-<meta property="og:updated_time" content="2016-06-16T12:39:11.000Z">
+<meta property="og:description" content="高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得更加复杂，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性">
+<meta property="og:updated_time" content="2016-06-16T13:26:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用磁盘对拷实现计算节点系统重装">
-<meta name="twitter:description" content="高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得杂乱无章，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性">
+<meta name="twitter:description" content="高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得更加复杂，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性">
 
 
 
@@ -344,7 +344,7 @@
       
 
       
-        <p>高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得杂乱无章，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性能并行文件系统、MPI等并行程序库，如果直接安装一个新的系统，后续安装这些软件和配置系统环境将会是一个非常庞大的任务，为了解决这个难题，查找了很多资料，发现Linux也可以采用硬盘对拷的方式来安装系统。<br><a id="more"></a></p>
+        <p>高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得更加复杂，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性能并行文件系统、MPI等并行程序库，如果直接安装一个新的系统，后续安装这些软件和配置系统环境将会是一个非常庞大的任务，为了解决这个难题，查找了很多资料，发现Linux也可以采用硬盘对拷的方式来安装系统。<br><a id="more"></a></p>
 <p>首先将需要重装的节点上面的硬盘卸载下来，插入到一个负载不是很大的节点的备用硬盘仓中，然后使用fdisk -l来查看新插入的硬盘的编号，由于本集群的计算节点只有两个硬盘仓，所以后插入的硬盘的编号就是/dev/sdb了。</p>
 <h3 id="卸载lustre文件系统以及nfs文件系统挂载点。"><a href="#卸载lustre文件系统以及nfs文件系统挂载点。" class="headerlink" title="卸载lustre文件系统以及nfs文件系统挂载点。"></a>卸载lustre文件系统以及nfs文件系统挂载点。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;&apos;/public&apos;,&apos;/home&apos;,&apos;/vpublic01&apos;,&apos;/vpublic02&apos;&#125;;</span><br><span class="line">do</span><br><span class="line">  umount $i;</span><br><span class="line">done;</span><br></pre></td></tr></table></figure>
 <h3 id="执行dd命令"><a href="#执行dd命令" class="headerlink" title="执行dd命令"></a>执行dd命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/sda of=/dev/sdb bs=32256 conv=notrunc,noerror &amp;</span><br></pre></td></tr></table></figure>
