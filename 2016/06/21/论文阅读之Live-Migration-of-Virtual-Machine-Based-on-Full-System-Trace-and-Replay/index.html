@@ -1,0 +1,802 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Live-Migration," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Live Migration of Virtual Machine Based on Full System Trace and     Replay作者：刘海坤、金海、廖小飞、胡丽婷、余辰
+摘要之前的虚拟机迁移关注的是虚拟机内存预拷贝的算法，而这种方式对于内存敏感的工作会造成大量的网络消耗以及程序拓机时间。本文提出了一种全新的监测点/还原以及追踪/重返机制的方式的设计与实现。通过在源主机上面反复">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读之Live Migration of Virtual Machine Based on Full System Trace and Replay">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/06/21/论文阅读之Live-Migration-of-Virtual-Machine-Based-on-Full-System-Trace-and-Replay/index.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="Live Migration of Virtual Machine Based on Full System Trace and     Replay作者：刘海坤、金海、廖小飞、胡丽婷、余辰
+摘要之前的虚拟机迁移关注的是虚拟机内存预拷贝的算法，而这种方式对于内存敏感的工作会造成大量的网络消耗以及程序拓机时间。本文提出了一种全新的监测点/还原以及追踪/重返机制的方式的设计与实现。通过在源主机上面反复">
+<meta property="og:updated_time" content="2016-06-22T01:47:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论文阅读之Live Migration of Virtual Machine Based on Full System Trace and Replay">
+<meta name="twitter:description" content="Live Migration of Virtual Machine Based on Full System Trace and     Replay作者：刘海坤、金海、廖小飞、胡丽婷、余辰
+摘要之前的虚拟机迁移关注的是虚拟机内存预拷贝的算法，而这种方式对于内存敏感的工作会造成大量的网络消耗以及程序拓机时间。本文提出了一种全新的监测点/还原以及追踪/重返机制的方式的设计与实现。通过在源主机上面反复">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 论文阅读之Live Migration of Virtual Machine Based on Full System Trace and Replay | DIYER糍粑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77014447-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">DIYER糍粑的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'owsJb93stGZdFs8J6xVz','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                论文阅读之Live Migration of Virtual Machine Based on Full System Trace and Replay
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-21T14:59:04+08:00" content="2016-06-21">
+              2016-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/21/论文阅读之Live-Migration-of-Virtual-Machine-Based-on-Full-System-Trace-and-Replay/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/论文阅读之Live-Migration-of-Virtual-Machine-Based-on-Full-System-Trace-and-Replay/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Live Migration of Virtual Machine Based on Full System Trace and     Replay<br>作者：刘海坤、金海、廖小飞、胡丽婷、余辰</p>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>之前的虚拟机迁移关注的是虚拟机内存预拷贝的算法，而这种方式对于内存敏感的工作会造成大量的网络消耗以及程序拓机时间。本文提出了一种全新的监测点/还原以及追踪/重返机制的方式的设计与实现。通过在源主机上面反复执行一个同步算法，直到源主机与目的主机达到一致的助攻那台。<br>i<br><a id="more"></a></p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>近年来，使用虚拟机迁移进行数据中心管理受到了广泛的关注。不同物理主机之间的虚拟机迁移技术为基于多虚拟机的环境提供了一种新的优势。虚拟机热迁移是集群管理中特别有用的工具在以下几个方面：</p>
+<ul>
+<li><p>负载均衡<br>虚拟机可以进行重新排列，从而减轻某些主机的负担。</p>
+</li>
+<li><p>在线维护与主动容错<br>迁移现有虚拟机至备用机器可以对原主机进行升级，这样可以提高系统服务的能力和可用性。</p>
+</li>
+<li><p>能耗管理<br>当虚拟机的任务不是很重时，可以将一部分虚拟机迁移到较少的主机上面，关闭一些主机，这样可以帮助企业减少IT开支，同时对于大自然也有益处。</p>
+</li>
+</ul>
+<p>从这种情形来说，虚拟化与迁移的结合提高了数据中心和集群的可管理性。有许多关于这方面的研究，最有影响力的是VMotion和XenMotion，它们分别被加入到了VMware和XenSource中，作为它们的一部分。它们的实现机制也非常相似，因为它们具有相同的应用方案以及相同的物理内存迁移和网络连接的模式。</p>
+<p>在任何一种迁移中，有三种状态需要迁移：</p>
+<ul>
+<li>虚拟机的物理内存</li>
+<li>网络连接和虚拟设备的状态</li>
+<li>SCSI存储</li>
+</ul>
+<p>最棘手的问题是物理内存的迁移，因为这是影响迁移拓机时间的关键因素。例如在这个时间内，虚拟机上面的服务是不可见的。<br>VMotion和XenMotion采取了预拷贝策略来解决这个问题。但是当内存中脏页产生的速度大于预拷贝程序速度是，所有的预拷贝工作将是无用的。此时需要立即停止虚拟机，并将内存页进行拷贝。一些内存敏感的工作不会从预拷贝算法中获得益处，而且拓机时间会增加至几秒钟。这种方案的特点决定了这种算法只有在高速局域网中适用。</p>
+<p>一些半虚拟化的优化方案例如冻结异常进程以及释放未分配页等在XenMotion中有提到，但是这些会对影响到用户体验，特别是延时敏感的交互式服务。</p>
+<p>最后，预拷贝算法不会还原CPU中的缓冲数据，尽管这个不会在目标机器上产生错误，但是由于大量的Cache以及快表中的数据缺失，一旦新的虚拟机替代了服务，会导致性能降低。</p>
+<p>本文提出了一种追踪以及重放的方式来进行虚拟机的快速热迁移。在源宿主机上有一个追踪的守护程序，不听记录虚拟机的事件，源主机上的执行追踪文件将会迭代传输至目标宿主机，用于同步被迁移虚拟机的执行状态。</p>
+<p>这篇文章的主要贡献如下：</p>
+<ul>
+<li>设计和实现了一种迁移方法减少虚拟机迁移的拓机时间和网络开销。</li>
+<li>实现了一种使用写时拷贝机制的透明虚拟机检测点。</li>
+<li>制定了一种正式的迁移衡量的描述，并对这种算法进行了数学分析。</li>
+</ul>
+<h3 id="执行追踪的确定重放"><a href="#执行追踪的确定重放" class="headerlink" title="执行追踪的确定重放"></a>执行追踪的确定重放</h3><p>监测点/还原和追踪/重放是在系统状态还原中广泛使用的技术。ReVirt是一种典型的整个系统建立日志并重放的工具，该工具被嵌入衡量的描述，并对这种算法进行了数学分析。</p>
+<h3 id="执行追踪的确定重放-1"><a href="#执行追踪的确定重放-1" class="headerlink" title="执行追踪的确定重放"></a>执行追踪的确定重放</h3><p>监测点/还原和追踪/重放是在系统状态还原中广泛使用的技术。ReVirt是一种典型的整个系统建立日志并重放的工具，被嵌入到了UMLinux中，主要用于指令检测。ReVirt仅仅记录一步的虚拟终端和充足的信息，并在重放中再次传递这些信号。但是ReVirt的速度非常慢。</p>
+<p>作者采用的方式就是，采用写是拷贝的方式制作一个透明的监测点，然后源虚拟机继续执行的同事，监测点通过网络被推送到目标主机。在内部传输过程中产生的日志文件需要迭代传输至目标主机从而保证两边的一致性。最后，源虚拟机关闭，并且最后的日志文件被拷贝至目标虚拟机，目标虚拟机根据日志文件进行重放，并承担起源虚拟机的服务。</p>
+<h3 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h3><h4 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h4>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Live-Migration/" rel="tag">#Live-Migration</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/20/Congress-Conference-Workshop-Symposium之间的区别/" rel="next" title="Congress Conference Workshop Symposium之间的区别">
+                <i class="fa fa-chevron-left"></i> Congress Conference Workshop Symposium之间的区别
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/22/天河二号超级计算机/" rel="prev" title="天河二号超级计算机">
+                天河二号超级计算机 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/21/论文阅读之Live-Migration-of-Virtual-Machine-Based-on-Full-System-Trace-and-Replay/"
+           data-title="论文阅读之Live Migration of Virtual Machine Based on Full System Trace and Replay" data-url="http://blog.zhangciba.com/2016/06/21/论文阅读之Live-Migration-of-Virtual-Machine-Based-on-Full-System-Trace-and-Replay/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+          <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangciba" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhangchixtacbn" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 知乎
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://adherence.cn" target="_blank" rel="external nofollow">小燕子之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/zhangchi" target="_blank" rel="external nofollow">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/zhangchixtacbn" target="_blank" rel="external nofollow">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhangchixtacbn.blog.163.com" target="_blank" rel="external nofollow">网易博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://davi.space" target="_blank" rel="external nofollow">Davi-Space</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jayxhj.com" target="_blank" rel="external nofollow">豪杰写字的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/ryanlamp/" target="_blank" rel="external nofollow">大兵奋斗的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hust.edu.cn" target="_blank" rel="external nofollow">华中科技大学</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行追踪的确定重放"><span class="nav-number">3.</span> <span class="nav-text">执行追踪的确定重放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行追踪的确定重放-1"><span class="nav-number">4.</span> <span class="nav-text">执行追踪的确定重放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法设计"><span class="nav-number">5.</span> <span class="nav-text">算法设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设计目标"><span class="nav-number">5.1.</span> <span class="nav-text">设计目标</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangciba"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
