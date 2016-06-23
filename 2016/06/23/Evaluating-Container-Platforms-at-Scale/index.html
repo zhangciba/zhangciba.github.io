@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Flannel," />
+  <meta name="keywords" content="Container-Platforms," />
 
 
 
@@ -57,16 +57,25 @@
 
 
 
-<meta name="description" content="这篇文章写得还行，基本了解没问题。http://www.open-open.com/news/view/1aa473a">
+<meta name="description" content="原文链接请点我:Evaluating Container Platforms at Scale
+作者发现查找比较Swarm和Kubernetes性能的操作很难，最后发现，容器启动延迟和容器列出时间是最好的用于评估的尺度。
+实时系统和实时服务对于容器的启动的延时要求很高。列出所有容器对于集群管理员的用户体验来说关联最大。
+Kubernetes和Swarm都提供了一个API来获取容器列表的功能。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flannel介绍及安装使用方法">
-<meta property="og:url" content="http://blog.zhangciba.com/2016/04/19/Flannel介绍及安装使用方法/index.html">
+<meta property="og:title" content="Evaluating Container Platforms at Scale">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/06/23/Evaluating-Container-Platforms-at-Scale/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="这篇文章写得还行，基本了解没问题。http://www.open-open.com/news/view/1aa473a">
-<meta property="og:updated_time" content="2016-04-26T13:43:48.000Z">
+<meta property="og:description" content="原文链接请点我:Evaluating Container Platforms at Scale
+作者发现查找比较Swarm和Kubernetes性能的操作很难，最后发现，容器启动延迟和容器列出时间是最好的用于评估的尺度。
+实时系统和实时服务对于容器的启动的延时要求很高。列出所有容器对于集群管理员的用户体验来说关联最大。
+Kubernetes和Swarm都提供了一个API来获取容器列表的功能。">
+<meta property="og:updated_time" content="2016-06-23T11:08:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flannel介绍及安装使用方法">
-<meta name="twitter:description" content="这篇文章写得还行，基本了解没问题。http://www.open-open.com/news/view/1aa473a">
+<meta name="twitter:title" content="Evaluating Container Platforms at Scale">
+<meta name="twitter:description" content="原文链接请点我:Evaluating Container Platforms at Scale
+作者发现查找比较Swarm和Kubernetes性能的操作很难，最后发现，容器启动延迟和容器列出时间是最好的用于评估的尺度。
+实时系统和实时服务对于容器的启动的延时要求很高。列出所有容器对于集群管理员的用户体验来说关联最大。
+Kubernetes和Swarm都提供了一个API来获取容器列表的功能。">
 
 
 
@@ -84,7 +93,7 @@
   };
 </script>
 
-  <title> Flannel介绍及安装使用方法 | DIYER糍粑的博客 </title>
+  <title> Evaluating Container Platforms at Scale | DIYER糍粑的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +288,7 @@
             
             
               
-                Flannel介绍及安装使用方法
+                Evaluating Container Platforms at Scale
               
             
           </h1>
@@ -291,8 +300,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-19T20:01:56+08:00" content="2016-04-19">
-              2016-04-19
+            <time itemprop="dateCreated" datetime="2016-06-23T08:58:45+08:00" content="2016-06-23">
+              2016-06-23
             </time>
           </span>
 
@@ -321,8 +330,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/19/Flannel介绍及安装使用方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/19/Flannel介绍及安装使用方法/" itemprop="commentsCount"></span>
+                <a href="/2016/06/23/Evaluating-Container-Platforms-at-Scale/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/Evaluating-Container-Platforms-at-Scale/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -344,8 +353,10 @@
       
 
       
-        <p>这篇文章写得还行，基本了解没问题。<br><a href="http://www.open-open.com/news/view/1aa473a" target="_blank" rel="external">http://www.open-open.com/news/view/1aa473a</a></p>
-<a id="more"></a>
+        <p><a href="https://medium.com/on-docker/evaluating-container-platforms-at-scale-5e7b44d93f2c#.30uszmvzv" target="_blank" rel="external">原文链接请点我:Evaluating Container Platforms at Scale</a></p>
+<p>作者发现查找比较Swarm和Kubernetes性能的操作很难，最后发现，<em>容器启动延迟和容器列出时间</em>是最好的用于评估的尺度。</p>
+<p>实时系统和实时服务对于容器的启动的延时要求很高。<br>列出所有容器对于集群管理员的用户体验来说关联最大。</p>
+<p>Kubernetes和Swarm都提供了一个API来获取容器列表的功能。</p>
 
       
     </div>
@@ -360,7 +371,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Flannel/" rel="tag">#Flannel</a>
+            <a href="/tags/Container-Platforms/" rel="tag">#Container-Platforms</a>
           
         </div>
       
@@ -369,16 +380,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/17/Linux系统安全策略文章汇总/" rel="next" title="Linux系统安全策略文章汇总">
-                <i class="fa fa-chevron-left"></i> Linux系统安全策略文章汇总
+              <a href="/2016/06/22/天河二号超级计算机/" rel="next" title="天河二号超级计算机">
+                <i class="fa fa-chevron-left"></i> 天河二号超级计算机
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/25/解决ssh会话连接超时问题/" rel="prev" title="解决ssh会话连接超时问题">
-                解决ssh会话连接超时问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/23/容器与虚拟机的区别好文章汇总/" rel="prev" title="容器与虚拟机的区别好文章汇总">
+                容器与虚拟机的区别好文章汇总 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -446,8 +457,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/19/Flannel介绍及安装使用方法/"
-           data-title="Flannel介绍及安装使用方法" data-url="http://blog.zhangciba.com/2016/04/19/Flannel介绍及安装使用方法/">
+      <div class="ds-thread" data-thread-key="2016/06/23/Evaluating-Container-Platforms-at-Scale/"
+           data-title="Evaluating Container Platforms at Scale" data-url="http://blog.zhangciba.com/2016/06/23/Evaluating-Container-Platforms-at-Scale/">
       </div>
     
   </div>
