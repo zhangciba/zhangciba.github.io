@@ -281,6 +281,131 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/29/使用VNCViewer登录集群节点/" itemprop="url">
+                  使用VNCViewer登录集群节点
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-29T17:50:30+08:00" content="2016-06-29">
+              2016-06-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/集群使用/" itemprop="url" rel="index">
+                    <span itemprop="name">集群使用</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/29/使用VNCViewer登录集群节点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/使用VNCViewer登录集群节点/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有时候连接服务器时需要使用图形界面，VNC恰好给我们提供了这样的服务，闲话少说，直接进入正题。</p>
+<h3 id="SSH登录到管理节点"><a href="#SSH登录到管理节点" class="headerlink" title="SSH登录到管理节点"></a>SSH登录到管理节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#管理节点node307</span><br><span class="line">ssh root@202.114.10.172</span><br><span class="line"></span><br><span class="line">#另外一个节点node308</span><br><span class="line">ssh root@202.111.10.171</span><br></pre></td></tr></table></figure>
+<h3 id="设置本账户的VNC密码"><a href="#设置本账户的VNC密码" class="headerlink" title="设置本账户的VNC密码"></a>设置本账户的VNC密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vncpasswd</span><br><span class="line">#使用这个命令设置VNC登录密码</span><br></pre></td></tr></table></figure>
+<h3 id="开启一个VNCServer服务"><a href="#开启一个VNCServer服务" class="headerlink" title="开启一个VNCServer服务"></a>开启一个VNCServer服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vncserver -autokill</span><br><span class="line">#开启一个vncserver服务</span><br><span class="line">#它会返回一个端口号形式为 node307:7</span><br></pre></td></tr></table></figure>
+<h3 id="使用VNCViewer登录到集群"><a href="#使用VNCViewer登录到集群" class="headerlink" title="使用VNCViewer登录到集群"></a>使用VNCViewer登录到集群</h3><p>VNCViewer客户端官方下载地址为:<br><a href="https://www.realvnc.com/download/viewer/" target="_blank" rel="external">点我下载VNCViewer</a></p>
+<p>然后输入刚才在服务器端使用vncserver命令开启的服务端口返回的端口号，node307:7，点击连接之后，输入密码即可。</p>
+<p>最后就可以进入到集群了。</p>
+<h3 id="VNC登录到自己的节点"><a href="#VNC登录到自己的节点" class="headerlink" title="VNC登录到自己的节点"></a>VNC登录到自己的节点</h3><p>方法与登录到集群管理节点一样</p>
+<h4 id="在自己的节点安装VNCServer服务软件。"><a href="#在自己的节点安装VNCServer服务软件。" class="headerlink" title="在自己的节点安装VNCServer服务软件。"></a>在自己的节点安装VNCServer服务软件。</h4><p>参考网上链接</p>
+<h4 id="设置VNC密码"><a href="#设置VNC密码" class="headerlink" title="设置VNC密码"></a>设置VNC密码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncpasswd</span><br></pre></td></tr></table></figure>
+<h4 id="开启VNCServer服务"><a href="#开启VNCServer服务" class="headerlink" title="开启VNCServer服务"></a>开启VNCServer服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver</span><br></pre></td></tr></table></figure>
+<h4 id="使用VNCViewer连接服务器"><a href="#使用VNCViewer连接服务器" class="headerlink" title="使用VNCViewer连接服务器"></a>使用VNCViewer连接服务器</h4>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/28/Go语言程序设计文章链接/" itemprop="url">
                   Go语言程序设计文章链接
                 </a>
@@ -522,7 +647,7 @@
               
                 
                 <a class="post-title-link" href="/2016/06/27/论文阅读之Live-and-Incremental-Whole-System-Migration-of-Virtual-Machines-Using-Block-Bitmap/" itemprop="url">
-                  论文阅读之Live and Incremental Whole-System Migration
+                  论文阅读之Live-and-Incremental-Whole-System-Migration-of-Virtual-Machines-Using-Block-Bitmap
                 </a>
               
             
@@ -540,6 +665,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -1299,123 +1443,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/15/Debian下配置网络的方法/" itemprop="url">
-                  Debian下配置网络的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-15T09:47:34+08:00" content="2016-06-15">
-              2016-06-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/15/Debian下配置网络的方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/15/Debian下配置网络的方法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>配置网卡<br>修改 /etc/network/interfaces 添加如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># #号后面是备注</span><br><span class="line">auto eth0 #开机自动激活</span><br><span class="line">iface eth0 inte static #静态IP</span><br><span class="line">address 192.168.0.56 #本机IP</span><br><span class="line">netmask 255.255.255.0 #子网掩码</span><br><span class="line">gateway 192.168.0.254 #路由网关</span><br><span class="line"> </span><br><span class="line">#因为我是通过路由上网的，所以配置为静态IP和网关</span><br></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/15/Debian下配置网络的方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1461,7 +1488,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-count">60</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1469,7 +1496,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1478,7 +1505,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
