@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DIYER糍粑,DIYER,GEEK,杏林极客,DIYER糍粑的博客" />
+  <meta name="keywords" content="ssh," />
 
 
 
@@ -57,15 +57,28 @@
 
 
 
-<meta name="description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DIYER糍粑的博客">
-<meta property="og:url" content="http://blog.zhangciba.com/tags/挂载/index.html">
+<meta name="description" content="linux系统新建的用户用ssh远程登陆显示-bash-4.1$，不显示用户名路径。
+产生这种问题有三种原因。
+没有给用户创建/home/username主目录
+用户没有/home/username主目录的读取权限
+主目录/home/username下面缺少shell环境">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux SSH 远程登录后显示-bash-4.1$的解决办法">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/06/30/Linux-SSH-远程登录后显示-bash-4-1-的解决办法/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta property="og:description" content="linux系统新建的用户用ssh远程登陆显示-bash-4.1$，不显示用户名路径。
+产生这种问题有三种原因。
+没有给用户创建/home/username主目录
+用户没有/home/username主目录的读取权限
+主目录/home/username下面缺少shell环境">
+<meta property="og:updated_time" content="2016-06-30T02:08:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DIYER糍粑的博客">
-<meta name="twitter:description" content="DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员">
+<meta name="twitter:title" content="Linux SSH 远程登录后显示-bash-4.1$的解决办法">
+<meta name="twitter:description" content="linux系统新建的用户用ssh远程登陆显示-bash-4.1$，不显示用户名路径。
+产生这种问题有三种原因。
+没有给用户创建/home/username主目录
+用户没有/home/username主目录的读取权限
+主目录/home/username下面缺少shell环境">
 
 
 
@@ -83,7 +96,7 @@
   };
 </script>
 
-  <title> 标签: 挂载 | DIYER糍粑的博客 </title>
+  <title> Linux SSH 远程登录后显示-bash-4.1$的解决办法 | DIYER糍粑的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -129,7 +142,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,53 +270,212 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        挂载
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux SSH 远程登录后显示-bash-4.1$的解决办法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-30T09:59:35+08:00" content="2016-06-30">
+              2016-06-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ssh/" itemprop="url" rel="index">
+                    <span itemprop="name">ssh</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/30/Linux-SSH-远程登录后显示-bash-4-1-的解决办法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/30/Linux-SSH-远程登录后显示-bash-4-1-的解决办法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>linux系统新建的用户用ssh远程登陆显示-bash-4.1$，不显示用户名路径。</p>
+<h3 id="产生这种问题有三种原因。"><a href="#产生这种问题有三种原因。" class="headerlink" title="产生这种问题有三种原因。"></a>产生这种问题有三种原因。</h3><ul>
+<li>没有给用户创建/home/username主目录</li>
+<li>用户没有/home/username主目录的读取权限</li>
+<li>主目录/home/username下面缺少shell环境<a id="more"></a>
+</li>
+</ul>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul>
+<li><p>创建主目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/username</span><br><span class="line">#将username换成用户名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改用户的所有者和组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown username:usergroup /home/username</span><br><span class="line">#把username换成用户名</span><br><span class="line">#把usergroup换成用户所在组</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝Shell环境到主目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -pr /etc/skel/.bash* /home/username/</span><br><span class="line"># /home/username/是用户的主目录</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/05/21/Linux挂载光驱和ISO文件/" itemprop="url">
-              
-                <span itemprop="name">Linux挂载光驱和ISO文件</span>
-              
-            </a>
-        
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-05-21T10:22:04+08:00"
-              content="2016-05-21" >
-          05-21
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ssh/" rel="tag">#ssh</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/29/使用VNCViewer登录集群节点/" rel="next" title="使用VNCViewer登录集群节点">
+                <i class="fa fa-chevron-left"></i> 使用VNCViewer登录集群节点
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/30/Linux-SSH-远程登录后显示-bash-4-1-的解决办法/"
+           data-title="Linux SSH 远程登录后显示-bash-4.1$的解决办法" data-url="http://blog.zhangciba.com/2016/06/30/Linux-SSH-远程登录后显示-bash-4-1-的解决办法/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -323,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -440,6 +621,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#产生这种问题有三种原因。"><span class="nav-number">1.</span> <span class="nav-text">产生这种问题有三种原因。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -523,6 +715,11 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
