@@ -471,7 +471,7 @@
       
         
           
-            <p>有时候连接服务器时需要使用图形界面，VNC恰好给我们提供了这样的服务，闲话少说，直接进入正题。</p>
+            <p>有时候连接服务器时需要使用图形界面，VNC恰好给我们提供了这样的服务，闲话少说，直接进入正题。<br>整体过程如下：</p>
 <h3 id="SSH登录到管理节点"><a href="#SSH登录到管理节点" class="headerlink" title="SSH登录到管理节点"></a>SSH登录到管理节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#管理节点node307</span><br><span class="line">ssh root@202.114.10.172</span><br><span class="line"></span><br><span class="line">#另外一个节点node308</span><br><span class="line">ssh root@202.111.10.171</span><br></pre></td></tr></table></figure>
 <h3 id="设置本账户的VNC密码"><a href="#设置本账户的VNC密码" class="headerlink" title="设置本账户的VNC密码"></a>设置本账户的VNC密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vncpasswd</span><br><span class="line">#使用这个命令设置VNC登录密码</span><br></pre></td></tr></table></figure>
 <h3 id="开启一个VNCServer服务"><a href="#开启一个VNCServer服务" class="headerlink" title="开启一个VNCServer服务"></a>开启一个VNCServer服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vncserver -autokill</span><br><span class="line">#开启一个vncserver服务</span><br><span class="line">#它会返回一个端口号形式为 node307:7</span><br></pre></td></tr></table></figure>
