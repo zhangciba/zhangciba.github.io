@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangciba.com/2016/04/14/Kubernetes%E6%90%AD%E5%BB%BADocker%E9%9B%86%E7%BE%A4-%E5%8E%9F%E5%88%9B/</loc>
+    <lastmod>2016-06-30T04:59:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>Kubernetes搭建Docker集群(原创)</title>
+        <pubTime>2016-04-14T12:42:33.000Z</pubTime>
+        
+        <tag>Kubernetes,Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="云计算" url="http://blog.zhangciba.com/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangciba.com/2016/06/23/%E5%AE%B9%E5%99%A8%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB%E5%A5%BD%E6%96%87%E7%AB%A0%E6%B1%87%E6%80%BB/</loc>
     <lastmod>2016-06-30T04:47:44.000Z</lastmod>
     <data>
@@ -1078,26 +1098,6 @@
            
              
               <breadCrumb title="Linux" url="http://blog.zhangciba.com/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangciba.com/2016/04/14/Kubernetes%E6%90%AD%E5%BB%BADocker%E9%9B%86%E7%BE%A4-%E5%8E%9F%E5%88%9B/</loc>
-    <lastmod>2016-04-26T13:43:58.000Z</lastmod>
-    <data>
-        <display>
-        <title>Kubernetes搭建Docker集群(原创)</title>
-        <pubTime>2016-04-14T12:42:33.000Z</pubTime>
-        
-        <tag>Kubernetes,Docker</tag>
-         
-         
-           
-             
-              <breadCrumb title="云计算" url="http://blog.zhangciba.com/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
           
         </display>
     </data>
