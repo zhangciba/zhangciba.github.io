@@ -281,6 +281,232 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/" itemprop="url">
+                  Cannot retrive metalink for repository:epel.Please verify its path and try again
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-09T17:25:28+08:00" content="2017-02-09">
+              2017-02-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>yum安装时出现：Cannot retrieve metalink for repository: epel. Please verify its path and try again<br>在CentOS 6.3 x86_64下安装php-mcrypt的时候出现了问题：Error: Cannot retrieve metalink for repository: epel. Please verify its path and try again，需要安装epel源。</p>
+<p>解决方法： 一句话：把/etc/yum.repos.d/epel.repo，文件第3行注释去掉，把第四行注释掉。具体如下：</p>
+<p>打开/etc/yum.repos.d/epel.repo，将</p>
+<p>[epel]<br>name=Extra Packages for Enterprise Linux 6 - $basearch</p>
+<p>#baseurl=<a href="http://download.fedoraproject.org/pub/epel/6/$basearch" target="_blank" rel="external">http://download.fedoraproject.org/pub/epel/6/$basearch</a><br>mirrorlist=<a href="https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch" target="_blank" rel="external">https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch</a><br>修改为</p>
+<p>[epel]<br>name=Extra Packages for Enterprise Linux 6 - $basearch<br>baseurl=<a href="http://download.fedoraproject.org/pub/epel/6/$basearch" target="_blank" rel="external">http://download.fedoraproject.org/pub/epel/6/$basearch</a></p>
+<p>#mirrorlist=<a href="https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch" target="_blank" rel="external">https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch</a><br>再清理源，重新安装</p>
+<p>yum clean all<br>yum install -y 需要的包</p>
+<p>如果还是不行，修改DNS,到/etc/resolv.conf下添加一下：</p>
+<p>nameserver 8.8.8.8<br>search localdomain</p>
+<p>然后重启network服务：service network restart</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/" itemprop="url">
+                  java.lang.NoClassDefFoundError: Could not initialize class 
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-17T23:35:49+08:00" content="2016-10-17">
+              2016-10-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java开发/" itemprop="url" rel="index">
+                    <span itemprop="name">Java开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，因此页面也没有任何报错。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入，发现报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。</p>
+<p>由于报错提示是java.lang.NoClassDefFoundError: Could not initialize class,所以第一就是根据这个错误提示去搜索解决办法。不过搜索解决办法之前，我还是去Tomcat容器里面找了一下，发现WEB-INF里面确实有这个类。所以不知道是什么原因导致的。</p>
+<p>按照网上很多人说的，这种报错一般会有如下几种原因：<br>1.这个类确实不存在，可能有如下几种原因：<br> a.编译出错，编译的编码或者版本与Tomcat容器使用的JRE版本相差太大。<br> b.类文件压根没有编译。</p>
+<p>2.同时存在两个名字一模一样的.class文件，这种情况一般是如下几种原因导致：<br> a.导入其他框架或者外置的不同的.jar文件中，存在两个相同名字的类文件，而且路径一直。这种情况一般称为包冲突。<br>   例如，Hibernate框架和Spring框架都会使用到asm.jar文件，如果同时导入这两个框架的.jar文件，会导致asm相关的类找不到，报文章题目    中的错误。<br> b.Tomcat容器的lib目录下面存在和Web项目的lib目录下面同样的类文件。</p>
+<p>3.类文件存在，但是没有正常的加入到项目的Build Path中，有时候项目在不同版本的IDE之间导入导出，导致一些配置信息不能正常生效，所以即使加入了正确的.jar文件，也找不到里面的类文件。</p>
+<p>这些一般都是类文件外在存在的问题，也就是说，是文件是否存在的问题。网上大部分都</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/06/虚拟机迁移文章总结/" itemprop="url">
                   虚拟机迁移文章总结
                 </a>
@@ -1176,241 +1402,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/23/Evaluating-Container-Platforms-at-Scale/" itemprop="url">
-                  Evaluating Container Platforms at Scale
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-23T08:58:45+08:00" content="2016-06-23">
-              2016-06-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/云计算/" itemprop="url" rel="index">
-                    <span itemprop="name">云计算</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/23/Evaluating-Container-Platforms-at-Scale/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/Evaluating-Container-Platforms-at-Scale/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://medium.com/on-docker/evaluating-container-platforms-at-scale-5e7b44d93f2c#.30uszmvzv" target="_blank" rel="external">原文链接请点我:Evaluating Container Platforms at Scale</a></p>
-<p>作者发现查找比较Swarm和Kubernetes性能的操作很难，最后发现，<em>容器启动延迟和容器列出时间</em>是最好的用于评估的尺度。</p>
-<p>实时系统和实时服务对于容器的启动的延时要求很高。<br>列出所有容器对于集群管理员的用户体验来说关联最大。</p>
-<p>Kubernetes和Swarm都提供了一个API来获取容器列表的功能。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/22/天河二号超级计算机/" itemprop="url">
-                  天河二号超级计算机
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-22T09:47:49+08:00" content="2016-06-22">
-              2016-06-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
-                    <span itemprop="name">高性能计算</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/22/天河二号超级计算机/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/22/天河二号超级计算机/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="配置如下"><a href="#配置如下" class="headerlink" title="配置如下"></a>配置如下</h3><h4 id="处理器"><a href="#处理器" class="headerlink" title="处理器"></a>处理器</h4><p>16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。<br>中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Bridge-EX核心），采用22纳米制程，峰值性能0.2112TFLOPS。<br>运算加速上，使用基于英特尔集成众核架构的Xeon Phi 31S1P协处理器，运行时钟为1.1GHz，每个使用61个核心中的57个（因为使用61个会存在运算周期协调问题），每核心籍由特殊的超线程技术能运作4个线程，产生峰值性能为1.003TFLOPS。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/22/天河二号超级计算机/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1456,7 +1447,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1464,7 +1455,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1473,7 +1464,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1575,7 +1566,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
