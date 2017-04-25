@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/2017/04/25/Hexo-Next%E4%B8%BB%E9%A2%98%E9%9B%86%E6%88%90Algolia%E6%90%9C%E7%B4%A2/</loc>
+    
+    <lastmod>2017-04-25T11:55:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/</loc>
     
     <lastmod>2017-04-25T08:39:33.000Z</lastmod>
