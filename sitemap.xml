@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/404.html</loc>
+    
+    <lastmod>2017-04-25T14:20:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/2016/06/29/%E4%BD%BF%E7%94%A8VNCViewer%E7%99%BB%E5%BD%95%E9%9B%86%E7%BE%A4%E8%8A%82%E7%82%B9/</loc>
     
     <lastmod>2017-04-25T11:56:09.000Z</lastmod>
@@ -467,13 +474,6 @@
     <loc>http://blog.zhangchi.xyz/2016/04/25/%E8%A7%A3%E5%86%B3ssh%E4%BC%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2016-04-26T13:39:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangchi.xyz/404.html</loc>
-    
-    <lastmod>2016-04-26T09:16:25.000Z</lastmod>
     
   </url>
   
