@@ -1,0 +1,755 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iptables," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="connlimit功能：　　connlimit模块允许你限制每个客户端IP的并发连接数，即每个IP同时连接到一个服务器个数。　　connlimit模块主要可以限制内网用户的网络使用，对服务器而言则可以限制每个IP发起的连接数。
+connlimit参数：　　–connlimit-above n 　　　＃限制为多少个　　–connlimit-mask n 　　　 ＃这组主机的掩码,默认是connlim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iptables利用connlimit模块限制同一IP连接数">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/05/24/iptables利用connlimit模块限制同一IP连接数/index.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="connlimit功能：　　connlimit模块允许你限制每个客户端IP的并发连接数，即每个IP同时连接到一个服务器个数。　　connlimit模块主要可以限制内网用户的网络使用，对服务器而言则可以限制每个IP发起的连接数。
+connlimit参数：　　–connlimit-above n 　　　＃限制为多少个　　–connlimit-mask n 　　　 ＃这组主机的掩码,默认是connlim">
+<meta property="og:updated_time" content="2016-05-24T05:22:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iptables利用connlimit模块限制同一IP连接数">
+<meta name="twitter:description" content="connlimit功能：　　connlimit模块允许你限制每个客户端IP的并发连接数，即每个IP同时连接到一个服务器个数。　　connlimit模块主要可以限制内网用户的网络使用，对服务器而言则可以限制每个IP发起的连接数。
+connlimit参数：　　–connlimit-above n 　　　＃限制为多少个　　–connlimit-mask n 　　　 ＃这组主机的掩码,默认是connlim">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangciba.com/2016/05/24/iptables利用connlimit模块限制同一IP连接数/"/>
+
+
+
+
+
+  <title>iptables利用connlimit模块限制同一IP连接数 | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/24/iptables利用connlimit模块限制同一IP连接数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iptables利用connlimit模块限制同一IP连接数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-24T13:05:36+08:00">
+                2016-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>connlimit功能：<br>　　connlimit模块允许你限制每个客户端IP的并发连接数，即每个IP同时连接到一个服务器个数。<br>　　connlimit模块主要可以限制内网用户的网络使用，对服务器而言则可以限制每个IP发起的连接数。</p>
+<p>connlimit参数：<br>　　–connlimit-above n 　　　＃限制为多少个<br>　　–connlimit-mask n 　　　 ＃这组主机的掩码,默认是connlimit-mask 32 ,即每个IP.</p>
+<a id="more"></a>
+<p>系统:centos 5.4 32位<br>  需要的软件包:iptables-1.3.8.tar.bz2 linux-2.6.18.tar.bz2 patch-o-matic-ng-20080214.tar.bz2 (这3个我都会提供给大家的)</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc* make wget ncurses-devel ncurses bzip2</span><br></pre></td></tr></table></figure>
+<p>还有个重要的地方就是,如果你的系统安装iptables,那就先把iptables停一下,避免后面的问题<br>services iptables stop<br>然后把3个软件包解压到/usr/src目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar jxf iptables-1.3.8.tar.bz2 -C /usr/src/</span><br><span class="line">tar jxf patch-o-matic-ng-20080214.tar.bz2 -C /usr/src/</span><br><span class="line">tar jxf linux-2.6.18.tar.bz2 -C /usr/src/</span><br></pre></td></tr></table></figure></p>
+<p>初始化内核<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/src/linux-2.6.18/</span><br><span class="line">uname -r</span><br><span class="line">2.6.18-164.el5</span><br><span class="line">vi Makefile 改EXTRAVERSION =-164.el5</span><br></pre></td></tr></table></figure></p>
+<p>设置patch-o-matic-ng-20080214需要用到的环境变量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export KERNEL_DIR=/usr/src/linux-2.6.18</span><br><span class="line">export KERNEL_SRC=/usr/src/linux-2.6.18</span><br><span class="line">export IPTABLES_SRC=/usr/src/iptables-1.3.8/</span><br><span class="line">export IPTABLES_DIR=/usr/src/iptables-1.3.8/</span><br></pre></td></tr></table></figure></p>
+<p>这里说下,如果你不设置这4个环境变量的,后面你给内核下补丁和添加模块是很烦的一件事情,为什么这么说呢,让你们看个例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KERNEL_DIR=/usr/src/linux-2.6.18 IPTABLES_DIR=/usr/src/iptables-1.3.8 ./runme time</span><br></pre></td></tr></table></figure></p>
+<p>是不是很麻烦啊,所以最好是添加上.</p>
+<h3 id="给内核下补丁和添加模块"><a href="#给内核下补丁和添加模块" class="headerlink" title="给内核下补丁和添加模块"></a>给内核下补丁和添加模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/src/patch-o-matic-ng-20080214/</span><br><span class="line">./runme --download</span><br><span class="line">./runme connlimit</span><br></pre></td></tr></table></figure>
+<p>可以看到connlimit模块已经添加到内核里,但还没有完.</p>
+<h3 id="编辑内核配置文件-选中新增加的模块"><a href="#编辑内核配置文件-选中新增加的模块" class="headerlink" title="编辑内核配置文件,选中新增加的模块"></a>编辑内核配置文件,选中新增加的模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ../linux-2.6.18/</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+<p>在内核配置界面选中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Networking ---&gt;</span><br><span class="line">Networking options ---&gt;</span><br><span class="line">Network packet filtering (replaces ipchains) ---&gt;</span><br><span class="line">IP: Netfilter Configuration ---&gt;</span><br><span class="line">&lt;M&gt; Connections/IP limit match support</span><br></pre></td></tr></table></figure></p>
+<h3 id="编译内核模块"><a href="#编译内核模块" class="headerlink" title="编译内核模块"></a>编译内核模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make modules_prepare</span><br></pre></td></tr></table></figure>
+<p>修改net/ipv4/netfilter/Makefile,只编译connlimit模块,首先备份net/ipv4/netfilter/Makefile文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv net/ipv4/netfilter/Makefile net/ipv4/netfilter/Makefile.bak</span><br></pre></td></tr></table></figure></p>
+<p>新建 net/ipv4/netfilter/Makefile文件，并添加如下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vi net/ipv4/netfilter/Makefile</span><br><span class="line">obj-m := ipt_connlimit.o</span><br><span class="line"></span><br><span class="line">KDIR := /lib/modules/$(shell uname -r)/build</span><br><span class="line">PWD := $(shell pwd)</span><br><span class="line"></span><br><span class="line">default:</span><br><span class="line">$(MAKE) -C $(KDIR) M=$(PWD) modules</span><br></pre></td></tr></table></figure></p>
+<p>最后编译内核模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make M=net/ipv4/netfilter/</span><br></pre></td></tr></table></figure></p>
+<h3 id="将编译好的ipt-connlimit-ko内核模块复制到当前内核模块目录下-并加载内核模块"><a href="#将编译好的ipt-connlimit-ko内核模块复制到当前内核模块目录下-并加载内核模块" class="headerlink" title="将编译好的ipt_connlimit.ko内核模块复制到当前内核模块目录下,并加载内核模块"></a>将编译好的ipt_connlimit.ko内核模块复制到当前内核模块目录下,并加载内核模块</h3><p>cp net/ipv4/netfilter/ipt_connlimit.ko /lib/modules/2.6.18-164.el5/kernel/net/ipv4/netfilter/<br>为内核模块添加可执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /lib/modules/2.6.18-164.el5/kernel/net/ipv4/netfilter/ipt_connlimit.ko</span><br><span class="line">depmod -a</span><br><span class="line">modprobe ipt_connlimit</span><br></pre></td></tr></table></figure></p>
+<p>运行lsmod | grep x_tables出现如下提示,说明内核模块加载成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_tables               17349  7 ipt_connlimit,ipt_REJECT,xt_state,ip_tables,ip6t_REJECT,xt_tcpudp,ip6_tables</span><br></pre></td></tr></table></figure></p>
+<p>6.测试ipt_connlimit模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --dport 22 -m connlimit --connlimit-above 5 -j REJECT</span><br><span class="line"></span><br><span class="line">service iptables save</span><br><span class="line">service iptables start</span><br></pre></td></tr></table></figure></p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
+<li>限制同一IP同时最多100个http连接<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --syn --dport 80 -m connlimit --connlimit-above 100 -j REJECT</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --syn --dport 80 -m connlimit ! --connlimit-above 100 -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>只允许每组C类IP同时100个http连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -p tcp --syn --dport 80 -m connlimit --connlimit-above 100 --connlimit-mask 24 -j REJECT</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>只允许每个IP同时5个80端口转发,超过的丢弃</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I FORWARD -p tcp --syn --dport 80 -m connlimit --connlimit-above 5 -j DROP</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>限制某IP最多同时100个http</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -s 222.222.222.222 -p tcp --syn --dport 80 -m connlimit --connlimit-above 100 -j REJECT</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>限制每IP在一定的时间(比如60秒)内允许新建立最多100个http连接数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 80 -m recent --name BAD_HTTP_ACCESS --update --seconds 60 --hitcount 100 -j REJECT</span><br><span class="line">iptables -A INPUT -p tcp --dport 80 -m recent --name BAD_HTTP_ACCESS --set -j ACCEPT</span><br><span class="line"></span><br><span class="line">iptables -A INPUT ! -s 127.0.0.1/32 -p tcp -m tcp --dport 8080 --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 16 --connlimit-mask 32 --connlimit-saddr -j LOG --log-prefix &quot;connlimit &quot;</span><br><span class="line">iptables -A INPUT ! -s 127.0.0.1/32 -p tcp -m tcp --dport 8080 --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 16 --connlimit-mask 32 --connlimit-saddr -j REJECT --reject-with icmp-port-unreachable</span><br><span class="line">iptables -A INPUT -p tcp -m tcp --dport 80 --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 16 --connlimit-mask 32 --connlimit-saddr -j LOG --log-prefix &quot;connlimit &quot;</span><br><span class="line">iptables -A INPUT -p tcp -m tcp --dport 80 --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 16 --connlimit-mask 32 --connlimit-saddr -j REJECT --reject-with icmp-port-unreachable</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iptables/" rel="tag"># iptables</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/24/论文阅读之Performance-of-an-IaaS-Cloud-with-Live-Migration-of-Virtual-Machines/" rel="next" title="论文阅读之Performance of an IaaS Cloud with Live Migration of Virtual Machines">
+                <i class="fa fa-chevron-left"></i> 论文阅读之Performance of an IaaS Cloud with Live Migration of Virtual Machines
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/25/ipmitool启动报错-Could-not-open-device-at-dev-ipmi0-or-dev-ipmi-0-or-dev-ipmidev-0-No/" rel="prev" title="ipmitool启动报错-Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No">
+                ipmitool启动报错-Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给内核下补丁和添加模块"><span class="nav-number">2.</span> <span class="nav-text">给内核下补丁和添加模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑内核配置文件-选中新增加的模块"><span class="nav-number">3.</span> <span class="nav-text">编辑内核配置文件,选中新增加的模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译内核模块"><span class="nav-number">4.</span> <span class="nav-text">编译内核模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将编译好的ipt-connlimit-ko内核模块复制到当前内核模块目录下-并加载内核模块"><span class="nav-number">5.</span> <span class="nav-text">将编译好的ipt_connlimit.ko内核模块复制到当前内核模块目录下,并加载内核模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">6.</span> <span class="nav-text">例子</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

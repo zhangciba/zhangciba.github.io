@@ -1,0 +1,693 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MapReduce," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="MapReduce是谷歌公司提出的一种新的并行程序开发框架，其主要是为了满足谷歌公司搜索引擎数据的分析和索引，数据挖掘。这篇文章已经发布很久了，今天读了一下，把最后一章总结翻译一下，就是对文章的最好说明了。具体MapReduce细节可以查阅网上的资料。MapReduce有一个开源的实现版本，就是Apache的Hadoop。可以参考官方网站进行了解。http://hadoop.apache.org/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读之MapReduce_simplified data processing on large clusters">
+<meta property="og:url" content="http://blog.zhangciba.com/2016/04/26/论文阅读之MapReduce-simplified-data-processing-on-large-clusters/index.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="MapReduce是谷歌公司提出的一种新的并行程序开发框架，其主要是为了满足谷歌公司搜索引擎数据的分析和索引，数据挖掘。这篇文章已经发布很久了，今天读了一下，把最后一章总结翻译一下，就是对文章的最好说明了。具体MapReduce细节可以查阅网上的资料。MapReduce有一个开源的实现版本，就是Apache的Hadoop。可以参考官方网站进行了解。http://hadoop.apache.org/">
+<meta property="og:updated_time" content="2016-06-08T01:15:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论文阅读之MapReduce_simplified data processing on large clusters">
+<meta name="twitter:description" content="MapReduce是谷歌公司提出的一种新的并行程序开发框架，其主要是为了满足谷歌公司搜索引擎数据的分析和索引，数据挖掘。这篇文章已经发布很久了，今天读了一下，把最后一章总结翻译一下，就是对文章的最好说明了。具体MapReduce细节可以查阅网上的资料。MapReduce有一个开源的实现版本，就是Apache的Hadoop。可以参考官方网站进行了解。http://hadoop.apache.org/">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangciba.com/2016/04/26/论文阅读之MapReduce-simplified-data-processing-on-large-clusters/"/>
+
+
+
+
+
+  <title>论文阅读之MapReduce_simplified data processing on large clusters | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/04/26/论文阅读之MapReduce-simplified-data-processing-on-large-clusters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                论文阅读之MapReduce_simplified data processing on large clusters
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-26T10:44:54+08:00">
+                2016-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MapReduce是谷歌公司提出的一种新的并行程序开发框架，其主要是为了满足谷歌公司搜索引擎数据的分析和索引，数据挖掘。<br>这篇文章已经发布很久了，今天读了一下，把最后一章总结翻译一下，就是对文章的最好说明了。具体MapReduce细节可以查阅网上的资料。MapReduce有一个开源的实现版本，就是Apache的Hadoop。可以参考官方网站进行了解。<a href="http://hadoop.apache.org/" target="_blank" rel="external">http://hadoop.apache.org/</a><br><a id="more"></a><br>以下部分是对该文章Related Work和Conclusion两章的翻译。========================================================</p>
+<p>#相关工作#<br>许多异同也提供了受限的编程模式以及使用限制来进行自动化地并行计算。例如，使用并行前缀计算，一个在由N个元素的数组的所有前缀的关联函数计算可以在logN的时间内完成。MapReduce可以认为是基于我们在大量真实世界计算的经验上对这些模型的简化和升华。更为重要的是，我们提供了一个可以扩展至几千个处理器规模的容错机制的实现。相反，大部分的并行处理系统仅仅实现了小规模的容错机制，而将大量的处理机器失败的细节留给了程序员。<br>我们本地优化策略的灵感来源于诸如活跃磁盘等技术，即计算任务分配到离本地磁盘很近的处理元素，从而减少I/O子系统或者网络发送的数据量。<br>MapReduce库中的排序模块与NOW-Sort的操作相似。源机器（Map工作者）将要进行排序的数据进行拆分，然后将它分发到R个Reduce工作者中的一个。每个Reduce工作者在本地（如果可能，那么是内存）对这些数据进行排序。当然，NOW-Sort不能提供用户自定义的Map和Reduce函数，因此我们的MapReduce库能够广泛的应用。<br>BAD-FS和TACC是使用重新执行来实现容错的两个系统。<br>原文章有更加全面的有关工作的描述。</p>
+<p>#结论#<br>MapReduce编程模型已经成功运用在谷歌的各个方面。我们将这归功于一下几个原因。<br>1.首先，这个模型很容易使用，即使是没有并行与分布式系统开发经验的程序员也会使用，因为它隐藏了并行、容错、本地优化以及负载均衡等方面的细节。<br>2.其次，一个非常大问题很容易使用MapReduce计算模型来进行表述。例如，MapReduce被用来为谷歌生产Web搜索引擎产生数据，排序、数据挖掘、机器学习以及其他的系统。<br>3.再者，我们在上万台机器组成的大集群上面进行了MapReduce的实现。这个实现充分利用了机器资源并且非常适合解决谷歌大规模计算问题。</p>
+<p>我们通过限制编程模型从而使的并行与分布式计算变得简单，并且让这些计算具有容错性。其次，网络带宽是稀有资源，我们系统中的一些优化目的在于减少通过网络发送的数据量。本地优化策略允许沃恩从本地磁盘读取数据，并将一份中间数据的拷贝写入到本地磁盘从而能节省网络带宽。最后，冗余执行任务能够用来减少慢速机器的影响、处理机器错误以及数据丢失。</p>
+<p>========================================================</p>
+<p>翻译结束，希望对大家有用，欢迎指正。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MapReduce/" rel="tag"># MapReduce</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/25/yum-install或update问题解决/" rel="next" title="yum install或update问题解决">
+                <i class="fa fa-chevron-left"></i> yum install或update问题解决
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/27/TexShop排版时提示-usr-texbin-pdflatex不存在/" rel="prev" title="TexShop排版时提示/usr/texbin/pdflatex不存在">
+                TexShop排版时提示/usr/texbin/pdflatex不存在 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
