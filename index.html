@@ -5,11 +5,14 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
 
 
 
@@ -27,30 +30,60 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="DIYER糍粑,DIYER,GEEK,杏林极客,DIYER糍粑的博客" />
 
 
 
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
@@ -69,21 +102,37 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
-  <title> DIYER糍粑,DIYER,GEEK,杏林极客,DIYER糍粑的博客 - DIYER糍粑的博客 - DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员 </title>
+
+
+  <link rel="canonical" href="http://blog.zhangciba.com/"/>
+
+
+
+
+
+  <title>DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -91,34 +140,13 @@
   
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-77014447-1', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
 
 
 
-  <div style="display: none;">
-    <script src="http://s6.cnzz.com/stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" type="text/javascript"></script>
-  </div>
+
 
 
 
@@ -129,31 +157,35 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">DIYER糍粑的博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
   </div>
-  <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -166,19 +198,9 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
           </a>
         </li>
       
@@ -186,7 +208,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -196,59 +218,21 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
-            
-            公益404
-          </a>
-        </li>
-      
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="st-search-show-outputs">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
-
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install', 'owsJb93stGZdFs8J6xVz','2.0.0');
-</script>
-
-
-
-    </div>
-  
 </nav>
+
+
 
  </div>
     </header>
@@ -263,13 +247,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -291,37 +285,41 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-09T17:25:28+08:00" content="2017-02-09">
-              2017-02-09
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-09T17:25:28+08:00">
+                2017-02-09
+              </time>
+            
+
+            
+
+            
           </span>
 
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -332,11 +330,13 @@
         
           <p>yum安装时出现：Cannot retrieve metalink for repository: epel. Please verify its path and try again<br>在CentOS 6.3 x86_64下安装php-mcrypt的时候出现了问题：Error: Cannot retrieve metalink for repository: epel. Please verify its path and try again，需要安装epel源。</p>
 <p>解决方法： 一句话：把/etc/yum.repos.d/epel.repo，文件第3行注释去掉，把第四行注释掉。具体如下：<br>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -345,7 +345,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -362,13 +372,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -390,24 +410,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-17T23:35:49+08:00" content="2016-10-17">
-              2016-10-17
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-17T23:35:49+08:00">
+                2016-10-17
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java开发/" itemprop="url" rel="index">
                     <span itemprop="name">Java开发</span>
                   </a>
@@ -415,31 +447,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -448,12 +475,14 @@
 
       
         
-          <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，因此页面也没有任何报错。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入，发现报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。<br>
-          <div class="post-more-link text-center">
+          <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，服务器端返回的数据是JSON格式，由于报错了，导致无任何JSON数据返回，页面估计也没有做任何超时判断，因此也没有提示错误信息。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入URL发送请求，发现还是报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -462,7 +491,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -479,13 +518,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/07/06/虚拟机迁移文章总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -507,37 +556,41 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-06T23:46:37+08:00" content="2016-07-06">
-              2016-07-06
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-06T23:46:37+08:00">
+                2016-07-06
+              </time>
+            
+
+            
+
+            
           </span>
 
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/06/虚拟机迁移文章总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/06/虚拟机迁移文章总结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -557,7 +610,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -574,13 +637,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/07/01/台式服务器、机架式服务器与刀片式服务器的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -602,24 +675,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-01T10:51:14+08:00" content="2016-07-01">
-              2016-07-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-01T10:51:14+08:00">
+                2016-07-01
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/硬件/" itemprop="url" rel="index">
                     <span itemprop="name">硬件</span>
                   </a>
@@ -627,31 +712,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/01/台式服务器、机架式服务器与刀片式服务器的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/01/台式服务器、机架式服务器与刀片式服务器的区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -661,11 +741,13 @@
       
         
           <h3 id="塔式服务器"><a href="#塔式服务器" class="headerlink" title="塔式服务器"></a>塔式服务器</h3><p>塔式服务器一般是大家见得最多的，它的外形及结构都与普通的pc机差不多，只是个头稍大一些，其外形尺寸并无统一标准。</p>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/07/01/台式服务器、机架式服务器与刀片式服务器的区别/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -674,7 +756,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -691,13 +783,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/06/30/Linux-SSH-远程登录后显示-bash-4-1-的解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -719,24 +821,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-30T09:59:35+08:00" content="2016-06-30">
-              2016-06-30
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-30T09:59:35+08:00">
+                2016-06-30
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/ssh/" itemprop="url" rel="index">
                     <span itemprop="name">ssh</span>
                   </a>
@@ -744,31 +858,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/30/Linux-SSH-远程登录后显示-bash-4-1-的解决办法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/30/Linux-SSH-远程登录后显示-bash-4-1-的解决办法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -782,11 +891,13 @@
 <li>没有给用户创建/home/username主目录</li>
 <li>用户没有/home/username主目录的读取权限</li>
 <li>主目录/home/username下面缺少shell环境
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/06/30/Linux-SSH-远程登录后显示-bash-4-1-的解决办法/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -795,7 +906,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -812,13 +933,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/06/29/使用VNCViewer登录集群节点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -840,24 +971,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-29T17:50:30+08:00" content="2016-06-29">
-              2016-06-29
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-29T17:50:30+08:00">
+                2016-06-29
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/集群使用/" itemprop="url" rel="index">
                     <span itemprop="name">集群使用</span>
                   </a>
@@ -865,31 +1008,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/29/使用VNCViewer登录集群节点/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/使用VNCViewer登录集群节点/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -899,11 +1037,13 @@
       
         
           <p>有时候连接服务器时需要使用图形界面，VNC恰好给我们提供了这样的服务，闲话少说，直接进入正题。<br>整体过程如下：<br>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/06/29/使用VNCViewer登录集群节点/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -912,7 +1052,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -929,13 +1079,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/06/28/Go语言程序设计文章链接/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -957,24 +1117,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-28T22:47:23+08:00" content="2016-06-28">
-              2016-06-28
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-28T22:47:23+08:00">
+                2016-06-28
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Go/" itemprop="url" rel="index">
                     <span itemprop="name">Go</span>
                   </a>
@@ -982,31 +1154,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/28/Go语言程序设计文章链接/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/Go语言程序设计文章链接/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1017,11 +1184,13 @@
         
           <p>Go语言是Google公司开发的并发编程语言，它的并发编程的能力特别棒，尤其对于特大型程序来说，性能非常好，同时它也可以用来用作Web开发，Web后端开发等，是一门值得学习的好语言。相信在不久的将来，Go语言会得到广泛的使用。</p>
 <p>下面整理一些觉得还行的Go语言学习的资料。<br>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/06/28/Go语言程序设计文章链接/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1030,7 +1199,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1047,13 +1226,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/06/28/高性能计算中心汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -1075,24 +1264,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-28T10:21:11+08:00" content="2016-06-28">
-              2016-06-28
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-28T10:21:11+08:00">
+                2016-06-28
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/超级计算/" itemprop="url" rel="index">
                     <span itemprop="name">超级计算</span>
                   </a>
@@ -1100,31 +1301,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/28/高性能计算中心汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/高性能计算中心汇总/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1136,11 +1332,13 @@
           <p>高性能计算(High Performance Computing,简称 HPC)，现在由于计算能力提高了，又有了新的称呼，就是超级计算，但是超级计算本质还是高性能计算。</p>
 <p>HPC其实与我们的生活是息息相关的，虽然我们很多人没有直接接触到高性能计算，例如，天气预报，就是通过高性能计算计算出来的，好莱坞大片、国产大片等都是通过高性能计算机渲染出来的，地震、海啸等的预测也是通过高性能计算机跑的。其实我们生活中很多事情都与高性能计算离不开。</p>
 <p>高性能计算是一个国家综合国力的重要指标，可以说，高性能计算在某些方面代表着国家的军事实力和科研实力，没有高性能计算，导弹发射、武器制造等等方面都不能顺利进行。美国已经搞了很多年的高性能计算了，欧洲、日本在HPC领域的能力也很强，国内高性能计算虽然起步较晚，但是进步飞快，正在慢慢赶上发达国家的进程，但是差距依然很大。</p>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/06/28/高性能计算中心汇总/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1149,7 +1347,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1166,13 +1374,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/06/27/论文阅读之Live-and-Incremental-Whole-System-Migration-of-Virtual-Machines-Using-Block-Bitmap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -1194,24 +1412,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-27T11:05:29+08:00" content="2016-06-27">
-              2016-06-27
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-27T11:05:29+08:00">
+                2016-06-27
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/论文阅读/" itemprop="url" rel="index">
                     <span itemprop="name">论文阅读</span>
                   </a>
@@ -1219,31 +1449,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/27/论文阅读之Live-and-Incremental-Whole-System-Migration-of-Virtual-Machines-Using-Block-Bitmap/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/27/论文阅读之Live-and-Incremental-Whole-System-Migration-of-Virtual-Machines-Using-Block-Bitmap/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1263,7 +1488,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1280,13 +1515,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/06/23/容器与虚拟机的区别好文章汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -1308,24 +1553,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-23T10:30:11+08:00" content="2016-06-23">
-              2016-06-23
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-23T10:30:11+08:00">
+                2016-06-23
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/云计算/" itemprop="url" rel="index">
                     <span itemprop="name">云计算</span>
                   </a>
@@ -1333,31 +1590,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/23/容器与虚拟机的区别好文章汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/容器与虚拟机的区别好文章汇总/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1378,7 +1630,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1426,25 +1688,32 @@
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               src="/images/avatar.gif"
                alt="ZHANGCHI" />
           <p class="site-author-name" itemprop="name">ZHANGCHI</p>
-          <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">65</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1452,8 +1721,10 @@
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1466,80 +1737,20 @@
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/zhangciba" target="_blank">
-                  
-                    <i class="fa fa-github"></i> GitHub
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/zhangchixtacbn" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> 知乎
-                  
-                </a>
-              </span>
-            
-          
         </div>
 
         
         
 
         
-        <div class="links-of-blogroll motion-element">
-          
-            <div class="links-of-blogroll-title">友情链接</div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://adherence.cn" target="_blank" rel="external nofollow">小燕子之家</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.cnblogs.com/zhangchi" target="_blank" rel="external nofollow">博客园</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://blog.csdn.net/zhangchixtacbn" target="_blank" rel="external nofollow">CSDN</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://zhangchixtacbn.blog.163.com" target="_blank" rel="external nofollow">网易博客</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://davi.space" target="_blank" rel="external nofollow">Davi-Space</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://blog.jayxhj.com" target="_blank" rel="external nofollow">豪杰写字的地方</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.cnblogs.com/ryanlamp/" target="_blank" rel="external nofollow">大兵奋斗的地方</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.hust.edu.cn" target="_blank" rel="external nofollow">华中科技大学</a>
-                </li>
-              
-            </ul>
-          
-        </div>
+        
+
+        
+
 
       </section>
+
+      
 
       
 
@@ -1555,7 +1766,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2015 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -1563,34 +1774,35 @@
   <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
-    NexT.Mist
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
   </a>
 </div>
 
 
+        
 
+        
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
-
-
-  
-
-
-
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -1599,101 +1811,114 @@
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"zhangciba"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
 
 
 
   
-  
-  
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-  </script>
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-    });
-  </script>
 
-  
-    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
-    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
-  
+
+
+
+
+
+
+
+
 
 
   
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>

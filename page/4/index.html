@@ -5,11 +5,14 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
 
 
 
@@ -27,30 +30,60 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="DIYER糍粑,DIYER,GEEK,杏林极客,DIYER糍粑的博客" />
 
 
 
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
@@ -69,21 +102,37 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
-  <title> DIYER糍粑,DIYER,GEEK,杏林极客,DIYER糍粑的博客 - DIYER糍粑的博客 - DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员 </title>
+
+
+  <link rel="canonical" href="http://blog.zhangciba.com/page/4/"/>
+
+
+
+
+
+  <title>DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -91,34 +140,13 @@
   
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-77014447-1', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
 
 
 
-  <div style="display: none;">
-    <script src="http://s6.cnzz.com/stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" type="text/javascript"></script>
-  </div>
+
 
 
 
@@ -129,31 +157,35 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">DIYER糍粑的博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
   </div>
-  <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -166,19 +198,9 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
           </a>
         </li>
       
@@ -186,7 +208,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -196,59 +218,21 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
-            
-            公益404
-          </a>
-        </li>
-      
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="st-search-show-outputs">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
-
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install', 'owsJb93stGZdFs8J6xVz','2.0.0');
-</script>
-
-
-
-    </div>
-  
 </nav>
+
+
 
  </div>
     </header>
@@ -263,13 +247,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/25/曙光高性能计算集群管理常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -291,24 +285,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T16:42:47+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-25T16:42:47+08:00">
+                2016-05-25
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/集群管理/" itemprop="url" rel="index">
                     <span itemprop="name">集群管理</span>
                   </a>
@@ -316,31 +322,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/25/曙光高性能计算集群管理常用命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/25/曙光高性能计算集群管理常用命令/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -350,11 +351,13 @@
       
         
           <h3 id="查看负载情况"><a href="#查看负载情况" class="headerlink" title="查看负载情况"></a>查看负载情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pssh -i -h node-list -o outputs/ uptime</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/05/25/曙光高性能计算集群管理常用命令/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -363,7 +366,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -380,13 +393,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/25/ipmitool使用总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -408,24 +431,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T16:02:55+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-25T16:02:55+08:00">
+                2016-05-25
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/集群管理/" itemprop="url" rel="index">
                     <span itemprop="name">集群管理</span>
                   </a>
@@ -433,31 +468,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/25/ipmitool使用总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/25/ipmitool使用总结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -467,11 +497,13 @@
       
         
           <p>需要加载的模块<br>ipmi_watchdog          17414  0<br>ipmi_poweroff           8532  0<br>ipmi_devintf            8049  0<br>ipmi_si                42401  2<br>ipmi_msghandler        35992  4 ipmi_watchdog,ipmi_poweroff,ipmi_devintf,ipmi_si</p>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/05/25/ipmitool使用总结/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -480,7 +512,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -497,13 +539,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/25/ipmitool启动报错-Could-not-open-device-at-dev-ipmi0-or-dev-ipmi-0-or-dev-ipmidev-0-No/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -525,24 +577,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T11:05:51+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-25T11:05:51+08:00">
+                2016-05-25
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/集群管理/" itemprop="url" rel="index">
                     <span itemprop="name">集群管理</span>
                   </a>
@@ -550,31 +614,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/25/ipmitool启动报错-Could-not-open-device-at-dev-ipmi0-or-dev-ipmi-0-or-dev-ipmidev-0-No/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/25/ipmitool启动报错-Could-not-open-device-at-dev-ipmi0-or-dev-ipmi-0-or-dev-ipmidev-0-No/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -595,7 +654,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -612,13 +681,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/24/iptables利用connlimit模块限制同一IP连接数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -640,24 +719,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T13:05:36+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-24T13:05:36+08:00">
+                2016-05-24
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
                   </a>
@@ -665,31 +756,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/24/iptables利用connlimit模块限制同一IP连接数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/iptables利用connlimit模块限制同一IP连接数/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -700,11 +786,13 @@
         
           <p>connlimit功能：<br>　　connlimit模块允许你限制每个客户端IP的并发连接数，即每个IP同时连接到一个服务器个数。<br>　　connlimit模块主要可以限制内网用户的网络使用，对服务器而言则可以限制每个IP发起的连接数。</p>
 <p>connlimit参数：<br>　　–connlimit-above n 　　　＃限制为多少个<br>　　–connlimit-mask n 　　　 ＃这组主机的掩码,默认是connlimit-mask 32 ,即每个IP.</p>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/05/24/iptables利用connlimit模块限制同一IP连接数/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -713,7 +801,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -730,13 +828,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/24/论文阅读之Performance-of-an-IaaS-Cloud-with-Live-Migration-of-Virtual-Machines/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -758,24 +866,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T11:10:07+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-24T11:10:07+08:00">
+                2016-05-24
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/论文阅读/" itemprop="url" rel="index">
                     <span itemprop="name">论文阅读</span>
                   </a>
@@ -783,31 +903,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/24/论文阅读之Performance-of-an-IaaS-Cloud-with-Live-Migration-of-Virtual-Machines/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/论文阅读之Performance-of-an-IaaS-Cloud-with-Live-Migration-of-Virtual-Machines/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -817,11 +932,13 @@
       
         
           <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>云计算中心一般都会使用虚拟化技术，但是需要使用虚拟机热迁移技术来提高性能表现以及可用性。本文建立了一种分析表现模型，用于衡量一些重要的性能指标，例如在进行虚拟机热迁移时的拒绝可能性以及整体延时。通过使用这种模型，发现，虚拟机热迁移可以减少任务被拒绝可能性同时也将超大任务的延时独立于任务中小型任务的平均服务时间。<br>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/05/24/论文阅读之Performance-of-an-IaaS-Cloud-with-Live-Migration-of-Virtual-Machines/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -830,7 +947,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -847,13 +974,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/23/修改SSH服务端口号/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -875,24 +1012,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-23T12:32:06+08:00" content="2016-05-23">
-              2016-05-23
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-23T12:32:06+08:00">
+                2016-05-23
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
                   </a>
@@ -900,31 +1049,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/23/修改SSH服务端口号/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/23/修改SSH服务端口号/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -934,11 +1078,13 @@
       
         
           <h3 id="首先修改配置文件"><a href="#首先修改配置文件" class="headerlink" title="首先修改配置文件"></a>首先修改配置文件</h3><p>vi /etc/ssh/sshd_config<br>找到#Port 22一段，这里是标识默认使用22端口，修改为如下：<br>Port 22<br>Port 50000<br>然后保存退出<br>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/05/23/修改SSH服务端口号/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -947,7 +1093,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -964,13 +1120,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/21/Linux挂载光驱和ISO文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -992,24 +1158,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-21T10:22:04+08:00" content="2016-05-21">
-              2016-05-21
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-21T10:22:04+08:00">
+                2016-05-21
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
                   </a>
@@ -1017,31 +1195,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/21/Linux挂载光驱和ISO文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/21/Linux挂载光驱和ISO文件/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1063,7 +1236,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1080,13 +1263,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -1108,24 +1301,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-18T17:36:51+08:00" content="2016-05-18">
-              2016-05-18
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-18T17:36:51+08:00">
+                2016-05-18
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/论文阅读/" itemprop="url" rel="index">
                     <span itemprop="name">论文阅读</span>
                   </a>
@@ -1133,31 +1338,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1172,11 +1372,13 @@
 <li>能够遍历和保存虚拟机的状态；</li>
 <li>能够实现虚拟机热迁移的能力；</li>
 <li>在节点失败后转向备用节点的恢复机制。
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1185,7 +1387,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1202,13 +1414,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -1230,24 +1452,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-17T14:19:33+08:00" content="2016-05-17">
-              2016-05-17
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-17T14:19:33+08:00">
+                2016-05-17
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/论文阅读/" itemprop="url" rel="index">
                     <span itemprop="name">论文阅读</span>
                   </a>
@@ -1255,31 +1489,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1289,11 +1518,13 @@
       
         
           <h3 id="题名"><a href="#题名" class="headerlink" title="题名"></a>题名</h3><p>一种多虚拟机有效热迁移的新技术</p>
-          <div class="post-more-link text-center">
+          <!--noindex-->
+          <div class="post-button text-center">
             <a class="btn" href="/2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1302,7 +1533,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1319,13 +1560,23 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangciba.com/2016/05/13/Linux-keychain使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
       <header class="post-header">
@@ -1347,24 +1598,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-13T20:53:37+08:00" content="2016-05-13">
-              2016-05-13
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-13T20:53:37+08:00">
+                2016-05-13
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/ssh/" itemprop="url" rel="index">
                     <span itemprop="name">ssh</span>
                   </a>
@@ -1372,31 +1635,26 @@
 
                 
                 
-
               
             </span>
           
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/13/Linux-keychain使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/13/Linux-keychain使用/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+          
+
+          
           
 
           
 
           
+
           
 
         </div>
       </header>
     
-
 
     <div class="post-body" itemprop="articleBody">
 
@@ -1418,7 +1676,17 @@
       
     </div>
 
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
     <footer class="post-footer">
+      
+
       
 
       
@@ -1466,25 +1734,32 @@
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               src="/images/avatar.gif"
                alt="ZHANGCHI" />
           <p class="site-author-name" itemprop="name">ZHANGCHI</p>
-          <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,ZHANGCHI,张糍粑,程序员</p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">65</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -1492,8 +1767,10 @@
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -1506,80 +1783,20 @@
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/zhangciba" target="_blank">
-                  
-                    <i class="fa fa-github"></i> GitHub
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/zhangchixtacbn" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> 知乎
-                  
-                </a>
-              </span>
-            
-          
         </div>
 
         
         
 
         
-        <div class="links-of-blogroll motion-element">
-          
-            <div class="links-of-blogroll-title">友情链接</div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://adherence.cn" target="_blank" rel="external nofollow">小燕子之家</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.cnblogs.com/zhangchi" target="_blank" rel="external nofollow">博客园</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://blog.csdn.net/zhangchixtacbn" target="_blank" rel="external nofollow">CSDN</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://zhangchixtacbn.blog.163.com" target="_blank" rel="external nofollow">网易博客</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://davi.space" target="_blank" rel="external nofollow">Davi-Space</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://blog.jayxhj.com" target="_blank" rel="external nofollow">豪杰写字的地方</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.cnblogs.com/ryanlamp/" target="_blank" rel="external nofollow">大兵奋斗的地方</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://www.hust.edu.cn" target="_blank" rel="external nofollow">华中科技大学</a>
-                </li>
-              
-            </ul>
-          
-        </div>
+        
+
+        
+
 
       </section>
+
+      
 
       
 
@@ -1595,7 +1812,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2015 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -1603,34 +1820,35 @@
   <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
-    NexT.Mist
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
   </a>
 </div>
 
 
+        
 
+        
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
-
-
-  
-
-
-
 
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
@@ -1639,101 +1857,114 @@
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"zhangciba"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
 
 
 
   
-  
-  
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-  </script>
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-    });
-  </script>
 
-  
-    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
-    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
-  
+
+
+
+
+
+
+
+
 
 
   
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
-</script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>
