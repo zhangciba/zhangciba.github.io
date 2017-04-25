@@ -330,20 +330,13 @@
 
       
         
-          
-            <p>yum安装时出现：Cannot retrieve metalink for repository: epel. Please verify its path and try again<br>在CentOS 6.3 x86_64下安装php-mcrypt的时候出现了问题：Error: Cannot retrieve metalink for repository: epel. Please verify its path and try again，需要安装epel源。</p>
-<p>解决方法： 一句话：把/etc/yum.repos.d/epel.repo，文件第3行注释去掉，把第四行注释掉。具体如下：</p>
-<p>打开/etc/yum.repos.d/epel.repo，将</p>
-<p>[epel]<br>name=Extra Packages for Enterprise Linux 6 - $basearch</p>
-<p>#baseurl=<a href="http://download.fedoraproject.org/pub/epel/6/$basearch" target="_blank" rel="external">http://download.fedoraproject.org/pub/epel/6/$basearch</a><br>mirrorlist=<a href="https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch" target="_blank" rel="external">https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch</a><br>修改为</p>
-<p>[epel]<br>name=Extra Packages for Enterprise Linux 6 - $basearch<br>baseurl=<a href="http://download.fedoraproject.org/pub/epel/6/$basearch" target="_blank" rel="external">http://download.fedoraproject.org/pub/epel/6/$basearch</a></p>
-<p>#mirrorlist=<a href="https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch" target="_blank" rel="external">https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch</a><br>再清理源，重新安装</p>
-<p>yum clean all<br>yum install -y 需要的包</p>
-<p>如果还是不行，修改DNS,到/etc/resolv.conf下添加一下：</p>
-<p>nameserver 8.8.8.8<br>search localdomain</p>
-<p>然后重启network服务：service network restart</p>
-
-          
+          <p>yum安装时出现：Cannot retrieve metalink for repository: epel. Please verify its path and try again<br>在CentOS 6.3 x86_64下安装php-mcrypt的时候出现了问题：Error: Cannot retrieve metalink for repository: epel. Please verify its path and try again，需要安装epel源。</p>
+<p>解决方法： 一句话：把/etc/yum.repos.d/epel.repo，文件第3行注释去掉，把第四行注释掉。具体如下：<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -455,15 +448,12 @@
 
       
         
-          
-            <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，因此页面也没有任何报错。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入，发现报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。</p>
-<p>由于报错提示是java.lang.NoClassDefFoundError: Could not initialize class,所以第一就是根据这个错误提示去搜索解决办法。不过搜索解决办法之前，我还是去Tomcat容器里面找了一下，发现WEB-INF里面确实有这个类。所以不知道是什么原因导致的。</p>
-<p>按照网上很多人说的，这种报错一般会有如下几种原因：<br>1.这个类确实不存在，可能有如下几种原因：<br> a.编译出错，编译的编码或者版本与Tomcat容器使用的JRE版本相差太大。<br> b.类文件压根没有编译。</p>
-<p>2.同时存在两个名字一模一样的.class文件，这种情况一般是如下几种原因导致：<br> a.导入其他框架或者外置的不同的.jar文件中，存在两个相同名字的类文件，而且路径一直。这种情况一般称为包冲突。<br>   例如，Hibernate框架和Spring框架都会使用到asm.jar文件，如果同时导入这两个框架的.jar文件，会导致asm相关的类找不到，报文章题目    中的错误。<br> b.Tomcat容器的lib目录下面存在和Web项目的lib目录下面同样的类文件。</p>
-<p>3.类文件存在，但是没有正常的加入到项目的Build Path中，有时候项目在不同版本的IDE之间导入导出，导致一些配置信息不能正常生效，所以即使加入了正确的.jar文件，也找不到里面的类文件。</p>
-<p>这些一般都是类文件外在存在的问题，也就是说，是文件是否存在的问题。网上大部分都</p>
-
-          
+          <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，因此页面也没有任何报错。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入，发现报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

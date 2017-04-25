@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://blog.zhangciba.com/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="yum安装时出现：Cannot retrieve metalink for repository: epel. Please verify its path and try again在CentOS 6.3 x86_64下安装php-mcrypt的时候出现了问题：Error: Cannot retrieve metalink for repository: epel. Please verify">
-<meta property="og:updated_time" content="2017-02-09T09:25:50.000Z">
+<meta property="og:updated_time" content="2017-04-25T08:24:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cannot retrive metalink for repository:epel.Please verify its path and try again">
 <meta name="twitter:description" content="yum安装时出现：Cannot retrieve metalink for repository: epel. Please verify its path and try again在CentOS 6.3 x86_64下安装php-mcrypt的时候出现了问题：Error: Cannot retrieve metalink for repository: epel. Please verify">
@@ -326,7 +326,7 @@
 
       
         <p>yum安装时出现：Cannot retrieve metalink for repository: epel. Please verify its path and try again<br>在CentOS 6.3 x86_64下安装php-mcrypt的时候出现了问题：Error: Cannot retrieve metalink for repository: epel. Please verify its path and try again，需要安装epel源。</p>
-<p>解决方法： 一句话：把/etc/yum.repos.d/epel.repo，文件第3行注释去掉，把第四行注释掉。具体如下：</p>
+<p>解决方法： 一句话：把/etc/yum.repos.d/epel.repo，文件第3行注释去掉，把第四行注释掉。具体如下：<br><a id="more"></a></p>
 <p>打开/etc/yum.repos.d/epel.repo，将</p>
 <p>[epel]<br>name=Extra Packages for Enterprise Linux 6 - $basearch</p>
 <p>#baseurl=<a href="http://download.fedoraproject.org/pub/epel/6/$basearch" target="_blank" rel="external">http://download.fedoraproject.org/pub/epel/6/$basearch</a><br>mirrorlist=<a href="https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch" target="_blank" rel="external">https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch</a><br>修改为</p>
