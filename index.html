@@ -336,6 +336,166 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/MPI消息的基本结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/27/MPI消息的基本结构/" itemprop="url">
+                  MPI消息的基本结构
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T23:52:05+08:00">
+                2017-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
+                    <span itemprop="name">高性能计算</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/27/MPI消息的基本结构/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/27/MPI消息的基本结构/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
+<p>buf,count,datatype是消息数据<br>dest,tag,comm是消息信封</p>
+<p><code>MPI_RECV(buf,count,datatype,source,tag,comm,status)</code><br>buf,count,datatype是数据消息<br>source,tag,comm是消息信息</p>
+<p>消息信封的组成&lt;源地址/目的地址，标识，通信域&gt;<br>消息数据的组成&lt;数据缓冲区起始地址，数据个数，数据类型&gt;</p>
+<p>tag标识的用途，当发送者发送两个相同的数据给同一个接受者时，如果没有消息标识，接受者将无法区分这两个消息。</p>
+<p>MPI_ANY_SOURCE 任意源<br>MPI_ANY_TAG 任意标识<br>接收操作可以接收任意发送者的消息，但是对于发送操作则必须致命单独的接收者。</p>
+<p>MPI通信域包括进程组和通信上下文。<br>编号0至N-1<br>不同的消息在不同的上下文中传递</p>
+<p>MPI_Initialized(int *flag)判断MPI_INIT是否执行了。<br>MPI_Abort(MPI_Comm comm,int errorcode)出现异常时，退出</p>
+<p>MPI_ANY_SOURCE  任意源<br>MPI_ANY_TAG  任意标识</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/Intel-fortran编译器ifort安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -606,165 +766,6 @@
             <p>如果Infiniband网卡驱动已经正常安装，但是执行<br><code>ibstatus</code>命令或者<code>ibstat</code>命令时，Status字段总是显示Initializing状态，Physical State处于LinkUP状态，</p>
 <p>物理状态显示的IB线缆是否已经正常连接到IB网卡上。如果显示LinkUP状态，则显示该主机的IB线缆已经借号了。</p>
 <p>可以执行<code>service opensmd restart</code>命令重启一下子网管理服务，大部分时候，你会发现，IB网络恢复正常了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/MPI消息的基本结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/27/MPI消息的基本结构/" itemprop="url">
-                  MPI消息的基本结构
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T08:52:05+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
-                    <span itemprop="name">高性能计算</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/27/MPI消息的基本结构/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/27/MPI消息的基本结构/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
-<p>buf,count,datatype是消息数据<br>dest,tag,comm是消息信封</p>
-<p><code>MPI_RECV(buf,count,datatype,source,tag,comm,status)</code><br>buf,count,datatype是数据消息<br>source,tag,comm是消息信息</p>
-<p>消息信封的组成&lt;源地址/目的地址，标识，通信域&gt;<br>消息数据的组成&lt;数据缓冲区起始地址，数据个数，数据类型&gt;</p>
-<p>tag标识的用途，当发送者发送两个相同的数据给同一个接受者时，如果没有消息标识，接受者将无法区分这两个消息。</p>
-<p>MPI_ANY_SOURCE 任意源<br>MPI_ANY_TAG 任意标识<br>接收操作可以接收任意发送者的消息，但是对于发送操作则必须致命单独的接收者。</p>
-<p>MPI通信域包括进程组和通信上下文。<br>编号0至N-1<br>不同的消息在不同的上下文中传递</p>
-<p>MPI_Initialized(int *flag)判断MPI_INIT是否执行了。<br>MPI_Abort(MPI_Comm comm,int errorcode)出现异常时，退出</p>
 
           
         
