@@ -336,6 +336,160 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/Infiniband网络Initializing状态的解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/27/Infiniband网络Initializing状态的解决办法/" itemprop="url">
+                  Infiniband网络Initializing状态的解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T15:56:29+08:00">
+                2017-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/27/Infiniband网络Initializing状态的解决办法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/27/Infiniband网络Initializing状态的解决办法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如果Infiniband网卡驱动已经正常安装，但是执行<br><code>ibstatus</code>命令或者<code>ibstat</code>命令时，Status字段总是显示Initializing状态，Physical State处于LinkUP状态，</p>
+<p>物理状态显示的IB线缆是否已经正常连接到IB网卡上。如果显示LinkUP状态，则显示该主机的IB线缆已经借号了。</p>
+<p>可以执行<code>service opensmd restart</code>命令重启一下子网管理服务，大部分时候，你会发现，IB网络恢复正常了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/MPI消息的基本结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -447,7 +601,11 @@
             <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
 <p>buf,count,datatype是消息数据<br>dest,tag,comm是消息信封</p>
 <p><code>MPI_RECV(buf,count,datatype,source,tag,comm,status)</code><br>buf,count,datatype是数据消息<br>source,tag,comm是消息信息</p>
-<p>消息信封的组成&lt;源地址/目的地址，标志，通信域&gt;<br>消息数据的组成&lt;数据缓冲区起始地址，数据个数，数据类型&gt;</p>
+<p>消息信封的组成&lt;源地址/目的地址，标识，通信域&gt;<br>消息数据的组成&lt;数据缓冲区起始地址，数据个数，数据类型&gt;</p>
+<p>tag标识的用途，当发送者发送两个相同的数据给同一个接受者时，如果没有消息标识，接受者将无法区分这两个消息。</p>
+<p>MPI_ANY_SOURCE 任意源<br>MPI_ANY_TAG 任意标识<br>接收操作可以接收任意发送者的消息，但是对于发送操作则必须致命单独的接收者。</p>
+<p>MPI通信域包括进程组和通信上下文。<br>编号0至N-1<br>不同的消息在不同的上下文中传递</p>
+<p>MPI_Initialized(int *flag)判断MPI_INIT是否执行了。<br>MPI_Abort(MPI_Comm comm,int errorcode)出现异常时，退出</p>
 
           
         
@@ -1683,164 +1841,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/28/高性能计算中心汇总/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/28/高性能计算中心汇总/" itemprop="url">
-                  高性能计算中心汇总
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-28T10:21:11+08:00">
-                2016-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/超级计算/" itemprop="url" rel="index">
-                    <span itemprop="name">超级计算</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/06/28/高性能计算中心汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/高性能计算中心汇总/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>高性能计算(High Performance Computing,简称 HPC)，现在由于计算能力提高了，又有了新的称呼，就是超级计算，但是超级计算本质还是高性能计算。</p>
-<p>HPC其实与我们的生活是息息相关的，虽然我们很多人没有直接接触到高性能计算，例如，天气预报，就是通过高性能计算计算出来的，好莱坞大片、国产大片等都是通过高性能计算机渲染出来的，地震、海啸等的预测也是通过高性能计算机跑的。其实我们生活中很多事情都与高性能计算离不开。</p>
-<p>高性能计算是一个国家综合国力的重要指标，可以说，高性能计算在某些方面代表着国家的军事实力和科研实力，没有高性能计算，导弹发射、武器制造等等方面都不能顺利进行。美国已经搞了很多年的高性能计算了，欧洲、日本在HPC领域的能力也很强，国内高性能计算虽然起步较晚，但是进步飞快，正在慢慢赶上发达国家的进程，但是差距依然很大。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/06/28/高性能计算中心汇总/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1890,7 +1890,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1912,7 +1912,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

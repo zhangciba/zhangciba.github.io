@@ -102,7 +102,7 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
 buf,count,datatype是消息数据dest,tag,comm是消息信封
 MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据消息source,tag,comm是消息信息
 消息信封的组成&amp;lt;源地址/目的地址，">
-<meta property="og:updated_time" content="2017-04-27T00:58:19.000Z">
+<meta property="og:updated_time" content="2017-04-27T08:00:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MPI消息的基本结构">
 <meta name="twitter:description" content="MPI_SEND(buf,count,datatype,dest,tag,comm)
@@ -450,7 +450,11 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
         <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
 <p>buf,count,datatype是消息数据<br>dest,tag,comm是消息信封</p>
 <p><code>MPI_RECV(buf,count,datatype,source,tag,comm,status)</code><br>buf,count,datatype是数据消息<br>source,tag,comm是消息信息</p>
-<p>消息信封的组成&lt;源地址/目的地址，标志，通信域&gt;<br>消息数据的组成&lt;数据缓冲区起始地址，数据个数，数据类型&gt;</p>
+<p>消息信封的组成&lt;源地址/目的地址，标识，通信域&gt;<br>消息数据的组成&lt;数据缓冲区起始地址，数据个数，数据类型&gt;</p>
+<p>tag标识的用途，当发送者发送两个相同的数据给同一个接受者时，如果没有消息标识，接受者将无法区分这两个消息。</p>
+<p>MPI_ANY_SOURCE 任意源<br>MPI_ANY_TAG 任意标识<br>接收操作可以接收任意发送者的消息，但是对于发送操作则必须致命单独的接收者。</p>
+<p>MPI通信域包括进程组和通信上下文。<br>编号0至N-1<br>不同的消息在不同的上下文中传递</p>
+<p>MPI_Initialized(int *flag)判断MPI_INIT是否执行了。<br>MPI_Abort(MPI_Comm comm,int errorcode)出现异常时，退出</p>
 
       
     </div>
@@ -502,6 +506,10 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/27/Infiniband网络Initializing状态的解决办法/" rel="prev" title="Infiniband网络Initializing状态的解决办法">
+                Infiniband网络Initializing状态的解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -590,7 +598,7 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -612,7 +620,7 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

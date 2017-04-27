@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Container-VS-VM," />
+  <meta name="keywords" content="Infiniband网络," />
 
 
 
@@ -90,16 +90,22 @@
 
 
 
-<meta name="description" content="1.Dockerone.io:容器与虚拟机的真正区别2.Docker与虚拟机的区别3.容器详解：你不可不知的九个基本事实">
+<meta name="description" content="如果Infiniband网卡驱动已经正常安装，但是执行ibstatus命令或者ibstat命令时，Status字段总是显示Initializing状态，Physical State处于LinkUP状态，
+物理状态显示的IB线缆是否已经正常连接到IB网卡上。如果显示LinkUP状态，则显示该主机的IB线缆已经借号了。
+可以执行service opensmd restart命令重启一下子网管理服务，大">
 <meta property="og:type" content="article">
-<meta property="og:title" content="容器与虚拟机的区别好文章汇总">
-<meta property="og:url" content="http://blog.zhangchi.xyz/2016/06/23/容器与虚拟机的区别好文章汇总/index.html">
+<meta property="og:title" content="Infiniband网络Initializing状态的解决办法">
+<meta property="og:url" content="http://blog.zhangchi.xyz/2017/04/27/Infiniband网络Initializing状态的解决办法/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="1.Dockerone.io:容器与虚拟机的真正区别2.Docker与虚拟机的区别3.容器详解：你不可不知的九个基本事实">
-<meta property="og:updated_time" content="2016-06-30T04:47:44.000Z">
+<meta property="og:description" content="如果Infiniband网卡驱动已经正常安装，但是执行ibstatus命令或者ibstat命令时，Status字段总是显示Initializing状态，Physical State处于LinkUP状态，
+物理状态显示的IB线缆是否已经正常连接到IB网卡上。如果显示LinkUP状态，则显示该主机的IB线缆已经借号了。
+可以执行service opensmd restart命令重启一下子网管理服务，大">
+<meta property="og:updated_time" content="2017-04-27T08:00:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="容器与虚拟机的区别好文章汇总">
-<meta name="twitter:description" content="1.Dockerone.io:容器与虚拟机的真正区别2.Docker与虚拟机的区别3.容器详解：你不可不知的九个基本事实">
+<meta name="twitter:title" content="Infiniband网络Initializing状态的解决办法">
+<meta name="twitter:description" content="如果Infiniband网卡驱动已经正常安装，但是执行ibstatus命令或者ibstat命令时，Status字段总是显示Initializing状态，Physical State处于LinkUP状态，
+物理状态显示的IB线缆是否已经正常连接到IB网卡上。如果显示LinkUP状态，则显示该主机的IB线缆已经借号了。
+可以执行service opensmd restart命令重启一下子网管理服务，大">
 
 
 
@@ -127,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.zhangchi.xyz/2016/06/23/容器与虚拟机的区别好文章汇总/"/>
+  <link rel="canonical" href="http://blog.zhangchi.xyz/2017/04/27/Infiniband网络Initializing状态的解决办法/"/>
 
 
 
 
 
-  <title>容器与虚拟机的区别好文章汇总 | DIYER糍粑的博客</title>
+  <title>Infiniband网络Initializing状态的解决办法 | DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -335,7 +341,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/23/容器与虚拟机的区别好文章汇总/">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/Infiniband网络Initializing状态的解决办法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHANGCHI">
@@ -356,7 +362,7 @@
             
             
               
-                容器与虚拟机的区别好文章汇总
+                Infiniband网络Initializing状态的解决办法
               
             
           </h1>
@@ -371,8 +377,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-23T10:30:11+08:00">
-                2016-06-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T15:56:29+08:00">
+                2017-04-27
               </time>
             
 
@@ -394,8 +400,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/云计算/" itemprop="url" rel="index">
-                    <span itemprop="name">云计算</span>
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
                   </a>
                 </span>
 
@@ -412,8 +418,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/06/23/容器与虚拟机的区别好文章汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/容器与虚拟机的区别好文章汇总/" itemprop="commentCount"></span>
+                <a href="/2017/04/27/Infiniband网络Initializing状态的解决办法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/27/Infiniband网络Initializing状态的解决办法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -438,7 +444,9 @@
       
 
       
-        <p>1.<a href="http://dockone.io/article/723" target="_blank" rel="external">Dockerone.io:容器与虚拟机的真正区别</a><br>2.<a href="http://www.oschina.net/translate/how-is-docker-io-different-from-a-normal-virtual-machine?p=1#comments" target="_blank" rel="external">Docker与虚拟机的区别</a><br>3.<a href="http://network.51cto.com/art/201507/484974.htm" target="_blank" rel="external">容器详解：你不可不知的九个基本事实</a></p>
+        <p>如果Infiniband网卡驱动已经正常安装，但是执行<br><code>ibstatus</code>命令或者<code>ibstat</code>命令时，Status字段总是显示Initializing状态，Physical State处于LinkUP状态，</p>
+<p>物理状态显示的IB线缆是否已经正常连接到IB网卡上。如果显示LinkUP状态，则显示该主机的IB线缆已经借号了。</p>
+<p>可以执行<code>service opensmd restart</code>命令重启一下子网管理服务，大部分时候，你会发现，IB网络恢复正常了。</p>
 
       
     </div>
@@ -468,7 +476,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Container-VS-VM/" rel="tag"># Container-VS-VM</a>
+            <a href="/tags/Infiniband网络/" rel="tag"># Infiniband网络</a>
           
         </div>
       
@@ -481,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/23/Evaluating-Container-Platforms-at-Scale/" rel="next" title="Evaluating Container Platforms at Scale">
-                <i class="fa fa-chevron-left"></i> Evaluating Container Platforms at Scale
+              <a href="/2017/04/27/MPI消息的基本结构/" rel="next" title="MPI消息的基本结构">
+                <i class="fa fa-chevron-left"></i> MPI消息的基本结构
               </a>
             
           </div>
@@ -490,10 +498,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/27/论文阅读之Live-and-Incremental-Whole-System-Migration-of-Virtual-Machines-Using-Block-Bitmap/" rel="prev" title="论文阅读之Live-and-Incremental-Whole-System-Migration-of-Virtual-Machines-Using-Block-Bitmap">
-                论文阅读之Live-and-Incremental-Whole-System-Migration-of-Virtual-Machines-Using-Block-Bitmap <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,10 +512,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/23/容器与虚拟机的区别好文章汇总/"
-     data-title="容器与虚拟机的区别好文章汇总"
+        <div class="ds-share flat" data-thread-key="2017/04/27/Infiniband网络Initializing状态的解决办法/"
+     data-title="Infiniband网络Initializing状态的解决办法"
      data-content=""
-     data-url="http://blog.zhangchi.xyz/2016/06/23/容器与虚拟机的区别好文章汇总/">
+     data-url="http://blog.zhangchi.xyz/2017/04/27/Infiniband网络Initializing状态的解决办法/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -541,8 +545,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/23/容器与虚拟机的区别好文章汇总/"
-           data-title="容器与虚拟机的区别好文章汇总" data-url="http://blog.zhangchi.xyz/2016/06/23/容器与虚拟机的区别好文章汇总/">
+      <div class="ds-thread" data-thread-key="2017/04/27/Infiniband网络Initializing状态的解决办法/"
+           data-title="Infiniband网络Initializing状态的解决办法" data-url="http://blog.zhangchi.xyz/2017/04/27/Infiniband网络Initializing状态的解决办法/">
       </div>
     
   </div>
