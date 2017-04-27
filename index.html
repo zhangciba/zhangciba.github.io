@@ -336,6 +336,159 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/intel-fortran编译器ifort安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/27/intel-fortran编译器ifort安装/" itemprop="url">
+                  intel fortran编译器ifort安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T16:20:31+08:00">
+                2017-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/27/intel-fortran编译器ifort安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/27/intel-fortran编译器ifort安装/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1 下载ifort，网址：<a href="http://software.intel.com/en-us/articles/non-commercial-software-download/" target="_blank" rel="external">http://software.intel.com/en-us/articles/non-commercial-software-download/</a><br>2 首先查看操作系统的一些库是否安装，其中有gcc，g++,build-essential，打开命令行，进行以下操作：<br>    •    sudo apt-get install gcc<br>    •    sudo apt-get install build-essential<br>    •    sudo apt-get install g++<br>3 安装amd64版本的编译器也需要一些32位库支持，使用命令安装：<br>    •    sudo apt-get install ia32-libs<br>4 之后安装其它一些32位的库，在命令行进行如下操作：<br>    •    sudo apt-get install libstdc++5<br>    •    sudo apt-get install lib32stdc++6<br>    •    sudo apt-get install libc6-dev-i386<br>    •    sudo apt-get install gcc-multilib<br>    •    sudo apt-get install g++-multilib<br>5 需要安装rpm包：sudo apt-get install rpm<br>6 安装JRE<br>    •    sudo apt-get install openjdk-6-jre-headless<br>    •    java –version<br>7 安装intel fortran<br>    •    cd到intel fortran所在目录<br>    •    sudo ./install.sh<br>8 设置系统变量<br>    •    gedit .bashrc<br>    ·    在打开的文件末尾加上一行：source /opt/intel/bin/ifortvars.sh intel64<br>    ·    保存，关闭.bashrc<br>    ·    对.bashrc文件进行更新：source .bashrc<br>9 试验安装是否成功：ifort –v</p>
+<p>注意：在进行到第7步的时候，有可能会出现一下错误提示：“sh: Syntax error: Bad fd number”。需要对这个错误进行处理，否则在安装结束后，设置系统变量时会出错。 原因为sh链接到了dash，而正确的应该链接到bash，具体处理方法为:<br>    •    ls -l /bin/sh:查看是不是真的链接到了dash，如果链接到了dash，命令行会显示：lrwxrwxrwx 1 root root 4 Sep 25 14:48 /bin/sh -&gt; dash<br>    •    sudo dpkg-reconfigure -plow dash：出现菜单询问是否链接到dash，选no<br>    •    ls -l /bin/sh：修改过后，再查看一下，如果显示：lrwxrwxrwx 1 root root 4 Sep 25 14:48 /bin/sh -&gt; bash，说明已经修改成功<br>    ·    继续进行安装ifort</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/Infiniband网络Initializing状态的解决办法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1684,163 +1837,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/28/Go语言程序设计文章链接/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/28/Go语言程序设计文章链接/" itemprop="url">
-                  Go语言程序设计文章链接
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-28T22:47:23+08:00">
-                2016-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Go/" itemprop="url" rel="index">
-                    <span itemprop="name">Go</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/06/28/Go语言程序设计文章链接/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/28/Go语言程序设计文章链接/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Go语言是Google公司开发的并发编程语言，它的并发编程的能力特别棒，尤其对于特大型程序来说，性能非常好，同时它也可以用来用作Web开发，Web后端开发等，是一门值得学习的好语言。相信在不久的将来，Go语言会得到广泛的使用。</p>
-<p>下面整理一些觉得还行的Go语言学习的资料。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/06/28/Go语言程序设计文章链接/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1890,7 +1886,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1912,7 +1908,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
