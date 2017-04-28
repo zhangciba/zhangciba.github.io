@@ -4,11 +4,11 @@
 
     
   <url>
-    <loc>http://blog.zhangchi.xyz/2017/04/27/MPI%E6%B6%88%E6%81%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2017-04-27T09:52:54.000Z</lastmod>
+    <loc>http://blog.zhangchi.xyz/2017/04/27/MPI%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2017-04-28T02:34:51.000Z</lastmod>
     <data>
         <display>
-        <title>MPI消息的基本结构</title>
+        <title>MPI基本语法笔记</title>
         <pubTime>2017-04-27T15:52:05.000Z</pubTime>
         
         <tag>MPI</tag>

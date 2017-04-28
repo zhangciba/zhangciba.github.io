@@ -95,16 +95,16 @@ buf,count,datatype是消息数据dest,tag,comm是消息信封
 MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据消息source,tag,comm是消息信息
 消息信封的组成&amp;lt;源地址/目的地址，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MPI消息的基本结构">
-<meta property="og:url" content="http://blog.zhangchi.xyz/2017/04/27/MPI消息的基本结构/index.html">
+<meta property="og:title" content="MPI基本语法笔记">
+<meta property="og:url" content="http://blog.zhangchi.xyz/2017/04/27/MPI基本语法笔记/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="MPI_SEND(buf,count,datatype,dest,tag,comm)
 buf,count,datatype是消息数据dest,tag,comm是消息信封
 MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据消息source,tag,comm是消息信息
 消息信封的组成&amp;lt;源地址/目的地址，">
-<meta property="og:updated_time" content="2017-04-27T09:52:54.000Z">
+<meta property="og:updated_time" content="2017-04-28T02:34:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MPI消息的基本结构">
+<meta name="twitter:title" content="MPI基本语法笔记">
 <meta name="twitter:description" content="MPI_SEND(buf,count,datatype,dest,tag,comm)
 buf,count,datatype是消息数据dest,tag,comm是消息信封
 MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据消息source,tag,comm是消息信息
@@ -136,13 +136,13 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
 
 
 
-  <link rel="canonical" href="http://blog.zhangchi.xyz/2017/04/27/MPI消息的基本结构/"/>
+  <link rel="canonical" href="http://blog.zhangchi.xyz/2017/04/27/MPI基本语法笔记/"/>
 
 
 
 
 
-  <title>MPI消息的基本结构 | DIYER糍粑的博客</title>
+  <title>MPI基本语法笔记 | DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -344,7 +344,7 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/MPI消息的基本结构/">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/MPI基本语法笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHANGCHI">
@@ -365,7 +365,7 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
             
             
               
-                MPI消息的基本结构
+                MPI基本语法笔记
               
             
           </h1>
@@ -421,8 +421,8 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/27/MPI消息的基本结构/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/27/MPI消息的基本结构/" itemprop="commentCount"></span>
+                <a href="/2017/04/27/MPI基本语法笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/27/MPI基本语法笔记/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -456,6 +456,11 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
 <p>MPI通信域包括进程组和通信上下文。<br>编号0至N-1<br>不同的消息在不同的上下文中传递</p>
 <p>MPI_Initialized(int *flag)判断MPI_INIT是否执行了。<br>MPI_Abort(MPI_Comm comm,int errorcode)出现异常时，退出</p>
 <p>MPI_ANY_SOURCE  任意源<br>MPI_ANY_TAG  任意标识</p>
+<h4 id="编写安全的MPI程序"><a href="#编写安全的MPI程序" class="headerlink" title="编写安全的MPI程序"></a>编写安全的MPI程序</h4><p>主要的想法是为了避免死锁。<br>例如说进程0有A和C两个操作，进程1有B和D两个操作。<br>A从进程1接收消息，C向进程1发送消息<br>B从进程0接收消息，D向进程0发送消息</p>
+<p>因此A需要等待D，D需要等待B，B需要等待C，C需要等待A，导致了一个环形的等待，造成了死锁。</p>
+<p>另外一种情形，也是进程0有A和C两个操作，进程1有B和D两个操作<br>A向进程1发送消息，C从进程1接收消息<br>B向进程0发送消息，D从进程0接收消息。</p>
+<p>由于C需要等待A操作完成才能继续操作，因此C依赖于A，D需要接收从进程0发送过来的消息，因此D依赖于A操作完成，同时又必须等待B操作完成，因此D依赖于B，C需要接收从进程1发送过来的消息，因此必须等待B完成，C依赖于B，总结起来就是C依赖于A，D依赖于A，C依赖于B，D依赖于B，而A和B两个操作都要向对方发送消息，因此需要占用缓冲区，如果缓冲区的大小不够，则A操作和B操作都无法完成，导致后面的操作也就无法进行，导致进程僵死。</p>
+<p>##一种消息安全传递的通信调用秩序<br>当两个进程需要相互发送消息进行数据交换时，需要将它们的发送和接收操作按照一定的次序进行匹配，即一个进程的发送操作在前，接收操作在后，那么另一个进程的接收操作在前，发送操作在后，前后两个发送和接收操作需要相互匹配。</p>
 
       
     </div>
@@ -521,10 +526,10 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/04/27/MPI消息的基本结构/"
-     data-title="MPI消息的基本结构"
+        <div class="ds-share flat" data-thread-key="2017/04/27/MPI基本语法笔记/"
+     data-title="MPI基本语法笔记"
      data-content=""
-     data-url="http://blog.zhangchi.xyz/2017/04/27/MPI消息的基本结构/">
+     data-url="http://blog.zhangchi.xyz/2017/04/27/MPI基本语法笔记/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -554,8 +559,8 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/04/27/MPI消息的基本结构/"
-           data-title="MPI消息的基本结构" data-url="http://blog.zhangchi.xyz/2017/04/27/MPI消息的基本结构/">
+      <div class="ds-thread" data-thread-key="2017/04/27/MPI基本语法笔记/"
+           data-title="MPI基本语法笔记" data-url="http://blog.zhangchi.xyz/2017/04/27/MPI基本语法笔记/">
       </div>
     
   </div>
@@ -579,8 +584,17 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -713,6 +727,22 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#编写安全的MPI程序"><span class="nav-number">1.</span> <span class="nav-text">编写安全的MPI程序</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
