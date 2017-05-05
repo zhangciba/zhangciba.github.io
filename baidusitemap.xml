@@ -5,14 +5,19 @@
     
   <url>
     <loc>http://blog.zhangchi.xyz/2017/05/05/Linux%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/</loc>
-    <lastmod>2017-05-05T09:05:44.000Z</lastmod>
+    <lastmod>2017-05-05T15:21:17.000Z</lastmod>
     <data>
         <display>
         <title>Linux进程通信</title>
         <pubTime>2017-05-05T09:00:16.000Z</pubTime>
         
+        <tag>进程通信</tag>
+         
          
            
+             
+              <breadCrumb title="操作系统" url="http://blog.zhangchi.xyz/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+          
         </display>
     </data>
     </url>
