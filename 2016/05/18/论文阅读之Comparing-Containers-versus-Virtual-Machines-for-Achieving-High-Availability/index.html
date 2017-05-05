@@ -205,7 +205,7 @@
     
   
 
-  <div class="container sidebar-position-right  ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -348,17 +348,136 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">论文阅读之Comparing Containers versus Virtual Machines for Achieving High Availability</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/05/18/论文阅读之Comparing-Containers-versus-Virtual-Machines-for-Achieving-High-Availability/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">论文阅读之Comparing Containers versus Virtual Machines for Achieving High Availability</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-18T17:36:51+08:00">
+                2016-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">3,796(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">13(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-      <h4 id="初步了解"><a href="#初步了解" class="headerlink" title="初步了解"></a>初步了解</h4><p>程序分为有状态和无状态的程序，无状态的程序能够保存自己的状态，当节点失败时，可以使用负载均衡将请求转发至其他健康副本<br>而有状态的程序需要维护网络和程序的状态，因此需要采用不同的策略。</p>
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="初步了解"><a href="#初步了解" class="headerlink" title="初步了解"></a>初步了解</h4><p>程序分为有状态和无状态的程序，无状态的程序能够保存自己的状态，当节点失败时，可以使用负载均衡将请求转发至其他健康副本<br>而有状态的程序需要维护网络和程序的状态，因此需要采用不同的策略。</p>
 <p>在虚拟机环境达到高可用性，需要有如下能力</p>
 <ul>
 <li>能够遍历和保存虚拟机的状态；</li>
@@ -397,7 +516,118 @@
 <h4 id="总结与展望"><a href="#总结与展望" class="headerlink" title="总结与展望"></a>总结与展望</h4><p>本文从高可用的角度比较了虚拟化技术。表四对这些技术进行了总结，我们可以得出以下结论。高可用性与容错已经在基于管理程序的平台上面进行了实现，大部分都是采用集群故障转移机制来实现的。但是这些方案都具有局限性，例如在对称多处理器的支持或者是客户机系统方面。另一方面，基于容器的平台缺少的特性更多，特别地，基于容器的检查点恢复机制还远不成熟，然而，尽管在容器集群方面做了努力，但是还没有成熟的方案来持续监测容器的失败以及作为一个完整高可用性方案必须的自动故障转移管理，。总而言之，从高可用性的角度来讲，容器技术有待继续研究。</p>
 <p>基于容器平台高可用性方面的优化，研究使用gzip、bzip2以及rar技术来减少从源主机至目标主机之间的数据容量从而加速热迁移的进程，另外，目前没有通过记录与重放在容器上面实现容错的相关工作。</p>
 
-    
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
+    <div></div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/High-Availability/" rel="tag"># High Availability</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/17/论文阅读之A-new-technique-for-efficient-live-migration-of-multiple-virtual-machines/" rel="next" title="论文阅读之A new technique for efficient live migration of multiple virtual machines">
+                <i class="fa fa-chevron-left"></i> 论文阅读之A new technique for efficient live migration of multiple virtual machines
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/21/Linux挂载光驱和ISO文件/" rel="prev" title="Linux挂载光驱和ISO文件">
+                Linux挂载光驱和ISO文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
   </div>
 
 
@@ -431,8 +661,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -566,6 +805,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#初步了解"><span class="nav-number">1.</span> <span class="nav-text">初步了解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理平台的高可用性"><span class="nav-number"></span> <span class="nav-text">管理平台的高可用性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高可用性概览"><span class="nav-number">1.</span> <span class="nav-text">高可用性概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VMware中的高可用性。"><span class="nav-number">2.</span> <span class="nav-text">VMware中的高可用性。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XenServer平台的高可用性"><span class="nav-number">3.</span> <span class="nav-text">XenServer平台的高可用性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于容器平台的高可用性"><span class="nav-number">4.</span> <span class="nav-text">基于容器平台的高可用性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CRIU中的检查点-还原和热迁移"><span class="nav-number">4.1.</span> <span class="nav-text">CRIU中的检查点/还原和热迁移</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器的集群"><span class="nav-number">5.</span> <span class="nav-text">容器的集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结与展望"><span class="nav-number">6.</span> <span class="nav-text">总结与展望</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -694,6 +949,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 

@@ -132,7 +132,7 @@
 
 
 
-  <title>归档 | DIYER糍粑的博客</title>
+  <title>DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -182,7 +182,9 @@
     
   
 
-  <div class="container sidebar-position-right  page-archive  ">
+  <div class="container sidebar-position-right 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -323,402 +325,1683 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
+  <section id="posts" class="posts-expand">
+    
       
-      
-       
-        
-      好! 目前共计 71 篇日志。 继续努力。
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/16/论文阅读之Live-Migration-of-Virtual-Machines/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
     </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/16/论文阅读之Live-Migration-of-Virtual-Machines/" itemprop="url">论文阅读之Live Migration of Virtual Machines</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-16T12:45:44+08:00">
+                2016-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">1,922(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">7(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/16/论文阅读之Live-Migration-of-Virtual-Machines/" itemprop="url">
-              
-                <span itemprop="name">论文阅读之Live Migration of Virtual Machines</span>
-              
+          <h3 id="Live-Migration-of-Virtual-Machines"><a href="#Live-Migration-of-Virtual-Machines" class="headerlink" title="Live Migration of Virtual Machines"></a>Live Migration of Virtual Machines</h3><h3 id="论文结构"><a href="#论文结构" class="headerlink" title="论文结构"></a>论文结构</h3><ul>
+<li>Abstract<br>操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。<br>本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。</li>
+<li>Introduction<br>介绍了虚拟化技术带来了很多好处，在线系统迁移就是其中之一，系统迁移可以避免进程级别迁移带来的各种困难，其次系统迁移可以让整个内存状态得到转移，这意味着可以迁移一个在线的游戏服务器和流媒体服务器，第三，在线迁移能够将用户和数据中心或集群管理员的注意力分开。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/16/论文阅读之Live-Migration-of-Virtual-Machines/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-16T12:45:44+08:00"
-              content="2016-06-16" >
-          06-16
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/15/Debian下配置网络的方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/15/Debian下配置网络的方法/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/15/Debian下配置网络的方法/" itemprop="url">Debian下配置网络的方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">Debian下配置网络的方法</span>
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-15T09:47:34+08:00">
+                2016-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">158(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>配置网卡<br>修改 /etc/network/interfaces 添加如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># #号后面是备注</span><br><span class="line">auto eth0 #开机自动激活</span><br><span class="line">iface eth0 inte static #静态IP</span><br><span class="line">address 192.168.0.56 #本机IP</span><br><span class="line">netmask 255.255.255.0 #子网掩码</span><br><span class="line">gateway 192.168.0.254 #路由网关</span><br><span class="line"> </span><br><span class="line">#因为我是通过路由上网的，所以配置为静态IP和网关</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/15/Debian下配置网络的方法/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-15T09:47:34+08:00"
-              content="2016-06-15" >
-          06-15
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/15/LaTex图片周围空白很多的解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/15/LaTex图片周围空白很多的解决办法/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/15/LaTex图片周围空白很多的解决办法/" itemprop="url">LaTex图片周围空白很多</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">LaTex图片周围空白很多</span>
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-15T09:01:39+08:00">
+                2016-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LaTex/" itemprop="url" rel="index">
+                    <span itemprop="name">LaTex</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">239(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>插入至LaTeX中的图片的周围的空白占用的空间很多，是什么愿意导致的呢。可能有一下几种原因：</p>
+<ul>
+<li>图片本身空白空间很大。</li>
+<li>当有图表时，如果图表占用的空间超过70%，则LaTeX不会再页面中添加文本</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/15/LaTex图片周围空白很多的解决办法/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-15T09:01:39+08:00"
-              content="2016-06-15" >
-          06-15
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/14/LaTex一行中插入多个不同的图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/14/LaTex一行中插入多个不同的图/" itemprop="url">
-              
-                <span itemprop="name">LaTex一行中插入多个不同的图</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/14/LaTex一行中插入多个不同的图/" itemprop="url">LaTex一行中插入多个不同的图</a></h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-14T17:54:44+08:00"
-              content="2016-06-14" >
-          06-14
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-14T17:54:44+08:00">
+                2016-06-14
+              </time>
+            
 
-    </header>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LaTex/" itemprop="url" rel="index">
+                    <span itemprop="name">LaTex</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">97(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">\begin&#123;minipage&#125;[t]&#123;0.3\linewidth&#125;</span><br><span class="line">\centering</span><br><span class="line">\includegraphics[width=2.2in,height=2.0in]&#123;1.eps&#125;</span><br><span class="line">\caption&#123;fig1&#125;</span><br><span class="line">\label&#123;fig:side:a&#125;</span><br><span class="line">\end&#123;minipage&#125;%</span><br><span class="line">\begin&#123;minipage&#125;[t]&#123;0.3\linewidth&#125;</span><br><span class="line">\centering</span><br><span class="line">\includegraphics[width=2.2in,height=2.0in]&#123;2.eps&#125;</span><br><span class="line">\caption&#123;fig2&#125;</span><br><span class="line">\begin&#123;minipage&#125;[t]&#123;0.3\linewidth&#125;</span><br><span class="line">\centering</span><br><span class="line">\includegraphics[width=2.2in,height=2.0in]&#123;3.eps&#125;</span><br><span class="line">\caption&#123;fig2&#125;</span><br><span class="line">\label&#123;&#125;</span><br><span class="line">\end&#123;minipage&#125;</span><br><span class="line">\end&#123;figure&#125; </span><br><span class="line">在\caption&#123;&#125;中填写图形的注释</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/08/Linux-Shell读取配置文件2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/08/Linux-Shell读取配置文件2/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/08/Linux-Shell读取配置文件2/" itemprop="url">Linux Shell读取配置文件2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">Linux Shell读取配置文件2</span>
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-08T23:58:08+08:00">
+                2016-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux-Shell/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux-Shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">580(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">2(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>还有另外一种形式的配置文件，可能没有分段，稍微简单一点，因此，也可以用简单一点的方法进行读取配置文件的信息。</p>
+<p>例如config.ini的内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip=8.8.8.8</span><br><span class="line">username=Jim</span><br><span class="line">password=123456</span><br><span class="line">dir=/root/</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/08/Linux-Shell读取配置文件2/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-08T23:58:08+08:00"
-              content="2016-06-08" >
-          06-08
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/08/Linux-Shell读取-ini形式的配置文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/08/Linux-Shell读取-ini形式的配置文件/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/08/Linux-Shell读取-ini形式的配置文件/" itemprop="url">Linux Shell读取.ini形式的配置文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">Linux Shell读取.ini形式的配置文件</span>
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-08T23:29:06+08:00">
+                2016-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux-Shell/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux-Shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">647(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">3(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在使用Linux Shell编程或者是使用其他语言进行编程的时候，我们经常会遇到要读取配置文件的情况，配置文件是一个软件的必要组成部分，例如config.ini的内容如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[temperature]</span><br><span class="line">warning=85</span><br><span class="line">shutdown=93</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/08/Linux-Shell读取-ini形式的配置文件/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-08T23:29:06+08:00"
-              content="2016-06-08" >
-          06-08
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/07/修改CentOS7-GRUB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/07/修改CentOS7-GRUB/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/07/修改CentOS7-GRUB/" itemprop="url">修改CentOS7 GRUB</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">修改CentOS7 GRUB</span>
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-07T20:20:45+08:00">
+                2016-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">188(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>修改GRUB改变启动顺序是作为一个Linux运维人员必备的技能，特别是内核升级失败的情况下。<br>CentOS官方的文档讲解的很详细，可以参考一下<br><a href="https://wiki.centos.org/zh/HowTos/Grub2">在 CentOS 7 上设置 grub2</a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/07/修改CentOS7-GRUB/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-07T20:20:45+08:00"
-              content="2016-06-07" >
-          06-07
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/07/集群计算节点配置EPEL-yum源/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/07/集群计算节点配置EPEL-yum源/" itemprop="url">
-              
-                <span itemprop="name">集群计算节点配置EPEL Yum源</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/07/集群计算节点配置EPEL-yum源/" itemprop="url">集群计算节点配置EPEL Yum源</a></h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-07T15:12:26+08:00"
-              content="2016-06-07" >
-          06-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-07T15:12:26+08:00">
+                2016-06-07
+              </time>
+            
 
-    </header>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">37(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>集群计算节点的操作系统是RedHat6.2，可以参考一下链接的具体配置方法<br><a href="http://www.linuxidc.com/Linux/2014-10/108481.htm" target="_blank" rel="external">RHEL(RedHat)6.3使用EPEL Yum源</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/07/使用磁盘对拷实现计算节点系统重装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/07/使用磁盘对拷实现计算节点系统重装/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/07/使用磁盘对拷实现计算节点系统重装/" itemprop="url">使用磁盘对拷实现计算节点系统重装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">使用磁盘对拷实现计算节点系统重装</span>
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-07T13:10:57+08:00">
+                2016-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">952(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">3(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得更加复杂，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性能并行文件系统、MPI等并行程序库，如果直接安装一个新的系统，后续安装这些软件和配置系统环境将会是一个非常庞大的任务，为了解决这个难题，查找了很多资料，发现Linux也可以采用硬盘对拷的方式来安装系统。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/07/使用磁盘对拷实现计算节点系统重装/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-07T13:10:57+08:00"
-              content="2016-06-07" >
-          06-07
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/06/Linux服务器安装ipmitool简要过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/06/06/Linux服务器安装ipmitool简要过程/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/06/Linux服务器安装ipmitool简要过程/" itemprop="url">Linux服务器安装ipmitool简要过程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">Linux服务器安装ipmitool简要过程</span>
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-06T12:52:04+08:00">
+                2016-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">152(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="下载ipmitool：http-ipmitool-sourceforge-net"><a href="#下载ipmitool：http-ipmitool-sourceforge-net" class="headerlink" title="下载ipmitool：http://ipmitool.sourceforge.net/"></a>下载ipmitool：<a href="http://ipmitool.sourceforge.net/">http://ipmitool.sourceforge.net/</a></h4><h4 id="确定gcc工具已经安装好"><a href="#确定gcc工具已经安装好" class="headerlink" title="确定gcc工具已经安装好"></a>确定gcc工具已经安装好</h4>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/06/Linux服务器安装ipmitool简要过程/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-06T12:52:04+08:00"
-              content="2016-06-06" >
-          06-06
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
-
     
-
   </section>
 
   
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
-
 
 
 
@@ -1009,12 +2292,6 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   
 

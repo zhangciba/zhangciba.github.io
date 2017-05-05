@@ -185,7 +185,7 @@
     
   
 
-  <div class="container sidebar-position-right  ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -328,17 +328,136 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">论文阅读之Performance of an IaaS Cloud with Live Migration of Virtual Machines</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/05/24/论文阅读之Performance-of-an-IaaS-Cloud-with-Live-Migration-of-Virtual-Machines/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">论文阅读之Performance of an IaaS Cloud with Live Migration of Virtual Machines</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-24T11:10:07+08:00">
+                2016-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">2,043(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">7(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-      <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>云计算中心一般都会使用虚拟化技术，但是需要使用虚拟机热迁移技术来提高性能表现以及可用性。本文建立了一种分析表现模型，用于衡量一些重要的性能指标，例如在进行虚拟机热迁移时的拒绝可能性以及整体延时。通过使用这种模型，发现，虚拟机热迁移可以减少任务被拒绝可能性同时也将超大任务的延时独立于任务中小型任务的平均服务时间。<br><a id="more"></a></p>
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>云计算中心一般都会使用虚拟化技术，但是需要使用虚拟机热迁移技术来提高性能表现以及可用性。本文建立了一种分析表现模型，用于衡量一些重要的性能指标，例如在进行虚拟机热迁移时的拒绝可能性以及整体延时。通过使用这种模型，发现，虚拟机热迁移可以减少任务被拒绝可能性同时也将超大任务的延时独立于任务中小型任务的平均服务时间。<br><a id="more"></a></p>
 <h3 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h3><p>许多云计算解决方案依赖于虚拟化技术，通过部署在数据中心不同物理服务器上面的虚拟机的形式来提供计算资源。由于在同一主机之间的虚拟机通信效率要比跨主机虚拟机进程通信效率高，因此虚拟机通常在多主机之间进行迁移，从而提高资源利用率以及性能。目前虚拟机热迁移技术已经可行，尽管在进行迁移的时候执行速度会变慢，但是不会中断正在执行的程序。</p>
 <p>本文使用Markov链式模型和可能性分析来对云计算系统中虚拟机热迁移性能进行评估。由于开发一个巨大的模型是非常困难的，而且它的分析是非常单调乏味的，因此建议将这个模型分为两个部分，这两个部分和与云计算系统中在线任务迁移的服务步骤是一致的，然后两个模型合并用来得到最后的解决方案。</p>
 <h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><p>在之前的工作中，作者提出了用户分析云服务端对端性能的通用分析模型，使用服务可用性以及供应延迟作为两个重要的服务质量指标。这个模型将性能分析划分为两个子模型，通过子模型的不断迭代来获取整体的解决方案，但是这个模型没有考虑虚拟机热迁移和不同的服务策略。</p>
@@ -354,7 +473,118 @@
 <p>增加超级任务的到达率是，无论是否有虚拟机热迁移都会导致任务拒绝可能性的增加，如图3所示，在线虚拟机迁移会通过在宿主机之间进行负载均衡而稍微缓和任务拒绝可能性，在两种方案中，总体的延时随着超级任务到达率的增加而减少，如图3所示。当任务到达率到达更高的速率时，新的任务将因为容量不足而很快被拒绝，这就导致了系统和宿主机级别的队列空闲，反过来减少了新到达队列任务的队列等待延时，特别是当一些正在执行的任务执行完毕并释放了资源之后。<br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/rejection-probability.png" alt="Rejection Probability"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文描述了一种适合在具有虚拟机热迁移的基础设施云计算中心进行性能评估的分析模型，文章检验了超级任务到达率与任务服务时间对于拒绝概率以及总体延时的关系，作者未来的工作就是研究在线任务迁移的最优策略，目标在于优化有关参数，例如能耗与与计算中心性能等。</p>
 
-    
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
+    <div></div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Live-Migration/" rel="tag"># Live-Migration</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/23/修改SSH服务端口号/" rel="next" title="修改SSH服务端口号">
+                <i class="fa fa-chevron-left"></i> 修改SSH服务端口号
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/24/iptables利用connlimit模块限制同一IP连接数/" rel="prev" title="iptables利用connlimit模块限制同一IP连接数">
+                iptables利用connlimit模块限制同一IP连接数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
   </div>
 
 
@@ -388,8 +618,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -523,6 +762,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">2.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关工作"><span class="nav-number">3.</span> <span class="nav-text">相关工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析模型之资源管理"><span class="nav-number">4.</span> <span class="nav-text">分析模型之资源管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析模型：虚拟机供应"><span class="nav-number">5.</span> <span class="nav-text">分析模型：虚拟机供应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字认可"><span class="nav-number">6.</span> <span class="nav-text">数字认可</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -651,6 +906,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 

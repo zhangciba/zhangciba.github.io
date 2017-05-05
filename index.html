@@ -132,7 +132,7 @@
 
 
 
-  <title>归档 | DIYER糍粑的博客</title>
+  <title>DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -182,7 +182,9 @@
     
   
 
-  <div class="container sidebar-position-right  page-archive  ">
+  <div class="container sidebar-position-right 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -323,407 +325,1638 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
+  <section id="posts" class="posts-expand">
+    
       
-      
-       
-        
-      好! 目前共计 71 篇日志。 继续努力。
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/05/Linux进程通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
     </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/05/Linux进程通信/" itemprop="url">Linux进程通信</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-05T17:00:16+08:00">
+                2017-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">2,003(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">7(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/05/05/Linux进程通信/" itemprop="url">
-              
-                <span itemprop="name">Linux进程通信</span>
-              
+          <p>Linux进程间通讯的几种方式的特点和优缺点，和适用场合</p>
+<p>由于不同的进程运行在各自不同的内存空间中。一方对于变量的修改另一方是无法感知的。因此，进程之间的信息传递不可能通过变量或其它数据结构直接进行，只能通过进程间通信来完成。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/05/Linux进程通信/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-05T17:00:16+08:00"
-              content="2017-05-05" >
-          05-05
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/05/Windows进程间通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/05/05/Windows进程间通信/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/05/Windows进程间通信/" itemprop="url">Windows进程间通信</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">Windows进程间通信</span>
+                <span class="post-meta-item-text">发表于</span>
               
-            </a>
-        
-      </h2>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-05T14:49:32+08:00">
+                2017-05-05
+              </time>
+            
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-05T14:49:32+08:00"
-              content="2017-05-05" >
-          05-05
-        </time>
-      </div>
+            
 
-    </header>
-  </article>
+            
+          </span>
 
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/27/MPI基本语法笔记/" itemprop="url">
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">MPI基本语法笔记</span>
+                <span class="post-meta-item-text">分类于</span>
               
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-27T23:52:05+08:00"
-              content="2017-04-27" >
-          04-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/27/Intel-fortran编译器ifort安装/" itemprop="url">
               
-                <span itemprop="name">Intel fortran编译器ifort安装</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
               
-            </a>
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">4,841(字)</span>
+             </span>
         
-      </h2>
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">17(分)</span>
+           </span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-27T16:20:31+08:00"
-              content="2017-04-27" >
-          04-27
-        </time>
-      </div>
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
 
-    </header>
-  </article>
+          
+            
+          
 
+          
+          
 
+          
 
-    
+          
 
-      
-      
-      
+          
 
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/27/Infiniband网络Initializing状态的解决办法/" itemprop="url">
-              
-                <span itemprop="name">Infiniband网络Initializing状态的解决办法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-27T15:56:29+08:00"
-              content="2017-04-27" >
-          04-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/25/Hexo-Next主题集成Algolia搜索/" itemprop="url">
-              
-                <span itemprop="name">Hexo+Next主题集成Algolia搜索</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-25T19:53:27+08:00"
-              content="2017-04-25" >
-          04-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/" itemprop="url">
-              
-                <span itemprop="name">Cannot retrive metalink for repository:epel.Please verify its path and try again</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-09T17:25:28+08:00"
-              content="2017-02-09" >
-          02-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
         </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/" itemprop="url">
-              
-                <span itemprop="name">java.lang.NoClassDefFoundError: Could not initialize class </span>
-              
+          <p>1 Windows进程间通信的各种方法</p>
+<p>进程是装入内存并准备执行的程序，每个进程都有私有的虚拟地址空间，由代码、数据以及它可利用的系统资源(如文件、管道等)组成。<br>多进程/多线程是Windows操作系统的一个基本特征。Microsoft Win32应用编程接口(Application Programming Interface, API)<br>提供了大量支持应用程序间数据共享和交换的机制，这些机制行使的活动称为进程间通信(InterProcess Communication, IPC)，<br>进程通信就是指不同进程间进行数据共享和数据交换。</p>
+<p>正因为使用Win32 API进行进程通信方式有多种，如何选择恰当的通信方式就成为应用开发中的一个重要问题，下面本文将对Win32中进程通信的几种方法加以分析和比较。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/05/Windows进程间通信/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-17T23:35:49+08:00"
-              content="2016-10-17" >
-          10-17
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/MPI基本语法笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/07/06/虚拟机迁移文章总结/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/27/MPI基本语法笔记/" itemprop="url">MPI基本语法笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-                <span itemprop="name">虚拟机迁移文章总结</span>
+                <span class="post-meta-item-text">发表于</span>
               
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T23:52:05+08:00">
+                2017-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
+                    <span itemprop="name">高性能计算</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">713(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">3(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
+<p>buf,count,datatype是消息数据<br>dest,tag,comm是消息信封</p>
+<p><code>MPI_RECV(buf,count,datatype,source,tag,comm,status)</code><br>buf,count,datatype是数据消息<br>source,tag,comm是消息信息<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/27/MPI基本语法笔记/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
+          <!--/noindex-->
         
-      </h2>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-06T23:46:37+08:00"
-              content="2016-07-06" >
-          07-06
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/Intel-fortran编译器ifort安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-            <a class="post-title-link" href="/2016/07/01/台式服务器、机架式服务器与刀片式服务器的区别/" itemprop="url">
-              
-                <span itemprop="name">台式服务器、机架式服务器与刀片式服务器的区别</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/27/Intel-fortran编译器ifort安装/" itemprop="url">Intel fortran编译器ifort安装</a></h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-01T10:51:14+08:00"
-              content="2016-07-01" >
-          07-01
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T16:20:31+08:00">
+                2017-04-27
+              </time>
+            
 
-    </header>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">436(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">2(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1 下载ifort，网址：<a href="http://software.intel.com/en-us/articles/non-commercial-software-download/" target="_blank" rel="external">http://software.intel.com/en-us/articles/non-commercial-software-download/</a><br>2 首先查看操作系统的一些库是否安装，其中有gcc，g++,build-essential，打开命令行，进行以下操作：<br>    <code>sudo apt-get install gcc
+     sudo apt-get install build-essential
+     sudo apt-get install g++</code><br>3 安装amd64版本的编译器也需要一些32位库支持，使用命令安装：<br>    <code>sudo apt-get install ia32-libs</code><br>4 之后安装其它一些32位的库，在命令行进行如下操作：<br>    <code>sudo apt-get install libstdc++5
+    sudo apt-get install lib32stdc++6
+    sudo apt-get install libc6-dev-i386
+    sudo apt-get install gcc-multilib
+    sudo apt-get install g++-multilib</code><br>5 需要安装rpm包：<code>sudo apt-get install rpm</code><br>6 安装JRE<br>    •    <code>sudo apt-get install openjdk-6-jre-headless</code><br>    •    <code>java –version</code><br>7 安装intel fortran<br>    •    cd到intel fortran所在目录<br>    •    sudo ./install.sh<br>8 设置系统变量<br>    •    <code>vim .bashrc</code><br>    ·    在打开的文件末尾加上一行：<code>source /opt/intel/bin/ifortvars.sh intel64</code><br>    ·    保存，关闭.bashrc<br>    ·    对.bashrc文件进行更新：<code>source .bashrc</code><br>9 试验安装是否成功：<code>ifort –v</code></p>
+<p>注意：在进行到第7步的时候，有可能会出现一下错误提示：“sh: Syntax error: Bad fd number”。需要对这个错误进行处理，否则在安装结束后，设置系统变量时会出错。 原因为sh链接到了dash，而正确的应该链接到bash，具体处理方法为:<br>    •    ls -l /bin/sh:查看是不是真的链接到了dash，如果链接到了dash，命令行会显示：lrwxrwxrwx 1 root root 4 Sep 25 14:48 /bin/sh -&gt; dash<br>    •    sudo dpkg-reconfigure -plow dash：出现菜单询问是否链接到dash，选no<br>    •    ls -l /bin/sh：修改过后，再查看一下，如果显示：lrwxrwxrwx 1 root root 4 Sep 25 14:48 /bin/sh -&gt; bash，说明已经修改成功<br>    ·    继续进行安装ifort</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/Infiniband网络Initializing状态的解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
 
     
+      <header class="post-header">
 
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/27/Infiniband网络Initializing状态的解决办法/" itemprop="url">Infiniband网络Initializing状态的解决办法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T15:56:29+08:00">
+                2017-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">120(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如果Infiniband网卡驱动已经正常安装，但是执行<br><code>ibstatus</code>命令或者<code>ibstat</code>命令时，Status字段总是显示Initializing状态，Physical State处于LinkUP状态，</p>
+<p>物理状态显示的IB线缆是否已经正常连接到IB网卡上。如果显示LinkUP状态，则显示该主机的IB线缆已经借号了。</p>
+<p>可以执行<code>service opensmd restart</code>命令重启一下子网管理服务，大部分时候，你会发现，IB网络恢复正常了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/25/Hexo-Next主题集成Algolia搜索/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/25/Hexo-Next主题集成Algolia搜索/" itemprop="url">Hexo+Next主题集成Algolia搜索</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T19:53:27+08:00">
+                2017-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">16(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Hexo+Next主题集成Algolia搜索<br><a href="http://blog.niices.com/Hexo-Next-Algolia-Search/" target="_blank" rel="external">http://blog.niices.com/Hexo-Next-Algolia-Search/</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/" itemprop="url">Cannot retrive metalink for repository:epel.Please verify its path and try again</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-09T17:25:28+08:00">
+                2017-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">213(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>yum安装时出现：Cannot retrieve metalink for repository: epel. Please verify its path and try again<br>在CentOS 6.3 x86_64下安装php-mcrypt的时候出现了问题：Error: Cannot retrieve metalink for repository: epel. Please verify its path and try again，需要安装epel源。</p>
+<p>解决方法： 一句话：把/etc/yum.repos.d/epel.repo，文件第3行注释去掉，把第四行注释掉。具体如下：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/" itemprop="url">java.lang.NoClassDefFoundError: Could not initialize class </a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-17T23:35:49+08:00">
+                2016-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java开发/" itemprop="url" rel="index">
+                    <span itemprop="name">Java开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">808(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">3(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，服务器端返回的数据是JSON格式，由于报错了，导致无任何JSON数据返回，页面估计也没有做任何超时判断，因此也没有提示错误信息。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入URL发送请求，发现还是报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/07/06/虚拟机迁移文章总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/07/06/虚拟机迁移文章总结/" itemprop="url">虚拟机迁移文章总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-06T23:46:37+08:00">
+                2016-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">0(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">1(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/07/01/台式服务器、机架式服务器与刀片式服务器的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/07/01/台式服务器、机架式服务器与刀片式服务器的区别/" itemprop="url">台式服务器、机架式服务器与刀片式服务器的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-01T10:51:14+08:00">
+                2016-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/硬件/" itemprop="url" rel="index">
+                    <span itemprop="name">硬件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+	
+             <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <span class="post-count">1,217(字)</span>
+             </span>
+        
+          <span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">时间:</span>
+               <span class="post-count">4(分)</span>
+           </span>
+
+          <!--<span class="post-time">
+         &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共:</span>
+               <span class="post-count">42.3k(字)</span>
+           </span>-->
+	
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="塔式服务器"><a href="#塔式服务器" class="headerlink" title="塔式服务器"></a>塔式服务器</h3><p>塔式服务器一般是大家见得最多的，它的外形及结构都与普通的pc机差不多，只是个头稍大一些，其外形尺寸并无统一标准。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/01/台式服务器、机架式服务器与刀片式服务器的区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
-
 
 
 
@@ -1014,12 +2247,6 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   
 
