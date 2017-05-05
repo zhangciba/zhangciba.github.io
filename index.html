@@ -444,7 +444,8 @@
       
         
           <p>1 Windows进程间通信的各种方法</p>
-<p>进程是装入内存并准备执行的程序，每个进程都有私有的虚拟地址空间，由代码、数据以及它可利用的系统资源(如文件、管道等)组成。<br>多进程/多线程是Windows操作系统的一个基本特征。Microsoft Win32应用编程接口(Application Programming Interface, API)<br>提供了大量支持应用程序间数据共享和交换的机制，这些机制行使的活动称为进程间通信(InterProcess Communication, IPC)，<br>进程通信就是指不同进程间进行数据共享和数据交换。<br>　　正因为使用Win32 API进行进程通信方式有多种，如何选择恰当的通信方式就成为应用开发中的一个重要问题，<br>下面本文将对Win32中进程通信的几种方法加以分析和比较。<br>
+<p>进程是装入内存并准备执行的程序，每个进程都有私有的虚拟地址空间，由代码、数据以及它可利用的系统资源(如文件、管道等)组成。<br>多进程/多线程是Windows操作系统的一个基本特征。Microsoft Win32应用编程接口(Application Programming Interface, API)<br>提供了大量支持应用程序间数据共享和交换的机制，这些机制行使的活动称为进程间通信(InterProcess Communication, IPC)，<br>进程通信就是指不同进程间进行数据共享和数据交换。</p>
+<p>正因为使用Win32 API进行进程通信方式有多种，如何选择恰当的通信方式就成为应用开发中的一个重要问题，下面本文将对Win32中进程通信的几种方法加以分析和比较。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/05/Windows进程间通信/#more" rel="contents">
@@ -600,23 +601,16 @@
 
       
         
-          
-            <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
+          <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
 <p>buf,count,datatype是消息数据<br>dest,tag,comm是消息信封</p>
-<p><code>MPI_RECV(buf,count,datatype,source,tag,comm,status)</code><br>buf,count,datatype是数据消息<br>source,tag,comm是消息信息</p>
-<p>消息信封的组成&lt;源地址/目的地址，标识，通信域&gt;<br>消息数据的组成&lt;数据缓冲区起始地址，数据个数，数据类型&gt;</p>
-<p>tag标识的用途，当发送者发送两个相同的数据给同一个接受者时，如果没有消息标识，接受者将无法区分这两个消息。</p>
-<p>MPI_ANY_SOURCE 任意源<br>MPI_ANY_TAG 任意标识<br>接收操作可以接收任意发送者的消息，但是对于发送操作则必须致命单独的接收者。</p>
-<p>MPI通信域包括进程组和通信上下文。<br>编号0至N-1<br>不同的消息在不同的上下文中传递</p>
-<p>MPI_Initialized(int *flag)判断MPI_INIT是否执行了。<br>MPI_Abort(MPI_Comm comm,int errorcode)出现异常时，退出</p>
-<p>MPI_ANY_SOURCE  任意源<br>MPI_ANY_TAG  任意标识</p>
-<h4 id="编写安全的MPI程序"><a href="#编写安全的MPI程序" class="headerlink" title="编写安全的MPI程序"></a>编写安全的MPI程序</h4><p>主要的想法是为了避免死锁。<br>例如说进程0有A和C两个操作，进程1有B和D两个操作。<br>A从进程1接收消息，C向进程1发送消息<br>B从进程0接收消息，D向进程0发送消息</p>
-<p>因此A需要等待D，D需要等待B，B需要等待C，C需要等待A，导致了一个环形的等待，造成了死锁。</p>
-<p>另外一种情形，也是进程0有A和C两个操作，进程1有B和D两个操作<br>A向进程1发送消息，C从进程1接收消息<br>B向进程0发送消息，D从进程0接收消息。</p>
-<p>由于C需要等待A操作完成才能继续操作，因此C依赖于A，D需要接收从进程0发送过来的消息，因此D依赖于A操作完成，同时又必须等待B操作完成，因此D依赖于B，C需要接收从进程1发送过来的消息，因此必须等待B完成，C依赖于B，总结起来就是C依赖于A，D依赖于A，C依赖于B，D依赖于B，而A和B两个操作都要向对方发送消息，因此需要占用缓冲区，如果缓冲区的大小不够，则A操作和B操作都无法完成，导致后面的操作也就无法进行，导致进程僵死。</p>
-<p>##一种消息安全传递的通信调用秩序<br>当两个进程需要相互发送消息进行数据交换时，需要将它们的发送和接收操作按照一定的次序进行匹配，即一个进程的发送操作在前，接收操作在后，那么另一个进程的接收操作在前，发送操作在后，前后两个发送和接收操作需要相互匹配。</p>
-
-          
+<p><code>MPI_RECV(buf,count,datatype,source,tag,comm,status)</code><br>buf,count,datatype是数据消息<br>source,tag,comm是消息信息<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/27/MPI基本语法笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
