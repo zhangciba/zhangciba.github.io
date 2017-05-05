@@ -183,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -326,136 +326,17 @@
             
 
   <div id="posts" class="posts-expand">
-    
+  <header class="post-header">
 
-  
+	<h1 class="post-title" itemprop="name headline">使用磁盘对拷实现计算节点系统重装</h1>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/07/使用磁盘对拷实现计算节点系统重装/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
+</header>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">使用磁盘对拷实现计算节点系统重装</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-07T13:10:57+08:00">
-                2016-06-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/集群管理/" itemprop="url" rel="index">
-                    <span itemprop="name">集群管理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-	
-             <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">字数:</span>
-               <span class="post-count">952(字)</span>
-             </span>
-        
-          <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">时间:</span>
-               <span class="post-count">3(分)</span>
-           </span>
-
-          <!--<span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">本站共:</span>
-               <span class="post-count">42.3k(字)</span>
-           </span>-->
-	
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
     
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得更加复杂，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性能并行文件系统、MPI等并行程序库，如果直接安装一个新的系统，后续安装这些软件和配置系统环境将会是一个非常庞大的任务，为了解决这个难题，查找了很多资料，发现Linux也可以采用硬盘对拷的方式来安装系统。<br><a id="more"></a></p>
+      <p>高性能集群的用户量是非常庞大的，计算任务也是比较重，软件安装也是非常复杂，特别是一些大型计算任务在集群上运行之后，节点的软件系统、文件系统都会变得更加复杂，为了保证节点的系统、磁盘、网络配置等非常干净，在使用完系统之后，为了方便后续用户的正常使用，往往需要重装系统，重装系统有多种方式，使用U盘、光盘等安装一个全新的系统是一般会考虑的方法，但是我们现在的环境是高性能计算集群，节点上面有IB网络、高性能并行文件系统、MPI等并行程序库，如果直接安装一个新的系统，后续安装这些软件和配置系统环境将会是一个非常庞大的任务，为了解决这个难题，查找了很多资料，发现Linux也可以采用硬盘对拷的方式来安装系统。<br><a id="more"></a></p>
 <p><em>数据无价，拷贝之前一定要确定磁盘的用户数据备份了。</em></p>
 <p>首先将需要重装的节点上面的硬盘卸载下来，插入到一个负载不是很大的节点的备用硬盘仓中，然后使用fdisk -l来查看新插入的硬盘的编号，由于本集群的计算节点只有两个硬盘仓，所以后插入的硬盘的编号就是/dev/sdb了。</p>
 <h3 id="卸载lustre文件系统以及nfs文件系统挂载点。"><a href="#卸载lustre文件系统以及nfs文件系统挂载点。" class="headerlink" title="卸载lustre文件系统以及nfs文件系统挂载点。"></a>卸载lustre文件系统以及nfs文件系统挂载点。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;&apos;/public&apos;,&apos;/home&apos;,&apos;/vpublic01&apos;,&apos;/vpublic02&apos;&#125;;</span><br><span class="line">do</span><br><span class="line">  umount $i;</span><br><span class="line">done;</span><br></pre></td></tr></table></figure>
@@ -470,118 +351,7 @@
 <p>输入reboot重启即可。</p>
 <h3 id="将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。"><a href="#将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。" class="headerlink" title="将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。"></a>将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。</h3><p><em>再次强调，数据无价，拷贝之前一定要确定磁盘的用户数据备份了。</em></p>
 
-      
-    </div>
-
-    <div>
-      
-        
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
-    <div></div>
-</div>
-
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/系统重装/" rel="tag"># 系统重装</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/06/06/Linux服务器安装ipmitool简要过程/" rel="next" title="Linux服务器安装ipmitool简要过程">
-                <i class="fa fa-chevron-left"></i> Linux服务器安装ipmitool简要过程
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/07/集群计算节点配置EPEL-yum源/" rel="prev" title="集群计算节点配置EPEL Yum源">
-                集群计算节点配置EPEL Yum源 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
-
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
+    
   </div>
 
 
@@ -615,17 +385,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -759,22 +520,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载lustre文件系统以及nfs文件系统挂载点。"><span class="nav-number">1.</span> <span class="nav-text">卸载lustre文件系统以及nfs文件系统挂载点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行dd命令"><span class="nav-number">2.</span> <span class="nav-text">执行dd命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改以太网卡和InfiniBand网卡的Ip地址"><span class="nav-number">3.</span> <span class="nav-text">修改以太网卡和InfiniBand网卡的Ip地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除-etc-udev-rules-d-70-persistent-net-rules文件"><span class="nav-number">4.</span> <span class="nav-text">删除/etc/udev/rules.d/70-persistent-net.rules文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-etc-sysconfig-network文件"><span class="nav-number">5.</span> <span class="nav-text">修改/etc/sysconfig/network文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点调试"><span class="nav-number">6.</span> <span class="nav-text">节点调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。"><span class="nav-number">7.</span> <span class="nav-text">将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -903,10 +648,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
 
   
 

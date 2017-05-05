@@ -189,7 +189,7 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
     
   
 
-  <div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -332,136 +332,17 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
             
 
   <div id="posts" class="posts-expand">
-    
+  <header class="post-header">
 
-  
+	<h1 class="post-title" itemprop="name headline">MPI基本语法笔记</h1>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/MPI基本语法笔记/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
+</header>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">MPI基本语法笔记</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T23:52:05+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
-                    <span itemprop="name">高性能计算</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-	
-             <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">字数:</span>
-               <span class="post-count">713(字)</span>
-             </span>
-        
-          <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">时间:</span>
-               <span class="post-count">3(分)</span>
-           </span>
-
-          <!--<span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">本站共:</span>
-               <span class="post-count">42.3k(字)</span>
-           </span>-->
-	
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
     
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
+      <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
 <p>buf,count,datatype是消息数据<br>dest,tag,comm是消息信封</p>
 <p><code>MPI_RECV(buf,count,datatype,source,tag,comm,status)</code><br>buf,count,datatype是数据消息<br>source,tag,comm是消息信息<br><a id="more"></a></p>
 <p>消息信封的组成&lt;源地址/目的地址，标识，通信域&gt;<br>消息数据的组成&lt;数据缓冲区起始地址，数据个数，数据类型&gt;</p>
@@ -476,118 +357,7 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
 <p>由于C需要等待A操作完成才能继续操作，因此C依赖于A，D需要接收从进程0发送过来的消息，因此D依赖于A操作完成，同时又必须等待B操作完成，因此D依赖于B，C需要接收从进程1发送过来的消息，因此必须等待B完成，C依赖于B，总结起来就是C依赖于A，D依赖于A，C依赖于B，D依赖于B，而A和B两个操作都要向对方发送消息，因此需要占用缓冲区，如果缓冲区的大小不够，则A操作和B操作都无法完成，导致后面的操作也就无法进行，导致进程僵死。</p>
 <p>##一种消息安全传递的通信调用秩序<br>当两个进程需要相互发送消息进行数据交换时，需要将它们的发送和接收操作按照一定的次序进行匹配，即一个进程的发送操作在前，接收操作在后，那么另一个进程的接收操作在前，发送操作在后，前后两个发送和接收操作需要相互匹配。</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
-    <div></div>
-</div>
-
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/MPI/" rel="tag"># MPI</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/04/27/Intel-fortran编译器ifort安装/" rel="next" title="Intel fortran编译器ifort安装">
-                <i class="fa fa-chevron-left"></i> Intel fortran编译器ifort安装
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/05/Windows进程间通信/" rel="prev" title="Windows进程间通信">
-                Windows进程间通信 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
-
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
+    
   </div>
 
 
@@ -621,17 +391,8 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -765,22 +526,6 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#编写安全的MPI程序"><span class="nav-number">1.</span> <span class="nav-text">编写安全的MPI程序</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -909,10 +654,6 @@ MPI_RECV(buf,count,datatype,source,tag,comm,status)buf,count,datatype是数据�
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
 
   
 

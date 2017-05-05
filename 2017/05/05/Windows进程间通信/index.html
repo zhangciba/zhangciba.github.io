@@ -186,7 +186,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -329,136 +329,17 @@
             
 
   <div id="posts" class="posts-expand">
-    
+  <header class="post-header">
 
-  
+	<h1 class="post-title" itemprop="name headline">Windows进程间通信</h1>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/05/Windows进程间通信/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
+</header>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Windows进程间通信</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-05T14:49:32+08:00">
-                2017-05-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-	
-             <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">字数:</span>
-               <span class="post-count">4,841(字)</span>
-             </span>
-        
-          <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">时间:</span>
-               <span class="post-count">17(分)</span>
-           </span>
-
-          <!--<span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">本站共:</span>
-               <span class="post-count">42.3k(字)</span>
-           </span>-->
-	
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
     
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>1 Windows进程间通信的各种方法</p>
+      <p>1 Windows进程间通信的各种方法</p>
 <p>进程是装入内存并准备执行的程序，每个进程都有私有的虚拟地址空间，由代码、数据以及它可利用的系统资源(如文件、管道等)组成。<br>多进程/多线程是Windows操作系统的一个基本特征。Microsoft Win32应用编程接口(Application Programming Interface, API)<br>提供了大量支持应用程序间数据共享和交换的机制，这些机制行使的活动称为进程间通信(InterProcess Communication, IPC)，<br>进程通信就是指不同进程间进行数据共享和数据交换。</p>
 <p>正因为使用Win32 API进行进程通信方式有多种，如何选择恰当的通信方式就成为应用开发中的一个重要问题，下面本文将对Win32中进程通信的几种方法加以分析和比较。<br><a id="more"></a></p>
 <p>2 进程通信方法</p>
@@ -505,118 +386,7 @@
 <p>4。消息管道(Message Pipe)<br>  用于设置应用程序间的一条永久通讯通道，通过该通道可以象自己的应用程序访问一个平面文件一样读写数据。<br>  匿名管道(Anonymous Pipes) 单向流动，并且只能够在同一电脑上的各个进程之间流动。<br>  命名管道(Named Pipes) 双向，跨网络，任何进程都可以轻易的抓住，放进管道的数据有固定的格        式，而使用ReadFile()只能读取该大小的倍数。可以被使用于I/O Completion Ports</p>
 <p>5  邮件槽(Mailslots) 广播式通信,在32系统中提供的新方法，可以在不同主机间交换数据，在        WIN9X下只支持邮件槽客户<br>6。Windows套接字(Windows Socket) 它具备消息管道所有的功能，但遵守一套通信标准使的不同操作系统之上的应用程序之间可以互相通信。<br>7。Internet通信 它让应用程序从Internet地址上载或下载文件<br>8。RPC：远程过程调用，很少使用，因其与UNIX的RPC不兼容。<br>9。串行/并行通信(Serial/Parallel Communication) 它允许应用程序通过串行或并行端口与其他的应用程序通信<br>10。COM/DCOM  通过COM系统的代理存根方式进行进程间数据交换，但只能够表现在对接口函数的调用时传送数据，通过DCOM可以在不同主机间传送数据。</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
-    <div></div>
-</div>
-
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/进程通信/" rel="tag"># 进程通信</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/04/27/MPI基本语法笔记/" rel="next" title="MPI基本语法笔记">
-                <i class="fa fa-chevron-left"></i> MPI基本语法笔记
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/05/Linux进程通信/" rel="prev" title="Linux进程通信">
-                Linux进程通信 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
-
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
+    
   </div>
 
 
@@ -913,10 +683,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
 
   
 

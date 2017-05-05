@@ -183,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -326,253 +326,23 @@
             
 
   <div id="posts" class="posts-expand">
-    
+  <header class="post-header">
 
-  
+	<h1 class="post-title" itemprop="name headline">Homebrew install时遇到github权限不足</h1>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/04/29/Homebrew-install时遇到github权限不足/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
+</header>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Homebrew install时遇到github权限不足</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-29T16:29:57+08:00">
-                2016-04-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mac-OSX/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac OSX</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-	
-             <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">字数:</span>
-               <span class="post-count">125(字)</span>
-             </span>
-        
-          <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">时间:</span>
-               <span class="post-count">1(分)</span>
-           </span>
-
-          <!--<span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">本站共:</span>
-               <span class="post-count">42.3k(字)</span>
-           </span>-->
-	
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
     
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>在使用brew工具时，报了以下错误,github API 访问的权限限制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error:GitHub API rate limit exceeded for [xxxx]. (But here&apos;s the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)</span><br><span class="line">Try again in 5 minutes 54 seconds, or create an personal access token:</span><br><span class="line">https://github.com/settings/tokens</span><br><span class="line">and then set the token as: HOMEBREW_GITHUB_API_TOKEN</span><br></pre></td></tr></table></figure></p>
+      <p>在使用brew工具时，报了以下错误,github API 访问的权限限制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error:GitHub API rate limit exceeded for [xxxx]. (But here&apos;s the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)</span><br><span class="line">Try again in 5 minutes 54 seconds, or create an personal access token:</span><br><span class="line">https://github.com/settings/tokens</span><br><span class="line">and then set the token as: HOMEBREW_GITHUB_API_TOKEN</span><br></pre></td></tr></table></figure></p>
 <p>首先打开  <a href="https://github.com/settings/tokens/new" target="_blank" rel="external">https://github.com/settings/tokens/new</a></p>
 <p>登陆后，输入Homebrew，生成token</p>
 <p>设置环境变量HOMEBREW_GITHUB_API_TOKEN：</p>
 <p>将HOMEBREW_GITHUB_API_TOKEN变量设置为获取到的token,在终端输入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HOMEBREW_GITHUB_API_TOKEN=XXXXXXXXXX</span><br></pre></td></tr></table></figure></p>
 
-      
-    </div>
-
-    <div>
-      
-        
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
-    <div></div>
-</div>
-
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Homebrew/" rel="tag"># Homebrew</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/28/电脑选购参考建议/" rel="next" title="电脑选购参考建议">
-                <i class="fa fa-chevron-left"></i> 电脑选购参考建议
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/05/让MyEclipse10支持视网膜屏幕/" rel="prev" title="让MyEclipse10支持视网膜屏幕">
-                让MyEclipse10支持视网膜屏幕 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
-
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
+    
   </div>
 
 
@@ -869,10 +639,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
 
   
 

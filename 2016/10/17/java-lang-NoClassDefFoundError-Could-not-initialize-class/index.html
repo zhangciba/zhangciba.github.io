@@ -183,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -326,136 +326,17 @@
             
 
   <div id="posts" class="posts-expand">
-    
+  <header class="post-header">
 
-  
+	<h1 class="post-title" itemprop="name headline">java.lang.NoClassDefFoundError: Could not initialize class </h1>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
+</header>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">java.lang.NoClassDefFoundError: Could not initialize class </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-17T23:35:49+08:00">
-                2016-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java开发/" itemprop="url" rel="index">
-                    <span itemprop="name">Java开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-	
-             <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">字数:</span>
-               <span class="post-count">808(字)</span>
-             </span>
-        
-          <span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">时间:</span>
-               <span class="post-count">3(分)</span>
-           </span>
-
-          <!--<span class="post-time">
-         &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">本站共:</span>
-               <span class="post-count">42.3k(字)</span>
-           </span>-->
-	
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
     
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，服务器端返回的数据是JSON格式，由于报错了，导致无任何JSON数据返回，页面估计也没有做任何超时判断，因此也没有提示错误信息。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入URL发送请求，发现还是报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。<br><a id="more"></a></p>
+      <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，服务器端返回的数据是JSON格式，由于报错了，导致无任何JSON数据返回，页面估计也没有做任何超时判断，因此也没有提示错误信息。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入URL发送请求，发现还是报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。<br><a id="more"></a></p>
 <p>由于报错提示是java.lang.NoClassDefFoundError: Could not initialize class,所以第一就是根据这个错误提示去搜索解决办法。不过搜索解决办法之前，我还是去Tomcat容器里面找了一下，发现WEB-INF里面确实有这个类。所以不知道是什么原因导致的。</p>
 <p>按照网上很多人说的，这种报错一般会有如下几种原因：<br>1.这个类确实不存在，可能有如下几种原因：<br> a.编译出错，编译的编码或者版本与Tomcat容器使用的JRE版本相差太大。<br> b.类文件压根没有编译。</p>
 <p>2.同时存在两个名字一模一样的.class文件，这种情况一般是如下几种原因导致：<br> a.导入其他框架或者外置的不同的.jar文件中，存在两个相同名字的类文件，而且路径一直。这种情况一般称为包冲突。<br>   例如，Hibernate框架和Spring框架都会使用到asm.jar文件，如果同时导入这两个框架的.jar文件，会导致asm相关的类找不到，报文章题目    中的错误。<br> b.Tomcat容器的lib目录下面存在和Web项目的lib目录下面同样的类文件。</p>
@@ -464,118 +345,7 @@
 <p>后来直接跑到服务器端的CONSOLE中看到了该URL请求时的报错，首先说明一个这个URL中对应的功能是记录用户的登录信息，根据登录IP获取登录地址，并记录到数据库的日志表中。因此需要将IP地址和本地IP文件库中进行比对，从而判断IP所在省市，最后发现是文件找不到导致的错误。后来调整了文件的路径，该问题就得到了解决。</p>
 <p>是不是觉得很奇怪，一个静态类中的一个方法因为一个文件找不到却报java.lang.NoClassDefFoundError错误。</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
-    <div></div>
-</div>
-
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java开发/" rel="tag"># Java开发-</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/07/06/虚拟机迁移文章总结/" rel="next" title="虚拟机迁移文章总结">
-                <i class="fa fa-chevron-left"></i> 虚拟机迁移文章总结
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/" rel="prev" title="Cannot retrive metalink for repository:epel.Please verify its path and try again">
-                Cannot retrive metalink for repository:epel.Please verify its path and try again <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        
-  <div class="bdsharebuttonbox">
-    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-    <a href="#" class="bds_more" data-cmd="more"></a>
-    <a class="bds_count" data-cmd="count"></a>
-  </div>
-  <script>
-    window._bd_share_config = {
-      "common": {
-        "bdText": "",
-        "bdMini": "2",
-        "bdMiniList": false,
-        "bdPic": ""
-      },
-      "share": {
-        "bdSize": "16",
-        "bdStyle": "0"
-      },
-      "image": {
-        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
-        "viewText": "分享到：",
-        "viewSize": "16"
-      }
-    }
-  </script>
-
-<script>
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-      
-    </div>
+    
   </div>
 
 
@@ -872,10 +642,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
 
   
 
