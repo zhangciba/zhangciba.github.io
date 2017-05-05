@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="天河," />
+  <meta name="keywords" content="DIYER糍粑,DIYER糍粑的博客" />
 
 
 
@@ -90,16 +90,25 @@
 
 
 
-<meta name="description" content="配置如下处理器16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Brid">
+<meta name="description" content="Linux进程间通讯的几种方式的特点和优缺点，和适用场合
+由于不同的进程运行在各自不同的内存空间中。一方对于变量的修改另一方是无法感知的。因此，进程之间的信息传递不可能通过变量或其它数据结构直接进行，只能通过进程间通信来完成。
+管道(pipe)管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。
+有名管道(named pipe)有名">
 <meta property="og:type" content="article">
-<meta property="og:title" content="天河二号超级计算机">
-<meta property="og:url" content="http://blog.zhangchi.xyz/2016/06/22/天河二号超级计算机/index.html">
+<meta property="og:title" content="Linux进程通信">
+<meta property="og:url" content="http://blog.zhangchi.xyz/2017/05/05/Linux进程通信/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="配置如下处理器16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Brid">
-<meta property="og:updated_time" content="2016-06-22T12:05:19.000Z">
+<meta property="og:description" content="Linux进程间通讯的几种方式的特点和优缺点，和适用场合
+由于不同的进程运行在各自不同的内存空间中。一方对于变量的修改另一方是无法感知的。因此，进程之间的信息传递不可能通过变量或其它数据结构直接进行，只能通过进程间通信来完成。
+管道(pipe)管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。
+有名管道(named pipe)有名">
+<meta property="og:updated_time" content="2017-05-05T09:05:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天河二号超级计算机">
-<meta name="twitter:description" content="配置如下处理器16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Brid">
+<meta name="twitter:title" content="Linux进程通信">
+<meta name="twitter:description" content="Linux进程间通讯的几种方式的特点和优缺点，和适用场合
+由于不同的进程运行在各自不同的内存空间中。一方对于变量的修改另一方是无法感知的。因此，进程之间的信息传递不可能通过变量或其它数据结构直接进行，只能通过进程间通信来完成。
+管道(pipe)管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。
+有名管道(named pipe)有名">
 
 
 
@@ -127,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.zhangchi.xyz/2016/06/22/天河二号超级计算机/"/>
+  <link rel="canonical" href="http://blog.zhangchi.xyz/2017/05/05/Linux进程通信/"/>
 
 
 
 
 
-  <title>天河二号超级计算机 | DIYER糍粑的博客</title>
+  <title>Linux进程通信 | DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -335,7 +344,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/22/天河二号超级计算机/">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/05/Linux进程通信/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHANGCHI">
@@ -356,7 +365,7 @@
             
             
               
-                天河二号超级计算机
+                Linux进程通信
               
             
           </h1>
@@ -371,8 +380,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-22T09:47:49+08:00">
-                2016-06-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-05T17:00:16+08:00">
+                2017-05-05
               </time>
             
 
@@ -382,28 +391,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
-                    <span itemprop="name">高性能计算</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -412,8 +399,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/06/22/天河二号超级计算机/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/22/天河二号超级计算机/" itemprop="commentCount"></span>
+                <a href="/2017/05/05/Linux进程通信/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/05/Linux进程通信/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -438,16 +425,19 @@
       
 
       
-        <h3 id="配置如下"><a href="#配置如下" class="headerlink" title="配置如下"></a>配置如下</h3><h4 id="处理器"><a href="#处理器" class="headerlink" title="处理器"></a>处理器</h4><p>16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。<br>中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Bridge-EX核心），采用22纳米制程，峰值性能0.2112TFLOPS。<br>运算加速上，使用基于英特尔集成众核架构的Xeon Phi 31S1P协处理器，运行时钟为1.1GHz，每个使用61个核心中的57个（因为使用61个会存在运算周期协调问题），每核心籍由特殊的超线程技术能运作4个线程，产生峰值性能为1.003TFLOPS。<br><a id="more"></a></p>
-<h4 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h4><p>每个节点拥有64GB主存，而每个Xeon Phi协处理器板载8GB内存，故每节点共88GB内存，整体总计内存1.408PB。</p>
-<h4 id="外存"><a href="#外存" class="headerlink" title="外存"></a>外存</h4><p>12.4PB容量的硬盘阵列</p>
-<h4 id="主板、机架、机柜"><a href="#主板、机架、机柜" class="headerlink" title="主板、机架、机柜"></a>主板、机架、机柜</h4><p>主板、机架与机柜均由浪潮集团制造，共有125个机柜，每个机柜容纳4个机架，每个机架容纳16块主板，每个主板设置有两个计算节点。每个机柜还装有负载指示灯，根据机柜内主机的运算负载变更发光二极管的发光颜色。<br>每块主板上分为APU模块和CPM模块两部分，APU部分承载5块Xeon Phi，CPM部分承载1块Xeon Phi+4颗Xeon E5。<br>APU模块和CPM模块之间以CPU内部提供的PCI-E 3.0 16x接口进行连接，但实际由于Xeon Phi的硬件限制，仅支持至PCI-E 2.0 16x，单通道数据传输速率为10Gbps。</p>
-<h4 id="前端处理器"><a href="#前端处理器" class="headerlink" title="前端处理器"></a>前端处理器</h4><p>计算节点前端处理器为4096颗FT-1500 16核心SPARC V9架构的处理器，40纳米制程，运作时钟频率1.8GHz，热设计功耗65瓦，峰值性能144GFLOPS。</p>
-<h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><p>使用光电混合传输技术（Optoelectronics Hybrid Transport Technology），使用自制的TH Express-2主干拓扑结构网络连接，以13个大型路由器通过576个连接端口以光电传输介质与各个运算节点互联，控制器名为NRC，使用90纳米制程，单个控制器的数据吞吐量2.56Tbps，终端网络接口使用名为NIC的控制器，以PCI-E 2.0接口链接，数据传送速率6.36GB/s。</p>
-<h4 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h4><p>麒麟操作系统、基于SLURM（Simple Linux Utility for Resource Management，资源管理用单一Linux公用程序）的全局资源管理。<br>Ubuntu Linux。（Ubuntu OpenStack运行在256个高性能节点上，而且在接下来的数月将会增长至超过6400个节点。OpenStack和Ubuntu的编制工具Juju都将运行在天河二号上，使国防科技大学的合作伙伴和联盟机构能够快速部署和管理高性能云环境）</p>
-<h4 id="能耗"><a href="#能耗" class="headerlink" title="能耗"></a>能耗</h4><p>整机功耗17,808千瓦，在搭载水冷散热系统以后，功耗将达到24兆瓦，无论水冷系统的搭载与否，都是目前TOP500里功耗最大的<br>天河二号电费每年达1亿人民币<br>以6月17日公布的数据推算，每瓦性能为1.901GFLOPS，仍不及泰坦的每瓦2.143GFLOPS和IBM红杉每瓦2.177GFLOPS的成绩，但比”京”的每瓦0.830GFLOPS每和天河一号每瓦仅0.668GFLOPS都要高不少。</p>
-<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p><a href="http://lt.cjdby.net/thread-1928893-1-1.html" target="_blank" rel="external">天河二号使用率只有三成 个人可登录官网申请使用</a><br><a href="https://www.zhihu.com/question/21220111" target="_blank" rel="external">知乎:全球最快计算机天河二号的研发意义是什么</a></p>
-<p><a href="http://www.nscc-gz.cn/" target="_blank" rel="external">国家超算中心广州中心官方网址</a></p>
+        <p>Linux进程间通讯的几种方式的特点和优缺点，和适用场合</p>
+<p>由于不同的进程运行在各自不同的内存空间中。一方对于变量的修改另一方是无法感知的。因此，进程之间的信息传递不可能通过变量或其它数据结构直接进行，只能通过进程间通信来完成。</p>
+<h3 id="管道-pipe"><a href="#管道-pipe" class="headerlink" title="管道(pipe)"></a>管道(pipe)</h3><p>管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。</p>
+<h3 id="有名管道-named-pipe"><a href="#有名管道-named-pipe" class="headerlink" title="有名管道(named pipe)"></a>有名管道(named pipe)</h3><p>有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间的通信。   </p>
+<h3 id="信号量-semaphore"><a href="#信号量-semaphore" class="headerlink" title="信号量(semaphore)"></a>信号量(semaphore)</h3><p>信号量是一个计数器，可以用来控制多个进程对共享资源的访问。<br>它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。  </p>
+<h3 id="消息队列-message-queue"><a href="#消息队列-message-queue" class="headerlink" title="消息队列(message queue)"></a>消息队列(message queue)</h3><p>消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少，管道只能承载无格式字节流以及缓冲区大小受限等缺点。</p>
+<h3 id="信号-signal"><a href="#信号-signal" class="headerlink" title="信号(signal)"></a>信号(signal)</h3><p>信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。 </p>
+<h3 id="共享内存-shared-memory"><a href="#共享内存-shared-memory" class="headerlink" title="共享内存(shared memory)"></a>共享内存(shared memory)</h3><p>共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的IPC方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，<br>如信号量，配合使用，来实现进程间的同步和通信。 </p>
+<h3 id="套接字-socket"><a href="#套接字-socket" class="headerlink" title="套接字(socket)"></a>套接字(socket)</h3><p>套解口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同及其间的进程通信。<br>管道的主要局限性正体现在它的特点上：<br>只支持单向数据流；<br>只能用于具有亲缘关系的进程之间；没有名字；<br>管道的缓冲区是有限的(管道制存在于内存中，在管道创建时，为缓冲区分配一个页面大小)；<br>管道所传送的是无格式字节流，这就要求管道的读出方和写入方必须事先约定好数据的格式，比如多少字节算作一个消息(或命令，或记录)等等；</p>
+<h3 id="管道通信-PIPE"><a href="#管道通信-PIPE" class="headerlink" title="管道通信(PIPE)"></a>管道通信(PIPE)</h3><p>两个进程利用管道进行通信时．发送信息的进程称为写进程。接收信息的进程称为读进程。管道通信方式的中间介质就是文件．通常称这种文件为管道文件．它就像管道一样将一个写进程和一个读进程连接在一起，实现两个进程之间的通信。写进程通过写入端(发送端)往管道文件中写入信息；读进程通过读出端(接收端)从管道文件中读取信息。两个进程协调不断地进行写和读，便会构成双方通过管道传递信息的流水线。<br>利用系统调用PIPE()可以创建一个无名管道文件，通常称为无名管道或PIPE；利用系统调用MKNOD()可以创建一个有名管道文件．通常称为有名管道或FIFO。无名管道是一种非永久性的管道通信机构．当它访问的进程全部终止时，它也将随之被撤消。无名管道只能用在具有家族联系的进程之间。有名管道可以长期存在于系统之中．而且提供给任意关系的进程使用，但是使用不当容易导致出错．所以操作系统将命名管道的管理权交由系统来加以控制管道文件被创建后，可以通过系统调用WRITE()和READ()来实现对管道的读写操作；通信完后，可用CLOSE()将管道文件关闭。 </p>
+<h3 id="消息缓冲通信-MESSAGE"><a href="#消息缓冲通信-MESSAGE" class="headerlink" title="消息缓冲通信(MESSAGE)"></a>消息缓冲通信(MESSAGE)</h3><p>多个独立的进程之间可以通过消息缓冲机制来相互通信．这种通信的实现是以消息缓冲区为中间介质．通信双方的发送和接收操作均以消息为单位。在存储器中，消息缓冲区被组织成队列，通常称之为消息队列。消息队列一旦创建后即可由多进程共享．发送消息的进程可以在任意时刻发送任意个消息到指定的消息队列上，并检查是否有接收进程在等待它所发送的消息。若有则唤醒它：而接收消息的进程可以在需要消息的时候到指定的消息队列上获取消息．如果消息还没有到来。则转入睡眠状态等待。</p>
+<h3 id="共享内存通信-SHARED-MEMORY"><a href="#共享内存通信-SHARED-MEMORY" class="headerlink" title="共享内存通信(SHARED MEMORY)"></a>共享内存通信(SHARED MEMORY)</h3><p>针对消息缓冲需要占用CPU进行消息复制的缺点．OS提供了一种进程间直接进行数据交换的通信方式一共享内存 顾名思义．这种通信方式允许多个进程在外部通信协议或同步，互斥机制的支持下使用同一个内存段(作为中间介质)进行通信．它是一种最有效的数据通信方式，其特点是没有中间环节．直接将共享的内存页面通过附接．映射到相互通信的进程各自的虚拟地址空间中．从而使多个进程可以直接访问同一个物理内存页面．如同访问自己的私有空间一样(但实质上不是私有的而是共享的)。因此这种进程间通信方式是在同一个计算机系统中的诸进程间实现通信的最快捷的方法．而它的局限性也在于此．即共享内存的诸进程必须共处同一个计算机系统．有物理内存可以共享才行。</p>
+<h3 id="三种方式的特点-优缺点"><a href="#三种方式的特点-优缺点" class="headerlink" title="三种方式的特点(优缺点)"></a>三种方式的特点(优缺点)</h3><p>1无名管道简单方便。但局限于单向通信的工作方式。并且只能在创建它的进程及其子孙进程之间实现管道的共享：有名管道虽然可以提供给任意关系的进程使用．但是由于其长期存在于系统之中，使用不当容易出错。<br>2消息缓冲可以不再局限于父子进程．而允许任意进程通过共享消息队列来实现进程间通信．并由系统调用函数来实现消息发送和接收之间的同步．从而使得用户在使用消息缓冲进行通信时不再需要考虑同步问题．使用方便，但是信息的复制需要额外消耗CPU的时间．不适宜于信息量大或操作频繁的场合。<br>3共享内存针对消息缓冲的缺点改而利用内存缓冲区直接交换信息，无须复制，快捷、信息量大是其优点。但是共享内存的通信方式是通过将共享的内存缓冲区直接附加到进程的虚拟地址空间中来实现的．因此，这些进程之间的读写操作的同步问题操作系统无法实现。必须由各进程利用其他同步工具解决。另外，由于内存实体存在于计算机系统中．所以只能由处于同一个计算机系统中的诸进程共享。不方便网络通信。</p>
 
       
     </div>
@@ -475,12 +465,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/天河/" rel="tag"># 天河</a>
-          
-        </div>
-      
 
       
         
@@ -490,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/21/论文阅读之Live-Migration-of-Virtual-Machine-Based-on-Full-System-Trace-and-Replay/" rel="next" title="论文阅读之Live Migration of Virtual Machine Based on Full System Trace and Replay">
-                <i class="fa fa-chevron-left"></i> 论文阅读之Live Migration of Virtual Machine Based on Full System Trace and Replay
+              <a href="/2017/05/05/Windows进程间通信/" rel="next" title="Windows进程间通信">
+                <i class="fa fa-chevron-left"></i> Windows进程间通信
               </a>
             
           </div>
@@ -499,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/23/Evaluating-Container-Platforms-at-Scale/" rel="prev" title="Evaluating Container Platforms at Scale">
-                Evaluating Container Platforms at Scale <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -517,10 +497,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/22/天河二号超级计算机/"
-     data-title="天河二号超级计算机"
+        <div class="ds-share flat" data-thread-key="2017/05/05/Linux进程通信/"
+     data-title="Linux进程通信"
      data-content=""
-     data-url="http://blog.zhangchi.xyz/2016/06/22/天河二号超级计算机/">
+     data-url="http://blog.zhangchi.xyz/2017/05/05/Linux进程通信/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -550,8 +530,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/22/天河二号超级计算机/"
-           data-title="天河二号超级计算机" data-url="http://blog.zhangchi.xyz/2016/06/22/天河二号超级计算机/">
+      <div class="ds-thread" data-thread-key="2017/05/05/Linux进程通信/"
+           data-title="Linux进程通信" data-url="http://blog.zhangchi.xyz/2017/05/05/Linux进程通信/">
       </div>
     
   </div>
@@ -728,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置如下"><span class="nav-number">1.</span> <span class="nav-text">配置如下</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理器"><span class="nav-number">1.1.</span> <span class="nav-text">处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存"><span class="nav-number">1.2.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外存"><span class="nav-number">1.3.</span> <span class="nav-text">外存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主板、机架、机柜"><span class="nav-number">1.4.</span> <span class="nav-text">主板、机架、机柜</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端处理器"><span class="nav-number">1.5.</span> <span class="nav-text">前端处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接"><span class="nav-number">1.6.</span> <span class="nav-text">连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统"><span class="nav-number">1.7.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#能耗"><span class="nav-number">1.8.</span> <span class="nav-text">能耗</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关文章"><span class="nav-number">2.</span> <span class="nav-text">相关文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#管道-pipe"><span class="nav-number">1.</span> <span class="nav-text">管道(pipe)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有名管道-named-pipe"><span class="nav-number">2.</span> <span class="nav-text">有名管道(named pipe)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信号量-semaphore"><span class="nav-number">3.</span> <span class="nav-text">信号量(semaphore)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列-message-queue"><span class="nav-number">4.</span> <span class="nav-text">消息队列(message queue)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信号-signal"><span class="nav-number">5.</span> <span class="nav-text">信号(signal)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享内存-shared-memory"><span class="nav-number">6.</span> <span class="nav-text">共享内存(shared memory)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#套接字-socket"><span class="nav-number">7.</span> <span class="nav-text">套接字(socket)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道通信-PIPE"><span class="nav-number">8.</span> <span class="nav-text">管道通信(PIPE)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息缓冲通信-MESSAGE"><span class="nav-number">9.</span> <span class="nav-text">消息缓冲通信(MESSAGE)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共享内存通信-SHARED-MEMORY"><span class="nav-number">10.</span> <span class="nav-text">共享内存通信(SHARED MEMORY)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三种方式的特点-优缺点"><span class="nav-number">11.</span> <span class="nav-text">三种方式的特点(优缺点)</span></a></li></ol></div>
             
 
           </div>
