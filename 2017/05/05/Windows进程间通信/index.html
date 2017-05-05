@@ -1,0 +1,1141 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="进程通信," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="1 Windows进程间通信的各种方法
+进程是装入内存并准备执行的程序，每个进程都有私有的虚拟地址空间，由代码、数据以及它可利用的系统资源(如文件、管道等)组成。多进程/多线程是Windows操作系统的一个基本特征。Microsoft Win32应用编程接口(Application Programming Interface, API)    提供了大量支持应用程序间数据共享和交换的机制，这些机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows进程间通信">
+<meta property="og:url" content="http://blog.zhangchi.xyz/2017/05/05/Windows进程间通信/index.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="1 Windows进程间通信的各种方法
+进程是装入内存并准备执行的程序，每个进程都有私有的虚拟地址空间，由代码、数据以及它可利用的系统资源(如文件、管道等)组成。多进程/多线程是Windows操作系统的一个基本特征。Microsoft Win32应用编程接口(Application Programming Interface, API)    提供了大量支持应用程序间数据共享和交换的机制，这些机制">
+<meta property="og:updated_time" content="2017-05-05T06:51:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows进程间通信">
+<meta name="twitter:description" content="1 Windows进程间通信的各种方法
+进程是装入内存并准备执行的程序，每个进程都有私有的虚拟地址空间，由代码、数据以及它可利用的系统资源(如文件、管道等)组成。多进程/多线程是Windows操作系统的一个基本特征。Microsoft Win32应用编程接口(Application Programming Interface, API)    提供了大量支持应用程序间数据共享和交换的机制，这些机制">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'CIBA'
+    },
+    algolia: {
+      applicationID: 'VBJ731PVZT',
+      apiKey: '27b813c2a870bf21800bd7011dc31d4e',
+      indexName: 'HEXO',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索关键字","hits_empty":"没有找到与 [ ${query} ] 有关的内容","hits_stats":"${hits} 条记录，共耗时 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangchi.xyz/2017/05/05/Windows进程间通信/"/>
+
+
+
+
+
+  <title>Windows进程间通信 | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77014447-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/05/Windows进程间通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Windows进程间通信
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-05T14:49:32+08:00">
+                2017-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/05/Windows进程间通信/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/05/Windows进程间通信/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1 Windows进程间通信的各种方法</p>
+<p>进程是装入内存并准备执行的程序，每个进程都有私有的虚拟地址空间，由代码、数据以及它可利用的系统资源(如文件、管道等)组成。<br>多进程/多线程是Windows操作系统的一个基本特征。Microsoft Win32应用编程接口(Application Programming Interface, API)<br>    提供了大量支持应用程序间数据共享和交换的机制，这些机制行使的活动称为进程间通信(InterProcess Communication, IPC)，<br>    进程通信就是指不同进程间进行数据共享和数据交换。<br>    　　正因为使用Win32 API进行进程通信方式有多种，如何选择恰当的通信方式就成为应用开发中的一个重要问题，<br>    下面本文将对Win32中进程通信的几种方法加以分析和比较。</p>
+<pre><code>2 进程通信方法
+
+2.1 文件映射
+
+文件映射(Memory-Mapped Files)能使进程把文件内容当作进程地址区间一块内存那样来对待。因此，进程不必使用文件I/O操作，
+只需简单的指针操作就可读取和修改文件的内容。
+Win32 API允许多个进程访问同一文件映射对象，各个进程在它自己的地址空间里接收内存的指针。通过使用这些指针，不同进程就可以读或修改文件的内容，
+实现了对文件中数据的共享。
+应用程序有三种方法来使多个进程共享一个文件映射对象。
+(1)继承：第一个进程建立文件映射对象，它的子进程继承该对象的句柄。
+(2)命名文件映射：第一个进程在建立文件映射对象时可以给该对象指定一个名字(可与文件名不同)。第二个进程可通过这个名字打开此文件映射对象。
+另外，第一个进程也可以通过一些其它IPC机制(有名管道、邮件槽等)把名字传给第二个进程。
+(3)句柄复制：第一个进程建立文件映射对象，然后通过其它IPC机制(有名管道、邮件槽等)把对象句柄传递给第二个进程。
+第二个进程复制该句柄就取得对该文件映射对象的访问权限。
+文件映射是在多个进程间共享数据的非常有效方法，有较好的安全性。但文件映射只能用于本地机器的进程之间，不能用于网络中
+，而开发者还必须控制进程间的同步。
+
+2.2 共享内存
+
+Win32 API中共享内存(Shared Memory)实际就是文件映射的一种特殊情况。进程在创建文件映射对象时用0xFFFFFFFF来代替 文件句柄(HANDLE)，
+
+就表示了对应的文件映射对象是从操作系统页面文件访问内存，其它进程打开该文件映射对象就可以访问该内存块。由于共享内存是用 文件映射实现的，
+所以它也有较好的安全性，也只能运行于同一计算机上的进程之间。
+
+a.设定一块共享内存区域
+
+HANDLE CreateFileMapping(HANDLE,LPSECURITY_ATTRIBUTES, DWORD, DWORD, DWORD, LPCSTR)// 产生一个file-mapping核心对象
+LPVOID MapViewOfFile(
+            HANDLE hFileMappingObject,
+                DWORD dwDesiredAcess,
+                DWORD dwFileOffsetHigh,
+                    DWORD dwFileOffsetLow,
+                    DWORD dwNumberOfBytesToMap
+        );得到共享内存的指针
+
+b.找出共享内存
+    决定这块内存要以点对点（peer to peer)的形式呈现每个进程都必须有相同的能力，产生共享内存并将它初始化。每个进程都应该调用CreateFileMapping(),
+
+    然后调用GetLastError().如果传回的错误代码是 ERROR_ALREADY_EXISTS,那么进程就可以假设这一共享内存区 域已经被别的进程打开并初始化了，
+
+    否则该进程就可以合理的认为自己 排在第 一位，并接下来将共享内存初始化。还是要使用client/server架构中只有server进程才应该产生并初始化共享内存。
+    所有的进程都应该使用
+    HANDLE OpenFileMapping(DWORD dwDesiredAccess,
+            BOOL bInheritHandle,
+            LPCTSTR lpName);
+</code></pre><p>再调用MapViewOfFile(),取得共享内存的指针</p>
+<p>c.同步处理(Mutex)</p>
+<pre><code>d.清理(Cleaning up) BOOL UnmapViewOfFile(LPCVOID lpBaseAddress);
+
+CloseHandle()
+
+
+2.3 匿名管道
+管道(Pipe)是一种具有两个端点的通信通道：有一端句柄的进程可以和有另一端句柄的进程通信。管道可以是单向－一端是只读的，另一端点是只写的；
+也可以是双向的一管道的两端点既可读也可写。
+
+匿名管道(Anonymous Pipe)是 在父进程和子进程之间，或同一父进程的两个子进程之间传输数据的无名字的单向管道。通常由父进程创建管 道，
+
+然后由要通信的子进程继承通道的读端点句柄或写 端点句柄，然后实现通信。父进程还可以建立两个或更多个继承匿名管道读和写句柄的子进程。
+这些子进程 可以使用管道直接通信，不需要通过父进程。
+匿名管道是单机上实现子进程标准I/O重定向的有效方法，它不能在网上使用，也不能用于两个不相关的进程之间。
+
+2.4 命名管道
+命名管道(Named Pipe)是服务器进程和一个或多个客户进程之间通信的单向或双向管道。不同于匿名管道的是命名管道可以在不相关的进程之间和不 同计算机之间使用，
+服务器建立命名管道时给它指定一个名字，任何进程都可以通过该名字打开管道的另一端，根据给定的权限和服务器进程通信。
+命名管道提供了相对简单的编程接口，使通过网络传输数据并不比同一计算机上两进程之间通信更困难，不过如果要同时和多个进程通信它就力不从心了。
+
+2.5 邮件槽
+邮件槽(Mailslots)提 供进程间单向通信能力，任何进程都能建立邮件槽成为邮件槽服务器。其它进程，称为邮件槽客户，可以通过邮件槽的名字给 
+邮件槽服务器进程发送消息。进来的消 息一直放在邮件槽中，直到服务器进程读取它为止。一个进程既可以是邮件槽服务器也可以是邮件槽客户，
+因此可建立多个 邮件槽实现进程间的双向通信。
+通过邮件槽可以给本地计算机上的邮件槽、其它计算机上的邮件槽或指定网络区域中所有计算机上有同样名字的邮件槽发送消息。
+广播通信的消息长度不能超过400字节，非广播消息的长度则受邮件槽服务器指定的最大消息长度的限制。
+邮件槽与命名管道相似，不过它传输数据是通过不可靠的数据报(如TCP/IP协议中的UDP包)完成的，一旦网络发生错误则无法保证消息正确地接收，
+而 命名管道传输数据则是建立在可靠连接基础上的。不过邮件槽有简化的编程接口和给指定网络区域内的所有计算机广播消息的能力，
+所以邮件槽不失为应用程序发送 和接收消息的另一种选择。
+
+2.6 剪贴板
+　 　剪贴板(Clipped Board)实质是Win32 API中一组用来传输数据的函数和消息，为Windows应用程序之间进行数据共享提供了一个 中介，
+Windows已建立的剪切(复制)－粘贴的机制为不同应用程序之间共享不同格式数据提供了一条捷径。当用户在应用程序中执行剪切或复制操作时，
+应 用程序把选取的数据用一种或多种格式放在剪贴板上。然后任何其它应用程序都可以从剪贴板上拾取数据，从给定格式中选择适合自己的格式。
+剪贴板 是一个非常松散的交换媒介，可以支持任何数据格式，每一格式由一无符号整数标识，对标准(预定义)剪贴板格式，该值是Win32 API定义的常量；
+对非 标准格式可以使用Register Clipboard Format函数注册为新的剪贴板格式。利用剪贴板进行交换的数据只需在数据格式上一致或都可以 
+转化为某种格式就行。但剪贴板只能在基于Windows的程序中使用，不能在网络上使用。
+
+
+
+2.7 动态数据交换
+动态数据交换(DDE)是使用共享内存在应用程序之间进行数据交换的一种进程间通信形式。应用程序可以使用DDE进行一次性数据传输，也可以当出现新数据时，
+通过发送更新值在应用程序间动态交换数据。
+DDE和剪贴板一样既支持标准数据格式(如文本、位图等)，又可以支持自己定义的数据格式。但它们的数据传输机制却不同，一个明显区别是剪贴板操作几乎 
+总是用作对用户指定操作的一次性应答－如从菜单中选择Paste命令。尽管DDE也可以由用户启动，但它继续发挥作用一般不必用户进一步干预。DDE有三 种数据交换方式：
+(1) 冷链：数据交换是一次性数据传输，与剪贴板相同。
+(2) 温链：当数据交换时服务器通知客户，然后客户必须请求新的数据。
+(3) 热链：当数据交换时服务器自动给客户发送数据。
+DDE交换可以发生在单机或网络中不同计算机的应用程序之间。开发者还可以定义定制的DDE数据格式进行应用程序之间特别目的IPC，它们有更紧密耦合的通信要求。
+大多数基于Windows的应用程序都支持DDE。
+
+2.8 对象连接与嵌入
+应用程序利用对象连接与嵌入(OLE)技术管理复合文档(由多种数据格式组成的文档)，OLE提供使某应用程序更容易调用其它应用程序进行数据编辑的服 务。
+例如，OLE支持的字处理器可以嵌套电子表格，当用户要编辑电子表格时OLE库可自动启动电子表格编辑器。当用户退出电子表格编辑器时，
+该表格已在原 始字处理器文档中得到更新。在这里电子表格编辑器变成了字处理器的扩展，而如果使用DDE，用户要显式地启动电子表格编辑器。
+同DDE技术相同，大多数基于Windows的应用程序都支持OLE技术。
+
+2.9 动态连接库
+Win32动态连接库(DLL)中的全局数据可以被调用DLL的所有进程共享，这就又给进程间通信开辟了一条新的途径，当然访问时要注意同步问题。
+虽然可以通过DLL进行进程间数据共享，但从数据安全的角度考虑，我们并不提倡这种方法，使用带有访问权限控制的共享内存的方法更好一些。
+
+2.10 远程过程调用
+Win32 API提供的远程过程调用(RPC)使应用程序可以使用远程调用函数，这使在网络上用RPC进行进程通信就像函数调用那样简单。
+RPC既可以在单机不同进程间使用也可以在网络中使用。
+由于Win32 API提供的RPC服从OSF-DCE (Open Software Foundation Distributed Computing Environment)标准。
+所以通过 Win32 API编写的RPC应用程序能与其它操作系统上支持DEC的RPC应用程序通信。使用RPC开发者可以建立高性能、紧密耦合的分布式应用程 序。
+
+2.11 NetBios函数
+Win32 API提供NetBios函数用于处理低级网络控制，这主要是为IBM NetBios系统编写与Windows的接口。除非那些有特殊低级网络功能要求的应用程序，
+其它应用程序最好不要使用NetBios函数来进行进程间通信。
+
+2.12 Sockets
+Windows Sockets规范是以U.C.Berkeley大学BSD UNIX中流行的Socket接口为范例定义的一套Windows下的网 络编程接口。除了Berkeley Socket原有的库函数以外
+，还扩展了一组针对Windows的函数，使程序员可以充分利用Windows的消息机 制进行编程。
+现在通过Sockets实现进程通信的网络应用越来越多，这主要的原因是Sockets的跨平台性要比其它IPC机制好得多，另 外WinSock 2.0不仅支持TCP/IP协议，
+而且还支持其它协议(如IPX)。Sockets的唯一缺点是它支持的是底层通信操作，这使得在单机 的进程间进行简单数据传递不太方便，
+这时使用下面将介绍的WM_COPYDATA消息将更合适些。
+
+2.13 WM_COPYDATA消息
+WM_COPYDATA是一种非常强大却鲜为人知的消息。当一个应用向另一个应用传送数据时，发送方只需使用调用SendMessage函数，
+参数是目 的窗口的句柄、传递数据的起始地址、WM_COPYDATA消息。接收方只需像处理其它消息那样处理WM_COPY DATA消息，这样收发双方就实现了 数据共享。
+WM_COPYDATA是一种非常简单的方法，它在底层实际上是通过文件映射来实现的。
+
+它的缺点是灵活性不高，并且它只能用于Windows平台的单机环境下。
+
+3 结束语
+
+　　Win32 API为应用程序实现进程间通信提供了如此多种选择方案，
+那么开发者如何进行选择呢？通常在决定使用哪种IPC方法之前应考虑以下一些问题：
+(1)应用程序是在网络环境下还是在单机环境下工作。
+
+方法一：WM_COPYDATA 
+HWND hReceiveDataWindow = FindWindow(NULL,....)
+COPYDATASTRUCT data;
+data.cbdata = strlen(pStr);
+data.lpData = pStr;
+SendMessage(hReceiveDataWindow ,WM_COPYDATA,(WPARAM)GetFocus(),(LPARAM)&amp;data);   
+REF.最简单的方式
+http://www.cppblog.com/TechLab/archive/2005/12/30/2272.aspx
+
+
+方法二：dll共享 
+</code></pre><p>#pragma data_seg (“.ASHARE”)<br>    int iWhatYouUseInTwo = 0;</p>
+<p>#pragma data_seg() </p>
+<pre><code>方法三：映象文件 
+REF.最基础，效率最高的方法
+最好的参考书《Windows核心编程》第17章 内存映射文件
+http://blog.codingnow.com/2005/10/interprocess_communications.html
+
+方法四：匿名管道：CreatePipe 
+方法五：命名管道：createnamedpipe
+REF.
+http://www.pediy.com/bbshtml/bbs8/pediy8-724.htm
+
+方法六：邮件通道 
+
+方法七：网络接口，socket，但要求有网卡。可以实现不同主机间的IPC
+另一篇总结的比较好的文章
+http://www.seeitco.com/doc/Html/Visual%20C++/205637623.html
+
+
+进程通常被定义为一个正在运行的程序的实例，它由两个部分组成：
+      一个是操作系统用来管理进程的内核对象。内核对象也是系统用来存放关于进程的统计信息的地方
+            另一个是地址空间，它包含所有的可执行模块或DLL模块的代码和数据。它还包含动态分配的空间。
+        如线程堆栈和堆分配空间。每个进程被赋予它自己的虚拟地址空间，当进程中的一个线程正在运行时，该线程可以访问只属于它的进程的内存。
+        属于其它进程的内存则是隐藏的，并不能被正在运行的线程访问。
+          为了能在两个进程之间进行通讯，由以下几种方法可供参考：
+
+          0。剪贴板Clipboard: 在16位时代常使用的方式，CWnd中提供支持
+
+          1。窗口消息 标准的Windows消息以及专用的WM_COPYDATA消息 SENDMESSAGE()接收端必须有一个窗口
+
+          2。使用共享内存方式（Shared Memory)
+            a.设定一块共享内存区域         
+            HANDLE CreateFileMapping(HANDLE,LPSECURITY_ATTRIBUTES, DWORD, DWORD, DWORD, LPCSTR)
+    产生一个file-mapping核心对象
+        LPVOID MapViewOfFile(
+                    HANDLE hFileMappingObject,
+                        DWORD dwDesiredAcess,
+                            DWORD dwFileOffsetHigh,
+                                DWORD dwFileOffsetLow,
+                                    DWORD dwNumberOfBytesToMap
+                                    );
+        得到共享内存的指针
+          b.找出共享内存
+              决定这块内存要以点对点（peer to peer)的形式呈现
+                  每个进程都必须有相同的能力，产生共享内存并将它初始化。每个进程
+                      都应该调用CreateFileMapping(),然后调用GetLastError().如果传回的
+                          错误代码是ERROR_ALREADY_EXISTS,那么进程就可以假设这一共享内存区        域已经被别的进程打开并初始化了，否则该进程就可以合理的认为自己 排在第        一位，并接下来将共享内存初始化。
+                          还是要使用client/server架构中
+                                只有server进程才应该产生并初始化共享内存。所有的进程都应该使用
+
+                            HANDLE OpenFileMapping(DWORD dwDesiredAccess,
+                                                                      BOOL bInheritHandle,
+                                                                                        LPCTSTR lpName);
+    再调用MapViewOfFile(),取得共享内存的指针
+  c.同步处理(Mutex)
+  d.清理(Cleaning up) BOOL UnmapViewOfFile(LPCVOID lpBaseAddress);
+                          CloseHandle()
+
+3。动态数据交换（DDE）通过维护全局分配内存使的应用程序间传递成为可能
+  其方式是再一块全局内存中手工放置大量的数据，然后使用窗口消息传递内存    指针.这是16位WIN时代使用的方式，因为在WIN32下已经没有全局和局部内存  
+    了，现在的内存只有一种就是虚存。 
+
+    4。消息管道(Message Pipe)
+  用于设置应用程序间的一条永久通讯通道，通过该通道可以象自己的应用程序
+    访问一个平面文件一样读写数据。
+      匿名管道(Anonymous Pipes)
+      单向流动，并且只能够在同一电脑上的各个进程之间流动。
+        命名管道(Named Pipes)
+      双向，跨网络，任何进程都可以轻易的抓住，放进管道的数据有固定的格        式，而使用ReadFile()只能读取该大小的倍数。
+            可以被使用于I/O Completion Ports
+
+        5  邮件槽(Mailslots)
+    广播式通信,在32系统中提供的新方法，可以在不同主机间交换数据，在        WIN9X下只支持邮件槽客户
+
+    6。Windows套接字(Windows Socket)
+  它具备消息管道所有的功能，但遵守一套通信标准使的不同操作系统之上的应    用程序之间可以互相通信。
+
+  7。Internet通信 它让应用程序从Internet地址上载或下载文件
+
+  8。RPC：远程过程调用，很少使用，因其与UNIX的RPC不兼容。
+
+  9。串行/并行通信(Serial/Parallel Communication)
+  它允许应用程序通过串行或并行端口与其他的应用程序通信
+
+  10。COM/DCOM
+
+   通过COM系统的代理存根方式进行进程间数据交换，但只能够表现在对接口    
+
+  函数的调用时传送数据，通过DCOM可以在不同主机间传送数据。
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/进程通信/" rel="tag"># 进程通信</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/27/MPI基本语法笔记/" rel="next" title="MPI基本语法笔记">
+                <i class="fa fa-chevron-left"></i> MPI基本语法笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/05/05/Windows进程间通信/"
+     data-title="Windows进程间通信"
+     data-content=""
+     data-url="http://blog.zhangchi.xyz/2017/05/05/Windows进程间通信/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/05/Windows进程间通信/"
+           data-title="Windows进程间通信" data-url="http://blog.zhangchi.xyz/2017/05/05/Windows进程间通信/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,程序员的博客</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangciba" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhangchixtacbn" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://adherence.cn" title="小燕子之家" target="_blank">小燕子之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/zhangchi" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/zhangchixtacbn" title="CSDN" target="_blank">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhangchixtacbn.blog.163.com" title="网易博客" target="_blank">网易博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://davi.space" title="Davi-Space" target="_blank">Davi-Space</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jayxhj.com" title="豪杰写字的地方" target="_blank">豪杰写字的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/ryanlamp/" title="大兵奋斗的地方" target="_blank">大兵奋斗的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hust.edu.cn" title="华中科技大学" target="_blank">华中科技大学</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangciba"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
