@@ -1223,6 +1223,31 @@ connlimit参数：　　–connlimit-above n 　　　＃限制为多少个　�
   </script>
 
 
+  <! -- 添加捐赠图标 -->
+<div class ="post-donate">
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏"></a>
+            <span class="donate_txt">
+               <br>
+	        <%=theme.donate_message%>
+	    </span>
+	    <br>
+    </div>  
+    <div id="donate_guide" class="donate_bar center hidden" >
+            <!-- 支付宝打赏图案 -->
+            <img src="<%=theme.alipay%>" alt="支付宝打赏"> 
+            <!-- 微信打赏图案 -->
+            <img src="<%=theme.wechat%>" alt="微信打赏">  
+    </div>
+    <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function(){
+                $('#donate_board').addClass('hidden');
+	        $('#donate_guide').removeClass('hidden');
+	    }
+    </script>
+</div>
+    <! -- 添加捐赠图标 -->
+
 
 </body>
 </html>
