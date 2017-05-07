@@ -593,6 +593,9 @@ connlimit参数：　　–connlimit-above n 　　　＃限制为多少个　�
   </article>
 
 
+    <% if (!index && theme.donate.enable){ %>
+       	 <%- partial('donate') %>
+    <% } %>
 
     <div class="post-spread">
       
@@ -634,9 +637,6 @@ connlimit参数：　　–connlimit-above n 　　　＃限制为多少个　�
 </script>
 
       
-      <% if (!index && theme.donate){ %>
-	      <%- partial('donate') %>
-      <% } %>
     </div>
   </div>
 

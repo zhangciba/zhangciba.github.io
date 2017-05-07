@@ -556,6 +556,9 @@
   </article>
 
 
+    <% if (!index && theme.donate.enable){ %>
+       	 <%- partial('donate') %>
+    <% } %>
 
     <div class="post-spread">
       
@@ -597,9 +600,6 @@
 </script>
 
       
-      <% if (!index && theme.donate){ %>
-	      <%- partial('donate') %>
-      <% } %>
     </div>
   </div>
 
