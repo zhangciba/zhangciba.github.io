@@ -423,7 +423,7 @@
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">131</span>
+               <span class="post-count">139</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -469,9 +469,10 @@
       
         
           
-            <p><code>socket_connect_unix failed: 15137
+            <p><a href="http://blog.csdn.net/dream_angel_z/article/details/44225669/" target="_blank" rel="external">安装参考教程</a></p>
+<p><code>socket_connect_unix failed: 15137
 qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)</code><br>遇到以上问题，一般的原因有以下两种：<br>1.管理节点的trqauthd没有启动；<br>2./var/spool/torque/mom_priv中的config文件中的pbsserver参数设置有问题。<br>3.防火墙没有关闭。</p>
-<p>解决办法分别<br>1.重启管理节点的trqauthd服务，service trqauthd restart；<br>2.将config文件中的$pbsserver参数设置为正确的管理节点主机名；<br>3.将防火墙iptables或者firewalld等关闭，或者添加端口允许。</p>
+<p>解决办法分别如下：<br>1.重启管理节点的trqauthd服务，service trqauthd restart；<br>2.将config文件中的$pbsserver参数设置为正确的管理节点主机名；<br>3.将防火墙iptables或者firewalld等关闭，或者添加端口允许。</p>
 
           
         

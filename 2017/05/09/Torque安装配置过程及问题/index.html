@@ -90,19 +90,22 @@
 
 
 
-<meta name="description" content="socket_connect_unix failed: 15137
-qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)遇到以上问题，一般的原因有以下两种：1.管理节点的trqauthd没有启动；2./var/spool/torque/mom_priv中的config文件中的pbs">
+<meta name="description" content="安装参考教程
+socket_connect_unix failed: 15137
+qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)遇到以上问题，一般的原因有以下两种：1.管理节点的trqauthd没有启动；2./var/spool/torque/mom_priv中的config">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Torque安装配置过程及问题">
 <meta property="og:url" content="http://blog.zhangchi.xyz/2017/05/09/Torque安装配置过程及问题/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="socket_connect_unix failed: 15137
-qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)遇到以上问题，一般的原因有以下两种：1.管理节点的trqauthd没有启动；2./var/spool/torque/mom_priv中的config文件中的pbs">
-<meta property="og:updated_time" content="2017-05-09T13:27:24.000Z">
+<meta property="og:description" content="安装参考教程
+socket_connect_unix failed: 15137
+qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)遇到以上问题，一般的原因有以下两种：1.管理节点的trqauthd没有启动；2./var/spool/torque/mom_priv中的config">
+<meta property="og:updated_time" content="2017-05-09T13:30:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Torque安装配置过程及问题">
-<meta name="twitter:description" content="socket_connect_unix failed: 15137
-qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)遇到以上问题，一般的原因有以下两种：1.管理节点的trqauthd没有启动；2./var/spool/torque/mom_priv中的config文件中的pbs">
+<meta name="twitter:description" content="安装参考教程
+socket_connect_unix failed: 15137
+qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)遇到以上问题，一般的原因有以下两种：1.管理节点的trqauthd没有启动；2./var/spool/torque/mom_priv中的config">
 
 
 
@@ -423,7 +426,7 @@ qnodes: cannot connect to server node308, error=15137 (could not connect to trqa
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">131</span>
+               <span class="post-count">139</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -467,9 +470,10 @@ qnodes: cannot connect to server node308, error=15137 (could not connect to trqa
       
 
       
-        <p><code>socket_connect_unix failed: 15137
+        <p><a href="http://blog.csdn.net/dream_angel_z/article/details/44225669/" target="_blank" rel="external">安装参考教程</a></p>
+<p><code>socket_connect_unix failed: 15137
 qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)</code><br>遇到以上问题，一般的原因有以下两种：<br>1.管理节点的trqauthd没有启动；<br>2./var/spool/torque/mom_priv中的config文件中的pbsserver参数设置有问题。<br>3.防火墙没有关闭。</p>
-<p>解决办法分别<br>1.重启管理节点的trqauthd服务，service trqauthd restart；<br>2.将config文件中的$pbsserver参数设置为正确的管理节点主机名；<br>3.将防火墙iptables或者firewalld等关闭，或者添加端口允许。</p>
+<p>解决办法分别如下：<br>1.重启管理节点的trqauthd服务，service trqauthd restart；<br>2.将config文件中的$pbsserver参数设置为正确的管理节点主机名；<br>3.将防火墙iptables或者firewalld等关闭，或者添加端口允许。</p>
 
       
     </div>
