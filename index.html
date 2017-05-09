@@ -336,6 +336,185 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/09/Torque安装配置过程及问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/09/Torque安装配置过程及问题/" itemprop="url">Torque安装配置过程及问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-09T21:22:59+08:00">
+                2017-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+             <span id="/2017/05/09/Torque安装配置过程及问题/" class="leancloud_visitors" data-flag-title="Torque安装配置过程及问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+	
+         <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <!--<span class="post-meta-item-text">字数统计</span>-->
+               <span class="post-count">131</span>
+          </span>
+          <!--阅读时间--> 
+          <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">阅读时间:</span>
+               <span class="post-count">1分</span>
+           </span>
+	  <!--本站总字数-->
+          <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共</span>
+               <span class="post-count">42.4k字</span>
+           </span>
+	   
+
+          
+            
+          
+
+          
+	
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>socket_connect_unix failed: 15137
+qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)</code><br>遇到以上问题，一般的原因有以下两种：<br>1.管理节点的trqauthd没有启动；<br>2./var/spool/torque/mom_priv中的config文件中的pbsserver参数设置有问题。<br>3.防火墙没有关闭。</p>
+<p>解决办法分别<br>1.重启管理节点的trqauthd服务，service trqauthd restart；<br>2.将config文件中的$pbsserver参数设置为正确的管理节点主机名；<br>3.将防火墙iptables或者firewalld等关闭，或者添加端口允许。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/07/Windows操作系统安装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -441,7 +620,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
+               <span class="post-count">42.4k字</span>
            </span>
 	   
 
@@ -618,7 +797,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
+               <span class="post-count">42.4k字</span>
            </span>
 	   
 
@@ -805,7 +984,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
+               <span class="post-count">42.4k字</span>
            </span>
 	   
 
@@ -987,7 +1166,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
+               <span class="post-count">42.4k字</span>
            </span>
 	   
 
@@ -1170,7 +1349,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
+               <span class="post-count">42.4k字</span>
            </span>
 	   
 
@@ -1353,7 +1532,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
+               <span class="post-count">42.4k字</span>
            </span>
 	   
 
@@ -1532,7 +1711,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
+               <span class="post-count">42.4k字</span>
            </span>
 	   
 
@@ -1687,7 +1866,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
+               <span class="post-count">42.4k字</span>
            </span>
 	   
 
@@ -1869,7 +2048,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
+               <span class="post-count">42.4k字</span>
            </span>
 	   
 
@@ -1904,160 +2083,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/07/06/虚拟机迁移文章总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/07/06/虚拟机迁移文章总结/" itemprop="url">虚拟机迁移文章总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-06T23:46:37+08:00">
-                2016-07-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-          
-             <span id="/2016/07/06/虚拟机迁移文章总结/" class="leancloud_visitors" data-flag-title="虚拟机迁移文章总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-	
-         <span class="post-time">
-         	&nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">字数:</span>
-               <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">0</span>
-          </span>
-          <!--阅读时间--> 
-          <span class="post-time">
-         	&nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">阅读时间:</span>
-               <span class="post-count">1分</span>
-           </span>
-	  <!--本站总字数-->
-          <span class="post-time">
-         	&nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">42.3k字</span>
-           </span>
-	   
-
-          
-            
-          
-
-          
-	
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
         
       
     </div>
@@ -2139,7 +2164,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-count">73</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2161,7 +2186,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
