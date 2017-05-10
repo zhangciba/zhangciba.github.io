@@ -100,7 +100,7 @@
 <meta property="og:description" content="CSDN博客上面的安装参考教程
 详细的拍错文档，值得参考Torque Troubleshooting文档
 安装步骤简单归纳如下编译安装1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。">
-<meta property="og:updated_time" content="2017-05-10T07:22:01.000Z">
+<meta property="og:updated_time" content="2017-05-10T07:23:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Torque安装配置过程及问题">
 <meta name="twitter:description" content="CSDN博客上面的安装参考教程
@@ -426,7 +426,7 @@
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">1,641</span>
+               <span class="post-count">1,653</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -527,7 +527,9 @@ fi</code><br><code>source /etc/profile</code><br>如果不进行环境变量配�
 <h3 id="常见的问题及可能的解决办法"><a href="#常见的问题及可能的解决办法" class="headerlink" title="常见的问题及可能的解决办法"></a>常见的问题及可能的解决办法</h3><p><code>socket_connect_unix failed: 15137
 qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)</code><br>遇到以上问题，一般的原因有以下两种：<br>1.管理节点和计算节点的trqauthd没有启动；<br>2./var/spool/torque/mom_priv中的config文件中的pbsserver参数设置有问题。<br>3.防火墙没有关闭。</p>
 <p>解决办法分别如下：<br>1.重启管理节点和所有计算节点的trqauthd服务，service trqauthd restart；<br>2.将config文件中的$pbsserver参数设置为正确的管理节点主机名；<br>3.将防火墙iptables或者firewalld等关闭，或者添加端口允许。</p>
-<h3 id="Torque队列配置"><a href="#Torque队列配置" class="headerlink" title="Torque队列配置"></a>Torque队列配置</h3><p><code>qmgr -c &#39;set server scheduling = true&#39;
+<h3 id="Torque队列配置"><a href="#Torque队列配置" class="headerlink" title="Torque队列配置"></a>Torque队列配置</h3><p><code>qmgr -c &#39;set server operators += $USERNAME&#39;
+qmgr -c &#39;set server managers += $USERNAME&#39;
+qmgr -c &#39;set server scheduling = true&#39;
 qmgr -c &#39;set server keep_completed = 300&#39;
 qmgr -c &#39;set server mom_job_sync = true&#39;
 qmgr -c &#39;create queue batch&#39;
