@@ -468,49 +468,15 @@
 
       
         
-          
-            <p><a href="http://blog.csdn.net/dream_angel_z/article/details/44225669/" target="_blank" rel="external">安装参考教程</a></p>
-<h2 id="安装步骤简单归纳如下"><a href="#安装步骤简单归纳如下" class="headerlink" title="安装步骤简单归纳如下"></a>安装步骤简单归纳如下</h2><h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><p>1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。</p>
-<p>2.配置集群所有节点之间的SSH免秘钥访问，最简单的方法就是在某一台机器生成了SSH密钥文件之后，统一将PBS用户主目录下的.ssh目录拷贝到所有集群其他节点对应的目录下面。实际上，使用PBS队列的集群一般都使用了NFS或者其他分布式文件系统来挂载/home目录，即，所有节点的/home目录信息是一致的，由NFS或其他分布式网络文件系统来提供，所以SSH免密钥登录配置是标准配置，一般集群都提供好了，如果没有提供，请自行配置，方法如前所述。</p>
-<p>3.下载Torque源码，并解压到当前目录下面。</p>
-<p>4.进入Torque源码目录，执行./configure –prefix=/opt/troque命令，如果编译过程中出现错误，根据错误提示解决问题即可，一般情况下都是某一种编译器缺失或者编译器不完整等问题，安装相关软件或者解决版本冲突即可。</p>
-<p>5.编译完成后，执行make &amp; make install 命令，编译并安装。</p>
-<p>6.安装完成后，执行make packages生成安装脚本。</p>
-<p>其中，3，4，5，6这四步是在PBS服务节点上面进行的。</p>
-<p>下面进行PBS服务节点和计算节点的安装配置工作。</p>
-<h3 id="PBS服务器节点配置"><a href="#PBS服务器节点配置" class="headerlink" title="PBS服务器节点配置"></a>PBS服务器节点配置</h3><p>S1.在上面的步骤5执行完成之后就已经安装好了。现在需要做的是配置工作。</p>
-<p>S2.首先将Torque源代码目录下$TORQUE_SOURCE_DIR/contrib/init.d/目录下面将pbs_server,pbs_sched.pbs_mom,trqauthd等四个文件拷贝到/etc/init.d/目录下面，其实就是将这四个服务器的脚本拷贝到系统服务脚本目录。然后执行下面的命令添加服务，并启动服务。<br>    <code>for i in {pbs_server,pbs_sched,trqauthd,pbs_mom}
-    do
-        chkconfig --add $i;
-        chkconfig $i on;
-        service $i start;
-    done</code></p>
-<p>好的，执行完命令之后，PBS服务器端的四个服务都已经启动了。</p>
-<p>S3.PBS各服务进程介绍<br>pbs_server主要负责接收计算节点的作业提交，位于服务节点<br>pbs_sched主要负责作业调度，位于服务节点<br>pbs_mom负责监控本机并执行作业，位于所有节点<br>trqauthd负责qsub、qdel、qstat命令执行时，连接到pbs_server的授权，位于所有节点</p>
-<p>S4.配置计算节点，默认torque安装目录是在/var/spool/torque。进入到/var/spool/torque/server_priv目录，编辑nodes文件，添加计算节点。<br>    `<br>    node1 np=16<br>    node2 np=16</p>
-<pre><code>    #以此类推
-#计算节点主机名  np=处理器个数
-`
-</code></pre><p>配置完成后，执行service pbs_server restart 命令重启pbs_server服务，执行pbsnodes既可以看到节点信息。当然，这里还没有配置好计算节点，所以暂时没有显示任何信息。</p>
-<p>S5.服务节点基本配置完成，队列等配置后续再说。接下来安装和配置计算节点。</p>
-<h3 id="PBS计算节点安装配置"><a href="#PBS计算节点安装配置" class="headerlink" title="PBS计算节点安装配置"></a>PBS计算节点安装配置</h3><p>C1.将服务器端编译过的源代码中的torque-package-{clients,mom}-linux-x86_64.sh两个文件拷贝到计算节点/root目录，并且将源码目录下contrib/init.d/目录的pbs_mom、trqauthd两个文件拷贝到所有计算节点的/etc/init.d/目录，好的上面所述的两种文件都拷贝好了之后开始安装工作。</p>
-<p>C2.在每个计算节点的/root目录下面执行下面两个命令，安装PBS的客户端程序。<br>    <code>./torque-package-clients-linux-x86_64.sh --install
-    ./torque-package-mom-linux-x86_64.sh --install</code><br>执行完上面的命令之后，PBS计算节点就安装好了。接下来进行PBS计算节点的配置工作。</p>
-<p>C3.进入/var/spool/torque/目录，查看server_name文件，查看里面的内容是不是PBS服务节点的名称，如果不是，则修改为PBS服务节点的主机名。例如说PBS主机名为master，那么server_name中的内容为<br>    <code>master</code><br>接着进入到/var/spool/torque/mom_priv/目录，配置config文件，如果没有则创建，内容如下：<br><code>$pbsserver      master            # note: hostname running pbs_server
-$logevent       255               # bitmap of which events to log</code><br>如果已经存在，则修改master修改为你的PBS服务节点的主机名，如果不存在这个文件，那么按照上面的内容创建一个这样的文件。</p>
-<p>现在服务基本上已经配置好了。现在可以启动PBS计算节点的服务器了。</p>
-<p>C4.执行下面的命令配置PBS计算节点的服务。</p>
-<p><code>for i in {trqauthd,pbs_mom}
-        do
-               chkconfig --add $i;
-               chkconfig $i on;
-               service $i start;
-         done</code></p>
-<p><code>socket_connect_unix failed: 15137
-qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)</code><br>遇到以上问题，一般的原因有以下两种：<br>1.管理节点和计算节点的trqauthd没有启动；<br>2./var/spool/torque/mom_priv中的config文件中的pbsserver参数设置有问题。<br>3.防火墙没有关闭。</p>
-<p>解决办法分别如下：<br>1.重启管理节点和所有计算节点的trqauthd服务，service trqauthd restart；<br>2.将config文件中的$pbsserver参数设置为正确的管理节点主机名；<br>3.将防火墙iptables或者firewalld等关闭，或者添加端口允许。</p>
-
-          
+          <p><a href="http://blog.csdn.net/dream_angel_z/article/details/44225669/">安装参考教程</a></p>
+<h2 id="安装步骤简单归纳如下"><a href="#安装步骤简单归纳如下" class="headerlink" title="安装步骤简单归纳如下"></a>安装步骤简单归纳如下</h2><h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><p>1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/09/Torque安装配置过程及问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
