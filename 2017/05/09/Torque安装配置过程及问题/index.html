@@ -90,18 +90,21 @@
 
 
 
-<meta name="description" content="安装参考教程
+<meta name="description" content="CSDN博客上面的安装参考教程
+英文版稍微详细些的Torque文档
 安装步骤简单归纳如下编译安装1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Torque安装配置过程及问题">
 <meta property="og:url" content="http://blog.zhangchi.xyz/2017/05/09/Torque安装配置过程及问题/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="安装参考教程
+<meta property="og:description" content="CSDN博客上面的安装参考教程
+英文版稍微详细些的Torque文档
 安装步骤简单归纳如下编译安装1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。">
-<meta property="og:updated_time" content="2017-05-10T06:41:16.000Z">
+<meta property="og:updated_time" content="2017-05-10T06:58:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Torque安装配置过程及问题">
-<meta name="twitter:description" content="安装参考教程
+<meta name="twitter:description" content="CSDN博客上面的安装参考教程
+英文版稍微详细些的Torque文档
 安装步骤简单归纳如下编译安装1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。">
 
 
@@ -423,7 +426,7 @@
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">1,397</span>
+               <span class="post-count">1,415</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -467,7 +470,8 @@
       
 
       
-        <p><a href="http://blog.csdn.net/dream_angel_z/article/details/44225669/" target="_blank" rel="external">安装参考教程</a></p>
+        <p>CSDN博客上面的<a href="http://blog.csdn.net/dream_angel_z/article/details/44225669/" target="_blank" rel="external">安装参考教程</a></p>
+<p>英文版稍微详细些的<a href="http://www.silas.net.br/doc.notes/hpc/torque.html" target="_blank" rel="external">Torque文档</a></p>
 <h2 id="安装步骤简单归纳如下"><a href="#安装步骤简单归纳如下" class="headerlink" title="安装步骤简单归纳如下"></a>安装步骤简单归纳如下</h2><h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><p>1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。<br><a id="more"></a><br>2.配置集群所有节点之间的SSH免秘钥访问，最简单的方法就是在某一台机器生成了SSH密钥文件之后，统一将PBS用户主目录下的.ssh目录拷贝到所有集群其他节点对应的目录下面。实际上，使用PBS队列的集群一般都使用了NFS或者其他分布式文件系统来挂载/home目录，即，所有节点的/home目录信息是一致的，由NFS或其他分布式网络文件系统来提供，所以SSH免密钥登录配置是标准配置，一般集群都提供好了，如果没有提供，请自行配置，方法如前所述。</p>
 <p>3.下载Torque源码，并解压到当前目录下面。</p>
 <p>4.进入Torque源码目录，执行./configure –prefix=/opt/troque命令，如果编译过程中出现错误，根据错误提示解决问题即可，一般情况下都是某一种编译器缺失或者编译器不完整等问题，安装相关软件或者解决版本冲突即可。</p>
