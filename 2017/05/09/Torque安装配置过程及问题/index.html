@@ -100,7 +100,7 @@
 <meta property="og:description" content="CSDN博客上面的安装参考教程
 详细的拍错文档，值得参考Torque Troubleshooting文档
 安装步骤简单归纳如下编译安装1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。">
-<meta property="og:updated_time" content="2017-05-10T07:05:15.000Z">
+<meta property="og:updated_time" content="2017-05-10T07:22:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Torque安装配置过程及问题">
 <meta name="twitter:description" content="CSDN博客上面的安装参考教程
@@ -426,7 +426,7 @@
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">1,418</span>
+               <span class="post-count">1,641</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -435,7 +435,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">阅读时间:</span>
-               <span class="post-count">5分</span>
+               <span class="post-count">7分</span>
            </span>
 	  <!--本站总字数-->
           <span class="post-time">
@@ -444,7 +444,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.7k字</span>
+               <span class="post-count">43.9k字</span>
            </span>
 	   
 
@@ -494,6 +494,14 @@
 <pre><code>    #以此类推，格式如下
 #计算节点主机名  np=处理器个数
 </code></pre><p>配置完成后，执行<code>service pbs_server restart</code>命令重启pbs_server服务，执行pbsnodes既可以看到节点信息。当然，这里还没有配置好计算节点，所以暂时没有显示任何信息。</p>
+<p>S5.配置系统环境变量<br>编辑profile文件<br><code>vim /etc/profile</code><br>加入如下内容<br><code>TORQUE=/opt/torque
+MAUI=/opt/maui
+if [ &quot;</code>id -u<code>&quot; -eq 0 ];
+then
+    PATH=$PATH:$TORQUE/bin:$TORQUE/sbin:$TORQUE/bin:$MAUI/sbin:$MAUI/bin
+else
+    PATH=$PATH:$TORQUE/bin:$MAUI/bin
+fi</code><br><code>source /etc/profile</code></p>
 <p>S5.服务节点基本配置完成，队列等配置后续再说。接下来安装和配置计算节点。</p>
 <h3 id="PBS计算节点安装配置"><a href="#PBS计算节点安装配置" class="headerlink" title="PBS计算节点安装配置"></a>PBS计算节点安装配置</h3><p>C1.将服务器端编译过的源代码中的torque-package-{clients,mom}-linux-x86_64.sh两个文件拷贝到计算节点/root目录，并且将源码目录下contrib/init.d/目录的pbs_mom、trqauthd两个文件拷贝到所有计算节点的/etc/init.d/目录，好的上面所述的两种文件都拷贝好了之后开始安装工作。</p>
 <p>C2.在每个计算节点的/root目录下面执行下面两个命令，安装PBS的客户端程序。<br>    <code>./torque-package-clients-linux-x86_64.sh --install
@@ -508,9 +516,28 @@ $logevent       255               # bitmap of which events to log</code><br>如�
          chkconfig $i on;
          service $i start;
      done</code></p>
+<p>C5.配置系统环境变量<br>编辑profile文件<br><code>vim /etc/profile</code><br>加入如下内容<br><code>TORQUE=/opt/torque
+MAUI=/opt/maui
+if [ &quot;</code>id -u<code>&quot; -eq 0 ];
+then
+    PATH=$PATH:$TORQUE/bin:$TORQUE/sbin:$TORQUE/bin:$MAUI/sbin:$MAUI/bin
+else
+    PATH=$PATH:$TORQUE/bin:$MAUI/bin
+fi</code><br><code>source /etc/profile</code><br>如果不进行环境变量配置，那么执行命令时会提示该命令不存在的错误。</p>
 <h3 id="常见的问题及可能的解决办法"><a href="#常见的问题及可能的解决办法" class="headerlink" title="常见的问题及可能的解决办法"></a>常见的问题及可能的解决办法</h3><p><code>socket_connect_unix failed: 15137
 qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)</code><br>遇到以上问题，一般的原因有以下两种：<br>1.管理节点和计算节点的trqauthd没有启动；<br>2./var/spool/torque/mom_priv中的config文件中的pbsserver参数设置有问题。<br>3.防火墙没有关闭。</p>
 <p>解决办法分别如下：<br>1.重启管理节点和所有计算节点的trqauthd服务，service trqauthd restart；<br>2.将config文件中的$pbsserver参数设置为正确的管理节点主机名；<br>3.将防火墙iptables或者firewalld等关闭，或者添加端口允许。</p>
+<h3 id="Torque队列配置"><a href="#Torque队列配置" class="headerlink" title="Torque队列配置"></a>Torque队列配置</h3><p><code>qmgr -c &#39;set server scheduling = true&#39;
+qmgr -c &#39;set server keep_completed = 300&#39;
+qmgr -c &#39;set server mom_job_sync = true&#39;
+qmgr -c &#39;create queue batch&#39;
+qmgr -c &#39;set queue batch queue_type = execution&#39;
+qmgr -c &#39;set queue batch started = true&#39;
+qmgr -c &#39;set queue batch enabled = true&#39;
+qmgr -c &#39;set queue batch resources_default.walltime = 1:00:00&#39;
+qmgr -c &#39;set queue batch resources_default.nodes = 1&#39;
+qmgr -c &#39;set server default_queue = batch&#39;
+qmgr -c &#39;p s&#39;</code></p>
 
       
     </div>
@@ -842,7 +869,7 @@ qnodes: cannot connect to server node308, error=15137 (could not connect to trqa
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装步骤简单归纳如下"><span class="nav-number">1.</span> <span class="nav-text">安装步骤简单归纳如下</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译安装"><span class="nav-number">1.1.</span> <span class="nav-text">编译安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PBS服务器节点配置"><span class="nav-number">1.2.</span> <span class="nav-text">PBS服务器节点配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PBS计算节点安装配置"><span class="nav-number">1.3.</span> <span class="nav-text">PBS计算节点安装配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的问题及可能的解决办法"><span class="nav-number">1.4.</span> <span class="nav-text">常见的问题及可能的解决办法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装步骤简单归纳如下"><span class="nav-number">1.</span> <span class="nav-text">安装步骤简单归纳如下</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译安装"><span class="nav-number">1.1.</span> <span class="nav-text">编译安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PBS服务器节点配置"><span class="nav-number">1.2.</span> <span class="nav-text">PBS服务器节点配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PBS计算节点安装配置"><span class="nav-number">1.3.</span> <span class="nav-text">PBS计算节点安装配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的问题及可能的解决办法"><span class="nav-number">1.4.</span> <span class="nav-text">常见的问题及可能的解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Torque队列配置"><span class="nav-number">1.5.</span> <span class="nav-text">Torque队列配置</span></a></li></ol></li></ol></div>
             
 
           </div>
