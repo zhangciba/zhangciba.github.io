@@ -100,7 +100,7 @@
 <meta property="og:description" content="安装参考教程
 安装步骤简单归纳如下编译安装1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。
 2.配置集群所有节点之间的SSH免秘钥访问，最简单的方法就是在某一台机器生成了SSH密钥文件之后，统一将PBS用户主目录下的.ssh目录拷贝到所有集群其他节点对应的目录下面。实际上，使">
-<meta property="og:updated_time" content="2017-05-10T03:53:44.000Z">
+<meta property="og:updated_time" content="2017-05-10T03:57:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Torque安装配置过程及问题">
 <meta name="twitter:description" content="安装参考教程
@@ -488,10 +488,10 @@
     done</code></p>
 <p>好的，执行完命令之后，PBS服务器端的四个服务都已经启动了。</p>
 <p>S3.PBS各服务进程介绍<br>pbs_server主要负责接收计算节点的作业提交，位于服务节点<br>pbs_sched主要负责作业调度，位于服务节点<br>pbs_mom负责监控本机并执行作业，位于所有节点<br>trqauthd负责qsub、qdel、qstat命令执行时，连接到pbs_server的授权，位于所有节点</p>
-<p>S4.配置计算节点，默认torque安装目录是在/var/spool/torque。进入到/var/spool/torque/server_priv目录，编辑nodes文件，添加计算节点。<br>    ``<br>    node1 np=16<br>    node2 np=16</p>
+<p>S4.配置计算节点，默认torque安装目录是在/var/spool/torque。进入到/var/spool/torque/server_priv目录，编辑nodes文件，添加计算节点。<br>    `<br>    node1 np=16<br>    node2 np=16</p>
 <pre><code>    #以此类推
 #计算节点主机名  np=处理器个数
-``
+`
 </code></pre><p>配置完成后，执行service pbs_server restart 命令重启pbs_server服务，执行pbsnodes既可以看到节点信息。当然，这里还没有配置好计算节点，所以暂时没有显示任何信息。</p>
 <p>S5.服务节点基本配置完成，队列等配置后续再说。接下来安装和配置计算节点。</p>
 <h3 id="PBS计算节点安装配置"><a href="#PBS计算节点安装配置" class="headerlink" title="PBS计算节点安装配置"></a>PBS计算节点安装配置</h3><p>C1.将服务器端编译过的源代码中的torque-package-{clients,mom}-linux-x86_64.sh两个文件拷贝到计算节点/root目录，并且将源码目录下contrib/init.d/目录的pbs_mom、trqauthd两个文件拷贝到所有计算节点的/etc/init.d/目录，好的上面所述的两种文件都拷贝好了之后开始安装工作。</p>
