@@ -336,6 +336,188 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/11/VIM正则表达式简要介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/11/VIM正则表达式简要介绍/" itemprop="url">VIM正则表达式简要介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T08:56:30+08:00">
+                2017-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+             <span id="/2017/05/11/VIM正则表达式简要介绍/" class="leancloud_visitors" data-flag-title="VIM正则表达式简要介绍">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+	
+         <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <!--<span class="post-meta-item-text">字数统计</span>-->
+               <span class="post-count">1,382</span>
+          </span>
+          <!--阅读时间--> 
+          <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">阅读时间:</span>
+               <span class="post-count">5分</span>
+           </span>
+	  <!--本站总字数-->
+          <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共</span>
+               <span class="post-count">45.3k字</span>
+           </span>
+	   
+
+          
+            
+          
+
+          
+	
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、使用正则表达式的命令<br>使用正则表达式的命令最常见的就是 / （搜索）命令。其格式如下：<br>/正则表达式<br>另一个很有用的命令就是 :s（替换）命令，将第一个//之间的正则表达式替换成第二个//之间的字符串。<br>:s/正则表达式/替换字符串/选项<br>在学习正则表达式时可以利用 / 命令来练习。<br>二、元字符<br>元字符是具有特殊意义的字符。使用元字符可以表达任意字符、行首、行 尾、某几个字符等意义。<br>元字符一览<br>元字符    说明<br>.    匹配任意一个字符<br>[abc]    匹配方括号中的任意一个字符。可以使用-表示字符范围，<br>如[a-z0-9]匹 配小写字母和阿拉伯数字。<br>[^abc]    在方括号内开头使用^符号，表示匹配除方括号中字符之外的任意字符。<br>\d    匹配阿拉伯数字，等同于[0-9]。<br>\D    匹配阿拉伯数字之外的任意字符，等同于[^0-9]。<br>\x    匹配十六进制数字，等同于[0-9A-Fa-f]。<br>\X    匹配十六进制数字之外的任意字符，等同于[^0-9A-Fa-f]。<br>\w    匹配单词字母，等同于[0-9A-Za-z<em>]。<br>\W    匹配单词字母之外的任意字符，等同于[^0-9A-Za-z</em>]。<br>\t    匹配<tab>字符。<br>\s    匹配空白字符，等同于[ \t]。<br>\S    匹配非空白字符，等同于[^ \t]。<br>另外，如果要查找字符 <em>、.、/等，则需要在前面用 \ 符号，表示这不是元字符，而只是普通字符而已。<br>元字符    说明<br>\</em>    匹配 * 字符。<br>.    匹配 . 字符。<br>\/    匹配 / 字符。<br>\    匹配 \ 字符。<br>[    匹配 [ 字符。<br>表示数量的元字符<br>元字符    说明</tab></p>
+<ul>
+<li>匹配0-任意个<br>+    匹配1-任意个<br>\?    匹配0-1个<br>{n,m}    匹配n-m个<br>{n}    匹配n个<br>{n,}    匹配n-任意个<br>{,m}    匹配0-m个<br>表示位置的符号<br>元字符    说明<br>$    匹配行尾<br>^    匹配行首<br>\&lt;    匹配单词词首<br>>    匹配单词词尾<br>使用例<br>/char\s+[A-Za-z<em>]\w<em>; “ 查找所有以char开头，之后是一个以上的空白，<br>“ 最后是一个标识符和分号<br>/\d\d:\d\d:\d\d “ 查找如 17:37:01 格式的时间字符串<br>:g/^\s</em>$/d “ 删除只有空白的行<br>:s/\<four\>/4/g “ 将所有的four替换成4，但是fourteen中的four不替换<br>三、替换变量<br>在正规表达式中使用 ( 和 ) 符号括起正规表达式，即可在后面使用\1、\2 等变量来访问 ( 和 ) 中的内容。<br>使用例<br>/(a+)[^a]+\1 “ 查找开头和结尾处a的个数相同的字符串，<br>“ 如 aabbbaa，aaacccaaa，但是不匹配 abbbaa<br>:s/(http:\/\/[-a-z.</four\></em>~+%\/]+)/<a href="\1">\1&lt;\/a&gt;/ “ 将URL替换为<a href="http://url" target="_blank" rel="external">http://url</a>的格式<br>:s/(\w+)\s+(\w+)/\2\t\1 “ 将 data1 data2 修改为 data2 data1<br>四、函数式<br>在替换命令 s/// 中可以使用函数表达式来书写替换内容，格式为<br>:s/替换字符串/\=函数式<br>在函数式中可以使用 submatch(1)、submatch(2) 等来引用 \1、\2 等的内容，而submatch(0)可以引用匹配的整个内容。<br>使用例<br>:%s/\<id\>/\=line(“.”) “ 将各行的 id 字符串替换为行号<br>:%s/^\&lt;\w+>/\=(line(“.”)-10) .”.”. submatch(1) “ 将每行开头的单词替换为 (行号-10).单词 的格式，<br>“ 如第11行的 word 替换成 1. word<br>五、与Perl正则表达式的区别<br>元字符的区别<br>Vim语法    Perl语法    含义<br>+    +    1-任意个<br>\?    ?    0-1个<br>{n,m}    {n,m}    n-m个<br>(和)    (和)    分组</id\></a></li>
+</ul>
+<p>六、vi 正则表达式练习</p>
+<p>闲言碎语不要讲…例子说明一切，比如下面这段我需要换成 ubb 标签<br>vim 命令模式，输入<br>:%s/.<em>src=”([^”]</em>)”[^&gt;]<em>&gt;/[img]1[/img]/g<br>替换为<br>[img ]gu.jpg[ /img]<br>[img ]os.jpg[ /img]<br>[img ]hu.jpg[ /img]<br>[img ]ang.jpg[ /img]<br>解释如下：<br>:<br>命令执行状态<br>%s<br>表示查找并替换<br>%s/a/b/g<br>a 被查找的字符串（正则匹配）；b 要替换成的文字；g 表示全局搜索替换（否则只处理找到的第一个结果）<br>([^”]</em>)<br>表示非引号的字符N个；外面 () 表示后面替换要用（用 1,…,9等引用）<br>[/img]<br>/ 需要被 转义<br>与其它工具正则不一样的地方在于 () 也必须 ()，怪不得我老是弄不出来。<br>相关资料：<br>via <a href="http://net.pku.edu.cn/~yhf/tao_regexps_zh.html" target="_blank" rel="external">http://net.pku.edu.cn/~yhf/tao_regexps_zh.html</a><br>vi 命令 作用<br>:%s/ <em>/ /g 把一个或者多个空格替换为一个空格。<br>:%s/ </em>$// 去掉行尾的所有空格。<br>:%s/^/ / 在每一行头上加入一个空格。<br>:%s/^[0-9][0-9]<em> // 去掉行首的所有数字字符。<br>:%s/b[aeio]g/bug/g 将所有的bag、beg、big和bog改为bug。<br>:%s/t([aou])g/h1t/g 将所有tag、tog和tug分别改为hat、hot和hug（注意用group的用法和使用1引用前面被匹配的字符）。<br>Sed<br>Sed是Stream EDitor的缩写，是Unix下常用的基于文件和管道的编辑工具，可以在手册中得到关于sed的详细信息。<br>这里是一些有趣的sed脚本，假定我们正在处理一个叫做price.txt的文件。注意这些编辑并不会改变源文件，sed只是处理源文件的每一行并 把结果显示在标准输出中（当然很容易使用重定向来定制）：<br>sed脚本 描述<br>sed ’s/^$/d’ price.txt 删除所有空行<br>sed ’s/^[ ]</em>$/d’ price.txt 删除所有只包含空格或者制表符的行<br>sed ’s/”//g’ price.txt 删除所有引号</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/09/Torque安装配置过程及问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -441,7 +623,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
+               <span class="post-count">45.3k字</span>
            </span>
 	   
 
@@ -624,7 +806,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
+               <span class="post-count">45.3k字</span>
            </span>
 	   
 
@@ -801,7 +983,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
+               <span class="post-count">45.3k字</span>
            </span>
 	   
 
@@ -988,7 +1170,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
+               <span class="post-count">45.3k字</span>
            </span>
 	   
 
@@ -1170,7 +1352,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
+               <span class="post-count">45.3k字</span>
            </span>
 	   
 
@@ -1353,7 +1535,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
+               <span class="post-count">45.3k字</span>
            </span>
 	   
 
@@ -1536,7 +1718,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
+               <span class="post-count">45.3k字</span>
            </span>
 	   
 
@@ -1715,7 +1897,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
+               <span class="post-count">45.3k字</span>
            </span>
 	   
 
@@ -1870,7 +2052,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
+               <span class="post-count">45.3k字</span>
            </span>
 	   
 
@@ -1902,187 +2084,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/09/Cannot-retrive-metalink-for-repository-epel-Please-verify-its-path-and-try-again/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/" itemprop="url">java.lang.NoClassDefFoundError: Could not initialize class </a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-17T23:35:49+08:00">
-                2016-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java开发/" itemprop="url" rel="index">
-                    <span itemprop="name">Java开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-          
-             <span id="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/" class="leancloud_visitors" data-flag-title="java.lang.NoClassDefFoundError: Could not initialize class ">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-	
-         <span class="post-time">
-         	&nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">字数:</span>
-               <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">808</span>
-          </span>
-          <!--阅读时间--> 
-          <span class="post-time">
-         	&nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">阅读时间:</span>
-               <span class="post-count">3分</span>
-           </span>
-	  <!--本站总字数-->
-          <span class="post-time">
-         	&nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">43.9k字</span>
-           </span>
-	   
-
-          
-            
-          
-
-          
-	
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，服务器端返回的数据是JSON格式，由于报错了，导致无任何JSON数据返回，页面估计也没有做任何超时判断，因此也没有提示错误信息。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入URL发送请求，发现还是报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2168,7 +2169,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-count">74</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2190,7 +2191,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">68</span>
+                <span class="site-state-item-count">69</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="集群自动监控," />
+  <meta name="keywords" content="正则表达式," />
 
 
 
@@ -90,20 +90,16 @@
 
 
 
-<meta name="description" content="在管理曙光高性能集群的时候，机房空调出问题了，由于集群的密度非常大，一间容纳60人教室大小的房间放着360个节点还有，IB交换机等设备，产热量非常的大，为了防止机器温度过高导致整个机房起火等危险，特地写了一个集群监控脚本，每隔一定的时间扫描集群的节点温度，当温度超过报警阈值时，提示该节点的所有用户，当节点的温度超过关机阈值时，提醒用户，并延时1分钟后并自动进行关机处理。">
+<meta name="description" content="一、使用正则表达式的命令使用正则表达式的命令最常见的就是 / （搜索）命令。其格式如下：/正则表达式另一个很有用的命令就是 :s（替换）命令，将第一个//之间的正则表达式替换成第二个//之间的字符串。:s/正则表达式/替换字符串/选项在学习正则表达式时可以利用 / 命令来练习。二、元字符元字符是具有特殊意义的字符。使用元字符可以表达任意字符、行首、行 尾、某几个字符等意义。元字符一览元字符">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用IPMI监控集群温度">
-<meta property="og:url" content="http://blog.zhangchi.xyz/2016/06/03/使用IPMI监控集群温度/index.html">
+<meta property="og:title" content="VIM正则表达式简要介绍">
+<meta property="og:url" content="http://blog.zhangchi.xyz/2017/05/11/VIM正则表达式简要介绍/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="在管理曙光高性能集群的时候，机房空调出问题了，由于集群的密度非常大，一间容纳60人教室大小的房间放着360个节点还有，IB交换机等设备，产热量非常的大，为了防止机器温度过高导致整个机房起火等危险，特地写了一个集群监控脚本，每隔一定的时间扫描集群的节点温度，当温度超过报警阈值时，提示该节点的所有用户，当节点的温度超过关机阈值时，提醒用户，并延时1分钟后并自动进行关机处理。">
-<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-1.png">
-<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-2.png">
-<meta property="og:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-3.png">
-<meta property="og:updated_time" content="2016-06-03T01:42:39.000Z">
+<meta property="og:description" content="一、使用正则表达式的命令使用正则表达式的命令最常见的就是 / （搜索）命令。其格式如下：/正则表达式另一个很有用的命令就是 :s（替换）命令，将第一个//之间的正则表达式替换成第二个//之间的字符串。:s/正则表达式/替换字符串/选项在学习正则表达式时可以利用 / 命令来练习。二、元字符元字符是具有特殊意义的字符。使用元字符可以表达任意字符、行首、行 尾、某几个字符等意义。元字符一览元字符">
+<meta property="og:updated_time" content="2017-05-11T00:57:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用IPMI监控集群温度">
-<meta name="twitter:description" content="在管理曙光高性能集群的时候，机房空调出问题了，由于集群的密度非常大，一间容纳60人教室大小的房间放着360个节点还有，IB交换机等设备，产热量非常的大，为了防止机器温度过高导致整个机房起火等危险，特地写了一个集群监控脚本，每隔一定的时间扫描集群的节点温度，当温度超过报警阈值时，提示该节点的所有用户，当节点的温度超过关机阈值时，提醒用户，并延时1分钟后并自动进行关机处理。">
-<meta name="twitter:image" content="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-1.png">
+<meta name="twitter:title" content="VIM正则表达式简要介绍">
+<meta name="twitter:description" content="一、使用正则表达式的命令使用正则表达式的命令最常见的就是 / （搜索）命令。其格式如下：/正则表达式另一个很有用的命令就是 :s（替换）命令，将第一个//之间的正则表达式替换成第二个//之间的字符串。:s/正则表达式/替换字符串/选项在学习正则表达式时可以利用 / 命令来练习。二、元字符元字符是具有特殊意义的字符。使用元字符可以表达任意字符、行首、行 尾、某几个字符等意义。元字符一览元字符">
 
 
 
@@ -131,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.zhangchi.xyz/2016/06/03/使用IPMI监控集群温度/"/>
+  <link rel="canonical" href="http://blog.zhangchi.xyz/2017/05/11/VIM正则表达式简要介绍/"/>
 
 
 
 
 
-  <title>使用IPMI监控集群温度 | DIYER糍粑的博客</title>
+  <title>VIM正则表达式简要介绍 | DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -339,7 +335,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2016/06/03/使用IPMI监控集群温度/">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/11/VIM正则表达式简要介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHANGCHI">
@@ -356,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用IPMI监控集群温度</h1>
+          <h1 class="post-title" itemprop="name headline">VIM正则表达式简要介绍</h1>
         
 
         <div class="post-meta">
@@ -368,8 +364,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-03T09:11:09+08:00">
-                2016-06-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T08:56:30+08:00">
+                2017-05-11
               </time>
             
 
@@ -391,8 +387,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/集群管理/" itemprop="url" rel="index">
-                    <span itemprop="name">集群管理</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -404,7 +400,7 @@
 
           
           
-             <span id="/2016/06/03/使用IPMI监控集群温度/" class="leancloud_visitors" data-flag-title="使用IPMI监控集群温度">
+             <span id="/2017/05/11/VIM正则表达式简要介绍/" class="leancloud_visitors" data-flag-title="VIM正则表达式简要介绍">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -424,7 +420,7 @@
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">341</span>
+               <span class="post-count">1,382</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -433,7 +429,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">阅读时间:</span>
-               <span class="post-count">1分</span>
+               <span class="post-count">5分</span>
            </span>
 	  <!--本站总字数-->
           <span class="post-time">
@@ -468,11 +464,12 @@
       
 
       
-        <p>在管理曙光高性能集群的时候，机房空调出问题了，由于集群的密度非常大，一间容纳60人教室大小的房间放着360个节点还有，IB交换机等设备，产热量非常的大，为了防止机器温度过高导致整个机房起火等危险，特地写了一个集群监控脚本，每隔一定的时间扫描集群的节点温度，当温度超过报警阈值时，提示该节点的所有用户，当节点的温度超过关机阈值时，提醒用户，并延时1分钟后并自动进行关机处理。</p>
-<a id="more"></a>
-<p>由于用户对于节点的计算需求非常大，如果长时间关机，将会导致节点长期不能使用，因此，每隔2-4个小时，当节点温度稍微安全之后，对关机列表中的节点进行自动开机处理。</p>
-<p>脚本监控的截图如下。后期会对脚本进行拆分，划分为多个模块。例如温度监控模块、开关机模块、日志模块、统计报表模块，基于这个基础上，可以很容易开发一个集群监控系统，通过Web或者桌面App的形式来展示集群的历史信息，从而实现集群的科学管理。</p>
-<p><img src="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-1.png" alt="monitor.sh-1"><br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-2.png" alt="monitor.sh-2"><br><img src="http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-3.png" alt="monitor.sh-3"></p>
+        <p>一、使用正则表达式的命令<br>使用正则表达式的命令最常见的就是 / （搜索）命令。其格式如下：<br>/正则表达式<br>另一个很有用的命令就是 :s（替换）命令，将第一个//之间的正则表达式替换成第二个//之间的字符串。<br>:s/正则表达式/替换字符串/选项<br>在学习正则表达式时可以利用 / 命令来练习。<br>二、元字符<br>元字符是具有特殊意义的字符。使用元字符可以表达任意字符、行首、行 尾、某几个字符等意义。<br>元字符一览<br>元字符    说明<br>.    匹配任意一个字符<br>[abc]    匹配方括号中的任意一个字符。可以使用-表示字符范围，<br>如[a-z0-9]匹 配小写字母和阿拉伯数字。<br>[^abc]    在方括号内开头使用^符号，表示匹配除方括号中字符之外的任意字符。<br>\d    匹配阿拉伯数字，等同于[0-9]。<br>\D    匹配阿拉伯数字之外的任意字符，等同于[^0-9]。<br>\x    匹配十六进制数字，等同于[0-9A-Fa-f]。<br>\X    匹配十六进制数字之外的任意字符，等同于[^0-9A-Fa-f]。<br>\w    匹配单词字母，等同于[0-9A-Za-z<em>]。<br>\W    匹配单词字母之外的任意字符，等同于[^0-9A-Za-z</em>]。<br>\t    匹配<tab>字符。<br>\s    匹配空白字符，等同于[ \t]。<br>\S    匹配非空白字符，等同于[^ \t]。<br>另外，如果要查找字符 <em>、.、/等，则需要在前面用 \ 符号，表示这不是元字符，而只是普通字符而已。<br>元字符    说明<br>\</em>    匹配 * 字符。<br>.    匹配 . 字符。<br>\/    匹配 / 字符。<br>\    匹配 \ 字符。<br>[    匹配 [ 字符。<br>表示数量的元字符<br>元字符    说明</tab></p>
+<ul>
+<li>匹配0-任意个<br>+    匹配1-任意个<br>\?    匹配0-1个<br>{n,m}    匹配n-m个<br>{n}    匹配n个<br>{n,}    匹配n-任意个<br>{,m}    匹配0-m个<br>表示位置的符号<br>元字符    说明<br>$    匹配行尾<br>^    匹配行首<br>\&lt;    匹配单词词首<br>>    匹配单词词尾<br>使用例<br>/char\s+[A-Za-z<em>]\w<em>; “ 查找所有以char开头，之后是一个以上的空白，<br>“ 最后是一个标识符和分号<br>/\d\d:\d\d:\d\d “ 查找如 17:37:01 格式的时间字符串<br>:g/^\s</em>$/d “ 删除只有空白的行<br>:s/\<four\>/4/g “ 将所有的four替换成4，但是fourteen中的four不替换<br>三、替换变量<br>在正规表达式中使用 ( 和 ) 符号括起正规表达式，即可在后面使用\1、\2 等变量来访问 ( 和 ) 中的内容。<br>使用例<br>/(a+)[^a]+\1 “ 查找开头和结尾处a的个数相同的字符串，<br>“ 如 aabbbaa，aaacccaaa，但是不匹配 abbbaa<br>:s/(http:\/\/[-a-z.</four\></em>~+%\/]+)/<a href="\1">\1&lt;\/a&gt;/ “ 将URL替换为<a href="http://url" target="_blank" rel="external">http://url</a>的格式<br>:s/(\w+)\s+(\w+)/\2\t\1 “ 将 data1 data2 修改为 data2 data1<br>四、函数式<br>在替换命令 s/// 中可以使用函数表达式来书写替换内容，格式为<br>:s/替换字符串/\=函数式<br>在函数式中可以使用 submatch(1)、submatch(2) 等来引用 \1、\2 等的内容，而submatch(0)可以引用匹配的整个内容。<br>使用例<br>:%s/\<id\>/\=line(“.”) “ 将各行的 id 字符串替换为行号<br>:%s/^\&lt;\w+>/\=(line(“.”)-10) .”.”. submatch(1) “ 将每行开头的单词替换为 (行号-10).单词 的格式，<br>“ 如第11行的 word 替换成 1. word<br>五、与Perl正则表达式的区别<br>元字符的区别<br>Vim语法    Perl语法    含义<br>+    +    1-任意个<br>\?    ?    0-1个<br>{n,m}    {n,m}    n-m个<br>(和)    (和)    分组</id\></a></li>
+</ul>
+<p>六、vi 正则表达式练习</p>
+<p>闲言碎语不要讲…例子说明一切，比如下面这段我需要换成 ubb 标签<br>vim 命令模式，输入<br>:%s/.<em>src=”([^”]</em>)”[^&gt;]<em>&gt;/[img]1[/img]/g<br>替换为<br>[img ]gu.jpg[ /img]<br>[img ]os.jpg[ /img]<br>[img ]hu.jpg[ /img]<br>[img ]ang.jpg[ /img]<br>解释如下：<br>:<br>命令执行状态<br>%s<br>表示查找并替换<br>%s/a/b/g<br>a 被查找的字符串（正则匹配）；b 要替换成的文字；g 表示全局搜索替换（否则只处理找到的第一个结果）<br>([^”]</em>)<br>表示非引号的字符N个；外面 () 表示后面替换要用（用 1,…,9等引用）<br>[/img]<br>/ 需要被 转义<br>与其它工具正则不一样的地方在于 () 也必须 ()，怪不得我老是弄不出来。<br>相关资料：<br>via <a href="http://net.pku.edu.cn/~yhf/tao_regexps_zh.html" target="_blank" rel="external">http://net.pku.edu.cn/~yhf/tao_regexps_zh.html</a><br>vi 命令 作用<br>:%s/ <em>/ /g 把一个或者多个空格替换为一个空格。<br>:%s/ </em>$// 去掉行尾的所有空格。<br>:%s/^/ / 在每一行头上加入一个空格。<br>:%s/^[0-9][0-9]<em> // 去掉行首的所有数字字符。<br>:%s/b[aeio]g/bug/g 将所有的bag、beg、big和bog改为bug。<br>:%s/t([aou])g/h1t/g 将所有tag、tog和tug分别改为hat、hot和hug（注意用group的用法和使用1引用前面被匹配的字符）。<br>Sed<br>Sed是Stream EDitor的缩写，是Unix下常用的基于文件和管道的编辑工具，可以在手册中得到关于sed的详细信息。<br>这里是一些有趣的sed脚本，假定我们正在处理一个叫做price.txt的文件。注意这些编辑并不会改变源文件，sed只是处理源文件的每一行并 把结果显示在标准输出中（当然很容易使用重定向来定制）：<br>sed脚本 描述<br>sed ’s/^$/d’ price.txt 删除所有空行<br>sed ’s/^[ ]</em>$/d’ price.txt 删除所有只包含空格或者制表符的行<br>sed ’s/”//g’ price.txt 删除所有引号</p>
 
       
     </div>
@@ -527,7 +524,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://blog.zhangchi.xyz/2016/06/03/使用IPMI监控集群温度/" title="使用IPMI监控集群温度">http://blog.zhangchi.xyz/2016/06/03/使用IPMI监控集群温度/</a>
+      <a href="http://blog.zhangchi.xyz/2017/05/11/VIM正则表达式简要介绍/" title="VIM正则表达式简要介绍">http://blog.zhangchi.xyz/2017/05/11/VIM正则表达式简要介绍/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -543,7 +540,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/集群自动监控/" rel="tag"># 集群自动监控</a>
+            <a href="/tags/正则表达式/" rel="tag"># 正则表达式</a>
           
         </div>
       
@@ -556,8 +553,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/03/Ubuntu修改grub默认启动顺序/" rel="next" title="Ubunut修改grub默认启动顺序">
-                <i class="fa fa-chevron-left"></i> Ubunut修改grub默认启动顺序
+              <a href="/2017/05/09/Torque安装配置过程及问题/" rel="next" title="Torque安装配置过程及问题">
+                <i class="fa fa-chevron-left"></i> Torque安装配置过程及问题
               </a>
             
           </div>
@@ -565,10 +562,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/06/Linux服务器安装ipmitool简要过程/" rel="prev" title="Linux服务器安装ipmitool简要过程">
-                Linux服务器安装ipmitool简要过程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
