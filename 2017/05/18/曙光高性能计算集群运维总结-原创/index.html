@@ -90,19 +90,19 @@
 
 
 
-<meta name="description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点，一级主节点的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，对自己过去年的集群管理工作非常满意。
-下面将自己在集群管理过程中遇到的问题和解决方法分享给大">
+<meta name="description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点，一级主节点的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年里，集群管理这份工作还是有一些收获的。
+下面将自己在集群管理过程中遇到的问题和解决">
 <meta property="og:type" content="article">
 <meta property="og:title" content="曙光高性能计算集群运维总结-原创">
 <meta property="og:url" content="http://blog.zhangchi.xyz/2017/05/18/曙光高性能计算集群运维总结-原创/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点，一级主节点的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，对自己过去年的集群管理工作非常满意。
-下面将自己在集群管理过程中遇到的问题和解决方法分享给大">
-<meta property="og:updated_time" content="2017-05-18T12:19:20.000Z">
+<meta property="og:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点，一级主节点的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年里，集群管理这份工作还是有一些收获的。
+下面将自己在集群管理过程中遇到的问题和解决">
+<meta property="og:updated_time" content="2017-05-18T12:28:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="曙光高性能计算集群运维总结-原创">
-<meta name="twitter:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点，一级主节点的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，对自己过去年的集群管理工作非常满意。
-下面将自己在集群管理过程中遇到的问题和解决方法分享给大">
+<meta name="twitter:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点，一级主节点的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年里，集群管理这份工作还是有一些收获的。
+下面将自己在集群管理过程中遇到的问题和解决">
 
 
 
@@ -423,7 +423,7 @@
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">305</span>
+               <span class="post-count">314</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -441,7 +441,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">45.8k字</span>
+               <span class="post-count">45.9k字</span>
            </span>
 	   
 
@@ -467,9 +467,9 @@
       
 
       
-        <h3 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h3><p>2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点，一级主节点的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，对自己过去年的集群管理工作非常满意。</p>
-<p>下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，方便后来的管理人员快速入手，同时也是一个交流的机会，希望大家批评指正。</p>
-<h3 id="机房环境的维护与管理"><a href="#机房环境的维护与管理" class="headerlink" title="机房环境的维护与管理"></a>机房环境的维护与管理</h3><h3 id="服务器硬件维护"><a href="#服务器硬件维护" class="headerlink" title="服务器硬件维护"></a>服务器硬件维护</h3><h3 id="分布式文件系统维护"><a href="#分布式文件系统维护" class="headerlink" title="分布式文件系统维护"></a>分布式文件系统维护</h3><h3 id="网络维护"><a href="#网络维护" class="headerlink" title="网络维护"></a>网络维护</h3><h3 id="服务器操作系统维护"><a href="#服务器操作系统维护" class="headerlink" title="服务器操作系统维护"></a>服务器操作系统维护</h3><h3 id="集群系统介绍和使用"><a href="#集群系统介绍和使用" class="headerlink" title="集群系统介绍和使用"></a>集群系统介绍和使用</h3><h3 id="计算资源分配与管理"><a href="#计算资源分配与管理" class="headerlink" title="计算资源分配与管理"></a>计算资源分配与管理</h3><h3 id="集群监控与运维"><a href="#集群监控与运维" class="headerlink" title="集群监控与运维"></a>集群监控与运维</h3><h3 id="集群整体关机与启动流程"><a href="#集群整体关机与启动流程" class="headerlink" title="集群整体关机与启动流程"></a>集群整体关机与启动流程</h3><h3 id="集群管理技巧和软件推荐"><a href="#集群管理技巧和软件推荐" class="headerlink" title="集群管理技巧和软件推荐"></a>集群管理技巧和软件推荐</h3><h3 id="常见故障及处理办法"><a href="#常见故障及处理办法" class="headerlink" title="常见故障及处理办法"></a>常见故障及处理办法</h3><h3 id="期待更好"><a href="#期待更好" class="headerlink" title="期待更好"></a>期待更好</h3>
+        <h3 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h3><p>2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点，一级主节点的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年里，集群管理这份工作还是有一些收获的。</p>
+<p>下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，方便后来的管理人员快速入手，同时也是一个交流的机会，希望大家批评指正。<br><a id="more"></a></p>
+<h3 id="机房环境的维护与管理"><a href="#机房环境的维护与管理" class="headerlink" title="机房环境的维护与管理"></a>机房环境的维护与管理</h3><h3 id="服务器硬件维护"><a href="#服务器硬件维护" class="headerlink" title="服务器硬件维护"></a>服务器硬件维护</h3><h3 id="分布式文件系统维护"><a href="#分布式文件系统维护" class="headerlink" title="分布式文件系统维护"></a>分布式文件系统维护</h3><h3 id="网络维护"><a href="#网络维护" class="headerlink" title="网络维护"></a>网络维护</h3><h3 id="服务器操作系统维护"><a href="#服务器操作系统维护" class="headerlink" title="服务器操作系统维护"></a>服务器操作系统维护</h3><h3 id="集群系统介绍和使用"><a href="#集群系统介绍和使用" class="headerlink" title="集群系统介绍和使用"></a>集群系统介绍和使用</h3><h3 id="计算资源分配与管理"><a href="#计算资源分配与管理" class="headerlink" title="计算资源分配与管理"></a>计算资源分配与管理</h3><h3 id="集群监控与运维"><a href="#集群监控与运维" class="headerlink" title="集群监控与运维"></a>集群监控与运维</h3><h3 id="集群整体关机与启动流程"><a href="#集群整体关机与启动流程" class="headerlink" title="集群整体关机与启动流程"></a>集群整体关机与启动流程</h3><h3 id="集群管理技巧和软件推荐"><a href="#集群管理技巧和软件推荐" class="headerlink" title="集群管理技巧和软件推荐"></a>集群管理技巧和软件推荐</h3><h3 id="常见故障及处理办法"><a href="#常见故障及处理办法" class="headerlink" title="常见故障及处理办法"></a>常见故障及处理办法</h3><h3 id="售后保修"><a href="#售后保修" class="headerlink" title="售后保修"></a>售后保修</h3><h3 id="期待更好"><a href="#期待更好" class="headerlink" title="期待更好"></a>期待更好</h3>
       
     </div>
 
@@ -800,7 +800,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机房环境的维护与管理"><span class="nav-number">2.</span> <span class="nav-text">机房环境的维护与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器硬件维护"><span class="nav-number">3.</span> <span class="nav-text">服务器硬件维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式文件系统维护"><span class="nav-number">4.</span> <span class="nav-text">分布式文件系统维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络维护"><span class="nav-number">5.</span> <span class="nav-text">网络维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器操作系统维护"><span class="nav-number">6.</span> <span class="nav-text">服务器操作系统维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群系统介绍和使用"><span class="nav-number">7.</span> <span class="nav-text">集群系统介绍和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算资源分配与管理"><span class="nav-number">8.</span> <span class="nav-text">计算资源分配与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群监控与运维"><span class="nav-number">9.</span> <span class="nav-text">集群监控与运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群整体关机与启动流程"><span class="nav-number">10.</span> <span class="nav-text">集群整体关机与启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理技巧和软件推荐"><span class="nav-number">11.</span> <span class="nav-text">集群管理技巧和软件推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见故障及处理办法"><span class="nav-number">12.</span> <span class="nav-text">常见故障及处理办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期待更好"><span class="nav-number">13.</span> <span class="nav-text">期待更好</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机房环境的维护与管理"><span class="nav-number">2.</span> <span class="nav-text">机房环境的维护与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器硬件维护"><span class="nav-number">3.</span> <span class="nav-text">服务器硬件维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式文件系统维护"><span class="nav-number">4.</span> <span class="nav-text">分布式文件系统维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络维护"><span class="nav-number">5.</span> <span class="nav-text">网络维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器操作系统维护"><span class="nav-number">6.</span> <span class="nav-text">服务器操作系统维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群系统介绍和使用"><span class="nav-number">7.</span> <span class="nav-text">集群系统介绍和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算资源分配与管理"><span class="nav-number">8.</span> <span class="nav-text">计算资源分配与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群监控与运维"><span class="nav-number">9.</span> <span class="nav-text">集群监控与运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群整体关机与启动流程"><span class="nav-number">10.</span> <span class="nav-text">集群整体关机与启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理技巧和软件推荐"><span class="nav-number">11.</span> <span class="nav-text">集群管理技巧和软件推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见故障及处理办法"><span class="nav-number">12.</span> <span class="nav-text">常见故障及处理办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#售后保修"><span class="nav-number">13.</span> <span class="nav-text">售后保修</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期待更好"><span class="nav-number">14.</span> <span class="nav-text">期待更好</span></a></li></ol></div>
             
 
           </div>
