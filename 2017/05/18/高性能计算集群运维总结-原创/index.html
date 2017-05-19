@@ -90,19 +90,19 @@
 
 
 
-<meta name="description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点(一级主节点)的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年里，集群管理这份工作还是有一些收获的。
-下面将自己在集群管理过程中遇到的问题和解">
+<meta name="description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点(一级主节点)的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
+下面将自己在集群管理过程中遇到的问题和解决方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高性能计算集群运维总结-原创">
 <meta property="og:url" content="http://blog.zhangchi.xyz/2017/05/18/高性能计算集群运维总结-原创/index.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点(一级主节点)的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年里，集群管理这份工作还是有一些收获的。
-下面将自己在集群管理过程中遇到的问题和解">
-<meta property="og:updated_time" content="2017-05-19T01:15:24.000Z">
+<meta property="og:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点(一级主节点)的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
+下面将自己在集群管理过程中遇到的问题和解决方">
+<meta property="og:updated_time" content="2017-05-19T03:22:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能计算集群运维总结-原创">
-<meta name="twitter:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点(一级主节点)的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年里，集群管理这份工作还是有一些收获的。
-下面将自己在集群管理过程中遇到的问题和解">
+<meta name="twitter:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点(一级主节点)的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
+下面将自己在集群管理过程中遇到的问题和解决方">
 
 
 
@@ -423,7 +423,7 @@
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">1,024</span>
+               <span class="post-count">3,955</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -432,7 +432,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">阅读时间:</span>
-               <span class="post-count">3分</span>
+               <span class="post-count">13分</span>
            </span>
 	  <!--本站总字数-->
           <span class="post-time">
@@ -441,7 +441,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">46.6k字</span>
+               <span class="post-count">49.5k字</span>
            </span>
 	   
 
@@ -467,14 +467,34 @@
       
 
       
-        <h3 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h3><p>2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点(一级主节点)的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年里，集群管理这份工作还是有一些收获的。</p>
-<p>下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，方便后来的管理人员快速入手，同时也是一个交流的机会，希望大家批评指正。<br><a id="more"></a></p>
-<h3 id="集群配置信息"><a href="#集群配置信息" class="headerlink" title="集群配置信息"></a>集群配置信息</h3><h3 id="日常职责"><a href="#日常职责" class="headerlink" title="日常职责"></a>日常职责</h3><p>机房巡视，主要检查空调运行情况、机房温度、机房湿度、是否存在火宅隐患、检查火宅报警器是否正常开机运行等。<br>集群硬件维护，主要包括集群存储服务器硬盘状态查看、计算刀片故障处理、硬盘更换、内存条更换、网络故障处理等。<br>集群软件系统维护，主要包括集群分布式文件系统故障处理、集群计算刀片操作系统管理、集群并行计算软件环境维护等。<br>计算资源分配与管理，主要将空闲的计算资源分配给有需要的用户，为其添加集群账号，分配节点。用户计算完后，主动回收节点，并清理不用的用户资料。</p>
+        <h3 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h3><p>2016年5月至2017年7月之间，我与另外一位同学担任了中国国家科研教育网格华中地区主节点(一级主节点)的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。</p>
+<p>下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，方便后来的管理人员快速入手，同时也是一个交流的机会，欢迎大家批评指正。<br><a id="more"></a></p>
+<h3 id="集群配置信息"><a href="#集群配置信息" class="headerlink" title="集群配置信息"></a>集群配置信息</h3><h3 id="日常职责"><a href="#日常职责" class="headerlink" title="日常职责"></a>日常职责</h3><p>机房巡检，每周2-3次，周一、周五都必须检查一次，主要检查空调运行情况、机房温度、机房湿度、是否存在火宅隐患、检查火宅报警器是否正常开机运行等。<br>集群硬件维护，主要包括集群存储服务器硬盘状态查看、计算刀片故障处理、硬盘更换、内存条更换、网络故障处理等。<br>集群软件系统维护，主要包括集群分布式文件系统故障处理、集群计算刀片操作系统管理、集群并行计算软件环境维护等。<br>计算资源分配与管理，主要将空闲的计算资源分配给有需要的用户，为其添加集群账号，分配节点。用户计算完后，主动回收节点，并清理不用的用户资料。</p>
+<p>总结主要有如下几件事要做：</p>
+<ul>
+<li>主机房两个空调是否正常运行，主要看报警数据还有温度信息，主机房正常温度在22-24摄氏度，湿度40%-60%范围内，空调控制面板报警选项卡中没有报警信息。</li>
+<li>主机房火灾报警器是否正常运行，主要看是否开机，面板提示是否正常。</li>
+<li>主机房所有机柜绕一圈，检查是否有刀片服务器电源模块亮黄灯，黄灯表示异常，绿灯表示正常运行。同时，检查存储服务器后置硬盘阵列是否存在亮红灯的情况，存在亮红灯的硬盘，请及时拔下硬盘，有手机或者相机拍下服务器上序列号，并进行保修。最后还要检查刀片机箱的交换模块是否正常运行，即网络接口是否有灯在闪。</li>
+<li>配电房UPS电池组是否存在异常，主要看是否有异味，UPS主机柜和配电柜是否有异常显示信息，异常时会有红灯亮，注意不是面板显示的红色信息。</li>
+<li>配电房空调温度是否正常，东北角的柜式空调，正常温度设定在18-20摄氏度，存在异常请及时报修。</li>
+</ul>
 <h3 id="机房环境的维护与管理"><a href="#机房环境的维护与管理" class="headerlink" title="机房环境的维护与管理"></a>机房环境的维护与管理</h3><p>机房环境的维护是一件非常重要的事情，良好的机房环境是集群正常运行的基础，机房环境出现问题，直接集群瘫痪，无法正常运行，更严重的，还有可能导致火灾，因此机房环境需要重点关注。</p>
-<p>机房环境主要指房间的温度、湿度，这两点特别重要，如果温度过高、过低或者温度不稳定，集群很容易出现问题，集群本身产热非常大，如果温度过高，很容易出现服务器报警、主板老化的情况。本集群之前空调出现问题，导致主板节点温度过高，服务器过早坏掉的情况。温度过高最容易导致主板电容爆掉的情况，因此需要特别注意，另外用户在进行计算过程中，要特别注意提醒用户不要提交过量的计算任务，避免导致主板温度过高提前老化的情况。</p>
-<p>机房的湿度控制，这个一般没有特殊的办法，正常情况下，除非是武汉地区长期下雨，可能会存在湿度超标的情况。一般湿度都会在可控的范围内。另外，之前机房顶部靠近北边的地方出现过漏水的情况，具体原因没有查清楚，因此进行机房巡视时，一定要注意看天花板，检查是否存在房顶漏水的情况，如果存在这样的情况，要及时关闭集群并断电，避免进水导致机器烧毁。</p>
-<p>机房火灾报警器检查，机房火灾一般会由于温度过高，机器老化导致，即很可能是因为电路老化导致火灾。因此每次去机房都要检查火灾报警器是否正常运行了。</p>
-<h3 id="服务器硬件维护"><a href="#服务器硬件维护" class="headerlink" title="服务器硬件维护"></a>服务器硬件维护</h3><h3 id="集群软件配置"><a href="#集群软件配置" class="headerlink" title="集群软件配置"></a>集群软件配置</h3><h3 id="分布式文件系统维护"><a href="#分布式文件系统维护" class="headerlink" title="分布式文件系统维护"></a>分布式文件系统维护</h3><h3 id="网络维护"><a href="#网络维护" class="headerlink" title="网络维护"></a>网络维护</h3><h3 id="服务器操作系统维护"><a href="#服务器操作系统维护" class="headerlink" title="服务器操作系统维护"></a>服务器操作系统维护</h3><h3 id="集群系统介绍和使用"><a href="#集群系统介绍和使用" class="headerlink" title="集群系统介绍和使用"></a>集群系统介绍和使用</h3><h3 id="计算资源分配与管理"><a href="#计算资源分配与管理" class="headerlink" title="计算资源分配与管理"></a>计算资源分配与管理</h3><h3 id="集群监控与运维"><a href="#集群监控与运维" class="headerlink" title="集群监控与运维"></a>集群监控与运维</h3><h3 id="集群关机与启动流程"><a href="#集群关机与启动流程" class="headerlink" title="集群关机与启动流程"></a>集群关机与启动流程</h3><h3 id="机房断电与通电流程"><a href="#机房断电与通电流程" class="headerlink" title="机房断电与通电流程"></a>机房断电与通电流程</h3><h3 id="集群管理技巧和软件推荐"><a href="#集群管理技巧和软件推荐" class="headerlink" title="集群管理技巧和软件推荐"></a>集群管理技巧和软件推荐</h3><h3 id="常见故障及处理办法"><a href="#常见故障及处理办法" class="headerlink" title="常见故障及处理办法"></a>常见故障及处理办法</h3><h3 id="售后报修"><a href="#售后报修" class="headerlink" title="售后报修"></a>售后报修</h3><h3 id="未尽事宜"><a href="#未尽事宜" class="headerlink" title="未尽事宜"></a>未尽事宜</h3><h3 id="期待更好"><a href="#期待更好" class="headerlink" title="期待更好"></a>期待更好</h3>
+<p>机房环境主要指房间的温度、湿度，这两点特别重要，如果温度过高、过低或者温度不稳定，集群很容易出现问题，集群本身产热非常大，如果温度过高，很容易出现服务器报警、主板老化的情况。本集群之前空调出现问题，导致主板节点温度过高，服务器过早坏掉的情况。温度过高最容易导致主板电容爆掉的情况，因此需要引起注意，另外用户在进行计算过程中，要特别注意提醒用户不要提交过量的计算任务，避免导致主板温度过高提前老化的情况。任何时候，如果出现机房空调温度不正常，需要及时给实验室相关负责老师打电话并联系空调维保公司技术人员尽快进行空调维护，并关闭一部分机器，避免温度过高。</p>
+<p>机房的湿度控制，正常情况下，机房湿度都在标准允许的范围内，即不超过50%。除非是武汉地区长期下雨，可能会存在湿度超标的情况，一般湿度都会在可控的范围内。另外，之前机房顶部靠近北边的地方出现过漏水的情况，具体原因没有查清楚，因此进行机房巡视时，一定要注意看天花板，检查是否存在房顶漏水的情况，如果存在这样的情况，首先及时汇报情况给机房负责老师，并及时关闭集群，并切断电源（具体方法见后面集群断电方式），避免进水导致机器烧毁。</p>
+<p>机房火灾报警器检查，机房火灾一般会由于温度过高，机器老化导致，即很可能是因为电路老化导致火灾。因此每次去机房都要检查火灾报警器是否正常运行了。之前机房出现过火灾报警器误报的情况，即实际上不存在火灾，但是报警器一直响，出现过多次，后来发现原因是夏季时机房湿度比较大，报警器上面有水凝结，导致误报。之后稍微修理了一下，暂时没有出现误报的情况。如果出现了报警器报警的情况，检查温度是否过高，是否存在烟雾，是不是误报，然后及时汇报情况给负责老师。如果存在温度过高或者存在烟雾或有异味，赶紧关闭集群，断电方法请参考集群关机或启动流程章节。</p>
+<h3 id="服务器硬件维护"><a href="#服务器硬件维护" class="headerlink" title="服务器硬件维护"></a>服务器硬件维护</h3><p>集群配置的服务器主要有三种，刀片服务器、存储服务器、GPU服务器，其中刀片服务器最多，存储服务器硬盘最多，GPU服务器配置的GPGPU卡最多。<br>集群硬件主要包括了上述的三种服务器、H3C万兆以太网交换机、Mellanox InfniBand交换机、安全网关、PDU、PDM等设备。<br>而其中最容易出现故障的就是硬盘和刀片服务器了。存储服务器硬盘故障最多，其次是计算刀片服务器容易出现主板烧坏的情况。下面将简要介绍这两种故障的发现和处理。</p>
+<h4 id="硬盘故障发现"><a href="#硬盘故障发现" class="headerlink" title="硬盘故障发现"></a>硬盘故障发现</h4><p>最常见的硬盘故障是存储服务器的故障，存储服务器型号是Sugon I640-G15，该存储服务器的存储配置信息为，有两块RAID卡，机箱前置面板和后置面板都有硬盘插槽，其中前面可以放24块SAS硬盘，后面可以放12块SAS硬盘，前置硬盘插槽由RAID0卡管理，后置硬盘插槽由RAID1卡管理，一定要记住顺序了，其实顺序非常好记忆的。</p>
+<p>每周需要有时间进行机房巡视，查看存储服务器硬盘的健康状况，这是一种最直接的发现问题的方式。</p>
+<p>另外一种发现故障的方式是采用软件的方式，而且软件方式更加方便、直观，最主要就是能够在磁盘亮红灯之前就发现故障盘，可以及早发现问题，因此推荐采用这种方式来进行故障盘的发现。</p>
+<p>集群使用的RAID卡品牌好像是Mega，厂家提供了两个工具来进行RAID信息配置和管理，MegaCLI和Mega RAID Storage Manager两个软件，顾名思义，MegaCLI是命令行工具，Mega RAID Storage Manager是图形化管理工具，推荐使用后者，因为配置方便、更加直观、操作简单。但是需要使用VNC连接到集群入口节点node307或者node308，然后通过Mega RAID Storage Manager连接到具体的存储服务器查看RAID阵列信息和磁盘信息，具体使用方法确实挺简单的，百度上面很多文章，这里就不再重复描述了。MegaCLI的优势就是，可以通过Shell脚本来提取磁盘信息，发现磁盘故障，因此可以使用MegaCLI编写磁盘健康监控脚本，由于时间有限，脚本没编写，不过很简单的。上面两种软件，已经被安装到了所有存储服务器，直接使用即可，如果存在问题，可以重新安装。</p>
+<h4 id="硬盘故障处理"><a href="#硬盘故障处理" class="headerlink" title="硬盘故障处理"></a>硬盘故障处理</h4><p>发现硬盘故障后，首先使用手机拍下存储服务器上面的序列号，直接拨打曙光全国客服热线400-810-0466进行保修，我们是非专项客户，存储服务器产品保修，然后报序列号，他们会查产品是否在保修期内，如果在保，他们会发一块硬盘过来，大约3-5天过来更换。</p>
+<p>如果同一个服务器的同一个阵列，如前置阵列或者后置阵列上面出现两块硬盘闪红灯的情况，那么，不能等曙光发货了，如果下一块磁盘出现故障，整个集群的数据都有可能丢失，这个时候的处理方式是，从最后的2台没有闲置的存储服务器上面找到一块硬盘，并且从RAID卡管理界面将该硬盘的RAID信息删除（具体做法后面可能会提到，也可以参考网上的MegaRAID的配置教程），然后拔掉这块硬盘，把硬盘从硬盘托上拆下来，换到坏掉的硬盘的所在的硬盘托架上面，并将好的硬盘插入到故障存储服务器上面，刚刚插上服务器时，硬盘指示灯还是会一直亮红色，大概5-10秒过后，RAID卡检测到新的硬盘插入后，如果硬盘上面没有之前的RAID信息，那么RAID卡会进行回写工作。</p>
+<p>这里稍微讲解一下RAID卡的工作原理，一般的RAID阵列都会配置1-2块热备盘，热备盘一般会选择ID号靠近最后的1-2块作为热备盘，具体情况可以通过RAID卡配置界面查看到。当阵列中的某一块磁盘（非热备盘）出现故障时，RAID卡根据RIAD级别以及阵列其他磁盘的信息，计算出坏掉的磁盘信息，并将信息写入到热备盘中，即RAID卡将坏掉的磁盘信息还原并写入到热备盘，这个过程可能会比较慢，通常由数据大小和磁盘大小来决定，一般也需要2-3个小时，热备盘写入完成后，阵列又可以正常工作了，其实在写热备盘的过程中，阵列还是可以工作，只是速度慢一些，因为缺少了一块磁盘信息，需要通过计算才能得到，因此在写热备盘的过程中，不能出现频繁I/O请求，否则可能导致RAID阵列崩溃，阵列数据完全丢失的情况，这一点可以通过关闭集群入口节点的登录功能或者限制用户计算来达到。</p>
+<p>需要注意的是，如果磁盘出现了故障，最好等到热备盘写完成之后，再插入新的硬盘，新的硬盘插上后，就开始回写过程，回写就是把热备盘的信息复制到新换上的硬盘当中，相当于原来的磁盘信息复制到新的磁盘上，当回写完成后，磁盘阵列又恢复了原来的状态，即原来的数据盘还是数据盘，热备盘还是热备盘，热备盘就不提供数据的读写服务了，只有当其他的磁盘坏掉是，热备盘才会开始工作，用于存储RAID计算出来的坏掉的磁盘的数据。</p>
+<p>这其中存在一个情况就是，如果新插入的磁盘上面含有其他RAID卡的信息，很可能就是我们集群的情况，因为最后两台存储服务器node325和node326节点上面本身就有RAID信息，所以将这两块RAID卡上面的硬盘拔下，插入到其他存储服务器时，其他服务器RAID卡会认为他们是外部存储设备，无法正常使用。因此插上带有RAID信息的磁盘时，红灯会一直亮起，无法进行回写工作。那么我们可以通过在好硬盘所在的存储服务器上面，打开RAID卡配置界面，将需要取出来的硬盘从原有的RAID阵列中删除，这样磁盘上面就不包含RAID信息了，插入到存在坏盘的存储服务器上面，就可以马上自动开始回写工作了。</p>
+<h4 id="计算刀片故障发现与处理"><a href="#计算刀片故障发现与处理" class="headerlink" title="计算刀片故障发现与处理"></a>计算刀片故障发现与处理</h4><p>计算刀片的故障发现非常容易，但是需要一定的耐心。计算刀片出现故障的前兆是，刀片经常出现死机的情况，有时候负载不是很高就开卡住或者反映特别慢，出现这种现象时，可以首先重新启动计算刀片的操作系统，然后再观察一段时间，如果情况依旧，很有可能是主板出现故障，老化或者有电容坏掉了。这个时候，最后进一步做判断，将计算刀片关机，并把另外一块好的计算刀片的硬盘拔下来，插入到怀疑有故障的刀片上面，启动，如果发现故障依旧，那么基本可以断定，该计算刀片的主板出问题了。</p>
+<p>计算刀片出现问题的时候，首先在前置面板几下刀片上面的一个数字，这个数字是刀片插槽的编号，然后到刀片所在刀箱的机柜后面，将对应编号的InfiniBand网线拔出来，直接拉那个蓝色的塑料圈圈就可以拔出来。然后返回到刀片正面，有个蓝色的小铁杆，直接往外拨，刀片就出来了一些，然后就可以把刀片整个拔出来了。但是这里不需要把刀片全部拔出来，只需要拔出一些，看到刀片前面的一个序列号标签，拿出手机拍照，记下序列号，然后拨打曙光全国客服热线400-810-0466进行报修。大概3-5天之后，会有曙光售后过来进行维修，一般而言就是更换刀片的主板，CPU、内存什么的的还是不会更换的。由于集群保修期大概到2017年12月份，因此需要早点发现故障刀片，尽快更换一批有故障的刀片服务器。</p>
+<h3 id="分布式文件系统维护"><a href="#分布式文件系统维护" class="headerlink" title="分布式文件系统维护"></a>分布式文件系统维护</h3><h3 id="服务器操作系统维护"><a href="#服务器操作系统维护" class="headerlink" title="服务器操作系统维护"></a>服务器操作系统维护</h3><h3 id="集群软件配置与管理"><a href="#集群软件配置与管理" class="headerlink" title="集群软件配置与管理"></a>集群软件配置与管理</h3><h3 id="网络故障维护"><a href="#网络故障维护" class="headerlink" title="网络故障维护"></a>网络故障维护</h3><h3 id="集群管理软件使用"><a href="#集群管理软件使用" class="headerlink" title="集群管理软件使用"></a>集群管理软件使用</h3><h3 id="计算资源分配与管理"><a href="#计算资源分配与管理" class="headerlink" title="计算资源分配与管理"></a>计算资源分配与管理</h3><h3 id="集群监控与运维"><a href="#集群监控与运维" class="headerlink" title="集群监控与运维"></a>集群监控与运维</h3><h3 id="集群关机与启动流程"><a href="#集群关机与启动流程" class="headerlink" title="集群关机与启动流程"></a>集群关机与启动流程</h3><h3 id="机房断电与通电流程"><a href="#机房断电与通电流程" class="headerlink" title="机房断电与通电流程"></a>机房断电与通电流程</h3><h3 id="集群管理技巧和软件推荐"><a href="#集群管理技巧和软件推荐" class="headerlink" title="集群管理技巧和软件推荐"></a>集群管理技巧和软件推荐</h3><h3 id="常见故障及处理办法"><a href="#常见故障及处理办法" class="headerlink" title="常见故障及处理办法"></a>常见故障及处理办法</h3><h3 id="售后报修"><a href="#售后报修" class="headerlink" title="售后报修"></a>售后报修</h3><h3 id="未尽事宜"><a href="#未尽事宜" class="headerlink" title="未尽事宜"></a>未尽事宜</h3><h3 id="期待更好"><a href="#期待更好" class="headerlink" title="期待更好"></a>期待更好</h3>
       
     </div>
 
@@ -805,7 +825,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群配置信息"><span class="nav-number">2.</span> <span class="nav-text">集群配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日常职责"><span class="nav-number">3.</span> <span class="nav-text">日常职责</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机房环境的维护与管理"><span class="nav-number">4.</span> <span class="nav-text">机房环境的维护与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器硬件维护"><span class="nav-number">5.</span> <span class="nav-text">服务器硬件维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群软件配置"><span class="nav-number">6.</span> <span class="nav-text">集群软件配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式文件系统维护"><span class="nav-number">7.</span> <span class="nav-text">分布式文件系统维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络维护"><span class="nav-number">8.</span> <span class="nav-text">网络维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器操作系统维护"><span class="nav-number">9.</span> <span class="nav-text">服务器操作系统维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群系统介绍和使用"><span class="nav-number">10.</span> <span class="nav-text">集群系统介绍和使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算资源分配与管理"><span class="nav-number">11.</span> <span class="nav-text">计算资源分配与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群监控与运维"><span class="nav-number">12.</span> <span class="nav-text">集群监控与运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群关机与启动流程"><span class="nav-number">13.</span> <span class="nav-text">集群关机与启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机房断电与通电流程"><span class="nav-number">14.</span> <span class="nav-text">机房断电与通电流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理技巧和软件推荐"><span class="nav-number">15.</span> <span class="nav-text">集群管理技巧和软件推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见故障及处理办法"><span class="nav-number">16.</span> <span class="nav-text">常见故障及处理办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#售后报修"><span class="nav-number">17.</span> <span class="nav-text">售后报修</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未尽事宜"><span class="nav-number">18.</span> <span class="nav-text">未尽事宜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期待更好"><span class="nav-number">19.</span> <span class="nav-text">期待更好</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群配置信息"><span class="nav-number">2.</span> <span class="nav-text">集群配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日常职责"><span class="nav-number">3.</span> <span class="nav-text">日常职责</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机房环境的维护与管理"><span class="nav-number">4.</span> <span class="nav-text">机房环境的维护与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器硬件维护"><span class="nav-number">5.</span> <span class="nav-text">服务器硬件维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障发现"><span class="nav-number">5.1.</span> <span class="nav-text">硬盘故障发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障处理"><span class="nav-number">5.2.</span> <span class="nav-text">硬盘故障处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算刀片故障发现与处理"><span class="nav-number">5.3.</span> <span class="nav-text">计算刀片故障发现与处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式文件系统维护"><span class="nav-number">6.</span> <span class="nav-text">分布式文件系统维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器操作系统维护"><span class="nav-number">7.</span> <span class="nav-text">服务器操作系统维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群软件配置与管理"><span class="nav-number">8.</span> <span class="nav-text">集群软件配置与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络故障维护"><span class="nav-number">9.</span> <span class="nav-text">网络故障维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理软件使用"><span class="nav-number">10.</span> <span class="nav-text">集群管理软件使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算资源分配与管理"><span class="nav-number">11.</span> <span class="nav-text">计算资源分配与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群监控与运维"><span class="nav-number">12.</span> <span class="nav-text">集群监控与运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群关机与启动流程"><span class="nav-number">13.</span> <span class="nav-text">集群关机与启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机房断电与通电流程"><span class="nav-number">14.</span> <span class="nav-text">机房断电与通电流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理技巧和软件推荐"><span class="nav-number">15.</span> <span class="nav-text">集群管理技巧和软件推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见故障及处理办法"><span class="nav-number">16.</span> <span class="nav-text">常见故障及处理办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#售后报修"><span class="nav-number">17.</span> <span class="nav-text">售后报修</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未尽事宜"><span class="nav-number">18.</span> <span class="nav-text">未尽事宜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期待更好"><span class="nav-number">19.</span> <span class="nav-text">期待更好</span></a></li></ol></div>
             
 
           </div>
