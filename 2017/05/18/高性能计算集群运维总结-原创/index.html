@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
 下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，方便后来的管理人员快速入手，">
-<meta property="og:updated_time" content="2017-05-19T09:24:32.000Z">
+<meta property="og:updated_time" content="2017-05-19T09:37:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能计算集群运维总结-原创">
 <meta name="twitter:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
@@ -423,7 +423,7 @@
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">8,932</span>
+               <span class="post-count">8,952</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -432,7 +432,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">阅读时间:</span>
-               <span class="post-count">31分</span>
+               <span class="post-count">32分</span>
            </span>
 	  <!--本站总字数-->
           <span class="post-time">
@@ -526,7 +526,8 @@
 <p>集群还安装了Torque5作业调度管理系统，目前主节点为node307，后期考虑将B区的所有节点都安装作业调度管理系统，并采用调度系统提交作业。</p>
 <p>总而言之，集群软件尽量安装到/public/software目录下面，并编写一定的说明文档，告知用户使用方法，可以找一些已经有过安装和使用经验的用户进行交流，让他们提供这些资料。</p>
 <h3 id="网络故障维护"><a href="#网络故障维护" class="headerlink" title="网络故障维护"></a>网络故障维护</h3><h4 id="Infiniband网络故障"><a href="#Infiniband网络故障" class="headerlink" title="Infiniband网络故障"></a>Infiniband网络故障</h4><p><a href="http://www.mellanox.com/page/software_overview_ib" target="_blank" rel="external">Mellanox Infiniband驱动下载地址</a></p>
-<h4 id="以太网故障"><a href="#以太网故障" class="headerlink" title="以太网故障"></a>以太网故障</h4><h3 id="集群管理软件使用"><a href="#集群管理软件使用" class="headerlink" title="集群管理软件使用"></a>集群管理软件使用</h3><p>集群上面安装了clusconf软件，可以用于用户的管理工作，常用的命令如下，例如说来了一个新的用户tom，需要给tom分配几个节点，比如说是100，101，105，106，107，下面简单介绍使用clusconf命令在以上节点添加用户tom。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">clusconf -p node -n `seq 307 310` 100 101 `seq 105 107` -ua tom</span><br><span class="line">#-p node是指节点主机名的前缀，例如说node1的前缀是node，这个是固定写法。</span><br><span class="line">#-n 选项指定要进行操作的节点编号，无论用户分配哪些节点给用户，以下节点必须包含在里面</span><br><span class="line"># 307和308节点是集群的入口节点，只有这两个节点才能登陆到集群，309和310是Lustre文件系统的元数据#服务器，如果没有在这两个节点添加用户，那么用户将无法登录到集群使用文件系统，很可能导致卡住。</span><br><span class="line">#因此在进行添加用户时，一定要添加`seq 307 310`这句。</span><br><span class="line">#其他节点的编号，可以使用`seq startindex endindex`方法进行生成，前提是节点编号连续</span><br><span class="line">#节点编号不连续时，可以依次输入节点编号，空格分开。</span><br><span class="line"># -ua tom的意思是添加用户tom，ua即useradd的意思</span><br></pre></td></tr></table></figure></p>
+<h4 id="以太网故障"><a href="#以太网故障" class="headerlink" title="以太网故障"></a>以太网故障</h4><p>以太网故障一般比较少，常见的故障可能是</p>
+<h3 id="集群管理软件使用"><a href="#集群管理软件使用" class="headerlink" title="集群管理软件使用"></a>集群管理软件使用</h3><p>集群上面安装了clusconf软件，可以用于用户的管理工作，常用的命令如下，例如说来了一个新的用户tom，需要给tom分配几个节点，比如说是100，101，105，106，107，下面简单介绍使用clusconf命令在以上节点添加用户tom。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">clusconf -p node -n `seq 307 310` 100 101 `seq 105 107` -ua tom</span><br><span class="line">#-p node是指节点主机名的前缀，例如说node1的前缀是node，这个是固定写法。</span><br><span class="line">#-n 选项指定要进行操作的节点编号，无论用户分配哪些节点给用户，以下节点必须包含在里面</span><br><span class="line"># 307和308节点是集群的入口节点，只有这两个节点才能登陆到集群</span><br><span class="line">#309和310是Lustre文件系统的元数据#服务器，如果没有在这两个节点添加用户</span><br><span class="line">#那么用户将无法登录到集群使用文件系统，很可能导致卡住。</span><br><span class="line">#因此在进行添加用户时，一定要添加`seq 307 310`这句。</span><br><span class="line">#其他节点的编号，可以使用`seq startindex endindex`方法进行生成，前提是节点编号连续</span><br><span class="line">#节点编号不连续时，可以依次输入节点编号，空格分开。</span><br><span class="line"># -ua tom的意思是添加用户tom，ua即useradd的意思</span><br></pre></td></tr></table></figure></p>
 <p>由于目前仅仅使用clusconf的用户添加功能，所以只能介绍到这里，下面附上一个clusconf的使用教程，需要了解可以详细阅读。<br><a href="http://7xsnoh.com1.z0.glb.clouddn.com//clustermgmt/pdf/clusconf-1.4%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C.pdf" target="_blank" rel="external">clusconf1.4使用手册</a></p>
 <h3 id="集群监控与运维"><a href="#集群监控与运维" class="headerlink" title="集群监控与运维"></a>集群监控与运维</h3><p>集群的监控工作的作用和意义就不再强调了，为了更好掌握集群每个节点的运行情况、资源使用情况，监控是必须的。本人之前在集群的所有节点上面都安装了zabbix2.14监控管理软件，zabbix有个非常大的好处就是报警处理做的比较好，目前主要针对机器网络不通、重启会进行报警，当前情况下设置了Email报警以及短信报警。zabbix监控管理软件的URL地址是^v^，这个保密，只对管理员开放咯。</p>
 <p>由于个人精力有限，没有深入一部配置zabbix的报警规则。另外本人重新编写了一个脚本，该脚本的作用是在白天没过2个小时扫描一下集群所有计算节点的温度，发现CPU温度超过90摄氏度的，则向终端用户发出警告，CPU温度超过95摄氏度的，直接进行关机处理。该脚本所在目录地址是/vpublic01/zhangchi/clustermgmt/temp-monitor/monitor.sh，使用操作系统的crontab进行定时执行。该脚本能够正确获取到温度信息的前提是，刀片的BMC管理模块是好的，而且在BIOS中设置了该刀片BMC模块的IP地址信息，而且网络是连通的。</p>
