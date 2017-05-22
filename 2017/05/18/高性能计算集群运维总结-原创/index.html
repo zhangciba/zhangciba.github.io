@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
 下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术和理论还">
-<meta property="og:updated_time" content="2017-05-21T23:37:23.000Z">
+<meta property="og:updated_time" content="2017-05-22T01:31:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能计算集群运维总结-原创">
 <meta name="twitter:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
@@ -423,7 +423,7 @@
                </span>
                <span class="post-meta-item-text">字数:</span>
                <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">14,571</span>
+               <span class="post-count">15,439</span>
           </span>
           <!--阅读时间--> 
           <span class="post-time">
@@ -432,7 +432,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">阅读时间:</span>
-               <span class="post-count">52分</span>
+               <span class="post-count">55分</span>
            </span>
 	  <!--本站总字数-->
           <span class="post-time">
@@ -441,7 +441,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">60.1k字</span>
+               <span class="post-count">61.0k字</span>
            </span>
 	   
 
@@ -511,7 +511,7 @@
 <p>本集群的刀片机箱值安装了交换模块，没有安装直通模块，也就是只有一个以太网卡可以使用。</p>
 <p>计算刀片的故障发现非常容易，但是需要一定的耐心。计算刀片出现故障的前兆是，刀片经常出现死机的情况，有时候负载不是很高就开卡住或者反映特别慢，出现这种现象时，可以首先重新启动计算刀片的操作系统，然后再观察一段时间，如果情况依旧，很有可能是主板出现故障，老化或者有电容坏掉了。这个时候，最后进一步做判断，将计算刀片关机，并把另外一块好的计算刀片的硬盘拔下来，插入到怀疑有故障的刀片上面，启动，如果发现故障依旧，那么基本可以断定，该计算刀片的主板出问题了。</p>
 <p>计算刀片出现问题的时候，首先在前置面板几下刀片上面的一个数字，这个数字是刀片插槽的编号，然后到刀片所在刀箱的机柜后面，将对应编号的InfiniBand网线拔出来，直接拉那个蓝色的塑料圈圈就可以拔出来。然后返回到刀片正面，有个蓝色的小铁杆，直接往外拨，刀片就出来了一些，然后就可以把刀片整个拔出来了。但是这里不需要把刀片全部拔出来，只需要拔出一些，看到刀片前面的一个序列号标签，拿出手机拍照，记下序列号，然后拨打曙光全国客服热线400-810-0466进行报修。大概3-5天之后，会有曙光售后过来进行维修，一般而言就是更换刀片的主板，CPU、内存什么的的还是不会更换的。由于集群保修期大概到2017年12月份，因此需要早点发现故障刀片，尽快更换一批有故障的刀片服务器。</p>
-<h3 id="集群文件系统维护"><a href="#集群文件系统维护" class="headerlink" title="集群文件系统维护"></a>集群文件系统维护</h3><p>科研教育网格集群采用了高性能分布式计算文件系统Lustre，Top500超级计算机中有超过50%都是用了该文件系统。该文件系统的命运特别坎坷，先后转手了好几家公司，现在是Intel公司所属。Lustre原先是一套开源的产品，最初是美国能源部提出开发的，后来成立CFS公司，2007年转卖给Sun公司，2010年Sun公司被Oracle公司收购，2010年又卖给了Whamcloud公司，最后于2012年被Intel收购。</p>
+<h3 id="集群文件系统维护"><a href="#集群文件系统维护" class="headerlink" title="集群文件系统维护"></a>集群文件系统维护</h3><p><span id="Lustre"></span><br>科研教育网格集群采用了高性能分布式计算文件系统Lustre，Top500超级计算机中有超过50%都是用了该文件系统。该文件系统的命运特别坎坷，先后转手了好几家公司，现在是Intel公司所属。Lustre原先是一套开源的产品，最初是美国能源部提出开发的，后来成立CFS公司，2007年转卖给Sun公司，2010年Sun公司被Oracle公司收购，2010年又卖给了Whamcloud公司，最后于2012年被Intel收购。</p>
 <p>Lustre是一种基于对象存储的分布式文件系统，主要包含MDS(Metadata Server)和OSS(Object Storage Server)，实验室集群的node309和node310是MDS,311-323是OSS，其中309和310互为备份，310提供了/public目录的元数据，并备份node309中的元数据，309之前提供了/home目录，后来因为一些故障，导致309没有再次提供服务了，目前309仅仅作为/public元数据的一个备份，但是309和310必须要同时启动才能正常工作。之前311-318提供/home目录的数据文件存储，319-323提供/public目录的数据文件存储，但是由于之前出现过阵列故障，所以目前只有319-323提供了数据存储服务。总结，node309和node310提供元数据存储服务，node329-323提供数据存储服务，这几个服务器不能随意允许个人登录，也不允许任意关机，否则导致整个集群无法正常使用。</p>
 <p>所有计算节点都预先安装了Lustre客户端软件，使用Lustre文件系统，需要保证内核中加载了Lustre文件系统网络模块，配置文件在/etc/modprobe.d/lustre.conf，其中的内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options lnet networks=&quot;o2ib0(ib0),tcp0(eth0)&quot;</span><br></pre></td></tr></table></figure></p>
 <p>Lustre文件系统的网络模块，其中配置了两种网络通道，第一种是Infiniband网络通道，另外一种是以太网通道。如果节点的InfiniBand网络通道出现问题，可以使用以太网，后面会介绍Infiniband网络出现问题时使用以太网挂载Lustre文件系统的方法。</p>
@@ -556,7 +556,7 @@
 <p>因此最好是能够及时统计用户需要使用的软件的信息，并和软件用户一起将软件安装到/public/software目录下面，并告知其他用户直接使用该目录下面的软件即可。</p>
 <p>集群还安装了Torque5作业调度管理系统，目前主节点为node307，后期考虑将B区的所有节点都安装作业调度管理系统，并采用调度系统提交作业。</p>
 <p><em>总而言之，集群软件尽量安装到/public/software目录下面，并编写一定的说明文档，告知用户使用方法，可以找一些已经有过安装和使用经验的用户进行交流，让他们提供这些资料。</em></p>
-<h3 id="网络故障维护"><a href="#网络故障维护" class="headerlink" title="网络故障维护"></a>网络故障维护</h3><h4 id="Infiniband网络故障"><a href="#Infiniband网络故障" class="headerlink" title="Infiniband网络故障"></a>Infiniband网络故障</h4><p><a href="http://www.mellanox.com/page/software_overview_ib" target="_blank" rel="external">Mellanox Infiniband驱动下载地址</a><br>上面是Infiniband驱动的官方下载地址，根据系统版本进行下载。</p>
+<h3 id="网络故障维护"><a href="#网络故障维护" class="headerlink" title="网络故障维护"></a>网络故障维护</h3><h4 id="Infiniband网络故障"><a href="#Infiniband网络故障" class="headerlink" title="Infiniband网络故障"></a>Infiniband网络故障</h4><p><span id="Infiniband"></span><br><a href="http://www.mellanox.com/page/software_overview_ib" target="_blank" rel="external">Mellanox Infiniband驱动下载地址</a><br>上面是Infiniband驱动的官方下载地址，根据系统版本进行下载。</p>
 <p>Infiniband网络最多的故障就是子网管理服务没有启动，导致状态一直是PortTraining，这个时候可以重启启动一下子网服务，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service opensmd restart</span><br></pre></td></tr></table></figure></p>
 <p>如果提示服务不存在，那么问题的原因就是网络驱动没有正常安装，或者是出现了故障，这个时候可以采用重新安装驱动的方式来进行修复。</p>
 <p>Infiniband网络配置文件为/etc/sysconfig/network-scripts/ifcfg-ib0</p>
@@ -664,16 +664,29 @@
 </ul>
 <h4 id="用户无法登录到分配的节点"><a href="#用户无法登录到分配的节点" class="headerlink" title="用户无法登录到分配的节点"></a>用户无法登录到分配的节点</h4><p>这种情况可能的原因如下：</p>
 <ul>
-<li>节点死机或者被关机。</li>
-<li>节点负载过高。</li>
-<li>该机器限制了用户从某些主机的登录行为。</li>
-<li>SSH服务默认端口被恶意更改。</li>
+<li>1.节点死机或者被关机。</li>
+<li>2.节点负载过高。</li>
+<li>3.该机器限制了用户从某些主机的登录行为。</li>
+<li>4.SSH服务默认端口被恶意更改。</li>
+</ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li>1.使用IPMI重启机器。</li>
+<li>2.待负载降下来之后登录。</li>
+<li>3.从其他机器跳转到节点后，编辑/etc/hosts.deny解除登录节点限制。</li>
+<li>4.询问上一批次使用的用户具体端口，或者直接去机房本地登录后进行修改。</li>
 </ul>
 <h4 id="用户登录到分配的节点时需要输入密码"><a href="#用户登录到分配的节点时需要输入密码" class="headerlink" title="用户登录到分配的节点时需要输入密码"></a>用户登录到分配的节点时需要输入密码</h4><p>出现需要输入密码，可能原因如下：</p>
 <ul>
 <li>Lustre文件系统没有正确挂载，导致用户主目录没有，需要输入密码。</li>
 <li>该节点没有分配给该用户。</li>
 <li>该用户主目录中的密钥文件不存在或者权限不正确。</li>
+</ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li>1.登录到节点解决Lustre文件系统挂载的问题，参考<a href="#Lustre">集群分布式文件系统</a>章节进行解决。</li>
+<li>2.考虑分配节点给用户或禁止用户登录该节点。</li>
+<li>3.提示用户生成密钥文件或修改密钥文件的权限。</li>
 </ul>
 <h4 id="Lustre文件系统无法挂载"><a href="#Lustre文件系统无法挂载" class="headerlink" title="Lustre文件系统无法挂载"></a>Lustre文件系统无法挂载</h4><p>导致无法挂载的原因较多，较常见的如下：</p>
 <ul>
@@ -682,6 +695,13 @@
 <li>计算节点内核被升级或者更换。</li>
 <li>Lustre文件系统本身故障。</li>
 </ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li>1.参考<a href="#Infiniband">Infiniband网络故障解决</a>部分解决Infiniband网络故障。</li>
+<li>2.加载Lustre相关模块，若是由于Infiniband网络故障导致的模块无法加载，请先解决该网络故障，或者屏蔽Infiniband网络模块。</li>
+<li>3.将内核修改为编译过Lustre的内核。</li>
+<li>4.寻到具体故障，并进行解决，如果无法解决，首先在所有节点将/public或/home目录卸载，然后重启Lustre文件系统。</li>
+</ul>
 <h4 id="节点无法获取zabbix监控信息"><a href="#节点无法获取zabbix监控信息" class="headerlink" title="节点无法获取zabbix监控信息"></a>节点无法获取zabbix监控信息</h4><p>可能原因如下：</p>
 <ul>
 <li>zabbix配置信息不正确。</li>
@@ -689,14 +709,33 @@
 <li>zabbix配置文件与服务端不一致。</li>
 <li>防火墙未开放相关端口。</li>
 </ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li>1.重新配置zabbix配置信息，编辑/etc/zabbix/zabbix_agent.conf文件中的Hostname，Server，ServerActive信息。</li>
+<li>2.将/var/log/zabbix和/var/run/zabbix文件夹的权限分配给zabbix用户，并检查用户是否存在，若不存在，则不添加。</li>
+<li>3.查看服务器配置信息，并修改配置文件。这个一般是Server或ServerActive信息不一致导致。</li>
+<li>4.关闭防火墙或者添加端口允许。</li>
+</ul>
 <h4 id="IPMI无法获取服务器信息"><a href="#IPMI无法获取服务器信息" class="headerlink" title="IPMI无法获取服务器信息"></a>IPMI无法获取服务器信息</h4><p>可能有如下原因导致：</p>
 <ul>
 <li>IPMI相关模块未加载。</li>
 <li>IPMI软件被恶意卸载，特别是有root权限的用户。</li>
 <li>集群长时间运行导致IPMI模块无法正常工作，可能需要卸下并插上刀片。</li>
 </ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li><p>1.执行如下命令加载IPMI模块，然后再次执行IPMI命令，查看是否正常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">modprobe ipmi_watchdog</span><br><span class="line">modprobe ipmi_poweroff</span><br><span class="line">modprobe ipmi_devintf</span><br><span class="line">modprobe ipmi_si</span><br><span class="line">modprobe ipmi_msghandler</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.重新安装freeipmi软件包，具体网上有，集群的公共软件目录中也有。</p>
+</li>
+<li>3.刀片关机，然后拔掉后面的Infiniband线缆，拔出刀片，等待2分钟，插入刀片，插上Infiniband线缆，启动刀片，一般而言会好。如果实在不行，可以考虑关闭刀箱，并切断电源，但是这种做法不太推荐，除非这个刀箱的大多数刀片都无法进行IPMI控制，这些节点又经常需要进行重启，且无法使用操作系统进行开关机命令重启的情况下，才能使用。</li>
+</ul>
 <h3 id="售后报修"><a href="#售后报修" class="headerlink" title="售后报修"></a>售后报修</h3><p>集群建设日期是2012年12月，合同约定保修日期是5年，报修到期日期是2017年12月，在此期间，任何硬件故障、软件故障都可以打电话给曙光全国客服，报修之前一定要把服务器的序列号记下来，然后进行报修。报修之后，曙光湖北分公司会有技术支持联系，之后会进行故障处理。</p>
-<h3 id="未尽事宜"><a href="#未尽事宜" class="headerlink" title="未尽事宜"></a>未尽事宜</h3><p>集群建设初期，曙光提供了一些用户文档给用户，但是那些文档都是基于曙光的Gridview集群管理系统建设的，现在Gridview被破坏了，无法正常运行，加上Gridview本身比较老了，曙光也没有提供新的版本给我们，因此暂时无法使用。</p>
+<h3 id="未尽事宜"><a href="#未尽事宜" class="headerlink" title="未尽事宜"></a>未尽事宜</h3><p>由于时间精力和能力有限，很多想做的事情还没有来得及做，或者没能做，在这里也列出来，希望今后有管理员可以将这些工作完成。</p>
+<h4 id="GridView集群管理软件安装"><a href="#GridView集群管理软件安装" class="headerlink" title="GridView集群管理软件安装"></a>GridView集群管理软件安装</h4><p>集群建设初期，曙光提供了一些用户文档给用户，但是那些文档都是基于曙光的Gridview集群管理系统建设的，现在Gridview被破坏了，无法正常运行，加上Gridview本身比较老了，曙光也没有提供新的版本给我们，加上安装文档又不是很详细，导致有些配置无法正常进行，导致无法使用。</p>
+<p>GridView是曙光自己开发的集群管理软件，该软件功能还是挺强大的，界面也比较友好，其实挺适合作为集群管理软件来使用，但是由于之前集群零散分配给用户使用，将GridView的节点信息等都破坏了，整个软件无法控制所有的集群。</p>
+<p>如果可以，寻求曙光的帮助，将GridView集群管理软件装好，主要是该软件提供了界面化提交作业的界面，可以非常方便使用，降低用户的使用难度。</p>
 <h4 id="集群分区管理"><a href="#集群分区管理" class="headerlink" title="集群分区管理"></a>集群分区管理</h4><p>由于集群现在是面向全校提供服务，主要的用户分为两种类型，一种是实验室内部同学进行试验，另外一种是实验室外部的用户进行高性能计算，这两类用户的需求差异很大，实验室内部用户一般是进行了某些系统的优化，需要一批机器部署自己的实验系统，然后比较，一般周期不会特别长，但是对系统的权限要求比较高，对系统的环境破坏比较大，使用完成后，需要做的工作也非常多。而第二种用户只需要集群提供了相应的软件，需要一批节点，提交作业，对系统环境破坏小，但是对机器数量要求或者资源的需求比较大。</p>
 <p>目前集群的分配策略是，来了一个用户，给他分配几个节点，用完之后回收，但是实际上，除了实验室内部短期做实验的用户，外部用户一般长期需要计算资源，基本上资源分配出去之后，就很难回收，长期占有，甚至不用了都不会主动归还，导致下次有用户进行资源申请时，很难找到空闲的资源进行使用。</p>
 <p>根据集群用户的需求和特点以及资源的使用情况，目前的想法是，将集群分为A和B两个区域，其中A区提供给实验室内部人员使用，B区专门用于进行高性能计算，这样的好处是，B区可以使用队列调度系统，用户通过调度系统提交作业，然后就可以充分利用B区的所有机器，大家的作业按照顺序进行调度，提高了资源利用率，同时也加快了计算效率。</p>
@@ -705,7 +744,7 @@
 <p>期望下一届管理员能够开发一个简单的Web系统，用于集群节点分配和用户信息的管理。例如说，设计一个页面，查询用户历史使用节点信息，目前使用信息，违法操作行为等。同时可以查询某个节点的使用情况，有多少个用户使用，维修情况等。</p>
 <h4 id="集群主页建设"><a href="#集群主页建设" class="headerlink" title="集群主页建设"></a>集群主页建设</h4><p>同时还能够使用开源的博客系统例如Wordpress等构建一个集群首页或者社区，用于用户之间的信息交流，特别是一些集群使用的方法、软件安装方法、集群公告等信息，这样不仅用户学习起来非常方便，同时也减少了管理员的工作量，另外提升了集群管理的科学有效性。</p>
 <p>当然最重要的是能够制定一些规章制度，规范用户的使用行为，规范资源的分配和管理工作，这样能够保证一切能够高效进行。</p>
-<h3 id="期待更好"><a href="#期待更好" class="headerlink" title="期待更好"></a>期待更好</h3><p>期待集群的管理更加科学化，同时也期待集群的管理和运维工作得到实验室的重视，集群建设资金不菲，价值也不菲，但是由于缺少管理人员，缺少资金支持，缺少重视，还没有完全发挥它的作用，因此期待在集群报废之前，能够充分利用集群的作用，为更多的科研项目服务，期待实验室的集群管理制度更上一层楼。</p>
+<h3 id="期待更好"><a href="#期待更好" class="headerlink" title="期待更好"></a>期待更好</h3><p>期待集群的管理更加科学化，同时也期待集群的管理和运维工作得到实验室的重视，集群建设资金不菲，价值也不菲，但是由于缺少管理人员，缺少资金支持，缺少重视，还没有完全发挥它的作用，因此期待在集群报废之前，能够充分利用集群的作用，为更多的科研项目服务，期待实验室的集群管理制度更上一层楼，期待集群为中国科研贡献自己的力量。</p>
 
       
     </div>
@@ -1037,7 +1076,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群配置信息"><span class="nav-number">2.</span> <span class="nav-text">集群配置信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器配置信息"><span class="nav-number">2.1.</span> <span class="nav-text">服务器配置信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络配置信息"><span class="nav-number">2.2.</span> <span class="nav-text">网络配置信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日常职责"><span class="nav-number">3.</span> <span class="nav-text">日常职责</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机房环境的维护与管理"><span class="nav-number">4.</span> <span class="nav-text">机房环境的维护与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器硬件维护"><span class="nav-number">5.</span> <span class="nav-text">服务器硬件维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障发现"><span class="nav-number">5.1.</span> <span class="nav-text">硬盘故障发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障处理"><span class="nav-number">5.2.</span> <span class="nav-text">硬盘故障处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算刀片故障发现与处理"><span class="nav-number">5.3.</span> <span class="nav-text">计算刀片故障发现与处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群文件系统维护"><span class="nav-number">6.</span> <span class="nav-text">集群文件系统维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用以太网挂载Lustre文件系统"><span class="nav-number">6.1.</span> <span class="nav-text">使用以太网挂载Lustre文件系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器操作系统维护"><span class="nav-number">7.</span> <span class="nav-text">服务器操作系统维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用再生龙进行系统备份和还原工作"><span class="nav-number">7.1.</span> <span class="nav-text">使用再生龙进行系统备份和还原工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用硬盘对拷的形式重装系统"><span class="nav-number">7.2.</span> <span class="nav-text">使用硬盘对拷的形式重装系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#卸载lustre文件系统以及nfs文件系统挂载点。"><span class="nav-number">7.2.1.</span> <span class="nav-text">卸载lustre文件系统以及nfs文件系统挂载点。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#执行dd命令"><span class="nav-number">7.2.2.</span> <span class="nav-text">执行dd命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改以太网卡和InfiniBand网卡的Ip地址"><span class="nav-number">7.2.3.</span> <span class="nav-text">修改以太网卡和InfiniBand网卡的Ip地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除-etc-udev-rules-d-70-persistent-net-rules文件"><span class="nav-number">7.2.4.</span> <span class="nav-text">删除/etc/udev/rules.d/70-persistent-net.rules文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改-etc-sysconfig-network文件"><span class="nav-number">7.2.5.</span> <span class="nav-text">修改/etc/sysconfig/network文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#磁盘检查"><span class="nav-number">7.2.6.</span> <span class="nav-text">磁盘检查</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#放回磁盘，启动系统"><span class="nav-number">7.2.7.</span> <span class="nav-text">放回磁盘，启动系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。"><span class="nav-number">7.2.8.</span> <span class="nav-text">将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群软件配置与管理"><span class="nav-number">8.</span> <span class="nav-text">集群软件配置与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络故障维护"><span class="nav-number">9.</span> <span class="nav-text">网络故障维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Infiniband网络故障"><span class="nav-number">9.1.</span> <span class="nav-text">Infiniband网络故障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太网故障"><span class="nav-number">9.2.</span> <span class="nav-text">以太网故障</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群用户添加"><span class="nav-number">10.</span> <span class="nav-text">集群用户添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络访问控制"><span class="nav-number">11.</span> <span class="nav-text">网络访问控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#允许某一IP地址访问集群"><span class="nav-number">11.1.</span> <span class="nav-text">允许某一IP地址访问集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许网段的IP地址访问集群"><span class="nav-number">11.2.</span> <span class="nav-text">允许网段的IP地址访问集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许所有节点访问特定的IP地址"><span class="nav-number">11.3.</span> <span class="nav-text">允许所有节点访问特定的IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许某一节点访问特定的IP地址"><span class="nav-number">11.4.</span> <span class="nav-text">允许某一节点访问特定的IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许某一节点访问所有网站"><span class="nav-number">11.5.</span> <span class="nav-text">允许某一节点访问所有网站</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群DNS服务器信息"><span class="nav-number">11.6.</span> <span class="nav-text">集群DNS服务器信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群监控与运维"><span class="nav-number">12.</span> <span class="nav-text">集群监控与运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群关机与启动流程"><span class="nav-number">13.</span> <span class="nav-text">集群关机与启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群断电与通电流程"><span class="nav-number">14.</span> <span class="nav-text">集群断电与通电流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机房电路分布介绍"><span class="nav-number">14.1.</span> <span class="nav-text">机房电路分布介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配电房设备介绍"><span class="nav-number">14.2.</span> <span class="nav-text">配电房设备介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群断电流程"><span class="nav-number">14.3.</span> <span class="nav-text">集群断电流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群通电流程"><span class="nav-number">14.4.</span> <span class="nav-text">集群通电流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理技巧和软件推荐"><span class="nav-number">15.</span> <span class="nav-text">集群管理技巧和软件推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见故障及处理办法"><span class="nav-number">16.</span> <span class="nav-text">常见故障及处理办法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用户无法登录到集群"><span class="nav-number">16.1.</span> <span class="nav-text">用户无法登录到集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户无法登录到分配的节点"><span class="nav-number">16.2.</span> <span class="nav-text">用户无法登录到分配的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户登录到分配的节点时需要输入密码"><span class="nav-number">16.3.</span> <span class="nav-text">用户登录到分配的节点时需要输入密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lustre文件系统无法挂载"><span class="nav-number">16.4.</span> <span class="nav-text">Lustre文件系统无法挂载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#节点无法获取zabbix监控信息"><span class="nav-number">16.5.</span> <span class="nav-text">节点无法获取zabbix监控信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPMI无法获取服务器信息"><span class="nav-number">16.6.</span> <span class="nav-text">IPMI无法获取服务器信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#售后报修"><span class="nav-number">17.</span> <span class="nav-text">售后报修</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未尽事宜"><span class="nav-number">18.</span> <span class="nav-text">未尽事宜</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集群分区管理"><span class="nav-number">18.1.</span> <span class="nav-text">集群分区管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群用户使用系统"><span class="nav-number">18.2.</span> <span class="nav-text">集群用户使用系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群主页建设"><span class="nav-number">18.3.</span> <span class="nav-text">集群主页建设</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期待更好"><span class="nav-number">19.</span> <span class="nav-text">期待更好</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群配置信息"><span class="nav-number">2.</span> <span class="nav-text">集群配置信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器配置信息"><span class="nav-number">2.1.</span> <span class="nav-text">服务器配置信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络配置信息"><span class="nav-number">2.2.</span> <span class="nav-text">网络配置信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日常职责"><span class="nav-number">3.</span> <span class="nav-text">日常职责</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机房环境的维护与管理"><span class="nav-number">4.</span> <span class="nav-text">机房环境的维护与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器硬件维护"><span class="nav-number">5.</span> <span class="nav-text">服务器硬件维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障发现"><span class="nav-number">5.1.</span> <span class="nav-text">硬盘故障发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障处理"><span class="nav-number">5.2.</span> <span class="nav-text">硬盘故障处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算刀片故障发现与处理"><span class="nav-number">5.3.</span> <span class="nav-text">计算刀片故障发现与处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群文件系统维护"><span class="nav-number">6.</span> <span class="nav-text">集群文件系统维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用以太网挂载Lustre文件系统"><span class="nav-number">6.1.</span> <span class="nav-text">使用以太网挂载Lustre文件系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器操作系统维护"><span class="nav-number">7.</span> <span class="nav-text">服务器操作系统维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用再生龙进行系统备份和还原工作"><span class="nav-number">7.1.</span> <span class="nav-text">使用再生龙进行系统备份和还原工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用硬盘对拷的形式重装系统"><span class="nav-number">7.2.</span> <span class="nav-text">使用硬盘对拷的形式重装系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#卸载lustre文件系统以及nfs文件系统挂载点。"><span class="nav-number">7.2.1.</span> <span class="nav-text">卸载lustre文件系统以及nfs文件系统挂载点。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#执行dd命令"><span class="nav-number">7.2.2.</span> <span class="nav-text">执行dd命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改以太网卡和InfiniBand网卡的Ip地址"><span class="nav-number">7.2.3.</span> <span class="nav-text">修改以太网卡和InfiniBand网卡的Ip地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除-etc-udev-rules-d-70-persistent-net-rules文件"><span class="nav-number">7.2.4.</span> <span class="nav-text">删除/etc/udev/rules.d/70-persistent-net.rules文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改-etc-sysconfig-network文件"><span class="nav-number">7.2.5.</span> <span class="nav-text">修改/etc/sysconfig/network文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#磁盘检查"><span class="nav-number">7.2.6.</span> <span class="nav-text">磁盘检查</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#放回磁盘，启动系统"><span class="nav-number">7.2.7.</span> <span class="nav-text">放回磁盘，启动系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。"><span class="nav-number">7.2.8.</span> <span class="nav-text">将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群软件配置与管理"><span class="nav-number">8.</span> <span class="nav-text">集群软件配置与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络故障维护"><span class="nav-number">9.</span> <span class="nav-text">网络故障维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Infiniband网络故障"><span class="nav-number">9.1.</span> <span class="nav-text">Infiniband网络故障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太网故障"><span class="nav-number">9.2.</span> <span class="nav-text">以太网故障</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群用户添加"><span class="nav-number">10.</span> <span class="nav-text">集群用户添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络访问控制"><span class="nav-number">11.</span> <span class="nav-text">网络访问控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#允许某一IP地址访问集群"><span class="nav-number">11.1.</span> <span class="nav-text">允许某一IP地址访问集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许网段的IP地址访问集群"><span class="nav-number">11.2.</span> <span class="nav-text">允许网段的IP地址访问集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许所有节点访问特定的IP地址"><span class="nav-number">11.3.</span> <span class="nav-text">允许所有节点访问特定的IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许某一节点访问特定的IP地址"><span class="nav-number">11.4.</span> <span class="nav-text">允许某一节点访问特定的IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许某一节点访问所有网站"><span class="nav-number">11.5.</span> <span class="nav-text">允许某一节点访问所有网站</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群DNS服务器信息"><span class="nav-number">11.6.</span> <span class="nav-text">集群DNS服务器信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群监控与运维"><span class="nav-number">12.</span> <span class="nav-text">集群监控与运维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群关机与启动流程"><span class="nav-number">13.</span> <span class="nav-text">集群关机与启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群断电与通电流程"><span class="nav-number">14.</span> <span class="nav-text">集群断电与通电流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机房电路分布介绍"><span class="nav-number">14.1.</span> <span class="nav-text">机房电路分布介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配电房设备介绍"><span class="nav-number">14.2.</span> <span class="nav-text">配电房设备介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群断电流程"><span class="nav-number">14.3.</span> <span class="nav-text">集群断电流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群通电流程"><span class="nav-number">14.4.</span> <span class="nav-text">集群通电流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理技巧和软件推荐"><span class="nav-number">15.</span> <span class="nav-text">集群管理技巧和软件推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见故障及处理办法"><span class="nav-number">16.</span> <span class="nav-text">常见故障及处理办法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用户无法登录到集群"><span class="nav-number">16.1.</span> <span class="nav-text">用户无法登录到集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户无法登录到分配的节点"><span class="nav-number">16.2.</span> <span class="nav-text">用户无法登录到分配的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户登录到分配的节点时需要输入密码"><span class="nav-number">16.3.</span> <span class="nav-text">用户登录到分配的节点时需要输入密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lustre文件系统无法挂载"><span class="nav-number">16.4.</span> <span class="nav-text">Lustre文件系统无法挂载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#节点无法获取zabbix监控信息"><span class="nav-number">16.5.</span> <span class="nav-text">节点无法获取zabbix监控信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPMI无法获取服务器信息"><span class="nav-number">16.6.</span> <span class="nav-text">IPMI无法获取服务器信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#售后报修"><span class="nav-number">17.</span> <span class="nav-text">售后报修</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未尽事宜"><span class="nav-number">18.</span> <span class="nav-text">未尽事宜</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GridView集群管理软件安装"><span class="nav-number">18.1.</span> <span class="nav-text">GridView集群管理软件安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群分区管理"><span class="nav-number">18.2.</span> <span class="nav-text">集群分区管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群用户使用系统"><span class="nav-number">18.3.</span> <span class="nav-text">集群用户使用系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群主页建设"><span class="nav-number">18.4.</span> <span class="nav-text">集群主页建设</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期待更好"><span class="nav-number">19.</span> <span class="nav-text">期待更好</span></a></li></ol></div>
             
 
           </div>
