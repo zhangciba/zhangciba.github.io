@@ -1,0 +1,1501 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="集群管理,运维," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
+下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术和理论还">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高性能计算集群运维总结">
+<meta property="og:url" content="http://blog.zhangchi.xyz/2020/05/20/高性能计算集群运维总结/index.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
+下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术和理论还">
+<meta property="og:updated_time" content="2017-05-23T13:11:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高性能计算集群运维总结">
+<meta name="twitter:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
+下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术和理论还">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'NCCTAVOMGS',
+      apiKey: '90a1b37d9db46c7ad69df6b94bd751b9',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索关键字","hits_empty":"没有找到与 [ ${query} ] 有关的内容","hits_stats":"${hits} 条记录，共耗时 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangchi.xyz/2020/05/20/高性能计算集群运维总结/"/>
+
+
+
+
+
+  <title>高性能计算集群运维总结 | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77014447-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2020/05/20/高性能计算集群运维总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高性能计算集群运维总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-20T20:20:20+08:00">
+                2020-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+             <span id="/2020/05/20/高性能计算集群运维总结/" class="leancloud_visitors" data-flag-title="高性能计算集群运维总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+	
+         <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <!--<span class="post-meta-item-text">字数统计</span>-->
+               <span class="post-count">16,472</span>
+          </span>
+          <!--阅读时间--> 
+          <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">阅读时间:</span>
+               <span class="post-count">58分</span>
+           </span>
+	  <!--本站总字数-->
+          <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共</span>
+               <span class="post-count">62.4k字</span>
+           </span>
+	   
+
+          
+            
+          
+
+          
+	
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h3><p>2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。</p>
+<p>下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术和理论还不够深入，甚至不足以解决一些很难的问题，但是可以方便后来的管理人员快速入手，同时也是一个交流的机会，欢迎大家批评指正。<br><a id="more"></a></p>
+<h3 id="集群配置信息"><a href="#集群配置信息" class="headerlink" title="集群配置信息"></a>集群配置信息</h3><h4 id="服务器配置信息"><a href="#服务器配置信息" class="headerlink" title="服务器配置信息"></a>服务器配置信息</h4><p>集群包含4种类型的服务器</p>
+<ul>
+<li>TC4600刀箱中的CB60-G15计算刀片</li>
+<li>I640-G10普通2U机架式服务器</li>
+<li>I640-G15存储服务器</li>
+<li>W580I-G10GPU节点</li>
+</ul>
+<p>其中node1-node306是CB60-G15计算刀片<br>node307-node308是I640-G10普通服务器，主要用来登录集群和集群的管理工作，其中node307主要用于用户登录和集群管理工作，node308部署了zabbix和集群温度监控脚本，以及Crane主页等内容。</p>
+<p>node309-node310是Lustre的MDS服务器，即分布式文件系统的索引服务器。<br>node311-node323是Lustre的对象存储服务器。<br>node324目前是一台NFS服务器，主要用于某些不能使用Lustre的节点进行文件传输。<br>node325-node326是两台空闲的存储服务器，可以用来做备用机，一般情况不使用，主要用于应急，当然后期也可以考虑将该节点加入到Lustre的对象存储服务器中。</p>
+<p>node327-node336是10台GPU节点<br>node337-node348共12台刀片，在北面从西至东的第三个机柜的最下面一个刀箱，也是计算刀片。 </p>
+<h4 id="网络配置信息"><a href="#网络配置信息" class="headerlink" title="网络配置信息"></a>网络配置信息</h4><p>所有计算刀片、存储服务器、存储IO节点通过Mellaonx FDR324口（18个18+18页版）Infiniband交换机连接，16U，模块化交换机。</p>
+<p>集群入口节点没有Infniband网络，只有以太网络，即千兆以太网。</p>
+<p>集群的所有刀箱、机架服务器都通过一个H3C的48口千兆以太网交换机连接在一起了。</p>
+<p>所有刀箱的交换模块通过一个H3C 24口 SFP+万兆交换机连接，也就是说，跨刀箱的节点通信通过万兆网，刀箱内部通信是通过交往模块内置的网络进行的。</p>
+<p>另外，集群的所有服务器都有一个管理口，即远程控制地址。该套网络也是在H3C 48口以太网交换机、万兆交换机、以及刀箱上面的交换模块结合来构建的，具体方案现在还没有特别确定。具体布局情况最好请教网络方面的同学或工程师。</p>
+<h4 id="文件系统配置信息"><a href="#文件系统配置信息" class="headerlink" title="文件系统配置信息"></a>文件系统配置信息</h4><p>集群采用并行分布式文件系统Lustre来提供/public和/home目录，即所有节点都挂载/public/home作为节点的/home目录，提供统一的用户信息。<br>Lustre文件系统构成如下，node309和node310为MDS服务器，node311-node318为/home对应的OST，node319-node323为/public目录对应的OST，由于之前Lustre文件系统出现过故障，后来node311-node318就不再提供存储服务了，node319-node323提供/public目录，并且提供/public/home为/home目录。<br>其次，在不能使用Lustre的节点，可以挂载NFS文件系统进行文件的传递。</p>
+<h3 id="日常职责"><a href="#日常职责" class="headerlink" title="日常职责"></a>日常职责</h3><p>机房巡检，每周2-3次，周一、周五都必须检查一次，主要检查空调运行情况、机房温度、机房湿度、是否存在火宅隐患、检查火宅报警器是否正常开机运行等。<br>集群硬件维护，主要包括集群存储服务器硬盘状态查看、计算刀片故障处理、硬盘更换、内存条更换、网络故障处理等。<br>集群软件系统维护，主要包括集群分布式文件系统故障处理、集群计算刀片操作系统管理、集群并行计算软件环境维护等。<br>计算资源分配与管理，主要将空闲的计算资源分配给有需要的用户，为其添加集群账号，分配节点。用户计算完后，主动回收节点，并清理不用的用户资料。</p>
+<p>总结主要有如下几件事要做：</p>
+<ul>
+<li>主机房两个空调是否正常运行，主要看报警数据还有温度信息，主机房正常温度在22-24摄氏度，湿度40%-60%范围内，空调控制面板报警选项卡中没有报警信息，并且查看最近一周温度变化情况，是否存在温度异常的情况。</li>
+<li>主机房火灾报警器是否正常运行，主要看是否开机，面板提示是否正常。</li>
+<li>主机房所有机柜绕一圈，检查是否有刀片服务器电源模块亮黄灯，黄灯表示异常，绿灯表示正常运行。同时，检查存储服务器后置硬盘阵列是否存在亮红灯的情况，存在亮红灯的硬盘，请及时拔下硬盘，有手机或者相机拍下服务器上序列号，并进行报修。最后还要检查刀片机箱的交换模块是否正常运行，即网络接口是否有灯在闪。</li>
+<li>配电房UPS电池组是否存在异常，主要看是否有异味，UPS主机柜和配电柜是否有异常显示信息，异常时会有红灯亮，注意不是面板显示的红色信息。</li>
+<li>配电房空调温度是否正常，东北角的柜式空调，正常温度设定在18-20摄氏度，存在异常请及时报修。</li>
+</ul>
+<h3 id="环境维护与管理"><a href="#环境维护与管理" class="headerlink" title="环境维护与管理"></a>环境维护与管理</h3><p>机房环境的维护是一件非常重要的事情，良好的机房环境是集群正常运行的基础，机房环境出现问题，直接集群瘫痪，无法正常运行，更严重的，还有可能导致火灾，因此机房环境需要重点关注。</p>
+<p>机房环境主要指房间的温度、湿度，这两点特别重要，如果温度过高、过低或者温度不稳定，集群很容易出现问题，集群本身产热非常大，如果温度过高，很容易出现服务器报警、主板老化的情况。本集群之前空调出现问题，导致主板节点温度过高，服务器过早坏掉的情况。温度过高最容易导致主板电容爆掉的情况，因此需要引起注意，另外用户在进行计算过程中，要特别注意提醒用户不要提交过量的计算任务，避免导致主板温度过高提前老化的情况。任何时候，如果出现机房空调温度不正常，需要及时给实验室相关负责老师打电话并联系空调维保公司技术人员尽快进行空调维护，并关闭一部分机器，避免温度过高。</p>
+<p>机房的湿度控制，正常情况下，机房湿度都在标准允许的范围内，即不超过50%。除非是武汉地区长期下雨，可能会存在湿度超标的情况，一般湿度都会在可控的范围内。另外，之前机房顶部靠近北边的地方出现过漏水的情况，具体原因没有查清楚，因此进行机房巡视时，一定要注意看天花板，检查是否存在房顶漏水的情况，如果存在这样的情况，首先及时汇报情况给机房负责老师，并及时关闭集群，并切断电源（具体方法见后面集群断电方式），避免进水导致机器烧毁。</p>
+<p>机房火灾报警器检查，机房火灾一般会由于温度过高，机器老化导致，即很可能是因为电路老化导致火灾。因此每次去机房都要检查火灾报警器是否正常运行了。之前机房出现过火灾报警器误报的情况，即实际上不存在火灾，但是报警器一直响，出现过多次，后来发现原因是夏季时机房湿度比较大，报警器上面有水凝结，导致误报。之后稍微修理了一下，暂时没有出现误报的情况。如果出现了报警器报警的情况，检查温度是否过高，是否存在烟雾，是不是误报，然后及时汇报情况给负责老师。如果存在温度过高或者存在烟雾或有异味，赶紧关闭集群，断电方法请参考集群关机或启动流程章节。</p>
+<h3 id="服务器硬件维护"><a href="#服务器硬件维护" class="headerlink" title="服务器硬件维护"></a>服务器硬件维护</h3><p>集群配置的服务器主要有三种，刀片服务器、存储服务器、GPU服务器，其中刀片服务器最多，存储服务器硬盘最多，GPU服务器配置的GPGPU卡最多。</p>
+<p>集群硬件主要包括了上述的三种服务器、H3C万兆以太网交换机、Mellanox InfniBand交换机、安全网关、PDU、PDM等设备。</p>
+<p>而其中最容易出现故障的就是硬盘和刀片服务器了。存储服务器硬盘故障最多，其次是计算刀片服务器容易出现主板烧坏的情况。下面将简要介绍这两种故障的发现和处理。</p>
+<p><span id="disk"></span></p>
+<h4 id="硬盘故障发现"><a href="#硬盘故障发现" class="headerlink" title="硬盘故障发现"></a>硬盘故障发现</h4><p>最常见的硬盘故障是存储服务器的故障，存储服务器型号是Sugon I640-G15，该存储服务器的存储配置信息为，有两块RAID卡，机箱前置面板和后置面板都有硬盘插槽，其中前面可以放24块SAS硬盘，后面可以放12块SAS硬盘，前置硬盘插槽由RAID0卡管理，后置硬盘插槽由RAID1卡管理，一定要记住顺序了，其实顺序非常好记忆的。</p>
+<p>每周需要有时间进行机房巡视，查看存储服务器硬盘的健康状况，这是一种最直接的发现问题的方式。</p>
+<p>另外一种发现故障的方式是采用软件的方式，而且软件方式更加方便、直观，最主要就是能够在磁盘亮红灯之前就发现故障盘，可以及早发现问题，因此推荐采用这种方式来进行故障盘的发现。</p>
+<p>集群使用的RAID卡品牌好像是Mega，厂家提供了两个工具来进行RAID信息配置和管理，MegaCLI和Mega RAID Storage Manager两个软件，顾名思义，MegaCLI是命令行工具，Mega RAID Storage Manager是图形化管理工具，推荐使用后者，因为配置方便、更加直观、操作简单。但是需要使用VNC连接到集群入口节点node307或者node308，然后通过Mega RAID Storage Manager连接到具体的存储服务器查看RAID阵列信息和磁盘信息，具体使用方法确实挺简单的，百度上面很多文章，这里就不再重复描述了。MegaCLI的优势就是，可以通过Shell脚本来提取磁盘信息，发现磁盘故障，因此可以使用MegaCLI编写磁盘健康监控脚本，由于时间有限，脚本没编写，不过很简单的。上面两种软件，已经被安装到了所有存储服务器，直接使用即可，如果存在问题，可以重新安装。</p>
+<h4 id="硬盘故障处理"><a href="#硬盘故障处理" class="headerlink" title="硬盘故障处理"></a>硬盘故障处理</h4><p>发现硬盘故障后，首先使用手机拍下存储服务器上面的序列号，直接拨打全国客服热线400-810-0466进行报修，我们是非专项客户，存储服务器产品报修，然后报序列号，他们会查产品是否在保修期内，如果在保，他们会发一块硬盘过来，大约3-5天过来更换。</p>
+<p>如果同一个服务器的同一个阵列，如前置阵列或者后置阵列上面出现两块硬盘闪红灯的情况，那么，不能等曙光发货了，如果下一块磁盘出现故障，整个集群的数据都有可能丢失，这个时候的处理方式是，从最后的2台没有闲置的存储服务器上面找到一块硬盘，并且从RAID卡管理界面将该硬盘的RAID信息删除（具体做法后面可能会提到，也可以参考网上的MegaRAID的配置教程），然后拔掉这块硬盘，把硬盘从硬盘托上拆下来，换到坏掉的硬盘的所在的硬盘托架上面，并将好的硬盘插入到故障存储服务器上面，刚刚插上服务器时，硬盘指示灯还是会一直亮红色，大概5-10秒过后，RAID卡检测到新的硬盘插入后，如果硬盘上面没有之前的RAID信息，那么RAID卡会进行回写工作。</p>
+<p>这里稍微讲解一下RAID卡的工作原理，一般的RAID阵列都会配置1-2块热备盘，热备盘一般会选择ID号靠近最后的1-2块作为热备盘，具体情况可以通过RAID卡配置界面查看到。当阵列中的某一块磁盘（非热备盘）出现故障时，RAID卡根据RIAD级别以及阵列其他磁盘的信息，计算出坏掉的磁盘信息，并将信息写入到热备盘中，即RAID卡将坏掉的磁盘信息还原并写入到热备盘，这个过程可能会比较慢，通常由数据大小和磁盘大小来决定，一般也需要2-3个小时，热备盘写入完成后，阵列又可以正常工作了，其实在写热备盘的过程中，阵列还是可以工作，只是速度慢一些，因为缺少了一块磁盘信息，需要通过计算才能得到，因此在写热备盘的过程中，不能出现频繁I/O请求，否则可能导致RAID阵列崩溃，阵列数据完全丢失的情况，这一点可以通过关闭集群入口节点的登录功能或者限制用户计算来达到。</p>
+<p>需要注意的是，如果磁盘出现了故障，最好等到热备盘写完成之后，再插入新的硬盘，新的硬盘插上后，就开始回写过程，回写就是把热备盘的信息复制到新换上的硬盘当中，相当于原来的磁盘信息复制到新的磁盘上，当回写完成后，磁盘阵列又恢复了原来的状态，即原来的数据盘还是数据盘，热备盘还是热备盘，热备盘就不提供数据的读写服务了，只有当其他的磁盘坏掉是，热备盘才会开始工作，用于存储RAID计算出来的坏掉的磁盘的数据。</p>
+<p>这其中存在一个情况就是，如果新插入的磁盘上面含有其他RAID卡的信息，很可能就是我们集群的情况，因为最后两台存储服务器node325和node326节点上面本身就有RAID信息，所以将这两块RAID卡上面的硬盘拔下，插入到其他存储服务器时，其他服务器RAID卡会认为他们是外部存储设备，无法正常使用。因此插上带有RAID信息的磁盘时，红灯会一直亮起，无法进行回写工作。那么我们可以通过在好硬盘所在的存储服务器上面，打开RAID卡配置界面，将需要取出来的硬盘从原有的RAID阵列中删除，这样磁盘上面就不包含RAID信息了，插入到存在坏盘的存储服务器上面，就可以马上自动开始回写工作了。</p>
+<h4 id="计算刀片故障发现与处理"><a href="#计算刀片故障发现与处理" class="headerlink" title="计算刀片故障发现与处理"></a>计算刀片故障发现与处理</h4><p>首先简单介绍一下刀片服务器的构造。实验室的刀片类型是CB60-G15类型的，刀片服务器不能够独立存在，很多刀片同时排列在一起，统一有一个刀片机箱blade来进行管理。刀片机箱型号为TC4600，每个刀箱中可以放置14块CB60-G15刀片。</p>
+<p>刀箱一般包含有4个冗余电源模块、散热模块、交换模块、直通模块、控制模块等，电源模块每个最大功率是2000w，支持热插拔，散热模块提供刀箱内部热量的排出，交换模块负责刀箱内部多个刀片的网络互通以及整个刀箱与外部的网络连通，直通模块提供了每个刀片直接与外部网络连通的功能，控制模块提供了刀箱的页面化配置管理、刀片物理状态的获取等、电源、散热模块的功率、转速配置等。</p>
+<p>本集群的刀片机箱值安装了交换模块，没有安装直通模块，也就是只有一个以太网卡可以使用。</p>
+<p>计算刀片的故障发现非常容易，但是需要一定的耐心。计算刀片出现故障的前兆是，刀片经常出现死机的情况，有时候负载不是很高就开卡住或者反映特别慢，出现这种现象时，可以首先重新启动计算刀片的操作系统，然后再观察一段时间，如果情况依旧，很有可能是主板出现故障，老化或者有电容坏掉了。这个时候，最后进一步做判断，将计算刀片关机，并把另外一块好的计算刀片的硬盘拔下来，插入到怀疑有故障的刀片上面，启动，如果发现故障依旧，那么基本可以断定，该计算刀片的主板出问题了。</p>
+<p>计算刀片出现问题的时候，首先在前置面板几下刀片上面的一个数字，这个数字是刀片插槽的编号，然后到刀片所在刀箱的机柜后面，将对应编号的InfiniBand网线拔出来，直接拉那个蓝色的塑料圈圈就可以拔出来。然后返回到刀片正面，有个蓝色的小铁杆，直接往外拨，刀片就出来了一些，然后就可以把刀片整个拔出来了。但是这里不需要把刀片全部拔出来，只需要拔出一些，看到刀片前面的一个序列号标签，拿出手机拍照，记下序列号，然后拨打曙光全国客服热线400-810-0466进行报修。大概3-5天之后，会有曙光售后过来进行维修，一般而言就是更换刀片的主板，CPU、内存什么的的还是不会更换的。由于集群保修期大概到2017年12月份，因此需要早点发现故障刀片，尽快更换一批有故障的刀片服务器。</p>
+<h3 id="服务器操作系统维护"><a href="#服务器操作系统维护" class="headerlink" title="服务器操作系统维护"></a>服务器操作系统维护</h3><p>集群所有节点，管理节点、存储节点、计算节点、GPU节点上面默认安装的操作系统是Redhat Enterprise Linux6.2，RHEL6.2 for short，内核版本2.6.32，有非常少部分节点由于用户的需求安装了CentOS7.0或者CentOS7.3版本的操作系统。</p>
+<p>由于集群文件系统Lustre是与操作系统相关联的，导致升级计算节点操作系统是一件非常苦难的事情。尽管作为管理员，已经多次提过要升级全部节点的操作系统版本，以满足用户实验需要。但是由于此事真的是难上加上，包括需要一笔费用以及其中牵扯到的利益纠纷问题，因此一直没有升级。</p>
+<p>由于很多同学的实验可能需要Linux3.0以上版本的内核，甚至有些同学可能需要Linux4.0以上版本的内核，因此可以考虑给这些用户root权限，让用户自己升级内核，这样用户可以在升级后的内核里面进行自己的科研实验，但是升级完内核之后，用户将无法使用Lustre文件系统。可以考虑挂载NFS文件系统来进行文件的读取，NFS文件系统也是每台机器都进行了挂载，用户可以通过集群入口服务器上传文件到NFS文件系统，然后升级后的内核中可以读取到相应的文件。</p>
+<p>当集群的操作系统被破坏后，其他用户使用时存在问题，因此需要进行还原工作，鉴于集群经常存在这样的用户，他们会需要root权限进行一些操作，之后操作系统做了很多修改，再次分配给其他用户使用时会存在很多问题，因此需要进行系统重装。直接安装系统不仅要安装软件还要编译Lustre内核，非常复杂，一个比较好的办法是直接拷贝其他磁盘的系统，修改几个简单的配置文件，系统就搞定了，因此下面介绍两种方法进行系统快速还原。</p>
+<h4 id="使用再生龙进行系统备份和还原工作"><a href="#使用再生龙进行系统备份和还原工作" class="headerlink" title="使用再生龙进行系统备份和还原工作"></a>使用再生龙进行系统备份和还原工作</h4><p>再生龙工具非常的强大，如果集群需要恢复的系统特别多，那么可以采用这种方式，下面附上再生龙使用教程，百度上面也可以搜索到，参考文档进行使用。</p>
+<p><a href="http://clonezilla.nchc.org.tw/news/" target="_blank" rel="external">再生龙官网</a><br><a href="http://7xsnoh.com1.z0.glb.clouddn.com//clustermgmt/pdfClonezilla%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E.pdf" target="_blank" rel="external">再生龙详细使用文档</a></p>
+<p>我们需要将再生龙服务器版本刻录到U盘或者光盘上面，然后启动到再生龙进行操作。</p>
+<p>系统包括克隆和还原两个步骤，首先需要将一个计算节点的系统使用再生龙克隆到NFS文件系统或者另外一个大的磁盘上面，然后切换到再生龙的还原模式，启动需要还原的计算节点，从网络启动，然后进行还原工作。</p>
+<p>需要说明的是设置网卡的时候，只需要设置一个网卡eth0即可，因为eth1是直通模块。eth0的IP地址建议设置为11.11.4.100，子网掩码设置为255.255.0.0，NFS文件系统的IP地址是11.11.2.18，路径是/public/vpublic02，这个目录里面已经备份过几个计算节点的磁盘了，可以暂时使用，或者自己选择一个重新备份。</p>
+<h4 id="使用硬盘对拷进行重装系统"><a href="#使用硬盘对拷进行重装系统" class="headerlink" title="使用硬盘对拷进行重装系统"></a>使用硬盘对拷进行重装系统</h4><p><em>数据无价，拷贝之前一定要确定磁盘的用户数据备份了。</em></p>
+<p>首先将需要重装的节点上面的硬盘卸载下来，插入到一个负载不是很大的节点的备用硬盘仓中，然后使用fdisk -l来查看新插入的硬盘的编号，由于本集群的计算节点只有两个硬盘仓，所以后插入的硬盘的编号就是/dev/sdb了。</p>
+<h5 id="卸载Lustre文件系统以及NFS文件系统挂载点。"><a href="#卸载Lustre文件系统以及NFS文件系统挂载点。" class="headerlink" title="卸载Lustre文件系统以及NFS文件系统挂载点。"></a>卸载Lustre文件系统以及NFS文件系统挂载点。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;&apos;/public&apos;,&apos;/home&apos;,&apos;/vpublic01&apos;,&apos;/vpublic02&apos;&#125;;</span><br><span class="line">do</span><br><span class="line">  umount $i;</span><br><span class="line">done;</span><br></pre></td></tr></table></figure>
+<h5 id="执行dd命令"><a href="#执行dd命令" class="headerlink" title="执行dd命令"></a>执行dd命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/sda of=/dev/sdb bs=32256 conv=notrunc,noerror &amp;</span><br></pre></td></tr></table></figure>
+<p>后面的&amp;表示以后台形式运行，运行之后会返回一个编号，就是这个进程的PID。</p>
+<p>执行如下命令来查看拷贝的进度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while kill -USR1 2643;</span><br><span class="line">do </span><br><span class="line">  echo;</span><br><span class="line">  sleep 10;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>把2643替换为你自己的进程PID就可以了。<br>这里的300GB的硬盘，大概拷贝需要40分钟左右，因为是Serial SCSI硬盘，速度稍微快一点。</p>
+<h5 id="修改以太网卡和InfiniBand网卡的Ip地址"><a href="#修改以太网卡和InfiniBand网卡的Ip地址" class="headerlink" title="修改以太网卡和InfiniBand网卡的Ip地址"></a>修改以太网卡和InfiniBand网卡的Ip地址</h5><p>修改/etc/sysconfig/network-scripts/中的ifcfg-ib0和ifcfg-br0两个文件中的IP地址即可</p>
+<h5 id="删除-etc-udev-rules-d-70-persistent-net-rules文件"><a href="#删除-etc-udev-rules-d-70-persistent-net-rules文件" class="headerlink" title="删除/etc/udev/rules.d/70-persistent-net.rules文件"></a>删除/etc/udev/rules.d/70-persistent-net.rules文件</h5><p>查看/etc/udev/rules.d/70-persistent-net.rules文件，修改对应参数，我一般比较懒，直接删除，重启会重建。</p>
+<h5 id="修改-etc-sysconfig-network文件"><a href="#修改-etc-sysconfig-network文件" class="headerlink" title="修改/etc/sysconfig/network文件"></a>修改/etc/sysconfig/network文件</h5><p>RHEL6中该文件存储的是系统的主机名。RHEL7系统中，请使用<code>hostnamectl sethostname hostname</code>命令设置主机名，请将最后的hostname替换为你想设置的主机名。</p>
+<h5 id="磁盘检查"><a href="#磁盘检查" class="headerlink" title="磁盘检查"></a>磁盘检查</h5><p>很多时候，母机器上面有一些inode信息不一致或者坏掉的磁盘块，因此需要进行一下简单的修复工作。请依次执行一下命令，检查和修复磁盘。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fsck -y /dev/sdb1</span><br><span class="line">fsck -y /dev/sdb2</span><br></pre></td></tr></table></figure></p>
+<p>其中dev/sdb1和/dev/sdb2为需要还原系统的磁盘的分区编号，根据具体情况进行替换即可。</p>
+<h5 id="放回磁盘，启动系统"><a href="#放回磁盘，启动系统" class="headerlink" title="放回磁盘，启动系统"></a>放回磁盘，启动系统</h5><p>将硬盘取回，放到原节点，启动节点，则会进入一个初始化的过程，有时会由于存在磁盘中的块与索引信息不一致的情况，尽管之前做过检查，但是在插入到新机器上后，还会出现，它会提示你输入root密码进行修复或者按Ctrl-D取消，这时需要输入root密码，因为是拷贝的其他节点的数据，因此root密码也是被拷贝节点的密码。如果root密码忘记，可以将磁盘重新插入到一台机器，将那台机器的/etc/shadow文件拷贝到磁盘中，这样就相当于重置了root密码。输入root密码之后，有可能提示你磁盘有问题。这个时候需要进行修复。此时一般会提示你哪个分区有问题，例如/dev/sda1有问题或者是/dev/sda2有问题，那么需要我们进行修复，输入一下命令，建议将所有分区一次性修复。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#修复第一个分区，这个分区一般是引导分区</span><br><span class="line">fsck -y /dev/sda1</span><br><span class="line"></span><br><span class="line">#修复第二个分区，这个分区一般是主文件分区</span><br><span class="line">fsck -y /dev/sda2</span><br></pre></td></tr></table></figure></p>
+<p>有时会提示你是/dev/sda2有问题，但是建议也修复一下/dev/sda1，这样重启之后不会因为文件系统有小故障导致重新修复再次重启。</p>
+<p>输入reboot重启即可。</p>
+<h5 id="将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。"><a href="#将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。" class="headerlink" title="将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。"></a>将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。</h5><p><em>再次强调，数据无价，拷贝之前一定要确定磁盘的用户数据已经备份了。</em></p>
+<h3 id="集群文件系统维护"><a href="#集群文件系统维护" class="headerlink" title="集群文件系统维护"></a>集群文件系统维护</h3><p><span id="Lustre"></span><br>科研教育网格集群采用了高性能分布式计算文件系统Lustre，Top500超级计算机中有超过50%都是用了该文件系统。该文件系统的命运特别坎坷，先后转手了好几家公司，现在是Intel公司所属。Lustre原先是一套开源的产品，最初是美国能源部提出开发的，后来成立CFS公司，2007年转卖给Sun公司，2010年Sun公司被Oracle公司收购，2010年又卖给了Whamcloud公司，最后于2012年被Intel收购。</p>
+<p>Lustre是一种基于对象存储的分布式文件系统，主要包含MDS(Metadata Server)和OSS(Object Storage Server)，实验室集群的node309和node310是MDS,311-323是OSS，其中309和310互为备份，310提供了/public目录的元数据，并备份node309中的元数据，309之前提供了/home目录，后来因为一些故障，导致309没有再次提供服务了，目前309仅仅作为/public元数据的一个备份，但是309和310必须要同时启动才能正常工作。之前311-318提供/home目录的数据文件存储，319-323提供/public目录的数据文件存储，但是由于之前出现过阵列故障，所以目前只有319-323提供了数据存储服务。总结，node309和node310提供元数据存储服务，node329-323提供数据存储服务，这几个服务器不能随意允许个人登录，也不允许任意关机，否则导致整个集群无法正常使用。</p>
+<p>所有计算节点都预先安装了Lustre客户端软件，使用Lustre文件系统，需要保证内核中加载了Lustre文件系统网络模块，配置文件在/etc/modprobe.d/lustre.conf，其中的内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options lnet networks=&quot;o2ib0(ib0),tcp0(eth0)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>Lustre文件系统的网络模块，其中配置了两种网络通道，第一种是Infiniband网络通道，另外一种是以太网通道。如果节点的InfiniBand网络通道出现问题，可以使用以太网，后面会介绍Infiniband网络出现问题时使用以太网挂载Lustre文件系统的方法。</p>
+<p>Lustre文件系统的挂载脚本是/etc/client_mount.local内部，内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sleep 20</span><br><span class="line">mount -t lustre &quot;inode310@o2ib0:inode309@o2ib0:node310@tcp0:node309@tcp0:/p100fs02&quot; /public</span><br><span class="line">#mount -t lustre &quot;inode309@o2ib0:inode310@o2ib0:node309@tcp0:node310@tcp0:/p100fs01&quot; /home</span><br><span class="line">mount --rbind /public/home /home</span><br></pre></td></tr></table></figure></p>
+<p>由于Lustre网络模块或者Infiniband网络模块还没有初始化，因此需要等待20秒之后再次挂载，有些节点可能由于InfiniBand网络加载速度更慢，因此需要等待更长时间才能执行挂载工作。由于集群之前的/home目录出现问题，因此现在将/public/home目录挂载为/home，也就是说/home目录实际上也是由/public目录存储的。</p>
+<p>如果某个节点无法挂载Lustre文件系统，登录到节点，首先检查节点的Infiniband网络是否正常，执行如下命令中的一种，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@node236 ~]# ibstat</span><br><span class="line">CA &apos;mlx4_0&apos;</span><br><span class="line">	CA type: MT4099</span><br><span class="line">	Number of ports: 1</span><br><span class="line">	Firmware version: 2.30.3000</span><br><span class="line">	Hardware version: 0</span><br><span class="line">	Node GUID: 0x46d2c92000003890</span><br><span class="line">	System image GUID: 0x46d2c92000003893</span><br><span class="line">	Port 1:</span><br><span class="line">		State: Active</span><br><span class="line">		Physical state: LinkUp</span><br><span class="line">		Rate: 56</span><br><span class="line">		Base lid: 151</span><br><span class="line">		LMC: 0</span><br><span class="line">		SM lid: 317</span><br><span class="line">		Capability mask: 0x02514868</span><br><span class="line">		Port GUID: 0x46d2c92000003891</span><br><span class="line">		Link layer: InfiniBand</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@node236 ~]# ibstatus</span><br><span class="line">Infiniband device &apos;mlx4_0&apos; port 1 status:</span><br><span class="line">	default gid:	 fe80:0000:0000:0000:46d2:c920:0000:3891</span><br><span class="line">	base lid:	 0x97</span><br><span class="line">	sm lid:		 0x13d</span><br><span class="line">	state:		 4: ACTIVE</span><br><span class="line">	phys state:	 5: LinkUp</span><br><span class="line">	rate:		 56 Gb/sec (4X FDR)</span><br><span class="line">	link_layer:	 InfiniBand</span><br></pre></td></tr></table></figure>
+<p>如果state属性显示ACTIVE，那么表示Infiniband网络是好的，可以手动进行挂载，如果挂载还是出现问题，很有可能是Lustre文件系统模块没有加载完成，另外还需要执行uname-a命令查看内核的版本是否被用户升级或者更换了。如果内核不是2.6.32-220，那么不能使用Lustre文件系统。因为Lustre客户端没有在其他内核版本进行安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@node236 ~]# uname -a</span><br><span class="line">Linux node236 2.6.32-220.el6.x86_64 #1 SMP Wed Nov 9 08:03:13 EST 2011 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure></p>
+<p>如果Infiniband网络的state属性显示是PortTraining同时phys state是LinkUp，这种情况一般是Infiniband网络的子网管理服务器没有启动的原因，可以使用执行如下命令重启Infiniband网络服务，然后再查看Infiniband网络是否正常。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service openibd restart</span><br><span class="line">service opensmd restart</span><br></pre></td></tr></table></figure></p>
+<p>如果phys state是Down，那么很有可能机器的Infiniband没有安装或者存在问题，那么试试重新安装驱动，如果还是没有效果，那么很有可能Infiniband线缆已经损坏，可以从刀箱后面拔掉坏掉的线缆，插上其他的线缆试试，一般线缆是好的，Infiniband网络的网口会有两个灯亮着，如果灯不亮，一般有可能是驱动没有安装，也有可能是线缆坏掉了，或者是Infiniband线缆坏掉了。</p>
+<p>备注：用户重新安装操作系统后，无法使用Lustre文件系统。</p>
+<h4 id="使用以太网挂载Lustre文件系统"><a href="#使用以太网挂载Lustre文件系统" class="headerlink" title="使用以太网挂载Lustre文件系统"></a>使用以太网挂载Lustre文件系统</h4><p>如果确定Infiniband网络线缆有问题，那么可以不用Infiniband网络，而是直接使用以太网络来进行Lustre通信。方法如下，将/etc/modprobe.d/lustre.conf修改为如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options lnet networks=&quot;tcp0(eth0)&quot;</span><br></pre></td></tr></table></figure>
+<p>然后将挂载脚本/etc/client_mount.local文件修改为如下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sleep 20</span><br><span class="line">mount -t lustre &quot;node310@tcp0:node309@tcp0:/p100fs02&quot; /public</span><br><span class="line">mount --rbind /public/home /home</span><br></pre></td></tr></table></figure></p>
+<p>最后重新启动计算节点，不出意外情况，应该可以正常使用Lustre文件系统了，如果还是有问题，只有两种可能，一种是Lustre模块出现问题，需要重新配置，另外一种可能是，内核中没有安装Lustre文件系统。</p>
+<h3 id="集群软件配置与管理"><a href="#集群软件配置与管理" class="headerlink" title="集群软件配置与管理"></a>集群软件配置与管理</h3><p>集群目前所有软件都配置在/public/software目录下面，目前配置的有Intel编译器、OpenMPI、Mathlab2009等，还有很多需要的软件可能还没有安装。</p>
+<p>很多集群的用户都喜欢在自己的目录下面安装计算软件，这就导致了同一个非常占用空间的软件在集群上面有多个副本，<em>导致集群存储空间被大大浪费掉了。</em></p>
+<p>因此最好是能够及时统计用户需要使用的软件的信息，并和软件用户一起将软件安装到/public/software目录下面，并告知其他用户直接使用该目录下面的软件即可。</p>
+<p>集群还安装了Torque5作业调度管理系统，目前主节点为node307，后期考虑将B区的所有节点都安装作业调度管理系统，并采用调度系统提交作业。</p>
+<p><em>总而言之，集群软件尽量安装到/public/software目录下面，并编写一定的说明文档，告知用户使用方法，可以找一些已经有过安装和使用经验的用户进行交流，让他们提供这些资料。</em></p>
+<h3 id="网络故障处理"><a href="#网络故障处理" class="headerlink" title="网络故障处理"></a>网络故障处理</h3><h4 id="Infiniband网络故障"><a href="#Infiniband网络故障" class="headerlink" title="Infiniband网络故障"></a>Infiniband网络故障</h4><p><span id="Infiniband"></span><br><a href="http://www.mellanox.com/page/software_overview_ib" target="_blank" rel="external">Mellanox Infiniband驱动下载地址</a><br>上面是Infiniband驱动的官方下载地址，根据系统版本进行下载。</p>
+<p>Infiniband网络最多的故障就是子网管理服务没有启动，导致状态一直是PortTraining，这个时候可以重启启动一下子网服务，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service opensmd restart</span><br></pre></td></tr></table></figure></p>
+<p>如果提示服务不存在，那么问题的原因就是网络驱动没有正常安装，或者是出现了故障，这个时候可以采用重新安装驱动的方式来进行修复。</p>
+<p>Infiniband网络配置文件为/etc/sysconfig/network-scripts/ifcfg-ib0</p>
+<h4 id="以太网故障"><a href="#以太网故障" class="headerlink" title="以太网故障"></a>以太网故障</h4><p>以太网故障一般比较少，常见的故障可能是刀片机箱的交换模块断电了。交换模块断电的一个明显的特征是网络指示灯一个都不亮，这种情况在集群断电后首次启动时经常遇到。</p>
+<p><span id="power_module_error"></span><br>造成刀箱的网络交换模块无法正常工作的原因是，刀箱的电源模块在长时间断电之后没有正常启动或者由于电源模块功率过高而风扇转速太低导致电源过热保护，特点是指示灯为黄色，如果一个刀箱有2个电源模块亮黄灯，那么很有可能导致刀箱的交换模块无法正常启动。这个时候可以尝试一下办法来解决这个问题。</p>
+<p>将亮黄灯电源模块的电源线拔下，将电源模块拔下，等待1-2分钟之后，黄灯熄灭，然后把电源模块重新插入，并插上电源模块的电源线，如果一会之后，电源模块指示灯亮绿色，表示该电源模块可以正常工作。将所有的电源模块都进行这样的处理。直到所有的电源模块指示灯都是绿色的。</p>
+<p>然后将刀箱内部的所有刀片节点进行关机处理，关机后，在刀箱背面的左下角的有一个黑色的开关，这个开关是整个刀箱的电源开关，它控制刀箱所有模块的供电。找到后关闭它，等待5分钟后，重启打开该开关，如果不出意外情况，也就是所有的电源模块指示灯为绿色的情况下，一会刀箱的电源交换模块的网络指示灯就会正常亮起来了。如果还是不行，有可能就是交换模块出现故障了。</p>
+<p><em>如果不能正常解决，直接打电话给官方客服进行报修啦。</em></p>
+<h3 id="集群用户添加"><a href="#集群用户添加" class="headerlink" title="集群用户添加"></a>集群用户添加</h3><p>集群上面安装了clusconf软件，可以用于用户的管理工作，常用的命令如下，例如说来了一个新的用户tom，需要给tom分配几个节点，比如说是100，101，105，106，107，下面简单介绍使用clusconf命令在以上节点添加用户tom。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clusconf -p node -n `seq 307 310` 100 101 `seq 105 107` -ua tom</span><br></pre></td></tr></table></figure></p>
+<p>-p node是指节点主机名的前缀，例如说node1的前缀是node，这个是固定写法。<br>-n 选项指定要进行操作的节点编号，无论用户分配哪些节点给用户，以下节点必须包含在里面，307和308节点是集群的入口节点，只有这两个节点才能登陆到集群，309和310是Lustre文件系统的元数据#服务器，如果没有在这两个节点添加用户，那么用户将无法登录到集群使用文件系统，很可能导致卡住。因此在进行添加用户时，一定要添加<code>seq 307 310</code>这句。其他节点的编号，可以使用<code>seq startindex endindex</code>方法进行生成，前提是节点编号连续。当节点编号不连续时，可以依次输入节点编号，空格分开。-ua tom的意思是添加用户tom，ua即useradd的意思</p>
+<p>由于目前仅仅使用clusconf的用户添加功能，所以只能介绍到这里，下面附上一个clusconf的使用教程，需要了解可以详细阅读。<a href="http://7xsnoh.com1.z0.glb.clouddn.com//clustermgmt/pdf/clusconf-1.4%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C.pdf" target="_blank" rel="external">clusconf1.4使用手册</a></p>
+<h3 id="网络访问控制"><a href="#网络访问控制" class="headerlink" title="网络访问控制"></a>网络访问控制</h3><p>集群主要通过安全网关硬件和iptables进行访问控制。</p>
+<p>安全网关配置了允许登录进入集群的IP类型以及开放的端口信息。<br>具体的IP地址限制由iptables来进行限制。</p>
+<h4 id="允许某一IP地址访问集群"><a href="#允许某一IP地址访问集群" class="headerlink" title="允许某一IP地址访问集群"></a>允许某一IP地址访问集群</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -s 115.156.164.248 -p tcp -m tcp -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>即可允许115.156.164.248这个IP地址登录到集群。</p>
+<h4 id="允许网段的IP地址访问集群"><a href="#允许网段的IP地址访问集群" class="headerlink" title="允许网段的IP地址访问集群"></a>允许网段的IP地址访问集群</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -s 115.156.164.248/24 -p tcp -m tcp -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>即可允许115.156.164.1-115.156.164.255这个网段内部的所有IP地址登录集群。</p>
+<h4 id="允许所有节点访问特定的IP地址"><a href="#允许所有节点访问特定的IP地址" class="headerlink" title="允许所有节点访问特定的IP地址"></a>允许所有节点访问特定的IP地址</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A POSTROUTING -d 202.114.0.242/32 -o eth1 -j MASQUERADE</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>执行完命令后，所有集群都可以访问202.114.0.242这个IP地址所在的服务器。<br>此时，需要在需要访问202.114.0.242这个IP的计算节点上面执行下面的操作。<br>首先登录到需要访问外网的节点，执行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route</span><br></pre></td></tr></table></figure></p>
+<p>查看结果中是否有以下记录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">default         node307         0.0.0.0         UG    0      0        0 eth0</span><br></pre></td></tr></table></figure></p>
+<p>如果存在上述内容，则直接可以连接外网，如果ping外网还是不同，一般有可能是DNS信息没有填写正确，可以编辑/etc/resolv.conf文件，在该文件头部加入一下信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nameserver 202.114.0.242</span><br><span class="line">nameserver 202.112.0.131</span><br></pre></td></tr></table></figure></p>
+<p>保存后，就可以正常访问外部网络了。</p>
+<h4 id="允许某一节点访问特定的IP地址"><a href="#允许某一节点访问特定的IP地址" class="headerlink" title="允许某一节点访问特定的IP地址"></a>允许某一节点访问特定的IP地址</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A POSTROUTING -s 11.11.0.1/32 -d 192.30.252.128/32 -o eth1 -j MASQUERADE</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>执行完命令后，允许node1（IP地址为11.11.0.1）访问github网站（IP地址为192.30.252.128）。</p>
+<h4 id="允许某一节点访问所有网站"><a href="#允许某一节点访问所有网站" class="headerlink" title="允许某一节点访问所有网站"></a>允许某一节点访问所有网站</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A POSTROUTING -s 11.11.0.1/32 -o eth1 -j MASQUERADE</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>执行完命令后，node1（IP地址为11.11.0.1）具有全部外网访问权限。</p>
+<h4 id="集群DNS服务器信息"><a href="#集群DNS服务器信息" class="headerlink" title="集群DNS服务器信息"></a>集群DNS服务器信息</h4><p>以下是校内DNS服务器的信息，可以编辑/etc/resolv.conf文件进行设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nameserver 202.114.0.242</span><br><span class="line">nameserver 202.112.0.131</span><br></pre></td></tr></table></figure></p>
+<h3 id="集群监控"><a href="#集群监控" class="headerlink" title="集群监控"></a>集群监控</h3><p>集群的监控工作的作用和意义就不再强调了，为了更好掌握集群每个节点的运行情况、资源使用情况，监控是必须的。本人之前在集群的所有节点上面都安装了zabbix2.14监控管理软件，zabbix有个非常大的好处就是报警处理做的比较好，目前主要针对机器网络不通、重启会进行报警，当前情况下设置了Email报警以及短信报警。zabbix监控管理软件的URL地址是^v^，这个保密，只对管理员开放咯。</p>
+<p>由于个人精力有限，没有深入一部配置zabbix的报警规则。另外本人重新编写了一个脚本，该脚本的作用是在白天没过2个小时扫描一下集群所有计算节点的温度，发现CPU温度超过90摄氏度的，则向终端用户发出警告，CPU温度超过95摄氏度的，直接进行关机处理。该脚本所在目录地址是/vpublic01/zhangchi/clustermgmt/temp-monitor/monitor.sh，使用操作系统的crontab进行定时执行。该脚本能够正确获取到温度信息的前提是，刀片的BMC管理模块是好的，而且在BIOS中设置了该刀片BMC模块的IP地址信息，而且网络是连通的。</p>
+<h3 id="集群关机与启动流程"><a href="#集群关机与启动流程" class="headerlink" title="集群关机与启动流程"></a>集群关机与启动流程</h3><p>一般而言，集群不需要进行关机处理，但是实验室暑假、春节期间由于长期没有人照看，需要进行关机处理，特别是暑假温度高、用户如果计算量上去，加上空调质量不是很好，很可能会导致难以预料的后果。</p>
+<p><span id="poweroff">集群关机流程如下：</span></p>
+<ul>
+<li>关闭所有的计算节点和GPU节点，编号是node1-node306，node327-node348</li>
+<li>关闭集群管理节点，node307-node308</li>
+<li>关闭对象存储服务器，node311-node326节点</li>
+<li>关闭元数据服务器，node309-node310节点</li>
+</ul>
+<p><span id="poweron">集群开机流程如下：</span></p>
+<ul>
+<li>启动元数据服务器，node309-node310节点</li>
+<li>等待5-10分钟</li>
+<li>启动对象存储服务器，node311-node326节点</li>
+<li>等待10-15分钟</li>
+<li>启动集群管理节点，node307-node308节点</li>
+<li>查看node307和node308上面的/public是否正常挂载，如果正常则执行下面的步骤</li>
+<li>如果不正常，则按照关机流程，重启元数据和对象存储服务器</li>
+<li>启动所有计算节点，node1-node306，node327-node348</li>
+</ul>
+<h3 id="集群断电与通电流程"><a href="#集群断电与通电流程" class="headerlink" title="集群断电与通电流程"></a>集群断电与通电流程</h3><p>集群如果关机只是暂时关机，而不是断电，那么执行普通的关机的命令关闭所有的服务器即可。<br>如果由于实验室长期无人看管，导致需要停止集群，那么需要进行断电处理。</p>
+<h4 id="机房电路分布介绍"><a href="#机房电路分布介绍" class="headerlink" title="机房电路分布介绍"></a>机房电路分布介绍</h4><p>本部分内容仅供参考，不保准准确性，请勿直接接触供电设备。进行有关电气设备操作之前，请务必与相关负责老师联系，做好防触电准备，请务必谨记，安全第一。</p>
+<p>下面介绍主机房电源的接入情况。<br>主机房有14个机柜，一般情况下，2个机柜共用一个PDM，少数机柜单独使用一个PDM，因此主机房有7个PDM，这些PDM上面有一个开关，关闭开关，就可以将其负责供电的机柜的断电。</p>
+<p>PDM主要分配在机柜2、机柜3、机柜6、机柜7、机柜9、机柜11、机柜13的最下面。</p>
+<p>这些PDM由配电房的UPS电源模块来进行供电。在配电房的配电柜里面有对应的开关，可以直接断掉这些PDM的供电。</p>
+<p>另外，主机房还有2个大型工业空调用于集群的制冷工作，这两个空调不是通过UPS进行供电的，走的是市电线路。</p>
+<p>主机房还有地板PEU，即从地上往上进行吹风的风扇，用于辅助空气流动，帮助集群进行扇热的，也是接的市电线路。</p>
+<p>主机房还有一个设备叫做新风，简要理解为一个电风扇，主要负责集群内部的空气和室外的空气交换的，这个设备也是走的市电线路。</p>
+<p>主机房还要照明设备、消防报警器、门禁设备等，这些也都是走的市电通道。</p>
+<p>总而言之，除了集群的机柜是使用UPS进行供电外，其他的所有设备都是市电进行供电。</p>
+<h4 id="配电房设备介绍"><a href="#配电房设备介绍" class="headerlink" title="配电房设备介绍"></a>配电房设备介绍</h4><p>配电房主要有UPS设备和配电柜、空调。<br>简要介绍一个各设备的摆布，走进配电房。</p>
+<p>最西边的两个乳白色的大箱子里面安装的是UPS铅酸电池组，平时巡检的时候，需要稍微闻一下是否存在异味，由于设备老化，电池已经处于危险期了。</p>
+<p>背面有4个柜子并列，左侧两个是配电柜，右侧两个是UPS的主机和控制箱。</p>
+<p>左侧第一个配电柜是市电配电柜，上面有一个市电总开关，控制整个机房的市电接入，一般情况不要动此开关。下面还有一排空气开关，这些开关的最左侧是UPS旁路开关，从左往右依次是配电室5P柜式空调开关、备用开关、主机房新风、ADU地板、主机房照明、电源室照明、主机房插座、电源室插座、电源室空调（壁挂式关空调，已经没有使用）、主机房精密空调一、主机房精密空调二。这些开关直接控制了相应设备的市电输入，如果需要断电，可以直接从这里进行控制。</p>
+<p>左侧第二个配电柜是UPS输出配电柜，上面有一个UPS输出总开关，该开关控制着集群所有机柜的供电，而且该供电是通过UPS进行输出的，所以一般情况不要断电。</p>
+<p>右侧从左往右第一个机柜是UPS的控制和监控柜，显示了一些UPS的运行信息以及UPS的几个主要开关。</p>
+<p>右侧最后一个机柜是UPS的控制电路柜，这里需要注意的是过滤网要定期的清洗。</p>
+<h4 id="集群断电流程"><a href="#集群断电流程" class="headerlink" title="集群断电流程"></a>集群断电流程</h4><ul>
+<li>集群关机，按照<a href="#poweroff">集群关机流程</a>部分描述的方法，将集群所有服务器按照正确顺序进行关机处理。</li>
+<li>关闭机柜2、机柜3、机柜6、机柜7、机柜9、机柜11、机柜13最下面的PDM的开关，从所有机柜的后面查看是不是所有服务器电源模块的指示灯都断电了。最明显的断电特征是，机房的声音变得很小了，基本上没有了，因为刀箱的散热模块断电了。</li>
+<li>关闭主机房两台精密空调，精密空调的右侧有个显示面板，显示面板的左侧有一个可以旋转开关，将开关旋转至Off即可关闭空调。在集群关机之后，可以关闭精密空调。</li>
+<li>到配电房左侧市电柜中关闭精密空调开关、主机房新风、主机房ADU地板的开关。</li>
+<li>回到主机房检查服务器、空调、地板、以及换气设备是否都已经停止工作了，确认好之后，关好主机房的门。</li>
+</ul>
+<p>经过以上步骤，主机房就基本上进行了断电，即服务器设备和空调设备都进行了断电，其他东西可以不用断电，因为功率比较小。</p>
+<p>配电房由于存在UPS电源设备以及配电柜，因此配电房里面的设备不能直接断电，而且配电房空调也不能断电。</p>
+<p>最后总结一下断电的流程：集群服务器设备断电-&gt;集群精密空调断电-&gt;其他辅助设备断电。</p>
+<h4 id="集群通电流程"><a href="#集群通电流程" class="headerlink" title="集群通电流程"></a>集群通电流程</h4><ul>
+<li>到配电房左侧市电柜中打开精密空调的开关。</li>
+<li>进入主机房，打开机柜2、机柜3、机柜6、机柜7、机柜9、机柜11、机柜13最下面的PDM的开关，从所有机柜的后面查看是不是所有服务器电源模块的指示灯都通电了。需要依次检查每个刀箱背后的4个电源模块是否正常运行，即，电源模块的指示灯是否全部是绿色，如果是绿色，表示正常。若有一个是黄色，则很有可能导致刀箱交换模块无法正常被供电，导致无法工作，这种情况导致的后果就是整个刀箱无法连接，也无法相互通信，所以通电后，第一件事请就是要保证所有刀箱的所有电源模块正常工作，如果无法正常工作，请参考<a href="#power_module_error">刀箱电源模块故障处理</a>进行处理。</li>
+<li>中间还有一点需要说明的就是，每个刀片服务器的前置面板的上方有一个白色的纸质标签，标签上面写着nodeXXX，即节点的主机名或者编号信息，这个标签是通过刀箱散热模块产生的向后的空气流动形成的吸引力吸在前置面板上面的，如果集群的刀箱断电后，散热模块停止运行，将会导致有些不是很稳的标签飘落下来，因此，集群断电之后，如果看到了标签落地，请将标签集中捡起来，并放到一个没有风的地方，最好用大一点的螺丝压住，然后等集群通电的时候，散热模块运行，标签可以稳定吸住之后，再将落下的标签贴上。</li>
+<li>开启主机房两台精密空调，精密空调的右侧有个显示面板，显示面板的左侧有一个可以旋转开关，将开关旋转至On即可启动空调。集群开机之前，请首先打开精密空调。</li>
+<li>到配电房左侧市电柜中打开主机房新风、主机房ADU地板的开关。</li>
+<li>集群开机，按照<a href="#poweron">集群开机流程</a>部分描述的方法，将集群所有服务器按照正确顺序进行开机处理。集群开机过程中，请务必注意服务器</li>
+</ul>
+<p>经过以上步骤，集群基本上已经通电并且开机了。</p>
+<p>最后总结一下通电的流程：集群机柜PDM通电-&gt;集群空调通电并开机-&gt;其他辅助设备通电运行-&gt;集群服务器通电并开机。</p>
+<h3 id="集群管理软件和技能"><a href="#集群管理软件和技能" class="headerlink" title="集群管理软件和技能"></a>集群管理软件和技能</h3><h4 id="集群管理软件推荐"><a href="#集群管理软件推荐" class="headerlink" title="集群管理软件推荐"></a>集群管理软件推荐</h4><p>pssh<br>shell<br>Linux<br>LSI RAID</p>
+<h4 id="集群管理需要的技能"><a href="#集群管理需要的技能" class="headerlink" title="集群管理需要的技能"></a>集群管理需要的技能</h4><h3 id="常见故障及处理"><a href="#常见故障及处理" class="headerlink" title="常见故障及处理"></a>常见故障及处理</h3><h4 id="用户无法登录到集群"><a href="#用户无法登录到集群" class="headerlink" title="用户无法登录到集群"></a>用户无法登录到集群</h4><p>有如下几种原因会导致用户无法登录到集群：</p>
+<ul>
+<li>用户使用的是校园无线网络，校园无线网络不允许登录到集群。</li>
+<li>用户在校园网外部登录集群，集群IP地址未暴露给外网，校园网外部无法直接访问。</li>
+<li>用户使用校园内部有线网络，无法登录到集群，需要在集群管理服务器添加IP地址许可。</li>
+<li>用户不存在，则无法登录集群。</li>
+<li>用户长期不登录或者已归还集群，账户密码被锁定，则无法登录集群。</li>
+</ul>
+<p>解决方法：</p>
+<ul>
+<li>检查IP地址是否允许登录，若不允许登录，则添加IP地址到iptables。</li>
+<li>检查是否存在该用户，若不存在，则使用clusconf命令添加用户。</li>
+<li>若用户存在，则执行<code>passwd -u username</code>解锁用户密码。</li>
+</ul>
+<h4 id="用户无法登录到分配的节点"><a href="#用户无法登录到分配的节点" class="headerlink" title="用户无法登录到分配的节点"></a>用户无法登录到分配的节点</h4><p>这种情况可能的原因如下：</p>
+<ul>
+<li>1.节点死机或者被关机。</li>
+<li>2.节点负载过高。</li>
+<li>3.该机器限制了用户从某些主机的登录行为。</li>
+<li>4.SSH服务默认端口被恶意更改。</li>
+</ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li>1.使用IPMI重启机器。</li>
+<li>2.待负载降下来之后登录。</li>
+<li>3.从其他机器跳转到节点后，编辑/etc/hosts.deny解除登录节点限制。</li>
+<li>4.询问上一批次使用的用户具体端口，或者直接去机房本地登录后进行修改。</li>
+</ul>
+<h4 id="用户登录到分配的节点时需要输入密码"><a href="#用户登录到分配的节点时需要输入密码" class="headerlink" title="用户登录到分配的节点时需要输入密码"></a>用户登录到分配的节点时需要输入密码</h4><p>出现需要输入密码，可能原因如下：</p>
+<ul>
+<li>Lustre文件系统没有正确挂载，导致用户主目录没有，需要输入密码。</li>
+<li>该节点没有分配给该用户。</li>
+<li>该用户主目录中的密钥文件不存在或者权限不正确。</li>
+</ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li>1.登录到节点解决Lustre文件系统挂载的问题，参考<a href="#Lustre">集群分布式文件系统</a>章节进行解决。</li>
+<li>2.考虑分配节点给用户或禁止用户登录该节点。</li>
+<li>3.提示用户生成密钥文件或修改密钥文件的权限。</li>
+</ul>
+<h4 id="Lustre文件系统无法挂载"><a href="#Lustre文件系统无法挂载" class="headerlink" title="Lustre文件系统无法挂载"></a>Lustre文件系统无法挂载</h4><p>导致无法挂载的原因较多，较常见的如下：</p>
+<ul>
+<li>Infiniband网路故障。</li>
+<li>Lustre相关模块未加载。</li>
+<li>计算节点内核被升级或者更换。</li>
+<li>Lustre文件系统本身故障。</li>
+</ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li>1.参考<a href="#Infiniband">Infiniband网络故障解决</a>部分解决Infiniband网络故障。</li>
+<li>2.加载Lustre相关模块，若是由于Infiniband网络故障导致的模块无法加载，请先解决该网络故障，或者屏蔽Infiniband网络模块。</li>
+<li>3.将内核修改为编译过Lustre的内核。</li>
+<li>4.寻到具体故障，并进行解决，如果无法解决，首先在所有节点将/public或/home目录卸载，然后重启Lustre文件系统。</li>
+</ul>
+<h4 id="节点无法获取zabbix监控信息"><a href="#节点无法获取zabbix监控信息" class="headerlink" title="节点无法获取zabbix监控信息"></a>节点无法获取zabbix监控信息</h4><p>可能原因如下：</p>
+<ul>
+<li>zabbix配置信息不正确。</li>
+<li>zabbix相关文件夹权限问题。</li>
+<li>zabbix配置文件与服务端不一致。</li>
+<li>防火墙未开放相关端口。</li>
+</ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li>1.重新配置zabbix配置信息，编辑/etc/zabbix/zabbix_agent.conf文件中的Hostname，Server，ServerActive信息。</li>
+<li>2.将/var/log/zabbix和/var/run/zabbix文件夹的权限分配给zabbix用户，并检查用户是否存在，若不存在，则不添加。</li>
+<li>3.查看服务器配置信息，并修改配置文件。这个一般是Server或ServerActive信息不一致导致。</li>
+<li>4.关闭防火墙或者添加端口允许。</li>
+</ul>
+<h4 id="IPMI无法获取服务器信息"><a href="#IPMI无法获取服务器信息" class="headerlink" title="IPMI无法获取服务器信息"></a>IPMI无法获取服务器信息</h4><p>可能有如下原因导致：</p>
+<ul>
+<li>IPMI相关模块未加载。</li>
+<li>IPMI软件被恶意卸载，特别是有root权限的用户。</li>
+<li>集群长时间运行导致IPMI模块无法正常工作，可能需要卸下并插上刀片。</li>
+</ul>
+<p>解决方法依次如下：</p>
+<ul>
+<li><p>1.执行如下命令加载IPMI模块，然后再次执行IPMI命令，查看是否正常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">modprobe ipmi_watchdog</span><br><span class="line">modprobe ipmi_poweroff</span><br><span class="line">modprobe ipmi_devintf</span><br><span class="line">modprobe ipmi_si</span><br><span class="line">modprobe ipmi_msghandler</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.重新安装freeipmi软件包，具体网上有，集群的公共软件目录中也有。</p>
+</li>
+<li>3.刀片关机，然后拔掉后面的Infiniband线缆，拔出刀片，等待2分钟，插入刀片，插上Infiniband线缆，启动刀片，一般而言会好。如果实在不行，可以考虑关闭刀箱，并切断电源，但是这种做法不太推荐，除非这个刀箱的大多数刀片都无法进行IPMI控制，这些节点又经常需要进行重启，且无法使用操作系统进行开关机命令重启的情况下，才能使用。</li>
+</ul>
+<h3 id="售后报修"><a href="#售后报修" class="headerlink" title="售后报修"></a>售后报修</h3><p>集群建设日期是2012年12月，合同约定保修日期是5年，报修到期日期是2017年12月，在此期间，任何硬件故障、软件故障都可以打电话给曙光全国客服，报修之前一定要把服务器的序列号记下来，然后进行报修。报修之后，曙光湖北分公司会有技术支持联系，之后会进行故障处理。</p>
+<h3 id="重大故障"><a href="#重大故障" class="headerlink" title="重大故障"></a>重大故障</h3><h4 id="挖矿病毒"><a href="#挖矿病毒" class="headerlink" title="挖矿病毒"></a>挖矿病毒</h4><p>在每个节点上运行有很多的[watchdog]进程，这些进程原本是操作系统上进行不同CPU之间进程迁移的进程，挖矿病毒伪装为[watchdog]进程，占用全部的CPU进行计算，每天晚上22:00开始自动执行/etc/systemc命令，然后产生多个[watchdog]进程，在次日的7:00自动执行killall -9 [watchdog]杀死该进程。这些自动操作是添加到crontab中自动执行的。</p>
+<p>另外一个特点就是，ssh登录到感染该病毒的节点之后，[watchdog]进程就不见了，但是使用top命令查看系统过去1、5、15分钟的系统负载都是很高的，原因是在/etc/bashrc中包含如下命令killall -9 [watchdog]，每次用户登录时自动执行该脚本文件杀死进程。</p>
+<p>病毒感染规模很大，大约有1/3的节点感染了该病毒。每天22:00至7:00运行，导致机房温度曲线在这个时段偏高，这个可以通过空调控制面板中的温度曲线看到。</p>
+<p>根据文件的修改日期，大概是2014年12月发生的。如今严格控制了节点的网络访问，也限制了登录到集群的外网IP地址，现象比较少出现了。</p>
+<h4 id="RAID磁盘阵列崩溃"><a href="#RAID磁盘阵列崩溃" class="headerlink" title="RAID磁盘阵列崩溃"></a>RAID磁盘阵列崩溃</h4><p>某一台Lustre文件系统的对象存储服务器后面的磁盘阵列上面的所有磁盘亮红灯，/home目录无法正常读取或写入文件，由于/home目录提供的是用户文件，还有用户的软件，用户科研数据，为了防止情况恶化，直接停止了集群的使用，集群准备维修。</p>
+<p>售后过来之后，读取了该服务器的RAID配置信息，发现是在一块磁盘出现问题，RAID进行Rebuild的过程中，又坏掉了一块磁盘，导致RAID直接崩溃了。他们尝试修复阵列信息，但是修复后，阵列一直处于Rebuild的过程中，Rebuid完成之后，又开始Rebuild过程，里面的文件被一次又一次的被破坏了，最后Lustre文件系统的/home目录压根就无法挂载了。因此该阵列上面的所有用户信息都丢失了。</p>
+<p>由于这个阵列出现故障，直接将该服务器从Lustre的对象管理服务器中踢出，Lustre文件系统还是无法工作。售后没有办法解决这个问题了，而直接采用外部公司来恢复数据，价格估计很贵，加上集群本身是免费提供给用户使用的，因此也没有义务修复数据，因此集群就开始暂停服务，等待解决方案了。</p>
+<p>最后经过几个月的等待，解决方案是重新安装Lustre文件系统。</p>
+<p><em>==教训：一定要每周检查磁盘的状态，特别是Lustre文件系统的存储服务器的磁盘，及时找到有故障的磁盘信息，并将磁盘报修，如果出现亮红灯的情况，一定要及时更换，请参考<a href="#disk">服务器磁盘故障发现与处理</a>部分进行处理==</em></p>
+<h3 id="未尽事宜"><a href="#未尽事宜" class="headerlink" title="未尽事宜"></a>未尽事宜</h3><p>由于时间精力和能力有限，很多想做的事情还没有来得及做，或者没能做，在这里也列出来，希望今后有管理员可以将这些工作完成。</p>
+<h4 id="GridView集群管理软件安装"><a href="#GridView集群管理软件安装" class="headerlink" title="GridView集群管理软件安装"></a>GridView集群管理软件安装</h4><p>集群建设初期，曙光提供了一些用户文档给用户，但是那些文档都是基于曙光的Gridview集群管理系统建设的，现在Gridview被破坏了，无法正常运行，加上Gridview本身比较老了，曙光也没有提供新的版本给我们，加上安装文档又不是很详细，导致有些配置无法正常进行，导致无法使用。</p>
+<p>GridView是曙光自己开发的集群管理软件，该软件功能还是挺强大的，界面也比较友好，其实挺适合作为集群管理软件来使用，但是由于之前集群零散分配给用户使用，将GridView的节点信息等都破坏了，整个软件无法控制所有的集群。</p>
+<p>如果可以，寻求曙光的帮助，将GridView集群管理软件装好，主要是该软件提供了界面化提交作业的界面，可以非常方便使用，降低用户的使用难度。</p>
+<h4 id="集群分区管理"><a href="#集群分区管理" class="headerlink" title="集群分区管理"></a>集群分区管理</h4><p>由于集群现在是面向全校提供服务，主要的用户分为两种类型，一种是实验室内部同学进行试验，另外一种是实验室外部的用户进行高性能计算，这两类用户的需求差异很大，实验室内部用户一般是进行了某些系统的优化，需要一批机器部署自己的实验系统，然后比较，一般周期不会特别长，但是对系统的权限要求比较高，对系统的环境破坏比较大，使用完成后，需要做的工作也非常多。而第二种用户只需要集群提供了相应的软件，需要一批节点，提交作业，对系统环境破坏小，但是对机器数量要求或者资源的需求比较大。</p>
+<p>目前集群的分配策略是，来了一个用户，给他分配几个节点，用完之后回收，但是实际上，除了实验室内部短期做实验的用户，外部用户一般长期需要计算资源，基本上资源分配出去之后，就很难回收，长期占有，甚至不用了都不会主动归还，导致下次有用户进行资源申请时，很难找到空闲的资源进行使用。</p>
+<p>根据集群用户的需求和特点以及资源的使用情况，目前的想法是，将集群分为A和B两个区域，其中A区提供给实验室内部人员使用，B区专门用于进行高性能计算，这样的好处是，B区可以使用队列调度系统，用户通过调度系统提交作业，然后就可以充分利用B区的所有机器，大家的作业按照顺序进行调度，提高了资源利用率，同时也加快了计算效率。</p>
+<p>由于时间有限，以上想法暂时未执行，希望下一届管理员能够争取做到使用队列管理系统进行作业提交，保证用户计算公平性、资源充分利用。</p>
+<h4 id="集群用户使用系统"><a href="#集群用户使用系统" class="headerlink" title="集群用户使用系统"></a>集群用户使用系统</h4><p>集群目前管理相对比较零散，用户多，管理管理起来比较困难。例如说现在采用的是一个数据库记录节点分配和用户信息，操作效率低，使用极其不方便，找个信息要翻半天。</p>
+<p>期望下一届管理员能够开发一个简单的Web系统，用于集群节点分配和用户信息的管理。例如说，设计一个页面，查询用户历史使用节点信息，目前使用信息，违法操作行为等。同时可以查询某个节点的使用情况，有多少个用户使用，维修情况等。</p>
+<h4 id="集群主页建设"><a href="#集群主页建设" class="headerlink" title="集群主页建设"></a>集群主页建设</h4><p>同时还能够使用开源的博客系统例如Wordpress等构建一个集群首页或者社区，用于用户之间的信息交流，特别是一些集群使用的方法、软件安装方法、集群公告等信息，这样不仅用户学习起来非常方便，同时也减少了管理员的工作量，另外提升了集群管理的科学有效性。</p>
+<p>当然最重要的是能够制定一些规章制度，规范用户的使用行为，规范资源的分配和管理工作，这样能够保证一切能够高效进行。</p>
+<h3 id="期待更好"><a href="#期待更好" class="headerlink" title="期待更好"></a>期待更好</h3><p>期待集群的管理更加科学化，同时也期待集群的管理和运维工作得到实验室的重视，集群建设资金不菲，价值也不菲，但是由于缺少管理人员，缺少资金支持，缺少重视，还没有完全发挥它的作用，因此期待在集群报废之前，能够充分利用集群的作用，为更多的科研项目服务，期待实验室的集群管理制度更上一层楼，期待集群为中国科研贡献自己的力量。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注微信号进一步交流</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>打赏此文</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/wechapay.JPG" alt="ZHANGCHI WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/IMG_2777.JPG" alt="ZHANGCHI Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      ZHANGCHI
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://blog.zhangchi.xyz/2020/05/20/高性能计算集群运维总结/" title="高性能计算集群运维总结">http://blog.zhangchi.xyz/2020/05/20/高性能计算集群运维总结/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/集群管理/" rel="tag"># 集群管理</a>
+          
+            <a href="/tags/运维/" rel="tag"># 运维</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/23/A-hostfile-was-provided-that-contains-at-least-one-node-not-present-in-the-allocation/" rel="next" title="A hostfile was provided that contains at least one node not">
+                <i class="fa fa-chevron-left"></i> A hostfile was provided that contains at least one node not
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,糍粑学习的地方</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangciba" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhangchixtacbn" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://adherence.cn" title="小燕子之家" target="_blank">小燕子之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/zhangchi" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/zhangchixtacbn" title="CSDN" target="_blank">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhangchixtacbn.blog.163.com" title="网易博客" target="_blank">网易博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://davi.space" title="Davi-Space" target="_blank">Davi-Space</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jayxhj.com" title="豪杰写字的地方" target="_blank">豪杰写字的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/ryanlamp/" title="大兵奋斗的地方" target="_blank">大兵奋斗的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hust.edu.cn" title="华中科技大学" target="_blank">华中科技大学</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群配置信息"><span class="nav-number">2.</span> <span class="nav-text">集群配置信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器配置信息"><span class="nav-number">2.1.</span> <span class="nav-text">服务器配置信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络配置信息"><span class="nav-number">2.2.</span> <span class="nav-text">网络配置信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件系统配置信息"><span class="nav-number">2.3.</span> <span class="nav-text">文件系统配置信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日常职责"><span class="nav-number">3.</span> <span class="nav-text">日常职责</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境维护与管理"><span class="nav-number">4.</span> <span class="nav-text">环境维护与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器硬件维护"><span class="nav-number">5.</span> <span class="nav-text">服务器硬件维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障发现"><span class="nav-number">5.1.</span> <span class="nav-text">硬盘故障发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障处理"><span class="nav-number">5.2.</span> <span class="nav-text">硬盘故障处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算刀片故障发现与处理"><span class="nav-number">5.3.</span> <span class="nav-text">计算刀片故障发现与处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器操作系统维护"><span class="nav-number">6.</span> <span class="nav-text">服务器操作系统维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用再生龙进行系统备份和还原工作"><span class="nav-number">6.1.</span> <span class="nav-text">使用再生龙进行系统备份和还原工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用硬盘对拷进行重装系统"><span class="nav-number">6.2.</span> <span class="nav-text">使用硬盘对拷进行重装系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#卸载Lustre文件系统以及NFS文件系统挂载点。"><span class="nav-number">6.2.1.</span> <span class="nav-text">卸载Lustre文件系统以及NFS文件系统挂载点。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#执行dd命令"><span class="nav-number">6.2.2.</span> <span class="nav-text">执行dd命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改以太网卡和InfiniBand网卡的Ip地址"><span class="nav-number">6.2.3.</span> <span class="nav-text">修改以太网卡和InfiniBand网卡的Ip地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除-etc-udev-rules-d-70-persistent-net-rules文件"><span class="nav-number">6.2.4.</span> <span class="nav-text">删除/etc/udev/rules.d/70-persistent-net.rules文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改-etc-sysconfig-network文件"><span class="nav-number">6.2.5.</span> <span class="nav-text">修改/etc/sysconfig/network文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#磁盘检查"><span class="nav-number">6.2.6.</span> <span class="nav-text">磁盘检查</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#放回磁盘，启动系统"><span class="nav-number">6.2.7.</span> <span class="nav-text">放回磁盘，启动系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。"><span class="nav-number">6.2.8.</span> <span class="nav-text">将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群文件系统维护"><span class="nav-number">7.</span> <span class="nav-text">集群文件系统维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用以太网挂载Lustre文件系统"><span class="nav-number">7.1.</span> <span class="nav-text">使用以太网挂载Lustre文件系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群软件配置与管理"><span class="nav-number">8.</span> <span class="nav-text">集群软件配置与管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络故障处理"><span class="nav-number">9.</span> <span class="nav-text">网络故障处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Infiniband网络故障"><span class="nav-number">9.1.</span> <span class="nav-text">Infiniband网络故障</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太网故障"><span class="nav-number">9.2.</span> <span class="nav-text">以太网故障</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群用户添加"><span class="nav-number">10.</span> <span class="nav-text">集群用户添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络访问控制"><span class="nav-number">11.</span> <span class="nav-text">网络访问控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#允许某一IP地址访问集群"><span class="nav-number">11.1.</span> <span class="nav-text">允许某一IP地址访问集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许网段的IP地址访问集群"><span class="nav-number">11.2.</span> <span class="nav-text">允许网段的IP地址访问集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许所有节点访问特定的IP地址"><span class="nav-number">11.3.</span> <span class="nav-text">允许所有节点访问特定的IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许某一节点访问特定的IP地址"><span class="nav-number">11.4.</span> <span class="nav-text">允许某一节点访问特定的IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许某一节点访问所有网站"><span class="nav-number">11.5.</span> <span class="nav-text">允许某一节点访问所有网站</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群DNS服务器信息"><span class="nav-number">11.6.</span> <span class="nav-text">集群DNS服务器信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群监控"><span class="nav-number">12.</span> <span class="nav-text">集群监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群关机与启动流程"><span class="nav-number">13.</span> <span class="nav-text">集群关机与启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群断电与通电流程"><span class="nav-number">14.</span> <span class="nav-text">集群断电与通电流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机房电路分布介绍"><span class="nav-number">14.1.</span> <span class="nav-text">机房电路分布介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配电房设备介绍"><span class="nav-number">14.2.</span> <span class="nav-text">配电房设备介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群断电流程"><span class="nav-number">14.3.</span> <span class="nav-text">集群断电流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群通电流程"><span class="nav-number">14.4.</span> <span class="nav-text">集群通电流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理软件和技能"><span class="nav-number">15.</span> <span class="nav-text">集群管理软件和技能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集群管理软件推荐"><span class="nav-number">15.1.</span> <span class="nav-text">集群管理软件推荐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群管理需要的技能"><span class="nav-number">15.2.</span> <span class="nav-text">集群管理需要的技能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见故障及处理"><span class="nav-number">16.</span> <span class="nav-text">常见故障及处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用户无法登录到集群"><span class="nav-number">16.1.</span> <span class="nav-text">用户无法登录到集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户无法登录到分配的节点"><span class="nav-number">16.2.</span> <span class="nav-text">用户无法登录到分配的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户登录到分配的节点时需要输入密码"><span class="nav-number">16.3.</span> <span class="nav-text">用户登录到分配的节点时需要输入密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lustre文件系统无法挂载"><span class="nav-number">16.4.</span> <span class="nav-text">Lustre文件系统无法挂载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#节点无法获取zabbix监控信息"><span class="nav-number">16.5.</span> <span class="nav-text">节点无法获取zabbix监控信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPMI无法获取服务器信息"><span class="nav-number">16.6.</span> <span class="nav-text">IPMI无法获取服务器信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#售后报修"><span class="nav-number">17.</span> <span class="nav-text">售后报修</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重大故障"><span class="nav-number">18.</span> <span class="nav-text">重大故障</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#挖矿病毒"><span class="nav-number">18.1.</span> <span class="nav-text">挖矿病毒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RAID磁盘阵列崩溃"><span class="nav-number">18.2.</span> <span class="nav-text">RAID磁盘阵列崩溃</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未尽事宜"><span class="nav-number">19.</span> <span class="nav-text">未尽事宜</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GridView集群管理软件安装"><span class="nav-number">19.1.</span> <span class="nav-text">GridView集群管理软件安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群分区管理"><span class="nav-number">19.2.</span> <span class="nav-text">集群分区管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群用户使用系统"><span class="nav-number">19.3.</span> <span class="nav-text">集群用户使用系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群主页建设"><span class="nav-number">19.4.</span> <span class="nav-text">集群主页建设</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期待更好"><span class="nav-number">20.</span> <span class="nav-text">期待更好</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+
+<script>
+host3 = window.location.href;
+chinadomai3 = "http://blog.zhangchi.xyz/";  #修改为你的百度推送对应的域名
+if (host3.indexOf(chinadomain3)!=-1)  {
+(function(){
+     var bp = document.createElement('script');
+     bp.src = '//push.zhanzhang.baidu.com/push.js';
+     var s = document.getElementsByTagName("script")[0];
+     s.parentNode.insertBefore(bp, s);
+ })();
+</script>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Q2wCx7ylg0R2b3SjDM49UpFA-gzGzoHsz", "tMTqAIprel7Bdpgm463fDDsY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Q2wCx7ylg0R2b3SjDM49UpFA-gzGzoHsz", "tMTqAIprel7Bdpgm463fDDsY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+</body>
+</html>
