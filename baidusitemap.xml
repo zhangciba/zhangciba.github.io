@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/2017/05/24/HYDU-create-process-utils-launch-launch-c-556-execvp-error-on-file-Permission-denied/</loc>
+    <lastmod>2017-05-24T15:28:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>HYDU_create_process (./utils/launch/launch.c:556): execvp error on file * (Permission denied)</title>
+        <pubTime>2017-05-24T15:24:37.000Z</pubTime>
+        
+        <tag>高性能计算</tag>
+         
+        <tag>并行计算</tag>
+         
+        <tag>MPI</tag>
+         
+         
+           
+             
+              <breadCrumb title="高性能计算" url="http://blog.zhangchi.xyz/categories/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/2017/05/24/shmget-permission-denied/</loc>
     <lastmod>2017-05-24T01:41:39.000Z</lastmod>
     <data>
