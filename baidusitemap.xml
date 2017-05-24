@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/2017/05/24/shmget-permission-denied/</loc>
+    <lastmod>2017-05-24T01:41:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>shmget:permission denied</title>
+        <pubTime>2017-05-24T01:39:42.000Z</pubTime>
+        
+        <tag>Shared Memory</tag>
+         
+        <tag>共享内存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux系统编程" url="http://blog.zhangchi.xyz/categories/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/2017/05/23/A-hostfile-was-provided-that-contains-at-least-one-node-not-present-in-the-allocation/</loc>
     <lastmod>2017-05-23T14:02:23.000Z</lastmod>
     <data>

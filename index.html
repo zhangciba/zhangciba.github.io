@@ -441,7 +441,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
+               <span class="post-count">62.5k字</span>
            </span>
 	   
 
@@ -477,6 +477,192 @@
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/05/24/shmget-permission-denied/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/24/shmget-permission-denied/" itemprop="url">shmget:permission denied</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T09:39:42+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux系统编程/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux系统编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+             <span id="/2017/05/24/shmget-permission-denied/" class="leancloud_visitors" data-flag-title="shmget:permission denied">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+	
+         <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">字数:</span>
+               <!--<span class="post-meta-item-text">字数统计</span>-->
+               <span class="post-count">101</span>
+          </span>
+          <!--阅读时间--> 
+          <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">阅读时间:</span>
+               <span class="post-count">1分</span>
+           </span>
+	  <!--本站总字数-->
+          <span class="post-time">
+         	&nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-calendar-o"></i>
+               </span>
+               <span class="post-meta-item-text">本站共</span>
+               <span class="post-count">62.5k字</span>
+           </span>
+	   
+
+          
+            
+          
+
+          
+	
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>shm_addr=(char*)shmat(shm_id,NULL,0); 返回-1。</p>
+<p>perror 打印出：permission denied </p>
+<p>shmget的时候要加上0666权限，比如：</p>
+<p>shm_id=shmget(key,4096,IPC_CREAT|0666);</p>
+<p>但是还是不行。</p>
+<p>后来想到ftok的时候用到了一个filepath</p>
+<p>key=ftok(filepath,0);</p>
+<p>这个ftok必须是已存在真实文件，是不是文件的权限问题？</p>
+<p>用chmod 777 filepath之后，发现还是不行</p>
+<p>最后采用sudo运行程序可以。</p>
+
+          
         
       
     </div>
@@ -623,7 +809,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
+               <span class="post-count">62.5k字</span>
            </span>
 	   
 
@@ -651,7 +837,7 @@
       
         
           <p>Re: [OMPI users] Problem running an MPI program through the PBS manager</p>
-<p>On Mon, Sep 26, 2016 at 2:04 PM, Gilles Gouaillardet <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#58;&#10;&#x67;&#105;&#108;&#x6c;&#101;&#115;&#x2e;&#x67;&#111;&#x75;&#97;&#105;&#x6c;&#108;&#97;&#x72;&#x2e;&#46;&#46;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#10;&#x67;&#105;&#108;&#x6c;&#101;&#115;&#x2e;&#x67;&#111;&#x75;&#97;&#105;&#x6c;&#108;&#97;&#x72;&#x2e;&#46;&#46;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;</a> wrote:<br>
+<p>On Mon, Sep 26, 2016 at 2:04 PM, Gilles Gouaillardet <a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#10;&#x67;&#105;&#x6c;&#x6c;&#x65;&#115;&#46;&#103;&#111;&#117;&#x61;&#105;&#108;&#x6c;&#x61;&#114;&#x2e;&#x2e;&#x2e;&#64;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#10;&#x67;&#105;&#x6c;&#x6c;&#x65;&#115;&#46;&#103;&#111;&#117;&#x61;&#105;&#108;&#x6c;&#x61;&#114;&#x2e;&#x2e;&#x2e;&#64;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a> wrote:<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/23/A-hostfile-was-provided-that-contains-at-least-one-node-not-present-in-the-allocation/#more" rel="contents">
@@ -805,7 +991,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
+               <span class="post-count">62.5k字</span>
            </span>
 	   
 
@@ -983,7 +1169,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
+               <span class="post-count">62.5k字</span>
            </span>
 	   
 
@@ -1164,7 +1350,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
+               <span class="post-count">62.5k字</span>
            </span>
 	   
 
@@ -1347,7 +1533,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
+               <span class="post-count">62.5k字</span>
            </span>
 	   
 
@@ -1524,7 +1710,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
+               <span class="post-count">62.5k字</span>
            </span>
 	   
 
@@ -1708,7 +1894,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
+               <span class="post-count">62.5k字</span>
            </span>
 	   
 
@@ -1890,7 +2076,7 @@
                  <i class="fa fa-calendar-o"></i>
                </span>
                <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
+               <span class="post-count">62.5k字</span>
            </span>
 	   
 
@@ -1923,189 +2109,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/05/Windows进程间通信/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/2017/04/27/MPI基本语法笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/27/MPI基本语法笔记/" itemprop="url">MPI基本语法笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-27T23:52:05+08:00">
-                2017-04-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
-                    <span itemprop="name">高性能计算</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-          
-             <span id="/2017/04/27/MPI基本语法笔记/" class="leancloud_visitors" data-flag-title="MPI基本语法笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-	
-         <span class="post-time">
-         	&nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">字数:</span>
-               <!--<span class="post-meta-item-text">字数统计</span>-->
-               <span class="post-count">713</span>
-          </span>
-          <!--阅读时间--> 
-          <span class="post-time">
-         	&nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">阅读时间:</span>
-               <span class="post-count">3分</span>
-           </span>
-	  <!--本站总字数-->
-          <span class="post-time">
-         	&nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-calendar-o"></i>
-               </span>
-               <span class="post-meta-item-text">本站共</span>
-               <span class="post-count">62.4k字</span>
-           </span>
-	   
-
-          
-            
-          
-
-          
-	
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><code>MPI_SEND(buf,count,datatype,dest,tag,comm)</code></p>
-<p>buf,count,datatype是消息数据<br>dest,tag,comm是消息信封</p>
-<p><code>MPI_RECV(buf,count,datatype,source,tag,comm,status)</code><br>buf,count,datatype是数据消息<br>source,tag,comm是消息信息<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/27/MPI基本语法笔记/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2191,7 +2194,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2202,7 +2205,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2213,7 +2216,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-count">75</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

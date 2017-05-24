@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/2017/05/24/shmget-permission-denied/</loc>
+    
+    <lastmod>2017-05-24T01:41:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/2017/05/23/A-hostfile-was-provided-that-contains-at-least-one-node-not-present-in-the-allocation/</loc>
     
     <lastmod>2017-05-23T14:02:23.000Z</lastmod>
