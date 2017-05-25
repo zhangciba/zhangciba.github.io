@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/2017/05/25/%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
+    <lastmod>2017-05-25T09:36:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>内存泄露与内存溢出的区别</title>
+        <pubTime>2017-05-25T09:23:59.000Z</pubTime>
+        
+        <tag>内存泄露</tag>
+         
+        <tag>内存溢出</tag>
+         
+         
+           
+             
+              <breadCrumb title="基础知识" url="http://blog.zhangchi.xyz/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/2017/05/24/HYDU-create-process-utils-launch-launch-c-556-execvp-error-on-file-Permission-denied/</loc>
     <lastmod>2017-05-24T15:28:56.000Z</lastmod>
     <data>
