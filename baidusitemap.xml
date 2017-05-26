@@ -119,11 +119,11 @@
         <title>HYDU_create_process (./utils/launch/launch.c:556): execvp error on file * (Permission denied)</title>
         <pubTime>2017-05-24T15:24:37.000Z</pubTime>
         
+        <tag>高性能计算</tag>
+         
         <tag>并行计算</tag>
          
         <tag>MPI</tag>
-         
-        <tag>高性能计算</tag>
          
          
            
@@ -165,9 +165,9 @@
         <title>A hostfile was provided that contains at least one node not</title>
         <pubTime>2017-05-23T13:06:53.000Z</pubTime>
         
-        <tag>高性能计算</tag>
-         
         <tag>OpenMPI</tag>
+         
+        <tag>高性能计算</tag>
          
          
            
