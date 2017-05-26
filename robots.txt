@@ -12,6 +12,6 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://blog.zhangciba.com/sitemap.xml
-Sitemap: http://blog.zhangciba.com/baidusitemap.xml
+Sitemap: http://blog.zhangchi.xyz/sitemap.xml
+Sitemap: http://blog.zhangchi.xyz/baidusitemap.xml
 
