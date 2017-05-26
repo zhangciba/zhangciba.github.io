@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/</loc>
+    <lastmod>2017-05-26T01:50:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>java.lang.NoClassDefFoundError: Could not initialize class </title>
+        <pubTime>2016-10-17T15:35:49.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>NoClassDefFoundError</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://blog.zhangchi.xyz/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/2016/06/08/Linux-Shell%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B62/</loc>
     <lastmod>2017-05-26T01:49:18.000Z</lastmod>
     <data>
@@ -37,28 +59,6 @@
            
              
               <breadCrumb title="Shell" url="http://blog.zhangchi.xyz/categories/Shell/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangchi.xyz/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/</loc>
-    <lastmod>2017-05-26T01:46:11.000Z</lastmod>
-    <data>
-        <display>
-        <title>java.lang.NoClassDefFoundError: Could not initialize class </title>
-        <pubTime>2016-10-17T15:35:49.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>NoClassDefFoundError</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java开发" url="http://blog.zhangchi.xyz/categories/Java%E5%BC%80%E5%8F%91/"/>
           
         </display>
     </data>

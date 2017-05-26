@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/</loc>
+    
+    <lastmod>2017-05-26T01:50:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/2016/06/08/Linux-Shell%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B62/</loc>
     
     <lastmod>2017-05-26T01:49:18.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://blog.zhangchi.xyz/2016/06/08/Linux-Shell%E8%AF%BB%E5%8F%96-ini%E5%BD%A2%E5%BC%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
     
     <lastmod>2017-05-26T01:49:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangchi.xyz/2016/10/17/java-lang-NoClassDefFoundError-Could-not-initialize-class/</loc>
-    
-    <lastmod>2017-05-26T01:46:11.000Z</lastmod>
     
   </url>
   
