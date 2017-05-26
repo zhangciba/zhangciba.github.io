@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://blog.zhangchi.xyz/2017/05/26/PBS%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E5%90%8E%EF%BC%8C%E8%BE%93%E5%87%BA%E9%94%99%E8%AF%AFMPI-Aobrt/</loc>
-    <lastmod>2017-05-26T01:30:13.000Z</lastmod>
+    <lastmod>2017-05-26T01:35:19.000Z</lastmod>
     <data>
         <display>
         <title>PBS作业提交后，输出错误MPI_Aobrt</title>
