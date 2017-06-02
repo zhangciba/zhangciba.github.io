@@ -1,3 +1,4 @@
+http://blog.zhangchi.xyz/error-while-loading-shared-libraries-libstdc-so-6-wrong-ELF-class-ELFCLASS64.html
 http://blog.zhangchi.xyz/PBS作业提交后，输出错误MPI-Aobrt.html
 http://blog.zhangchi.xyz/内存泄露与内存溢出的区别.html
 http://blog.zhangchi.xyz/HYDU-create-process-utils-launch-launch-c-556-execvp-error-on-file-Permission-denied.html

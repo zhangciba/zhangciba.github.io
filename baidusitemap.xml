@@ -3,6 +3,30 @@
 
 
     
+  <url>
+    <loc>http://blog.zhangchi.xyz/error-while-loading-shared-libraries-libstdc-so-6-wrong-ELF-class-ELFCLASS64.html</loc>
+    <lastmod>2017-06-02T08:46:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>error while loading shared libraries: libstdc++.so.6: wrong ELF class: ELFCLASS64</title>
+        <pubTime>2017-06-02T08:38:44.000Z</pubTime>
+        
+        <tag>gcc</tag>
+         
+        <tag>ld</tag>
+         
+        <tag>libstd</tag>
+         
+         
+           
+             
+              <breadCrumb title="高性能计算" url="http://blog.zhangchi.xyz/categories/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://blog.zhangchi.xyz/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E8%BF%90%E7%BB%B4%E6%80%BB%E7%BB%93.html</loc>
