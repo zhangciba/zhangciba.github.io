@@ -1,3 +1,4 @@
+http://blog.zhangchi.xyz/高性能计算集群运维总结.html
 http://blog.zhangchi.xyz/Linux集群安装Gaussian09-Linda版本.html
 http://blog.zhangchi.xyz/error-while-loading-shared-libraries-libstdc-so-6-wrong-ELF-class-ELFCLASS64.html
 http://blog.zhangchi.xyz/PBS作业提交后，输出错误MPI-Aobrt.html
@@ -5,7 +6,6 @@ http://blog.zhangchi.xyz/内存泄露与内存溢出的区别.html
 http://blog.zhangchi.xyz/HYDU-create-process-utils-launch-launch-c-556-execvp-error-on-file-Permission-denied.html
 http://blog.zhangchi.xyz/shmget-permission-denied.html
 http://blog.zhangchi.xyz/A-hostfile-was-provided-that-contains-at-least-one-node-not-present-in-the-allocation.html
-http://blog.zhangchi.xyz/高性能计算集群运维总结.html
 http://blog.zhangchi.xyz/Serv-U设置FTP-Passvie模式端口范围.html
 http://blog.zhangchi.xyz/VIM正则表达式简要介绍.html
 http://blog.zhangchi.xyz/Torque安装配置过程及问题.html
