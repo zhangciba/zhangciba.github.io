@@ -100,7 +100,7 @@
 <meta property="og:description" content="Linux服务器执行一些命令时，经常会出现一下错误：1error while loading shared libraries: libstdc++.so.6: wrong ELF class: ELFCLASS64
 错误原因是：64位的程序尝试读取32位的标准库函数，导致找不到。因为Linux服务器上面没有安装libstdc++.i686即32位C++标准库函数或者是库的链接配置错误。
 解决办法">
-<meta property="og:updated_time" content="2017-06-02T08:49:26.000Z">
+<meta property="og:updated_time" content="2017-06-03T09:11:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="error while loading shared libraries: libstdc++.so.6: wrong ELF class: ELFCLASS64">
 <meta name="twitter:description" content="Linux服务器执行一些命令时，经常会出现一下错误：1error while loading shared libraries: libstdc++.so.6: wrong ELF class: ELFCLASS64
@@ -481,7 +481,7 @@
       
         <p>Linux服务器执行一些命令时，经常会出现一下错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error while loading shared libraries: libstdc++.so.6: wrong ELF class: ELFCLASS64</span><br></pre></td></tr></table></figure></p>
 <p>错误原因是：64位的程序尝试读取32位的标准库函数，导致找不到。因为Linux服务器上面没有安装libstdc++.i686即32位C++标准库函数或者是库的链接配置错误。</p>
-<p>解决办法，安装libstdc++.i686，或者修改库链接。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#CentOS RHEL</span><br><span class="line">yum install libstdc++.i686</span><br><span class="line">#Ubuntu</span><br><span class="line">apt-get install libstdc++.i686</span><br></pre></td></tr></table></figure></p>
+<p>解决办法，安装libstdc++.i686，或者修改库链接。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#CentOS RHEL</span><br><span class="line">yum install libstdc++.i686</span><br><span class="line">#Ubuntu</span><br><span class="line">apt-get install libstdc++.i686</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -f /usr/liblibstdc++.so.6</span><br><span class="line">ln -s /usr/lib/libstdc++.so.6.0.8 /usr/lib/libstdc++.so.6</span><br></pre></td></tr></table></figure>
 
       
