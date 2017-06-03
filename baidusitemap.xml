@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/Linux%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85Gaussian09-Linda%E7%89%88%E6%9C%AC.html</loc>
+    <lastmod>2017-06-03T04:59:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux集群安装Gaussian09 Linda版本</title>
+        <pubTime>2017-06-03T04:56:09.000Z</pubTime>
+        
+        <tag>高性能计算</tag>
+         
+        <tag>集群管理</tag>
+         
+        <tag>Gaussian</tag>
+         
+        <tag>Gaussian09</tag>
+         
+         
+           
+             
+              <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/error-while-loading-shared-libraries-libstdc-so-6-wrong-ELF-class-ELFCLASS64.html</loc>
     <lastmod>2017-06-02T08:49:26.000Z</lastmod>
     <data>

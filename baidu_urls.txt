@@ -1,3 +1,4 @@
+http://blog.zhangchi.xyz/Linux集群安装Gaussian09-Linda版本.html
 http://blog.zhangchi.xyz/error-while-loading-shared-libraries-libstdc-so-6-wrong-ELF-class-ELFCLASS64.html
 http://blog.zhangchi.xyz/PBS作业提交后，输出错误MPI-Aobrt.html
 http://blog.zhangchi.xyz/内存泄露与内存溢出的区别.html
