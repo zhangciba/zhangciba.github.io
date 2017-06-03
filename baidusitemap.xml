@@ -4,32 +4,8 @@
 
     
   <url>
-    <loc>http://blog.zhangchi.xyz/error-while-loading-shared-libraries-libstdc-so-6-wrong-ELF-class-ELFCLASS64.html</loc>
-    <lastmod>2017-06-03T09:11:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>error while loading shared libraries: libstdc++.so.6: wrong ELF class: ELFCLASS64</title>
-        <pubTime>2017-06-02T08:38:44.000Z</pubTime>
-        
-        <tag>gcc</tag>
-         
-        <tag>ld</tag>
-         
-        <tag>libstd</tag>
-         
-         
-           
-             
-              <breadCrumb title="高性能计算" url="http://blog.zhangchi.xyz/categories/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://blog.zhangchi.xyz/Linux%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85Gaussian09-Linda%E7%89%88%E6%9C%AC.html</loc>
-    <lastmod>2017-06-03T08:52:48.000Z</lastmod>
+    <lastmod>2017-06-03T09:22:30.000Z</lastmod>
     <data>
         <display>
         <title>Linux集群安装Gaussian09 Linda版本</title>
@@ -47,6 +23,30 @@
            
              
               <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.zhangchi.xyz/error-while-loading-shared-libraries-libstdc-so-6-wrong-ELF-class-ELFCLASS64.html</loc>
+    <lastmod>2017-06-03T09:11:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>error while loading shared libraries: libstdc++.so.6: wrong ELF class: ELFCLASS64</title>
+        <pubTime>2017-06-02T08:38:44.000Z</pubTime>
+        
+        <tag>gcc</tag>
+         
+        <tag>ld</tag>
+         
+        <tag>libstd</tag>
+         
+         
+           
+             
+              <breadCrumb title="高性能计算" url="http://blog.zhangchi.xyz/categories/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/"/>
           
         </display>
     </data>
