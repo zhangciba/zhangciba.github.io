@@ -627,7 +627,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  0
+                  154
                 </span>
               
 
@@ -664,7 +664,11 @@
       
         
           
-            
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mpirun -np 25 python -c &quot;print &apos;hey&apos;&quot;</span><br><span class="line">--------------------------------------------------------------------------</span><br><span class="line">There are not enough slots available in the system to satisfy the 25 slots </span><br><span class="line">that were requested by the application:</span><br><span class="line">  python</span><br><span class="line">Either request fewer slots for your application, or make more slots available</span><br><span class="line">for use.</span><br></pre></td></tr></table></figure>
+<p>问题原因，如果使用了PBS提交任务，那么不应该直接指定np参数，应该使用PBS的变量来计算得到np参数的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mpirun was unable to launch the specified application as it could not access</span><br><span class="line">or execute an executable:</span><br><span class="line">Executable: /orca_gtoint_mpi</span><br><span class="line">Node: node01</span><br><span class="line">while attempting to start process rank 0.</span><br></pre></td></tr></table></figure>
+<p>问题原因，exe变量有问题，就是说找不到可执行文件，检查mpirun后面的参数</p>
+
           
         
       
