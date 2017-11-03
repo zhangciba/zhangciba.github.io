@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/Torque-PBS%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html</loc>
+    <lastmod>2017-11-03T07:07:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>Toruqe PBS常见问题汇总</title>
+        <pubTime>2017-10-24T13:05:03.000Z</pubTime>
+        
+        <tag>PBS</tag>
+         
+        <tag>Torque</tag>
+         
+         
+           
+             
+              <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/%E7%90%86%E8%A7%A3%E4%BF%9D%E5%AD%98%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7ID%EF%BC%8C%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7ID%E4%BD%8D%EF%BC%8C%E6%9C%89%E6%95%88%E7%94%A8%E6%88%B7ID%EF%BC%8C%E5%AE%9E%E9%99%85%E7%94%A8%E6%88%B7ID.html</loc>
     <lastmod>2017-11-03T06:46:15.000Z</lastmod>
     <data>
@@ -82,28 +104,6 @@
         <tag>Infiniband</tag>
          
         <tag>IB</tag>
-         
-         
-           
-             
-              <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangchi.xyz/Torque-PBS%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB.html</loc>
-    <lastmod>2017-10-24T13:10:05.000Z</lastmod>
-    <data>
-        <display>
-        <title>Toruqe PBS使用故障排查汇总</title>
-        <pubTime>2017-10-24T13:05:03.000Z</pubTime>
-        
-        <tag>PBS</tag>
-         
-        <tag>Torque</tag>
          
          
            

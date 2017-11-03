@@ -1112,7 +1112,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Torque-PBS使用问题汇总.html" itemprop="url">Toruqe PBS使用故障排查汇总</a></h1>
+                <a class="post-title-link" href="/Torque-PBS使用问题汇总.html" itemprop="url">Toruqe PBS常见问题汇总</a></h1>
         
 
         <div class="post-meta">
@@ -1175,7 +1175,7 @@
 
           
           
-             <span id="/Torque-PBS使用问题汇总.html" class="leancloud_visitors" data-flag-title="Toruqe PBS使用故障排查汇总">
+             <span id="/Torque-PBS使用问题汇总.html" class="leancloud_visitors" data-flag-title="Toruqe PBS常见问题汇总">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1200,7 +1200,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  154
+                  246
                 </span>
               
 
@@ -1241,6 +1241,9 @@
 <p>问题原因，如果使用了PBS提交任务，那么不应该直接指定np参数，应该使用PBS的变量来计算得到np参数的值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mpirun was unable to launch the specified application as it could not access</span><br><span class="line">or execute an executable:</span><br><span class="line">Executable: /orca_gtoint_mpi</span><br><span class="line">Node: node01</span><br><span class="line">while attempting to start process rank 0.</span><br></pre></td></tr></table></figure>
 <p>问题原因，exe变量有问题，就是说找不到可执行文件，检查mpirun后面的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@node272 ~]# qstat -q</span><br><span class="line">socket_connect_unix failed: 15137</span><br><span class="line">socket_connect_unix failed: 15137</span><br><span class="line">socket_connect_unix failed: 15137</span><br><span class="line">qstat: cannot connect to server (null) (errno=15137) could not connect to trqauthd</span><br><span class="line">qstat: Error (15137 - could not connect to trqauthd)</span><br></pre></td></tr></table></figure>
+<p>问题原因：trqauthd服务没有启动，或者是该节点没有加入到Torque队列系统当中</p>
+<p>解决办法：启动trqauthd服务，或者将节点加入到Torque队列系统中。</p>
 
           
         
