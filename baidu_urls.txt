@@ -1,4 +1,4 @@
-http://blog.zhangchi.xyz/HPC集群运维汇总.html
+http://blog.zhangchi.xyz/HPC集群运维总结.html
 http://blog.zhangchi.xyz/opensmd服务导致IB网络状态不断切换.html
 http://blog.zhangchi.xyz/Infiniband网络配置文件样例.html
 http://blog.zhangchi.xyz/Torque-PBS使用问题汇总.html
