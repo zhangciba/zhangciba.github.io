@@ -520,6 +520,197 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/opensmd服务导致IB网络状态不断切换.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/opensmd服务导致IB网络状态不断切换.html" itemprop="url">opensmd服务导致IB网络状态不断切换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-03T11:24:59+08:00">
+                2017-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/opensmd服务导致IB网络状态不断切换.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/opensmd服务导致IB网络状态不断切换.html" class="cy_cmt_count" data-xid="opensmd服务导致IB网络状态不断切换.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/opensmd服务导致IB网络状态不断切换.html" class="leancloud_visitors" data-flag-title="opensmd服务导致IB网络状态不断切换">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  554
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  2分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>同一个Infiniband交换机上面连接了318个刀片服务器，还有18个机架式服务器<br>这个IB交换机上面有18个页交换机，每个页交换机上面可以连接18个主机，所以这个大的交换机总共可以连接324个主机。</p>
+<p>我们平时从网络上查到的Infiniband驱动安装教程，都是如下步骤</p>
+<h5 id="官网下载驱动"><a href="#官网下载驱动" class="headerlink" title="官网下载驱动"></a>官网下载驱动</h5><h5 id="安装驱动"><a href="#安装驱动" class="headerlink" title="安装驱动"></a>安装驱动</h5><h5 id="启动openibd和opensmd两个服务"><a href="#启动openibd和opensmd两个服务" class="headerlink" title="启动openibd和opensmd两个服务"></a>启动openibd和opensmd两个服务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service openibd start;</span><br><span class="line">service opensmd start;</span><br></pre></td></tr></table></figure>
+<p>实际上这个说法是正确的，但也是不正确的。正确的原因是，如果只有一台机器安装了这个软件，那么，上面的操作是没有问题的。<br>但是如果你是在集群上面安装Infiniband驱动，那么opensmd服务就不应该启动了，原因如下。<br>我们集群有个文件系统，文件系统采用了IB网络和ETH两套网络，由于IB网络的状态一直在Initializing和Active之间切换，导致文件系统无法正产使用，后来通过排查，网卡，驱动，操作系统，文件系统服务本身都排查过了，均没有问题。<br>然后在网上疯狂搜索解决方法，由于使用Infiniband网络的基本上都是HPC集群或者电信机房，没有人记录过出现这种问题的情况，所以很无语。只有搜索IB网络的状态代表的意思，发现还是无用，后来在偶然之间看到一个帖子说，opensmd服务只需要开启一个。于是乎，将集群的所有的节点的opensmd服务都关闭了，只把一台存储服务器元数据节点的opensmd服务启动，过了一会，IB网络的状态就恢复正常了，不会在Initializing和Active之间不断切换了。突然觉得感慨万千，为啥，这么一个小知识，曾经导致集群无法正常服务的时间大概有1周左右。觉得自己还是对整个领域知识理解不足，今后要抓紧时间学习了。不然，大的系统中，一个小的问题，就可能导致整个服务不可用。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Infiniband网络配置文件样例.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2029,203 +2220,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/shmget-permission-denied.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/shmget-permission-denied.html" itemprop="url">shmget:permission denied</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T09:39:42+08:00">
-                2017-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux系统编程/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux系统编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/shmget-permission-denied.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/shmget-permission-denied.html" class="cy_cmt_count" data-xid="shmget-permission-denied.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/shmget-permission-denied.html" class="leancloud_visitors" data-flag-title="shmget:permission denied">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  101
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  1分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>shm_addr=(char*)shmat(shm_id,NULL,0); 返回-1。</p>
-<p>perror 打印出：permission denied </p>
-<p>shmget的时候要加上0666权限，比如：</p>
-<p>shm_id=shmget(key,4096,IPC_CREAT|0666);</p>
-<p>但是还是不行。</p>
-<p>后来想到ftok的时候用到了一个filepath</p>
-<p>key=ftok(filepath,0);</p>
-<p>这个ftok必须是已存在真实文件，是不是文件的权限问题？</p>
-<p>用chmod 777 filepath之后，发现还是不行</p>
-<p>最后采用sudo运行程序可以。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2275,7 +2269,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">86</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2297,7 +2291,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
