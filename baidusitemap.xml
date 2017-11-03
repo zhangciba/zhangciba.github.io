@@ -79,9 +79,9 @@
         <title>Toruqe PBS使用故障排查汇总</title>
         <pubTime>2017-10-24T13:05:03.000Z</pubTime>
         
-        <tag>Torque</tag>
-         
         <tag>PBS</tag>
+         
+        <tag>Torque</tag>
          
          
            
@@ -233,9 +233,9 @@
         
         <tag>MPI</tag>
          
-        <tag>Torque</tag>
-         
         <tag>PBS</tag>
+         
+        <tag>Torque</tag>
          
          
            
