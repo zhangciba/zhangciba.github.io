@@ -1,4 +1,5 @@
 http://blog.zhangchi.xyz/HPC集群运维总结.html
+http://blog.zhangchi.xyz/Inter-vs-Intra.html
 http://blog.zhangchi.xyz/理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID.html
 http://blog.zhangchi.xyz/opensmd服务导致IB网络状态不断切换.html
 http://blog.zhangchi.xyz/Infiniband网络配置文件样例.html
