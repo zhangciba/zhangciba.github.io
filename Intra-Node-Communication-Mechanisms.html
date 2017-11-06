@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="HPC集群管理," />
+  <meta name="keywords" content="DIYER糍粑,DIYER糍粑的博客,糍粑学习的地方,CIBA" />
 
 
 
@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="查看负载情况1pssh -i -h node-list -o outputs/ uptime">
+<meta name="description" content="DIYER糍粑,CIBA,糍粑学习的地方">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高性能计算集群管理常用命令">
-<meta property="og:url" content="http://blog.zhangchi.xyz/高性能计算集群管理常用命令.html">
+<meta property="og:title" content="Intra-Node Communication Mechanisms">
+<meta property="og:url" content="http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="查看负载情况1pssh -i -h node-list -o outputs/ uptime">
-<meta property="og:updated_time" content="2017-05-18T23:58:37.000Z">
+<meta property="og:description" content="DIYER糍粑,CIBA,糍粑学习的地方">
+<meta property="og:updated_time" content="2017-11-06T00:51:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高性能计算集群管理常用命令">
-<meta name="twitter:description" content="查看负载情况1pssh -i -h node-list -o outputs/ uptime">
+<meta name="twitter:title" content="Intra-Node Communication Mechanisms">
+<meta name="twitter:description" content="DIYER糍粑,CIBA,糍粑学习的地方">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.zhangchi.xyz/高性能计算集群管理常用命令.html"/>
+  <link rel="canonical" href="http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html"/>
 
 
 
 
 
-  <title>高性能计算集群管理常用命令 | DIYER糍粑的博客</title>
+  <title>Intra-Node Communication Mechanisms | DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -326,7 +326,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/高性能计算集群管理常用命令.html">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHANGCHI">
@@ -343,7 +343,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高性能计算集群管理常用命令</h1>
+          <h1 class="post-title" itemprop="name headline">Intra-Node Communication Mechanisms</h1>
         
 
         <div class="post-meta">
@@ -355,8 +355,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-25T16:42:47+08:00">
-                2016-05-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T08:51:47+08:00">
+                2017-11-06
               </time>
             
 
@@ -365,28 +365,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/集群管理/" itemprop="url" rel="index">
-                    <span itemprop="name">集群管理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -397,8 +375,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/高性能计算集群管理常用命令.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="高性能计算集群管理常用命令.html" itemprop="commentsCount"></span>
+                <a href="/Intra-Node-Communication-Mechanisms.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="Intra-Node-Communication-Mechanisms.html" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -406,7 +384,7 @@
 
           
           
-             <span id="/高性能计算集群管理常用命令.html" class="leancloud_visitors" data-flag-title="高性能计算集群管理常用命令">
+             <span id="/Intra-Node-Communication-Mechanisms.html" class="leancloud_visitors" data-flag-title="Intra-Node Communication Mechanisms">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -431,7 +409,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  133
+                  0
                 </span>
               
 
@@ -466,13 +444,7 @@
       
 
       
-        <h3 id="查看负载情况"><a href="#查看负载情况" class="headerlink" title="查看负载情况"></a>查看负载情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pssh -i -h node-list -o outputs/ uptime</span><br></pre></td></tr></table></figure>
-<a id="more"></a> 
-<h3 id="查看每个节点在线用户人数"><a href="#查看每个节点在线用户人数" class="headerlink" title="查看每个节点在线用户人数"></a>查看每个节点在线用户人数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pssh -i -h node-list -o outputs/ &apos;w| wc -l&apos;</span><br></pre></td></tr></table></figure>
-<h3 id="查看电源情况"><a href="#查看电源情况" class="headerlink" title="查看电源情况"></a>查看电源情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipmitool -H 172.10.10.45 -U admin -P admin chassis power status</span><br></pre></td></tr></table></figure>
-<h3 id="批量启动服务或加载模块"><a href="#批量启动服务或加载模块" class="headerlink" title="批量启动服务或加载模块"></a>批量启动服务或加载模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pssh -i -h gpu-node-list -o outputs/ &apos;modprobe ipmi_watchdog;modeprobe ipmi_si;modprobe ipmi_poweroff;modeprobe ipmi_msghandler;modeprobe ipmi_devintf;service ipmi restart&apos;</span><br></pre></td></tr></table></figure>
-<h3 id="批量查询集群节点的电源状态"><a href="#批量查询集群节点的电源状态" class="headerlink" title="批量查询集群节点的电源状态"></a>批量查询集群节点的电源状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;1..20&#125;; do num=$[$i+306];echo &apos;----------------------------node$num------------------------&apos;; ipmitool -H 172.10.12.1$i -U admin -P admin chassis power status; echo &apos;&apos;; done</span><br></pre></td></tr></table></figure>
-
+        
       
     </div>
 
@@ -526,7 +498,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://blog.zhangchi.xyz/高性能计算集群管理常用命令.html" title="高性能计算集群管理常用命令">http://blog.zhangchi.xyz/高性能计算集群管理常用命令.html</a>
+      <a href="http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html" title="Intra-Node Communication Mechanisms">http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -540,12 +512,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/HPC集群管理/" rel="tag"># HPC集群管理</a>
-          
-        </div>
-      
 
       
         
@@ -555,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ipmitool使用总结.html" rel="next" title="ipmitool使用总结">
-                <i class="fa fa-chevron-left"></i> ipmitool使用总结
+              <a href="/Inter-vs-Intra.html" rel="next" title="Inter- vs Intra-">
+                <i class="fa fa-chevron-left"></i> Inter- vs Intra-
               </a>
             
           </div>
@@ -565,8 +531,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Linux-IPMI-安装配置使用.html" rel="prev" title="Linux IPMI 安装配置使用">
-                Linux IPMI 安装配置使用 <i class="fa fa-chevron-right"></i>
+              <a href="/HPC集群运维总结.html" rel="prev" title="HPC集群运维总结">
+                HPC集群运维总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -654,17 +620,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -797,22 +754,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看负载情况"><span class="nav-number">1.</span> <span class="nav-text">查看负载情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看每个节点在线用户人数"><span class="nav-number">2.</span> <span class="nav-text">查看每个节点在线用户人数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看电源情况"><span class="nav-number">3.</span> <span class="nav-text">查看电源情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量启动服务或加载模块"><span class="nav-number">4.</span> <span class="nav-text">批量启动服务或加载模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量查询集群节点的电源状态"><span class="nav-number">5.</span> <span class="nav-text">批量查询集群节点的电源状态</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
