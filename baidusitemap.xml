@@ -5,14 +5,21 @@
     
   <url>
     <loc>http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html</loc>
-    <lastmod>2017-11-06T00:51:47.000Z</lastmod>
+    <lastmod>2017-11-06T01:58:19.000Z</lastmod>
     <data>
         <display>
         <title>Intra-Node Communication Mechanisms</title>
         <pubTime>2017-11-06T00:51:47.000Z</pubTime>
         
+        <tag>进程通信</tag>
+         
+        <tag>同主机进程通信</tag>
+         
          
            
+             
+              <breadCrumb title="论文阅读" url="http://blog.zhangchi.xyz/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+          
         </display>
     </data>
     </url>

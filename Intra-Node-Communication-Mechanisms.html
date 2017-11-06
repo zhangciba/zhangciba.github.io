@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DIYER糍粑,DIYER糍粑的博客,糍粑学习的地方,CIBA" />
+  <meta name="keywords" content="进程通信,同主机进程通信," />
 
 
 
@@ -90,16 +90,22 @@
 
 
 
-<meta name="description" content="DIYER糍粑,CIBA,糍粑学习的地方">
+<meta name="description" content="NIC-Level LoopbackTwo DMA operations
+User-space Shared MemoryThe sending process copies the message to the shared memory area.The receiving process then copy over the message to its own buffer.
+Kernel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Intra-Node Communication Mechanisms">
 <meta property="og:url" content="http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="DIYER糍粑,CIBA,糍粑学习的地方">
-<meta property="og:updated_time" content="2017-11-06T00:51:47.000Z">
+<meta property="og:description" content="NIC-Level LoopbackTwo DMA operations
+User-space Shared MemoryThe sending process copies the message to the shared memory area.The receiving process then copy over the message to its own buffer.
+Kernel">
+<meta property="og:updated_time" content="2017-11-06T01:58:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Intra-Node Communication Mechanisms">
-<meta name="twitter:description" content="DIYER糍粑,CIBA,糍粑学习的地方">
+<meta name="twitter:description" content="NIC-Level LoopbackTwo DMA operations
+User-space Shared MemoryThe sending process copies the message to the shared memory area.The receiving process then copy over the message to its own buffer.
+Kernel">
 
 
 
@@ -366,6 +372,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -409,7 +437,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  0
+                  63
                 </span>
               
 
@@ -444,7 +472,13 @@
       
 
       
-        
+        <h5 id="NIC-Level-Loopback"><a href="#NIC-Level-Loopback" class="headerlink" title="NIC-Level Loopback"></a>NIC-Level Loopback</h5><p>Two DMA operations</p>
+<h5 id="User-space-Shared-Memory"><a href="#User-space-Shared-Memory" class="headerlink" title="User-space Shared Memory"></a>User-space Shared Memory</h5><p>The sending process copies the message to the shared memory area.<br>The receiving process then copy over the message to its own buffer.</p>
+<h5 id="Kernel-based-Shared-Memory"><a href="#Kernel-based-Shared-Memory" class="headerlink" title="Kernel based Shared Memory"></a>Kernel based Shared Memory</h5><ul>
+<li>The receiving process needs to bring the sending process’ buffer into its cache</li>
+<li>And the receiving process can write this buffer into its own receive buffer</li>
+</ul>
+
       
     </div>
 
@@ -511,6 +545,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/进程通信/" rel="tag"># 进程通信</a>
+          
+            <a href="/tags/同主机进程通信/" rel="tag"># 同主机进程通信</a>
+          
+        </div>
       
 
       
@@ -620,8 +662,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
@@ -658,7 +709,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-count">93</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -754,6 +805,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#NIC-Level-Loopback"><span class="nav-number">1.</span> <span class="nav-text">NIC-Level Loopback</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#User-space-Shared-Memory"><span class="nav-number">2.</span> <span class="nav-text">User-space Shared Memory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Kernel-based-Shared-Memory"><span class="nav-number">3.</span> <span class="nav-text">Kernel based Shared Memory</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
