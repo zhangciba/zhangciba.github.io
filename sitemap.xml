@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/Linux-man-%E5%90%8E%E6%95%B0%E5%AD%97%E6%B6%B5%E4%B9%89%E5%8F%8A%E4%BD%9C%E7%94%A8.html</loc>
+    
+    <lastmod>2017-11-06T13:20:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html</loc>
     
     <lastmod>2017-11-06T09:38:47.000Z</lastmod>
