@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/HPC%E9%9B%86%E7%BE%A4%E8%BF%90%E7%BB%B4%E6%80%BB%E7%BB%93.html</loc>
+    <lastmod>2017-11-07T02:55:05.000Z</lastmod>
+    <data>
+        <display>
+        <title>HPC集群运维总结</title>
+        <pubTime>2017-11-11T12:20:20.000Z</pubTime>
+        
+        <tag>集群管理</tag>
+         
+        <tag>运维</tag>
+         
+         
+           
+             
+              <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/Linux-man-%E5%90%8E%E6%95%B0%E5%AD%97%E6%B6%B5%E4%B9%89%E5%8F%8A%E4%BD%9C%E7%94%A8.html</loc>
     <lastmod>2017-11-06T13:20:09.000Z</lastmod>
     <data>
@@ -39,28 +61,6 @@
            
              
               <breadCrumb title="论文阅读" url="http://blog.zhangchi.xyz/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangchi.xyz/HPC%E9%9B%86%E7%BE%A4%E8%BF%90%E7%BB%B4%E6%80%BB%E7%BB%93.html</loc>
-    <lastmod>2017-11-06T00:45:28.000Z</lastmod>
-    <data>
-        <display>
-        <title>HPC集群运维总结</title>
-        <pubTime>2017-11-11T12:20:20.000Z</pubTime>
-        
-        <tag>集群管理</tag>
-         
-        <tag>运维</tag>
-         
-         
-           
-             
-              <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
           
         </display>
     </data>
