@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/%E5%88%80%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BA%A4%E6%8D%A2%E6%A8%A1%E5%9D%97%E5%92%8C%E7%9B%B4%E9%80%9A%E6%A8%A1%E5%9D%97%E5%8C%BA%E5%88%AB.html</loc>
+    <lastmod>2017-11-14T08:03:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>刀片服务器交换模块和直通模块区别</title>
+        <pubTime>2017-11-14T08:02:58.000Z</pubTime>
+        
+        <tag>blade</tag>
+         
+        <tag>交换模块</tag>
+         
+        <tag>直通模块</tag>
+         
+         
+           
+             
+              <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/sshd-troubleshooting.html</loc>
     <lastmod>2017-11-12T13:17:06.000Z</lastmod>
     <data>
@@ -161,9 +185,9 @@
         <title>理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID</title>
         <pubTime>2017-11-03T06:43:06.000Z</pubTime>
         
-        <tag>ID</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>ID</tag>
          
          
            

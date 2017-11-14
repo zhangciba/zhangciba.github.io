@@ -327,6 +327,198 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/java-lang-NoClassDefFoundError-Could-not-initialize-class.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/java-lang-NoClassDefFoundError-Could-not-initialize-class.html" itemprop="url">java.lang.NoClassDefFoundError: Could not initialize class </a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-17T23:35:49+08:00">
+                2016-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/java-lang-NoClassDefFoundError-Could-not-initialize-class.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/java-lang-NoClassDefFoundError-Could-not-initialize-class.html" class="cy_cmt_count" data-xid="java-lang-NoClassDefFoundError-Could-not-initialize-class.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/java-lang-NoClassDefFoundError-Could-not-initialize-class.html" class="leancloud_visitors" data-flag-title="java.lang.NoClassDefFoundError: Could not initialize class ">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  808
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  3分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天在部署一个其他人开发的项目时，遇到了一个问题，就是有一个页面的查询功能不能正常使用，由于该页面采用的是Ext.js框架，服务器端返回的数据是JSON格式，由于报错了，导致无任何JSON数据返回，页面估计也没有做任何超时判断，因此也没有提示错误信息。<br>打开该页面对应的js文件，找到了对应按钮的函数，并确定了对应的后台方法的URL，在浏览器中进行输入URL发送请求，发现还是报错了。<br>报错的root cause是java.lang.NoClassDefFoundError: Could not initialize class,后面的Class是一个包含了很多静态方法的工具类，该工具类的功能是根据IP地址返回具体的城市信息。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/java-lang-NoClassDefFoundError-Could-not-initialize-class.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/虚拟机迁移文章总结.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2016,198 +2208,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/天河二号超级计算机.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/天河二号超级计算机.html" itemprop="url">天河二号超级计算机</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-22T09:47:49+08:00">
-                2016-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
-                    <span itemprop="name">高性能计算</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/天河二号超级计算机.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/天河二号超级计算机.html" class="cy_cmt_count" data-xid="天河二号超级计算机.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/天河二号超级计算机.html" class="leancloud_visitors" data-flag-title="天河二号超级计算机">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  943
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  4分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="配置如下"><a href="#配置如下" class="headerlink" title="配置如下"></a>配置如下</h3><h4 id="处理器"><a href="#处理器" class="headerlink" title="处理器"></a>处理器</h4><p>16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。<br>中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Bridge-EX核心），采用22纳米制程，峰值性能0.2112TFLOPS。<br>运算加速上，使用基于英特尔集成众核架构的Xeon Phi 31S1P协处理器，运行时钟为1.1GHz，每个使用61个核心中的57个（因为使用61个会存在运算周期协调问题），每核心籍由特殊的超线程技术能运作4个线程，产生峰值性能为1.003TFLOPS。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/天河二号超级计算机.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2257,7 +2257,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-count">94</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2279,7 +2279,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">96</span>
+                <span class="site-state-item-count">99</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

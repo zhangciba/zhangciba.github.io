@@ -1,3 +1,4 @@
+http://blog.zhangchi.xyz/刀片服务器交换模块和直通模块区别.html
 http://blog.zhangchi.xyz/HPC集群运维总结.html
 http://blog.zhangchi.xyz/sshd-troubleshooting.html
 http://blog.zhangchi.xyz/MatlabR2016a-Crack.html
