@@ -520,6 +520,199 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/CentOS7修改内核启动默认顺序.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CentOS7修改内核启动默认顺序.html" itemprop="url">CentOS7修改内核启动默认顺序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T10:02:44+08:00">
+                2017-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/CentOS7修改内核启动默认顺序.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/CentOS7修改内核启动默认顺序.html" class="cy_cmt_count" data-xid="CentOS7修改内核启动默认顺序.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/CentOS7修改内核启动默认顺序.html" class="leancloud_visitors" data-flag-title="CentOS7修改内核启动默认顺序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  333
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  2分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="查看系统启动菜单"><a href="#查看系统启动菜单" class="headerlink" title="查看系统启动菜单"></a>查看系统启动菜单</h3><p>我们知道，centos 6.x是通过/etc/grub.conf就行内核启动顺序修改的，而且比较直观查看。但centos 7的系统和6就不一样了，是通过grub2为引导程序。下边简单说下centos 7的内核启动顺序如何修改.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@node301 ~]# cat /boot/grub2/grub.cfg |grep menuentry</span><br><span class="line"> </span><br><span class="line">if [ x&quot;$&#123;feature_menuentry_id&#125;&quot; = xy ]; then</span><br><span class="line">  menuentry_id_option=&quot;--id&quot;</span><br><span class="line">    menuentry_id_option=&quot;&quot;</span><br><span class="line">    export menuentry_id_option</span><br><span class="line">    menuentry &apos;CentOS Linux (3.10.0-327.22.2.el7.x86_64) 7 (Core)&apos; --class centos --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option &apos;gnulinux-3.10.0-327.el7.x86_64-advanced-80b9b662-0a1d-4e84-b07b-c1bf19e72d97&apos; &#123;</span><br><span class="line">	    menuentry &apos;CentOS Linux (3.10.0-327.el7.x86_64) 7 (Core)&apos; --class centos --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option &apos;gnulinux-3.10.0-327.el7.x86_64-advanced-80b9b662-0a1d-4e84-b07b-c1bf19e72d97&apos; &#123;</span><br><span class="line">		    menuentry &apos;CentOS Linux (0-rescue-7d26c16f128042a684ea474c9e2c240f) 7 (Core)&apos; --class centos --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option &apos;gnulinux-0-rescue-7d26c16f128042a684ea474c9e2c240f-advanced-80b9b662-0a1d-4e84-b07b-c1bf19e72d97&apos; &#123;</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置默认的启动内核"><a href="#设置默认的启动内核" class="headerlink" title="设置默认的启动内核"></a>设置默认的启动内核</h3><p>比如我们选择上边中的CentOS Linux (3.10.0-327.el7.x86_64) 7 (Core)这个内核为默认启动。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@node301 ~]# grub2-set-default &quot;CentOS Linux (3.10.0-327.el7.x86_64) 7 (Core)&quot; </span><br><span class="line">#配置默认内核</span><br></pre></td></tr></table></figure></p>
+<p>验证是否修改成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@node301 ~]# grub2-editenv list </span><br><span class="line">saved_entry=CentOS Linux (3.10.0-327.el7.x86_64) 7 (Core)</span><br></pre></td></tr></table></figure>
+<h3 id="重启机器"><a href="#重启机器" class="headerlink" title="重启机器"></a>重启机器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sync</span><br><span class="line">sync</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>机器重启后，查看内核版本是否正确。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@node301 ~]# uname -r</span><br><span class="line">3.10.0-327.el7.x86_64</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/CentOS-RHEL下Lustre2-10-0-Client的安装.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2099,197 +2292,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/opensmd服务导致IB网络状态不断切换.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/opensmd服务导致IB网络状态不断切换.html" itemprop="url">opensmd服务导致IB网络状态不断切换</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-03T11:24:59+08:00">
-                2017-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/集群管理/" itemprop="url" rel="index">
-                    <span itemprop="name">集群管理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/opensmd服务导致IB网络状态不断切换.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/opensmd服务导致IB网络状态不断切换.html" class="cy_cmt_count" data-xid="opensmd服务导致IB网络状态不断切换.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/opensmd服务导致IB网络状态不断切换.html" class="leancloud_visitors" data-flag-title="opensmd服务导致IB网络状态不断切换">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  554
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  2分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>同一个Infiniband交换机上面连接了318个刀片服务器，还有18个机架式服务器<br>这个IB交换机上面有18个页交换机，每个页交换机上面可以连接18个主机，所以这个大的交换机总共可以连接324个主机。</p>
-<p>我们平时从网络上查到的Infiniband驱动安装教程，都是如下步骤</p>
-<h5 id="官网下载驱动"><a href="#官网下载驱动" class="headerlink" title="官网下载驱动"></a>官网下载驱动</h5><h5 id="安装驱动"><a href="#安装驱动" class="headerlink" title="安装驱动"></a>安装驱动</h5><h5 id="启动openibd和opensmd两个服务"><a href="#启动openibd和opensmd两个服务" class="headerlink" title="启动openibd和opensmd两个服务"></a>启动openibd和opensmd两个服务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service openibd start;</span><br><span class="line">service opensmd start;</span><br></pre></td></tr></table></figure>
-<p>实际上这个说法是正确的，但也是不正确的。正确的原因是，如果只有一台机器安装了这个软件，那么，上面的操作是没有问题的。<br>但是如果你是在集群上面安装Infiniband驱动，那么opensmd服务就不应该启动了，原因如下。<br>我们集群有个文件系统，文件系统采用了IB网络和ETH两套网络，由于IB网络的状态一直在Initializing和Active之间切换，导致文件系统无法正产使用，后来通过排查，网卡，驱动，操作系统，文件系统服务本身都排查过了，均没有问题。<br>然后在网上疯狂搜索解决方法，由于使用Infiniband网络的基本上都是HPC集群或者电信机房，没有人记录过出现这种问题的情况，所以很无语。只有搜索IB网络的状态代表的意思，发现还是无用，后来在偶然之间看到一个帖子说，opensmd服务只需要开启一个。于是乎，将集群的所有的节点的opensmd服务都关闭了，只把一台存储服务器元数据节点的opensmd服务启动，过了一会，IB网络的状态就恢复正常了，不会在Initializing和Active之间不断切换了。突然觉得感慨万千，为啥，这么一个小知识，曾经导致集群无法正常服务的时间大概有1周左右。觉得自己还是对整个领域知识理解不足，今后要抓紧时间学习了。不然，大的系统中，一个小的问题，就可能导致整个服务不可用。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2339,7 +2341,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">95</span>
+                <span class="site-state-item-count">96</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2361,7 +2363,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">101</span>
+                <span class="site-state-item-count">104</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

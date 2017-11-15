@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/CentOS7%E4%BF%AE%E6%94%B9%E5%86%85%E6%A0%B8%E5%90%AF%E5%8A%A8%E9%BB%98%E8%AE%A4%E9%A1%BA%E5%BA%8F.html</loc>
+    <lastmod>2017-11-15T02:08:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS7修改内核启动默认顺序</title>
+        <pubTime>2017-11-15T02:02:44.000Z</pubTime>
+        
+        <tag>grub2</tag>
+         
+        <tag>启动顺序</tag>
+         
+        <tag>CentOS7</tag>
+         
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://blog.zhangchi.xyz/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/CentOS-RHEL%E4%B8%8BLustre2-10-0-Client%E7%9A%84%E5%AE%89%E8%A3%85.html</loc>
     <lastmod>2017-11-14T08:39:45.000Z</lastmod>
     <data>
@@ -81,9 +107,9 @@
         <title>sshd troubleshooting</title>
         <pubTime>2017-11-10T03:25:01.000Z</pubTime>
         
-        <tag>ssh</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>ssh</tag>
          
          
            
@@ -294,9 +320,9 @@
         <title>Linux集群安装Gaussian09 Linda版本</title>
         <pubTime>2017-06-03T04:56:09.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>高性能计算</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>Gaussian</tag>
          
