@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/qsub-script-is-written-in-DOS-Windows-text-format.html</loc>
+    <lastmod>2017-11-15T08:27:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>qsub:script is written in DOS/Windows text format</title>
+        <pubTime>2017-11-15T08:27:06.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>Torque</tag>
+         
+        <tag>HPC</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://blog.zhangchi.xyz/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/RedHat-CentOS-rpm-%E9%99%8D%E7%BA%A7%E5%AE%89%E8%A3%85%E8%80%81%E7%89%88rpm%E5%8C%85.html</loc>
     <lastmod>2017-11-15T05:11:04.000Z</lastmod>
     <data>
@@ -1157,9 +1181,9 @@
         
         <tag>高性能计算</tag>
          
-        <tag>论文阅读</tag>
-         
         <tag>HPC</tag>
+         
+        <tag>论文阅读</tag>
          
          
            
