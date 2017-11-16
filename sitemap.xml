@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html</loc>
+    
+    <lastmod>2017-11-16T07:19:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/qsub-script-is-written-in-DOS-Windows-text-format.html</loc>
     
     <lastmod>2017-11-15T08:27:44.000Z</lastmod>
