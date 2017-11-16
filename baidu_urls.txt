@@ -1,4 +1,5 @@
 http://blog.zhangchi.xyz/HPC集群运维总结.html
+http://blog.zhangchi.xyz/RDMA概述-转载.html
 http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html
 http://blog.zhangchi.xyz/qsub-script-is-written-in-DOS-Windows-text-format.html
 http://blog.zhangchi.xyz/RedHat-CentOS-rpm-降级安装老版rpm包.html

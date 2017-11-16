@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/RDMA%E6%A6%82%E8%BF%B0-%E8%BD%AC%E8%BD%BD.html</loc>
+    
+    <lastmod>2017-11-16T08:07:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html</loc>
     
     <lastmod>2017-11-16T07:19:18.000Z</lastmod>

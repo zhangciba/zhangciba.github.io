@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/RDMA%E6%A6%82%E8%BF%B0-%E8%BD%AC%E8%BD%BD.html</loc>
+    <lastmod>2017-11-16T08:07:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>RDMA概述-转载</title>
+        <pubTime>2017-11-16T08:03:36.000Z</pubTime>
+        
+        <tag>RDMA</tag>
+         
+        <tag>HPC</tag>
+         
+         
+           
+             
+              <breadCrumb title="高性能计算" url="http://blog.zhangchi.xyz/categories/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html</loc>
     <lastmod>2017-11-16T07:19:18.000Z</lastmod>
     <data>
