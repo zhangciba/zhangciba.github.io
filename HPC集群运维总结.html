@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
 下面将自己在集群管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术和理论还">
-<meta property="og:updated_time" content="2017-11-15T02:12:30.000Z">
+<meta property="og:updated_time" content="2017-11-21T01:26:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HPC集群运维总结">
 <meta name="twitter:description" content="序言2016年5月至2017年7月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
@@ -434,7 +434,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  17,073
+                  17,088
                 </span>
               
 
@@ -762,6 +762,8 @@
 <ul>
 <li>root权限的管理问题</li>
 <li>登录跳转控制问题</li>
+<li>流量管理和带宽控制</li>
+<li>磁盘配额管理</li>
 </ul>
 <h4 id="GridView集群管理软件安装"><a href="#GridView集群管理软件安装" class="headerlink" title="GridView集群管理软件安装"></a>GridView集群管理软件安装</h4><p>集群建设初期，曙光提供了一些用户文档给用户，但是那些文档都是基于曙光的Gridview集群管理系统建设的，现在Gridview被破坏了，无法正常运行，加上Gridview本身比较老了，曙光也没有提供新的版本给我们，加上安装文档又不是很详细，导致有些配置无法正常进行，导致无法使用。</p>
 <p>GridView是曙光自己开发的集群管理软件，该软件功能还是挺强大的，界面也比较友好，其实挺适合作为集群管理软件来使用，但是由于之前集群零散分配给用户使用，将GridView的节点信息等都破坏了，整个软件无法控制所有的集群。</p>
