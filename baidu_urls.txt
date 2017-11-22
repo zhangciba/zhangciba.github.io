@@ -25,7 +25,7 @@ http://blog.zhangchi.xyz/shmget-permission-denied.html
 http://blog.zhangchi.xyz/A-hostfile-was-provided-that-contains-at-least-one-node-not-present-in-the-allocation.html
 http://blog.zhangchi.xyz/Serv-U设置FTP-Passvie模式端口范围.html
 http://blog.zhangchi.xyz/VIM正则表达式简要介绍.html
-http://blog.zhangchi.xyz/Torque安装配置过程及问题.html
+http://blog.zhangchi.xyz/Torque_PBS安装配置过程及问题.html
 http://blog.zhangchi.xyz/Windows操作系统安装.html
 http://blog.zhangchi.xyz/Intel-fortran编译器ifort安装.html
 http://blog.zhangchi.xyz/Linux进程通信.html
