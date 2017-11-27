@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/undefined-reference-to-pthread-create.html</loc>
+    <lastmod>2017-11-27T01:00:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>undefined reference to pthread_create</title>
+        <pubTime>2017-11-26T23:38:38.000Z</pubTime>
+        
+        <tag>pthread</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux开发" url="http://blog.zhangchi.xyz/categories/Linux%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/Torque_PBS%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E5%8F%8A%E9%97%AE%E9%A2%98.html</loc>
     <lastmod>2017-11-22T08:33:45.000Z</lastmod>
     <data>

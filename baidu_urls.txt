@@ -1,4 +1,5 @@
 http://blog.zhangchi.xyz/HPC集群运维总结.html
+http://blog.zhangchi.xyz/undefined-reference-to-pthread-create.html
 http://blog.zhangchi.xyz/RDMA概述-转载.html
 http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html
 http://blog.zhangchi.xyz/qsub-script-is-written-in-DOS-Windows-text-format.html
@@ -97,4 +98,3 @@ http://blog.zhangchi.xyz/Docker发布新的跨容器的分布式应用编排服�
 http://blog.zhangchi.xyz/生活小感悟.html
 http://blog.zhangchi.xyz/MacOSX避免每次都用ssh-add添加SSH秘钥.html
 http://blog.zhangchi.xyz/Ubuntu14-04LTSJDK安装成功，Eclipse提示JVM找不到.html
-http://blog.zhangchi.xyz/坚韧的意志是后天培养的.html
