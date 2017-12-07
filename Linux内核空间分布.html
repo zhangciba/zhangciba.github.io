@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Linux安全," />
+  <meta name="keywords" content="Linux,Linux内存," />
 
 
 
@@ -90,19 +90,16 @@
 
 
 
-<meta name="description" content="最近在搭建Linux集群，工作量大，也很辛苦，考虑到了后期工作的稳定性，决定开始学习Linux安全方面的知识。因此将网上看到的一些比较好的博客收藏下来，和大家一起分享。
-1.ClamAV软件基本安全配置的文章    http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html">
+<meta name="description" content="内核空间非连续内存区的分配">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux系统安全策略文章汇总">
-<meta property="og:url" content="http://blog.zhangchi.xyz/Linux系统安全策略文章汇总.html">
+<meta property="og:title" content="Linux内核空间分布">
+<meta property="og:url" content="http://blog.zhangchi.xyz/Linux内核空间分布.html">
 <meta property="og:site_name" content="DIYER糍粑的博客">
-<meta property="og:description" content="最近在搭建Linux集群，工作量大，也很辛苦，考虑到了后期工作的稳定性，决定开始学习Linux安全方面的知识。因此将网上看到的一些比较好的博客收藏下来，和大家一起分享。
-1.ClamAV软件基本安全配置的文章    http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html">
-<meta property="og:updated_time" content="2016-04-26T13:44:29.000Z">
+<meta property="og:description" content="内核空间非连续内存区的分配">
+<meta property="og:updated_time" content="2017-12-07T12:18:47.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux系统安全策略文章汇总">
-<meta name="twitter:description" content="最近在搭建Linux集群，工作量大，也很辛苦，考虑到了后期工作的稳定性，决定开始学习Linux安全方面的知识。因此将网上看到的一些比较好的博客收藏下来，和大家一起分享。
-1.ClamAV软件基本安全配置的文章    http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html">
+<meta name="twitter:title" content="Linux内核空间分布">
+<meta name="twitter:description" content="内核空间非连续内存区的分配">
 
 
 
@@ -130,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.zhangchi.xyz/Linux系统安全策略文章汇总.html"/>
+  <link rel="canonical" href="http://blog.zhangchi.xyz/Linux内核空间分布.html"/>
 
 
 
 
 
-  <title>Linux系统安全策略文章汇总 | DIYER糍粑的博客</title>
+  <title>Linux内核空间分布 | DIYER糍粑的博客</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -329,7 +326,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Linux系统安全策略文章汇总.html">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Linux内核空间分布.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHANGCHI">
@@ -346,7 +343,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux系统安全策略文章汇总</h1>
+          <h1 class="post-title" itemprop="name headline">Linux内核空间分布</h1>
         
 
         <div class="post-meta">
@@ -358,8 +355,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-17T11:24:08+08:00">
-                2016-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T20:16:47+08:00">
+                2017-12-07
               </time>
             
 
@@ -400,8 +397,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/Linux系统安全策略文章汇总.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="Linux系统安全策略文章汇总.html" itemprop="commentsCount"></span>
+                <a href="/Linux内核空间分布.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="Linux内核空间分布.html" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -409,7 +406,7 @@
 
           
           
-             <span id="/Linux系统安全策略文章汇总.html" class="leancloud_visitors" data-flag-title="Linux系统安全策略文章汇总">
+             <span id="/Linux内核空间分布.html" class="leancloud_visitors" data-flag-title="Linux内核空间分布">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -434,7 +431,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  93
+                  13
                 </span>
               
 
@@ -469,9 +466,7 @@
       
 
       
-        <p>最近在搭建Linux集群，工作量大，也很辛苦，考虑到了后期工作的稳定性，决定开始学习Linux安全方面的知识。因此将网上看到的一些比较好的博客收藏下来，和大家一起分享。</p>
-<p>1.ClamAV软件基本安全配置的文章<br>    <a href="http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html" target="_blank" rel="external">http://www.cnblogs.com/kerrycode/archive/2015/08/24/4754820.html</a></p>
-<a id="more"></a>
+        <p><a href="http://blog.chinaunix.net/uid-27177626-id-3436619.html" target="_blank" rel="external">内核空间非连续内存区的分配</a></p>
 
       
     </div>
@@ -526,7 +521,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://blog.zhangchi.xyz/Linux系统安全策略文章汇总.html" title="Linux系统安全策略文章汇总">http://blog.zhangchi.xyz/Linux系统安全策略文章汇总.html</a>
+      <a href="http://blog.zhangchi.xyz/Linux内核空间分布.html" title="Linux内核空间分布">http://blog.zhangchi.xyz/Linux内核空间分布.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -542,7 +537,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux安全/" rel="tag"># Linux安全</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/Linux内存/" rel="tag"># Linux内存</a>
           
         </div>
       
@@ -555,8 +552,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Kubernetes搭建Docker集群-原创.html" rel="next" title="Kubernetes搭建Docker集群(原创)">
-                <i class="fa fa-chevron-left"></i> Kubernetes搭建Docker集群(原创)
+              <a href="/undefined-reference-to-pthread-create.html" rel="next" title="undefined reference to pthread_create">
+                <i class="fa fa-chevron-left"></i> undefined reference to pthread_create
               </a>
             
           </div>
@@ -565,8 +562,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Flannel介绍及安装使用方法.html" rel="prev" title="Flannel介绍及安装使用方法">
-                Flannel介绍及安装使用方法 <i class="fa fa-chevron-right"></i>
+              <a href="/HPC集群运维总结.html" rel="prev" title="HPC集群运维总结">
+                HPC集群运维总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
