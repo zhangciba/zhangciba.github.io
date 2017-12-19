@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/Linux-Namespace%E6%96%87%E7%AB%A0.html</loc>
+    <lastmod>2017-12-19T02:51:44.086Z</lastmod>
+    <data>
+        <display>
+        <title>Linux Namespace文章</title>
+        <pubTime>2017-12-19T02:49:56.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>Namespace</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://blog.zhangchi.xyz/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/RDMA%E6%A6%82%E8%BF%B0-%E8%BD%AC%E8%BD%BD.html</loc>
     <lastmod>2017-12-15T03:02:32.640Z</lastmod>
     <data>
