@@ -1,3 +1,4 @@
+http://blog.zhangchi.xyz/Linux网络设备驱动原理文章收藏.html
 http://blog.zhangchi.xyz/Linux-Namespace文章.html
 http://blog.zhangchi.xyz/HPC集群运维总结.html
 http://blog.zhangchi.xyz/Linux内核空间分布.html
@@ -97,4 +98,3 @@ http://blog.zhangchi.xyz/CentOS设置开机直接进入命令行界面.html
 http://blog.zhangchi.xyz/Docker集群物理机系统安装笔记.html
 http://blog.zhangchi.xyz/使用易我数据恢复软件恢复已删除的文件.html
 http://blog.zhangchi.xyz/Docker发布新的跨容器的分布式应用编排服务.html
-http://blog.zhangchi.xyz/生活小感悟.html
