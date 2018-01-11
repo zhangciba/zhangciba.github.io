@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/HPC%E9%9B%86%E7%BE%A4%E8%BF%90%E7%BB%B4%E6%80%BB%E7%BB%93.html</loc>
+    
+    <lastmod>2018-01-11T01:39:25.451Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/Linux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E5%8E%9F%E7%90%86%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F.html</loc>
     
-    <lastmod>2018-01-10T07:00:19.786Z</lastmod>
+    <lastmod>2018-01-10T07:01:39.520Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://blog.zhangchi.xyz/RDMA%E6%A6%82%E8%BF%B0-%E8%BD%AC%E8%BD%BD.html</loc>
     
     <lastmod>2017-12-15T03:02:32.640Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangchi.xyz/HPC%E9%9B%86%E7%BE%A4%E8%BF%90%E7%BB%B4%E6%80%BB%E7%BB%93.html</loc>
-    
-    <lastmod>2017-12-15T01:10:26.414Z</lastmod>
     
   </url>
   
