@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/%E6%B8%85%E7%90%86Zabbix%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE.html</loc>
+    <lastmod>2018-02-08T10:38:15.226Z</lastmod>
+    <data>
+        <display>
+        <title>清理Zabbix历史数据</title>
+        <pubTime>2018-02-08T10:35:41.000Z</pubTime>
+        
+        <tag>Zabbix</tag>
+         
+         
+           
+             
+              <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/Linux%E5%86%85%E6%A0%B8%E6%BA%90%E6%96%87%E4%BB%B6%E7%BD%91%E5%9D%80.html</loc>
     <lastmod>2018-01-26T08:57:39.939Z</lastmod>
     <data>
@@ -548,9 +568,9 @@
         <title>Linux集群安装Gaussian09 Linda版本</title>
         <pubTime>2017-06-03T04:56:09.000Z</pubTime>
         
-        <tag>高性能计算</tag>
-         
         <tag>集群管理</tag>
+         
+        <tag>高性能计算</tag>
          
         <tag>Gaussian</tag>
          

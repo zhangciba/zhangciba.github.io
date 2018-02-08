@@ -1,3 +1,4 @@
+http://blog.zhangchi.xyz/清理Zabbix历史数据.html
 http://blog.zhangchi.xyz/Linux内核源文件网址.html
 http://blog.zhangchi.xyz/Linux网络设备驱动原理文章收藏.html
 http://blog.zhangchi.xyz/Linux-Namespace文章.html
@@ -97,4 +98,3 @@ http://blog.zhangchi.xyz/CentOS7安装Mono和MonoDevelop.html
 http://blog.zhangchi.xyz/SSH连接Linux服务器免密码登录.html
 http://blog.zhangchi.xyz/CentOS设置开机直接进入命令行界面.html
 http://blog.zhangchi.xyz/Docker集群物理机系统安装笔记.html
-http://blog.zhangchi.xyz/使用易我数据恢复软件恢复已删除的文件.html
