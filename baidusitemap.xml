@@ -48,6 +48,26 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/undefined-reference-to-pthread-create.html</loc>
+    <lastmod>2018-02-24T03:22:31.246Z</lastmod>
+    <data>
+        <display>
+        <title>undefined reference to pthread_create</title>
+        <pubTime>2017-11-26T23:38:38.000Z</pubTime>
+        
+        <tag>pthread</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux开发" url="http://blog.zhangchi.xyz/categories/Linux%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB.html</loc>
     <lastmod>2018-02-24T03:20:26.595Z</lastmod>
     <data>
@@ -219,26 +239,6 @@
            
              
               <breadCrumb title="Linux" url="http://blog.zhangchi.xyz/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangchi.xyz/undefined-reference-to-pthread-create.html</loc>
-    <lastmod>2017-11-27T01:00:42.000Z</lastmod>
-    <data>
-        <display>
-        <title>undefined reference to pthread_create</title>
-        <pubTime>2017-11-26T23:38:38.000Z</pubTime>
-        
-        <tag>pthread</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux开发" url="http://blog.zhangchi.xyz/categories/Linux%E5%BC%80%E5%8F%91/"/>
           
         </display>
     </data>
