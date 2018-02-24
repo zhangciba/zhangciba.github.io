@@ -4,19 +4,43 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB.html</loc>
+    <lastmod>2018-02-24T03:20:26.595Z</lastmod>
+    <data>
+        <display>
+        <title>高性能计算中心汇总</title>
+        <pubTime>2016-06-28T02:21:11.000Z</pubTime>
+        
+        <tag>HPC</tag>
+         
+        <tag>super computing</tag>
+         
+         
+           
+             
+              <breadCrumb title="高性能计算" url="http://blog.zhangchi.xyz/categories/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/mpich3-2-1-release.html</loc>
-    <lastmod>2018-02-24T03:13:39.261Z</lastmod>
+    <lastmod>2018-02-24T03:19:25.047Z</lastmod>
     <data>
         <display>
         <title>mpich3.2.1-release</title>
         <pubTime>2018-02-24T03:12:59.000Z</pubTime>
         
+        <tag>HPC</tag>
+         
         <tag>mpich</tag>
          
          
            
              
-              <breadCrumb title="HPC" url="http://blog.zhangchi.xyz/categories/HPC/"/>
+              <breadCrumb title="高性能计算" url="http://blog.zhangchi.xyz/categories/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/"/>
           
         </display>
     </data>
@@ -1052,26 +1076,6 @@
         
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangchi.xyz/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB.html</loc>
-    <lastmod>2016-07-01T07:42:35.000Z</lastmod>
-    <data>
-        <display>
-        <title>高性能计算中心汇总</title>
-        <pubTime>2016-06-28T02:21:11.000Z</pubTime>
-        
-        <tag>超算中心汇总</tag>
-         
-         
-           
-             
-              <breadCrumb title="超级计算" url="http://blog.zhangchi.xyz/categories/%E8%B6%85%E7%BA%A7%E8%AE%A1%E7%AE%97/"/>
-          
         </display>
     </data>
     </url>
