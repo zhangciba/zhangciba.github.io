@@ -1,0 +1,1228 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="集群管理,Linux,运维,HPC," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]
+序言2016年5月至2018年3月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
+下面将自己在管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HPC集群运维总结1-配置与职责">
+<meta property="og:url" content="http://blog.zhangchi.xyz/HPC集群运维总结1-配置与职责.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="[TOC]
+序言2016年5月至2018年3月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
+下面将自己在管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术">
+<meta property="og:updated_time" content="2018-02-24T07:09:04.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HPC集群运维总结1-配置与职责">
+<meta name="twitter:description" content="[TOC]
+序言2016年5月至2018年3月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。
+下面将自己在管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'NCCTAVOMGS',
+      apiKey: '90a1b37d9db46c7ad69df6b94bd751b9',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索关键字","hits_empty":"没有找到与 [ ${query} ] 有关的内容","hits_stats":"${hits} 条记录，共耗时 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangchi.xyz/HPC集群运维总结1-配置与职责.html"/>
+
+
+
+
+
+  <title>HPC集群运维总结1-配置与职责 | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77014447-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/HPC集群运维总结1-配置与职责.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HPC集群运维总结1-配置与职责</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T20:20:20+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/HPC集群运维总结1-配置与职责.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="HPC集群运维总结1-配置与职责.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/HPC集群运维总结1-配置与职责.html" class="leancloud_visitors" data-flag-title="HPC集群运维总结1-配置与职责">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  3,471
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  12分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h3 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h3><p>2016年5月至2018年3月之间，我与另外一位同学担任了某集群的运行维护工作。期间主要负责了机房维护、空调维护、配电房维护、安全防护、分布式系统管理、高性能软件管理、用户管理、计算资源管理、服务器系统管理、服务器硬件维护等工作，内容繁多，工作复杂，但是总体来说，在过去一年的集群管理工作中还是有不少收获的。</p>
+<p>下面将自己在管理过程中遇到的问题和解决方法分享给大家，尽管里面涉及到的技术和理论还不够深入，甚至不足以解决一些很棘手的问题，但是可以方便后来的管理人员快速入手，同时也是一个交流的机会，非常欢迎大家批评指正和指导。<br><a id="more"></a></p>
+<h3 id="集群配置概况"><a href="#集群配置概况" class="headerlink" title="集群配置概况"></a>集群配置概况</h3><h4 id="服务器配置信息"><a href="#服务器配置信息" class="headerlink" title="服务器配置信息"></a>服务器配置信息</h4><p>集群包含4种类型的服务器</p>
+<ul>
+<li>TC4600刀箱中的CB60-G15计算刀片</li>
+<li>I640-G10普通2U机架式服务器</li>
+<li>I640-G15存储服务器</li>
+<li>W580I-G10GPU节点</li>
+</ul>
+<p>各机型配置如下：</p>
+<ul>
+<li><p>TC4600刀箱</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">标准19英寸5U机架式刀片机箱、可以支持14个计算刀片；</span><br><span class="line">1*管理模块，集成远程KVM和远程虚拟媒体；</span><br><span class="line">1*万兆上联模块，对外2个sfp+万兆，对内14个千兆端口；</span><br><span class="line">4*冗余热插拔散热模块；</span><br><span class="line">4*2000W电源（3+1冗余热拔插）；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>刀片CB60-G15</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2*Intel Xeon E5-2670 八核处器 (2.6GHz)；</span><br><span class="line">8*8GB DDR3 1600MHz；</span><br><span class="line">1*300G 2.5寸10000转SAS硬盘；</span><br><span class="line">1*56Gb Infiniband 接口；</span><br><span class="line">2*1000M以太网接口；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>管理I620-G10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2U机架式</span><br><span class="line">2*Intel Xeon E5-2670 八核处器 (2.6GHz)；</span><br><span class="line">8*16GB DDR3 1600MHz；</span><br><span class="line">1*300G 2.5寸10000转SAS硬盘；</span><br><span class="line">2*1000M以太网接口；     </span><br><span class="line">1+1冗余电源；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>存储I640-G15</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">4U机架式</span><br><span class="line">1*Intel Xeon E5-2603 CPU 四核处器 (1.8GHz)；</span><br><span class="line">4*4GB DDR3 ECC；</span><br><span class="line">1*300G 2.5寸10000转SAS硬盘；</span><br><span class="line">36* 900G SAS硬盘；</span><br><span class="line">1*56Gb Infiniband 接口；</span><br><span class="line">2*1000M以太网接口；</span><br><span class="line">冗余电源；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>存储I620-G10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2U机架式</span><br><span class="line">2*Intel Xeon E5-2603 CPU 四核处器 (1.8GHz)；</span><br><span class="line">8*4GB DDR3 ECC；</span><br><span class="line">1*300G 2.5寸10000转SAS硬盘；</span><br><span class="line">1*56Gb Infiniband 接口；</span><br><span class="line">2*1000M以太网接口；     </span><br><span class="line">1+1冗余电源；</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中node1-node306是CB60-G15计算刀片，每14个刀片位于同一个刀箱，最后一个刀箱只有10个刀片。<br>node307-node308是I640-G10普通2U机架服务器，主要用来登录集群和集群的管理工作，其中node307主要用于用户登录和集群管理工作，node308部署了zabbix和集群温度监控脚本，以及Crane主页等内容。</p>
+<p>node309-node310是Lustre的MDS服务器，即分布式文件系统的索引服务器。<br>node311-node323是Lustre的对象存储服务器。<br>node324目前是一台NFS服务器，主要用于某些不能使用Lustre的节点进行文件传输。<br>node325-node326是两台空闲的存储服务器，可以用来做备用机，一般情况不使用，主要用于应急，当然后期也可以考虑将该节点加入到Lustre的对象存储服务器中。</p>
+<p>node327-node336是10台GPU节点<br>node337-node348共12台刀片，在北面从西至东的第三个机柜的最下面一个刀箱，也是计算刀片。 </p>
+<h4 id="网络配置信息"><a href="#网络配置信息" class="headerlink" title="网络配置信息"></a>网络配置信息</h4><p>所有计算刀片、存储服务器、存储IO节点通过Mellaonx FDR324口（18个18+18页版）Infiniband交换机连接，16U，模块化交换机。</p>
+<p>集群入口节点没有Infniband网络，只有以太网络，即千兆以太网。</p>
+<p>集群的所有刀箱、机架服务器都通过一个H3C的48口千兆以太网交换机连接在一起了。</p>
+<p>刀箱后面一个H3C的以太网交换模块，这个模块提供了14个内置的交换端口和4个对外的交换端口以及2个万兆光口。</p>
+<p>所有刀箱的交换模块通过一个H3C 24口 SFP+万兆交换机连接，也就是说，跨刀箱的节点通信通过万兆网，刀箱内部通信是通过交换模块内置的网络进行的。</p>
+<p>另外，集群的所有服务器都有一个管理口，即远程控制地址。该套网络也是在H3C 48口以太网交换机、万兆交换机、以及刀箱上面的交换模块结合来构建的，具体方案现在还没有特别确定。具体布局情况最好请教网络方面的同学或工程师。</p>
+<h5 id="通信流程"><a href="#通信流程" class="headerlink" title="通信流程"></a>通信流程</h5><h6 id="同刀箱刀片通信"><a href="#同刀箱刀片通信" class="headerlink" title="同刀箱刀片通信"></a>同刀箱刀片通信</h6><p>同一个刀片机箱的所有刀片节点之间的通信是通过刀箱后面的以太网交换模块进行的，相当与一个交换机。</p>
+<h6 id="跨刀箱刀片通信"><a href="#跨刀箱刀片通信" class="headerlink" title="跨刀箱刀片通信"></a>跨刀箱刀片通信</h6><p>刀片A将数据转发到刀箱的交换模块，交换模块将数据通过万兆光模块转发到万兆交换机，万兆交换机转发到刀片B所在刀箱的交换模块，交换模块将数据转发给刀片B.</p>
+<h6 id="管理节点与刀片通信"><a href="#管理节点与刀片通信" class="headerlink" title="管理节点与刀片通信"></a>管理节点与刀片通信</h6><h6 id="管理节点与存储通信"><a href="#管理节点与存储通信" class="headerlink" title="管理节点与存储通信"></a>管理节点与存储通信</h6><h6 id="刀片节点与存储通信"><a href="#刀片节点与存储通信" class="headerlink" title="刀片节点与存储通信"></a>刀片节点与存储通信</h6><h4 id="文件系统配置信息"><a href="#文件系统配置信息" class="headerlink" title="文件系统配置信息"></a>文件系统配置信息</h4><p>集群采用并行分布式文件系统Lustre来提供/public和/home目录，即所有节点都挂载/public/home作为节点的/home目录，提供统一的用户信息。<br>Lustre文件系统构成如下，node309和node310为MDS服务器，node311-node318为/home对应的OST，node319-node323为/public目录对应的OST，由于之前Lustre文件系统出现过故障，后来node311-node318就不再提供存储服务了，node319-node323提供/public目录，并且提供/public/home为/home目录。<br>其次，在不能使用Lustre的节点，可以挂载NFS文件系统进行文件的传递。</p>
+<h3 id="日常职责"><a href="#日常职责" class="headerlink" title="日常职责"></a>日常职责</h3><h4 id="机房巡检"><a href="#机房巡检" class="headerlink" title="机房巡检"></a>机房巡检</h4><p>该工作原则上是每天至少1次但是考虑到时间有限，可以宽限为每周2-3次，周一、周五都必须检查一次，主要检查空调运行情况、机房温度、机房湿度、是否存在火宅隐患、检查火宅报警器是否正常开机运行等。<br>总结如下：</p>
+<ul>
+<li>主机房空调和配电房空调检查。</li>
+<li>市电和UPS配电柜状态检查。</li>
+<li>UPS系统状态检查。</li>
+<li>火灾报警器工作状态检查，包括主机房和配电房。</li>
+<li>硬盘和服务器指示灯检查。</li>
+<li>未罗列事项。</li>
+</ul>
+<h4 id="集群硬件维护"><a href="#集群硬件维护" class="headerlink" title="集群硬件维护"></a>集群硬件维护</h4><p>该项职责主要包括集群存储服务器硬盘状态查看、计算刀片故障处理、硬盘更换、内存条更换、网络故障处理等。<br>集群软件系统维护，主要包括集群分布式文件系统故障处理、集群计算刀片操作系统管理、集群并行计算软件环境维护等。<br>计算资源分配与管理，主要将空闲的计算资源分配给有需要的用户，为其添加集群账号，分配节点。用户计算完后，主动回收节点，并清理不用的用户资料。<br>总结而言主要包括如下内容：</p>
+<ul>
+<li>计算节点主板更换。</li>
+<li>计算节点内存更换。</li>
+<li>刀片机箱电源模块更换。</li>
+<li>存储服务器硬盘更换。</li>
+<li>Infiniband网络故障解决。</li>
+<li>其他未罗列事项。</li>
+</ul>
+<h4 id="服务器软件维护"><a href="#服务器软件维护" class="headerlink" title="服务器软件维护"></a>服务器软件维护</h4><p>该项职责主要包括如下内容：</p>
+<ul>
+<li>计算节点的操作系统维护，升级内核、还原系统等。</li>
+<li>计算节点内置软件环境的配置和管理。</li>
+<li>计算节点的环境变量配置。</li>
+<li>并行计算环境在各节点的Client端或者代理端配置。</li>
+<li>PBS队列管理系统和Zabbix监控系统的客户端daemon配置与维护。</li>
+<li>其他未罗列的计算节点软件。</li>
+</ul>
+<h4 id="HPC软件环境维护"><a href="#HPC软件环境维护" class="headerlink" title="HPC软件环境维护"></a>HPC软件环境维护</h4><p>HPC软件环境主要包括如下内容：</p>
+<ul>
+<li>Intel编译器、gcc编译器、gcc-c++编译器、gfortran编译器等编译支持软件。</li>
+<li>各类库MKL、acml、fftw2-float、fftw2-double、scalapack等。</li>
+<li>各类MPI版本，openmpi-gpu、openmpi-intel、mvapich2-gnu、mvapich2-intel、mpich3-gnu等。</li>
+<li>各类具体的HPC软件，Matlab、Gaussian、Octopus、Lammps、CellSys、Ansys fluent、BLAST、Ansys CFX、WRF、WAVEWATCH 3、OpenFOAM等具体领域的软件。</li>
+<li>监控平台如Zabbix。</li>
+<li>分布式文件系统Lustre。</li>
+<li>其他未罗列的HPC软件环境。</li>
+</ul>
+<h4 id="集群资源分配与管理"><a href="#集群资源分配与管理" class="headerlink" title="集群资源分配与管理"></a>集群资源分配与管理</h4><ul>
+<li>PBS队列配置与管理</li>
+<li>PBS队列使用权限分配</li>
+<li>HPC集群分区和资源利用最大化</li>
+<li>GPGPU资源的分配和管理</li>
+<li>资源使用的监控与统计</li>
+<li>资源的回收再分配</li>
+</ul>
+<h4 id="用户管理与技术支持"><a href="#用户管理与技术支持" class="headerlink" title="用户管理与技术支持"></a>用户管理与技术支持</h4><ul>
+<li>为用户添加账号和重置密码</li>
+<li>添加IP地址许可和网络转发</li>
+<li>安装公用开源软件</li>
+<li>协助用户解决遇到的问题</li>
+</ul>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>概括主要有如下几件事要做：</p>
+<ul>
+<li>主机房两个空调是否正常运行，主要看报警数据还有温度信息，主机房正常温度在22-24摄氏度，湿度40%-60%范围内，空调控制面板报警选项卡中没有报警信息，并且查看最近一周温度变化情况，是否存在温度异常的情况。</li>
+<li>主机房火灾报警器是否正常运行，主要看是否开机，面板提示是否正常。</li>
+<li>主机房所有机柜绕一圈，检查是否有刀片服务器电源模块亮黄灯，黄灯表示异常，绿灯表示正常运行。同时，检查存储服务器后置硬盘阵列是否存在亮红灯的情况，存在亮红灯的硬盘，请及时拔下硬盘，有手机或者相机拍下服务器上序列号，并进行报修。最后还要检查刀片机箱的交换模块是否正常运行，即网络接口是否有灯在闪。</li>
+<li>配电房UPS电池组是否存在异常，主要看是否有异味，UPS主机柜和配电柜是否有异常显示信息，异常时会有红灯亮，注意不是面板显示的红色信息。</li>
+<li>配电房空调温度是否正常，东北角的柜式空调，正常温度设定在18-20摄氏度，存在异常请及时报修。</li>
+</ul>
+<h3 id="机房巡检-1"><a href="#机房巡检-1" class="headerlink" title="机房巡检"></a>机房巡检</h3><h4 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h4><p>机房环境的维护是一件非常重要的事情，良好的机房环境是集群正常运行的基础，机房环境出现问题，直接集群瘫痪，无法正常运行，更严重的，还有可能导致火灾，因此机房环境需要重点关注。</p>
+<h4 id="温度"><a href="#温度" class="headerlink" title="温度"></a>温度</h4><p>机房环境主要指房间的温度、湿度，这两点特别重要，如果温度过高、过低或者温度不稳定，集群很容易出现问题，集群本身产热非常大，如果温度过高，很容易出现服务器报警、主板老化的情况。本集群之前空调出现问题，导致主板节点温度过高，服务器过早坏掉的情况。温度过高最容易导致主板电容爆掉的情况，因此需要引起注意，另外用户在进行计算过程中，要特别注意提醒用户不要提交过量的计算任务，避免导致主板温度过高提前老化的情况。任何时候，如果出现机房空调温度不正常，需要及时给实验室相关负责老师打电话并联系空调维保公司技术人员尽快进行空调维护，并关闭一部分机器，避免温度过高。</p>
+<h4 id="湿度"><a href="#湿度" class="headerlink" title="湿度"></a>湿度</h4><p>机房的湿度控制，正常情况下，机房湿度都在标准允许的范围内，即不超过50%。除非是武汉地区长期下雨，可能会存在湿度超标的情况，一般湿度都会在可控的范围内。另外，之前机房顶部靠近北边的地方出现过漏水的情况，具体原因没有查清楚，因此进行机房巡视时，一定要注意看天花板，检查是否存在房顶漏水的情况，如果存在这样的情况，首先及时汇报情况给机房负责老师，并及时关闭集群，并切断电源（具体方法见后面集群断电方式），避免进水导致机器烧毁。</p>
+<h4 id="火灾"><a href="#火灾" class="headerlink" title="火灾"></a>火灾</h4><p>机房火灾报警器检查，机房火灾一般会由于温度过高，机器老化导致，即很可能是因为电路老化导致火灾。因此每次去机房都要检查火灾报警器是否正常运行了。之前机房出现过火灾报警器误报的情况，即实际上不存在火灾，但是报警器一直响，出现过多次，后来发现原因是夏季时机房湿度比较大，报警器上面有水凝结，导致误报。之后稍微修理了一下，暂时没有出现误报的情况。如果出现了报警器报警的情况，检查温度是否过高，是否存在烟雾，是不是误报，然后及时汇报情况给负责老师。如果存在温度过高或者存在烟雾或有异味，赶紧关闭集群，断电方法请参考集群关机或启动流程章节。</p>
+<h4 id="供电"><a href="#供电" class="headerlink" title="供电"></a>供电</h4><p>集群供电是从机械大楼迁过来的，E5楼停电对集群无任何影响。<br>UPS仅仅提供IT设备的供电，断电后，应该在10分钟内关闭整个集群，保证服务器设备的安全和机房的安全。<br>因此巡检需要到配电房检查配电柜、UPS信息等，保证集群电力供应正常。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注微信号进一步交流</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/wechapay.JPG" alt="ZHANGCHI WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/IMG_2777.JPG" alt="ZHANGCHI Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      ZHANGCHI
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://blog.zhangchi.xyz/HPC集群运维总结1-配置与职责.html" title="HPC集群运维总结1-配置与职责">http://blog.zhangchi.xyz/HPC集群运维总结1-配置与职责.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/集群管理/" rel="tag"># 集群管理</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/运维/" rel="tag"># 运维</a>
+          
+            <a href="/tags/HPC/" rel="tag"># HPC</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/HPC集群运维总结8-未尽事宜.html" rel="next" title="HPC集群运维总结8-未尽事宜">
+                <i class="fa fa-chevron-left"></i> HPC集群运维总结8-未尽事宜
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/HPC集群运维总结7-故障处理.html" rel="prev" title="HPC集群运维总结7-故障处理">
+                HPC集群运维总结7-故障处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,糍粑学习的地方</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangciba" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhangchixtacbn" target="_blank" title="Weibo" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank" title="知乎" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://adherence.cn" title="小燕子之家" target="_blank" rel="external nofollow">小燕子之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/zhangchi" title="博客园" target="_blank" rel="external nofollow">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/zhangchixtacbn" title="CSDN" target="_blank" rel="external nofollow">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhangchixtacbn.blog.163.com" title="网易博客" target="_blank" rel="external nofollow">网易博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://davi.space" title="Davi-Space" target="_blank" rel="external nofollow">Davi-Space</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jayxhj.com" title="豪杰写字的地方" target="_blank" rel="external nofollow">豪杰写字的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/ryanlamp/" title="大兵奋斗的地方" target="_blank" rel="external nofollow">大兵奋斗的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hust.edu.cn" title="华中科技大学" target="_blank" rel="external nofollow">华中科技大学</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群配置概况"><span class="nav-number">2.</span> <span class="nav-text">集群配置概况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器配置信息"><span class="nav-number">2.1.</span> <span class="nav-text">服务器配置信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络配置信息"><span class="nav-number">2.2.</span> <span class="nav-text">网络配置信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通信流程"><span class="nav-number">2.2.1.</span> <span class="nav-text">通信流程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#同刀箱刀片通信"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">同刀箱刀片通信</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#跨刀箱刀片通信"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">跨刀箱刀片通信</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#管理节点与刀片通信"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">管理节点与刀片通信</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#管理节点与存储通信"><span class="nav-number">2.2.1.4.</span> <span class="nav-text">管理节点与存储通信</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#刀片节点与存储通信"><span class="nav-number">2.2.1.5.</span> <span class="nav-text">刀片节点与存储通信</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件系统配置信息"><span class="nav-number">2.3.</span> <span class="nav-text">文件系统配置信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日常职责"><span class="nav-number">3.</span> <span class="nav-text">日常职责</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机房巡检"><span class="nav-number">3.1.</span> <span class="nav-text">机房巡检</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群硬件维护"><span class="nav-number">3.2.</span> <span class="nav-text">集群硬件维护</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器软件维护"><span class="nav-number">3.3.</span> <span class="nav-text">服务器软件维护</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HPC软件环境维护"><span class="nav-number">3.4.</span> <span class="nav-text">HPC软件环境维护</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群资源分配与管理"><span class="nav-number">3.5.</span> <span class="nav-text">集群资源分配与管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户管理与技术支持"><span class="nav-number">3.6.</span> <span class="nav-text">用户管理与技术支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">3.7.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机房巡检-1"><span class="nav-number">4.</span> <span class="nav-text">机房巡检</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概览"><span class="nav-number">4.1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#温度"><span class="nav-number">4.2.</span> <span class="nav-text">温度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#湿度"><span class="nav-number">4.3.</span> <span class="nav-text">湿度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#火灾"><span class="nav-number">4.4.</span> <span class="nav-text">火灾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#供电"><span class="nav-number">4.5.</span> <span class="nav-text">供电</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyt1YeKGz';
+      var conf = 'ad47d27725e364e61bc1caebba090e65';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Q2wCx7ylg0R2b3SjDM49UpFA-gzGzoHsz", "tMTqAIprel7Bdpgm463fDDsY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

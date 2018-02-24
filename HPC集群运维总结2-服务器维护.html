@@ -1,0 +1,1172 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="集群管理,Linux,运维,HPC," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]
+服务器硬件维护集群配置的服务器主要有三种，刀片服务器、存储服务器、GPU服务器，其中刀片服务器最多，存储服务器硬盘最多，GPU服务器配置的GPGPU卡最多。
+集群硬件主要包括了上述的三种服务器、H3C万兆以太网交换机、Mellanox InfniBand交换机、安全网关、PDU、PDM等设备。
+而其中最容易出现故障的就是硬盘和刀片服务器了。存储服务器硬盘故障最多，其次是计算刀片服务器容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HPC集群运维总结2-服务器维护">
+<meta property="og:url" content="http://blog.zhangchi.xyz/HPC集群运维总结2-服务器维护.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="[TOC]
+服务器硬件维护集群配置的服务器主要有三种，刀片服务器、存储服务器、GPU服务器，其中刀片服务器最多，存储服务器硬盘最多，GPU服务器配置的GPGPU卡最多。
+集群硬件主要包括了上述的三种服务器、H3C万兆以太网交换机、Mellanox InfniBand交换机、安全网关、PDU、PDM等设备。
+而其中最容易出现故障的就是硬盘和刀片服务器了。存储服务器硬盘故障最多，其次是计算刀片服务器容">
+<meta property="og:updated_time" content="2018-02-24T07:10:40.936Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HPC集群运维总结2-服务器维护">
+<meta name="twitter:description" content="[TOC]
+服务器硬件维护集群配置的服务器主要有三种，刀片服务器、存储服务器、GPU服务器，其中刀片服务器最多，存储服务器硬盘最多，GPU服务器配置的GPGPU卡最多。
+集群硬件主要包括了上述的三种服务器、H3C万兆以太网交换机、Mellanox InfniBand交换机、安全网关、PDU、PDM等设备。
+而其中最容易出现故障的就是硬盘和刀片服务器了。存储服务器硬盘故障最多，其次是计算刀片服务器容">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'NCCTAVOMGS',
+      apiKey: '90a1b37d9db46c7ad69df6b94bd751b9',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索关键字","hits_empty":"没有找到与 [ ${query} ] 有关的内容","hits_stats":"${hits} 条记录，共耗时 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangchi.xyz/HPC集群运维总结2-服务器维护.html"/>
+
+
+
+
+
+  <title>HPC集群运维总结2-服务器维护 | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77014447-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/HPC集群运维总结2-服务器维护.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HPC集群运维总结2-服务器维护</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T20:20:20+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/HPC集群运维总结2-服务器维护.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="HPC集群运维总结2-服务器维护.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/HPC集群运维总结2-服务器维护.html" class="leancloud_visitors" data-flag-title="HPC集群运维总结2-服务器维护">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  4,438
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  16分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h3 id="服务器硬件维护"><a href="#服务器硬件维护" class="headerlink" title="服务器硬件维护"></a>服务器硬件维护</h3><p>集群配置的服务器主要有三种，刀片服务器、存储服务器、GPU服务器，其中刀片服务器最多，存储服务器硬盘最多，GPU服务器配置的GPGPU卡最多。</p>
+<p>集群硬件主要包括了上述的三种服务器、H3C万兆以太网交换机、Mellanox InfniBand交换机、安全网关、PDU、PDM等设备。</p>
+<p>而其中最容易出现故障的就是硬盘和刀片服务器了。存储服务器硬盘故障最多，其次是计算刀片服务器容易出现主板烧坏的情况。下面将简要介绍这两种故障的发现和处理。</p>
+<p><span id="disk"></span></p>
+<h4 id="硬盘故障发现"><a href="#硬盘故障发现" class="headerlink" title="硬盘故障发现"></a>硬盘故障发现</h4><p>最常见的硬盘故障是存储服务器的故障，存储服务器型号是Sugon I640-G15，该存储服务器的存储配置信息为，有两块RAID卡，机箱前置面板和后置面板都有硬盘插槽，其中前面可以放24块SAS硬盘，后面可以放12块SAS硬盘，前置硬盘插槽由RAID0卡管理，后置硬盘插槽由RAID1卡管理，一定要记住顺序了，其实顺序非常好记忆的。</p>
+<p>每周需要有时间进行机房巡视，查看存储服务器硬盘的健康状况，这是一种最直接的发现问题的方式。</p>
+<p>另外一种发现故障的方式是采用软件的方式，而且软件方式更加方便、直观，最主要就是能够在磁盘亮红灯之前就发现故障盘，可以及早发现问题，因此推荐采用这种方式来进行故障盘的发现。</p>
+<p>集群使用的RAID卡品牌好像是Mega，厂家提供了两个工具来进行RAID信息配置和管理，MegaCLI和Mega RAID Storage Manager两个软件，顾名思义，MegaCLI是命令行工具，Mega RAID Storage Manager是图形化管理工具，推荐使用后者，因为配置方便、更加直观、操作简单。但是需要使用VNC连接到集群入口节点node307或者node308，然后通过Mega RAID Storage Manager连接到具体的存储服务器查看RAID阵列信息和磁盘信息，具体使用方法确实挺简单的，百度上面很多文章，这里就不再重复描述了。MegaCLI的优势就是，可以通过Shell脚本来提取磁盘信息，发现磁盘故障，因此可以使用MegaCLI编写磁盘健康监控脚本，由于时间有限，脚本没编写，不过很简单的。上面两种软件，已经被安装到了所有存储服务器，直接使用即可，如果存在问题，可以重新安装。</p>
+<h4 id="硬盘故障处理"><a href="#硬盘故障处理" class="headerlink" title="硬盘故障处理"></a>硬盘故障处理</h4><p>发现硬盘故障后，首先使用手机拍下存储服务器上面的序列号，直接拨打全国客服热线400-810-0466进行报修，我们是非专项客户，存储服务器产品报修，然后报序列号，他们会查产品是否在保修期内，如果在保，他们会发一块硬盘过来，大约3-5天过来更换。</p>
+<p>如果同一个服务器的同一个阵列，如前置阵列或者后置阵列上面出现两块硬盘闪红灯的情况，那么，不能等售后发货了，如果下一块磁盘出现故障，整个集群的数据都有可能丢失，这个时候的处理方式是，从最后的2台没有闲置的存储服务器上面找到一块硬盘，并且从RAID卡管理界面将该硬盘的RAID信息删除（具体做法后面可能会提到，也可以参考网上的MegaRAID的配置教程），然后拔掉这块硬盘，把硬盘从硬盘托上拆下来，换到坏掉的硬盘的所在的硬盘托架上面，并将好的硬盘插入到故障存储服务器上面，刚刚插上服务器时，硬盘指示灯还是会一直亮红色，大概5-10秒过后，RAID卡检测到新的硬盘插入后，如果硬盘上面没有之前的RAID信息，那么RAID卡会进行回写工作。</p>
+<p>这里稍微讲解一下RAID卡的工作原理，一般的RAID阵列都会配置1-2块热备盘，热备盘一般会选择ID号靠近最后的1-2块作为热备盘，具体情况可以通过RAID卡配置界面查看到。当阵列中的某一块磁盘（非热备盘）出现故障时，RAID卡根据RIAD级别以及阵列其他磁盘的信息，计算出坏掉的磁盘信息，并将信息写入到热备盘中，即RAID卡将坏掉的磁盘信息还原并写入到热备盘，这个过程可能会比较慢，通常由数据大小和磁盘大小来决定，一般也需要2-3个小时，热备盘写入完成后，阵列又可以正常工作了，其实在写热备盘的过程中，阵列还是可以工作，只是速度慢一些，因为缺少了一块磁盘信息，需要通过计算才能得到，因此在写热备盘的过程中，不能出现频繁I/O请求，否则可能导致RAID阵列崩溃，阵列数据完全丢失的情况，这一点可以通过关闭集群入口节点的登录功能或者限制用户计算来达到。</p>
+<p>需要注意的是，如果磁盘出现了故障，最好等到热备盘写完成之后，再插入新的硬盘，新的硬盘插上后，就开始回写过程，回写就是把热备盘的信息复制到新换上的硬盘当中，相当于原来的磁盘信息复制到新的磁盘上，当回写完成后，磁盘阵列又恢复了原来的状态，即原来的数据盘还是数据盘，热备盘还是热备盘，热备盘就不提供数据的读写服务了，只有当其他的磁盘坏掉是，热备盘才会开始工作，用于存储RAID计算出来的坏掉的磁盘的数据。</p>
+<p>这其中存在一个情况就是，如果新插入的磁盘上面含有其他RAID卡的信息，很可能就是我们集群的情况，因为最后两台存储服务器node325和node326节点上面本身就有RAID信息，所以将这两块RAID卡上面的硬盘拔下，插入到其他存储服务器时，其他服务器RAID卡会认为他们是外部存储设备，无法正常使用。因此插上带有RAID信息的磁盘时，红灯会一直亮起，无法进行回写工作。那么我们可以通过在好硬盘所在的存储服务器上面，打开RAID卡配置界面，将需要取出来的硬盘从原有的RAID阵列中删除，这样磁盘上面就不包含RAID信息了，插入到存在坏盘的存储服务器上面，就可以马上自动开始回写工作了。</p>
+<h4 id="计算刀片故障发现与处理"><a href="#计算刀片故障发现与处理" class="headerlink" title="计算刀片故障发现与处理"></a>计算刀片故障发现与处理</h4><p>首先简单介绍一下刀片服务器的构造。实验室的刀片类型是CB60-G15类型的，刀片服务器不能够独立存在，很多刀片同时排列在一起，统一有一个刀片机箱blade来进行管理。刀片机箱型号为TC4600，每个刀箱中可以放置14块CB60-G15刀片。</p>
+<p>刀箱一般包含有4个冗余电源模块、散热模块、交换模块、直通模块、控制模块等，电源模块每个最大功率是2000w，支持热插拔，散热模块提供刀箱内部热量的排出，交换模块负责刀箱内部多个刀片的网络互通以及整个刀箱与外部的网络连通，直通模块提供了每个刀片直接与外部网络连通的功能，控制模块提供了刀箱的页面化配置管理、刀片物理状态的获取等、电源、散热模块的功率、转速配置等。</p>
+<p>本集群的刀片机箱值安装了交换模块，没有安装直通模块，也就是只有一个以太网卡可以使用。</p>
+<p>计算刀片的故障发现非常容易，但是需要一定的耐心。计算刀片出现故障的前兆是，刀片经常出现死机的情况，有时候负载不是很高就开卡住或者反映特别慢，出现这种现象时，可以首先重新启动计算刀片的操作系统，然后再观察一段时间，如果情况依旧，很有可能是主板出现故障，老化或者有电容坏掉了。这个时候，最后进一步做判断，将计算刀片关机，并把另外一块好的计算刀片的硬盘拔下来，插入到怀疑有故障的刀片上面，启动，如果发现故障依旧，那么基本可以断定，该计算刀片的主板出问题了。</p>
+<p>计算刀片出现问题的时候，首先在前置面板几下刀片上面的一个数字，这个数字是刀片插槽的编号，然后到刀片所在刀箱的机柜后面，将对应编号的InfiniBand网线拔出来，直接拉那个蓝色的塑料圈圈就可以拔出来。然后返回到刀片正面，有个蓝色的小铁杆，直接往外拨，刀片就出来了一些，然后就可以把刀片整个拔出来了。但是这里不需要把刀片全部拔出来，只需要拔出一些，看到刀片前面的一个序列号标签，拿出手机拍照，记下序列号，然后拨打售后全国客服热线400-810-0466进行报修。大概3-5天之后，会有售后过来进行维修，一般而言就是更换刀片的主板，CPU、内存什么的的还是不会更换的。由于集群保修期大概到2017年12月份，因此需要早点发现故障刀片，尽快更换一批有故障的刀片服务器。</p>
+<h3 id="计算节点OS维护"><a href="#计算节点OS维护" class="headerlink" title="计算节点OS维护"></a>计算节点OS维护</h3><p>集群所有节点，管理节点、存储节点、计算节点、GPU节点上面默认安装的操作系统是Redhat Enterprise Linux6.2，RHEL6.2 for short，内核版本2.6.32，有非常少部分节点由于用户的需求安装了CentOS7.0或者CentOS7.3版本的操作系统。</p>
+<p>由于集群文件系统Lustre是与操作系统相关联的，导致升级计算节点操作系统是一件非常苦难的事情。尽管作为管理员，已经多次提过要升级全部节点的操作系统版本，以满足用户实验需要。但是由于此事真的是难上加上，包括需要一笔费用以及其中牵扯到的利益纠纷问题，因此一直没有升级。</p>
+<p>由于很多同学的实验可能需要Linux3.0以上版本的内核，甚至有些同学可能需要Linux4.0以上版本的内核，因此可以考虑给这些用户root权限，让用户自己升级内核，这样用户可以在升级后的内核里面进行自己的科研实验，但是升级完内核之后，用户将无法使用Lustre文件系统。可以考虑挂载NFS文件系统来进行文件的读取，NFS文件系统也是每台机器都进行了挂载，用户可以通过集群入口服务器上传文件到NFS文件系统，然后升级后的内核中可以读取到相应的文件。</p>
+<p>当集群的操作系统被破坏后，其他用户使用时存在问题，因此需要进行还原工作，鉴于集群经常存在这样的用户，他们会需要root权限进行一些操作，之后操作系统做了很多修改，再次分配给其他用户使用时会存在很多问题，因此需要进行系统重装。直接安装系统不仅要安装软件还要编译Lustre内核，非常复杂，一个比较好的办法是直接拷贝其他磁盘的系统，修改几个简单的配置文件，系统就搞定了，因此下面介绍两种方法进行系统快速还原。</p>
+<h4 id="使用再生龙进行系统备份和还原工作"><a href="#使用再生龙进行系统备份和还原工作" class="headerlink" title="使用再生龙进行系统备份和还原工作"></a>使用再生龙进行系统备份和还原工作</h4><p>再生龙工具非常的强大，如果集群需要恢复的系统特别多，那么可以采用这种方式，下面附上再生龙使用教程，百度上面也可以搜索到，参考文档进行使用。</p>
+<p><a href="http://clonezilla.nchc.org.tw/news/" target="_blank" rel="external">再生龙官网</a><br><a href="http://7xsnoh.com1.z0.glb.clouddn.com//clustermgmt/pdfClonezilla%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E.pdf" target="_blank" rel="external">再生龙详细使用文档</a></p>
+<p>我们需要将再生龙服务器版本刻录到U盘或者光盘上面，然后启动到再生龙进行操作。</p>
+<p>系统包括克隆和还原两个步骤，首先需要将一个计算节点的系统使用再生龙克隆到NFS文件系统或者另外一个大的磁盘上面，然后切换到再生龙的还原模式，启动需要还原的计算节点，从网络启动，然后进行还原工作。</p>
+<p>需要说明的是设置网卡的时候，只需要设置一个网卡eth0即可，因为eth1是直通模块。eth0的IP地址建议设置为11.11.4.100，子网掩码设置为255.255.0.0，NFS文件系统的IP地址是11.11.2.18，路径是/public/vpublic02，这个目录里面已经备份过几个计算节点的磁盘了，可以暂时使用，或者自己选择一个重新备份。</p>
+<h4 id="使用硬盘对拷进行重装系统"><a href="#使用硬盘对拷进行重装系统" class="headerlink" title="使用硬盘对拷进行重装系统"></a>使用硬盘对拷进行重装系统</h4><p><strong>数据无价，拷贝之前一定要确定磁盘的用户数据备份了。</strong></p>
+<p>首先将需要重装的节点上面的硬盘卸载下来，插入到一个负载不是很大的节点的备用硬盘仓中，然后使用fdisk -l来查看新插入的硬盘的编号，由于本集群的计算节点只有两个硬盘仓，所以后插入的硬盘的编号就是/dev/sdb了。</p>
+<h5 id="卸载Lustre和NFS挂载点"><a href="#卸载Lustre和NFS挂载点" class="headerlink" title="卸载Lustre和NFS挂载点"></a>卸载Lustre和NFS挂载点</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;&apos;/public&apos;,&apos;/home&apos;,&apos;/vpublic01&apos;,&apos;/vpublic02&apos;&#125;;</span><br><span class="line">do</span><br><span class="line">  umount $i;</span><br><span class="line">done;</span><br></pre></td></tr></table></figure>
+<h5 id="执行dd命令"><a href="#执行dd命令" class="headerlink" title="执行dd命令"></a>执行dd命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/sda of=/dev/sdb bs=32256 conv=notrunc,noerror &amp;</span><br></pre></td></tr></table></figure>
+<p>后面的&amp;表示以后台形式运行，运行之后会返回一个编号，就是这个进程的PID。</p>
+<p>执行如下命令来查看拷贝的进度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while kill -USR1 2643;</span><br><span class="line">do </span><br><span class="line">  echo;</span><br><span class="line">  sleep 10;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>把2643替换为你自己的进程PID就可以了。<br>这里的300GB的硬盘，大概拷贝需要40分钟左右，因为是Serial SCSI硬盘，速度稍微快一点。</p>
+<h5 id="修改IP地址"><a href="#修改IP地址" class="headerlink" title="修改IP地址"></a>修改IP地址</h5><p>修改Ethernet和IB网IP地址，通过修改/etc/sysconfig/network-scripts/中的ifcfg-ib0和ifcfg-br0两个文件中的IP地址即可。</p>
+<h5 id="删除rules文件"><a href="#删除rules文件" class="headerlink" title="删除rules文件"></a>删除rules文件</h5><p>查看/etc/udev/rules.d/70-persistent-net.rules文件，修改对应参数，我一般比较懒，直接删除，重启会重建。</p>
+<h5 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h5><p>修改/etc/sysconfig/network文件，在RHEL6中该文件存储的是系统主机名。RHEL7系统中，请使用<code>hostnamectl sethostname hostname</code>命令设置主机名，请将最后的hostname替换为你想设置的主机名。</p>
+<h5 id="磁盘检查"><a href="#磁盘检查" class="headerlink" title="磁盘检查"></a>磁盘检查</h5><p>很多时候，母机器上面有一些inode信息不一致或者坏掉的磁盘块，因此需要进行一下简单的修复工作。请依次执行一下命令，检查和修复磁盘。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fsck -y /dev/sdb1</span><br><span class="line">fsck -y /dev/sdb2</span><br></pre></td></tr></table></figure></p>
+<p>其中dev/sdb1和/dev/sdb2为需要还原系统的磁盘的分区编号，根据具体情况进行替换即可。</p>
+<h5 id="放回磁盘，启动系统"><a href="#放回磁盘，启动系统" class="headerlink" title="放回磁盘，启动系统"></a>放回磁盘，启动系统</h5><p>将硬盘取回，放到原节点，启动节点，则会进入一个初始化的过程，有时会由于存在磁盘中的块与索引信息不一致的情况，尽管之前做过检查，但是在插入到新机器上后，还会出现，它会提示你输入root密码进行修复或者按Ctrl-D取消，这时需要输入root密码，因为是拷贝的其他节点的数据，因此root密码也是被拷贝节点的密码。如果root密码忘记，可以将磁盘重新插入到一台机器，将那台机器的/etc/shadow文件拷贝到磁盘中，这样就相当于重置了root密码。输入root密码之后，有可能提示你磁盘有问题。这个时候需要进行修复。此时一般会提示你哪个分区有问题，例如/dev/sda1有问题或者是/dev/sda2有问题，那么需要我们进行修复，输入一下命令，建议将所有分区一次性修复。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#修复第一个分区，这个分区一般是引导分区</span><br><span class="line">fsck -y /dev/sda1</span><br><span class="line"></span><br><span class="line">#修复第二个分区，这个分区一般是主文件分区</span><br><span class="line">fsck -y /dev/sda2</span><br></pre></td></tr></table></figure></p>
+<p>有时会提示你是/dev/sda2有问题，但是建议也修复一下/dev/sda1，这样重启之后不会因为文件系统有小故障导致重新修复再次重启。</p>
+<p>输入reboot重启即可。</p>
+<h5 id="被拷贝机还原"><a href="#被拷贝机还原" class="headerlink" title="被拷贝机还原"></a>被拷贝机还原</h5><p>将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。</p>
+<p><strong>再次强调，数据无价，拷贝之前一定要确定磁盘的用户数据已经备份了。</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注微信号进一步交流</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/wechapay.JPG" alt="ZHANGCHI WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/IMG_2777.JPG" alt="ZHANGCHI Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      ZHANGCHI
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://blog.zhangchi.xyz/HPC集群运维总结2-服务器维护.html" title="HPC集群运维总结2-服务器维护">http://blog.zhangchi.xyz/HPC集群运维总结2-服务器维护.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/集群管理/" rel="tag"># 集群管理</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/运维/" rel="tag"># 运维</a>
+          
+            <a href="/tags/HPC/" rel="tag"># HPC</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/HPC集群运维总结3-用户与权限管理.html" rel="next" title="HPC集群运维总结3-用户与权限管理">
+                <i class="fa fa-chevron-left"></i> HPC集群运维总结3-用户与权限管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/HPC集群运维总结4-网络访问控制.html" rel="prev" title="HPC集群运维总结4-网络访问控制">
+                HPC集群运维总结4-网络访问控制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,糍粑学习的地方</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangciba" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhangchixtacbn" target="_blank" title="Weibo" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank" title="知乎" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://adherence.cn" title="小燕子之家" target="_blank" rel="external nofollow">小燕子之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/zhangchi" title="博客园" target="_blank" rel="external nofollow">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/zhangchixtacbn" title="CSDN" target="_blank" rel="external nofollow">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhangchixtacbn.blog.163.com" title="网易博客" target="_blank" rel="external nofollow">网易博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://davi.space" title="Davi-Space" target="_blank" rel="external nofollow">Davi-Space</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jayxhj.com" title="豪杰写字的地方" target="_blank" rel="external nofollow">豪杰写字的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/ryanlamp/" title="大兵奋斗的地方" target="_blank" rel="external nofollow">大兵奋斗的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hust.edu.cn" title="华中科技大学" target="_blank" rel="external nofollow">华中科技大学</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器硬件维护"><span class="nav-number">1.</span> <span class="nav-text">服务器硬件维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障发现"><span class="nav-number">1.1.</span> <span class="nav-text">硬盘故障发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬盘故障处理"><span class="nav-number">1.2.</span> <span class="nav-text">硬盘故障处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算刀片故障发现与处理"><span class="nav-number">1.3.</span> <span class="nav-text">计算刀片故障发现与处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算节点OS维护"><span class="nav-number">2.</span> <span class="nav-text">计算节点OS维护</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用再生龙进行系统备份和还原工作"><span class="nav-number">2.1.</span> <span class="nav-text">使用再生龙进行系统备份和还原工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用硬盘对拷进行重装系统"><span class="nav-number">2.2.</span> <span class="nav-text">使用硬盘对拷进行重装系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#卸载Lustre和NFS挂载点"><span class="nav-number">2.2.1.</span> <span class="nav-text">卸载Lustre和NFS挂载点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#执行dd命令"><span class="nav-number">2.2.2.</span> <span class="nav-text">执行dd命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改IP地址"><span class="nav-number">2.2.3.</span> <span class="nav-text">修改IP地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#删除rules文件"><span class="nav-number">2.2.4.</span> <span class="nav-text">删除rules文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改主机名"><span class="nav-number">2.2.5.</span> <span class="nav-text">修改主机名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#磁盘检查"><span class="nav-number">2.2.6.</span> <span class="nav-text">磁盘检查</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#放回磁盘，启动系统"><span class="nav-number">2.2.7.</span> <span class="nav-text">放回磁盘，启动系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#被拷贝机还原"><span class="nav-number">2.2.8.</span> <span class="nav-text">被拷贝机还原</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyt1YeKGz';
+      var conf = 'ad47d27725e364e61bc1caebba090e65';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Q2wCx7ylg0R2b3SjDM49UpFA-gzGzoHsz", "tMTqAIprel7Bdpgm463fDDsY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

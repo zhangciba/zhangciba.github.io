@@ -3,6 +3,14 @@ http://blog.zhangchi.xyz/清理Zabbix历史数据.html
 http://blog.zhangchi.xyz/Linux内核源文件网址.html
 http://blog.zhangchi.xyz/Linux网络设备驱动原理文章收藏.html
 http://blog.zhangchi.xyz/Linux-Namespace文章.html
+http://blog.zhangchi.xyz/HPC集群运维总结7-故障处理.html
+http://blog.zhangchi.xyz/HPC集群运维总结1-配置与职责.html
+http://blog.zhangchi.xyz/HPC集群运维总结8-未尽事宜.html
+http://blog.zhangchi.xyz/HPC集群运维总结6-监控与开关机.html
+http://blog.zhangchi.xyz/HPC集群运维总结5-Lustre维护.html
+http://blog.zhangchi.xyz/HPC集群运维总结4-网络访问控制.html
+http://blog.zhangchi.xyz/HPC集群运维总结2-服务器维护.html
+http://blog.zhangchi.xyz/HPC集群运维总结3-用户与权限管理.html
 http://blog.zhangchi.xyz/Linux内核空间分布.html
 http://blog.zhangchi.xyz/undefined-reference-to-pthread-create.html
 http://blog.zhangchi.xyz/RDMA概述-转载.html
@@ -90,11 +98,3 @@ http://blog.zhangchi.xyz/Flannel介绍及安装使用方法.html
 http://blog.zhangchi.xyz/Linux系统安全策略文章汇总.html
 http://blog.zhangchi.xyz/Kubernetes搭建Docker集群-原创.html
 http://blog.zhangchi.xyz/MacBook开启远程登录.html
-http://blog.zhangchi.xyz/etcd安装教程链接.html
-http://blog.zhangchi.xyz/Open-vSwtich原理和使用博客链接.html
-http://blog.zhangchi.xyz/SSH添加秘钥时提示无法打开认证代理的连接.html
-http://blog.zhangchi.xyz/Linux终端格式化输出JSON.html
-http://blog.zhangchi.xyz/CentOS7安装Mono和MonoDevelop.html
-http://blog.zhangchi.xyz/SSH连接Linux服务器免密码登录.html
-http://blog.zhangchi.xyz/CentOS设置开机直接进入命令行界面.html
-http://blog.zhangchi.xyz/Docker集群物理机系统安装笔记.html

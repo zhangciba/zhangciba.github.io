@@ -327,6 +327,1623 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/HPC集群运维总结4-网络访问控制.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/HPC集群运维总结4-网络访问控制.html" itemprop="url">HPC集群运维总结4-网络访问控制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T20:20:20+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/HPC集群运维总结4-网络访问控制.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/HPC集群运维总结4-网络访问控制.html" class="cy_cmt_count" data-xid="HPC集群运维总结4-网络访问控制.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/HPC集群运维总结4-网络访问控制.html" class="leancloud_visitors" data-flag-title="HPC集群运维总结4-网络访问控制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  1,650
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  6分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h3 id="网络访问控制"><a href="#网络访问控制" class="headerlink" title="网络访问控制"></a>网络访问控制</h3><p>集群主要通过安全网关硬件和iptables进行访问控制。</p>
+<p>安全网关配置了允许登录进入集群的IP类型以及开放的端口信息。<br>具体的IP地址限制由iptables来进行限制。</p>
+<h4 id="允许某一IP地址访问集群"><a href="#允许某一IP地址访问集群" class="headerlink" title="允许某一IP地址访问集群"></a>允许某一IP地址访问集群</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -s 99.99.1.1 -p tcp -m tcp -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>即可允许99.99.1.1这个IP地址登录到集群。</p>
+<h4 id="允许网段的IP地址访问集群"><a href="#允许网段的IP地址访问集群" class="headerlink" title="允许网段的IP地址访问集群"></a>允许网段的IP地址访问集群</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -s 99.99.1.1/24 -p tcp -m tcp -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>即可允许99.99.1.1-99.99.1.255这个网段内部的所有IP地址登录集群。</p>
+<h4 id="允许所有节点访问特定的IP地址"><a href="#允许所有节点访问特定的IP地址" class="headerlink" title="允许所有节点访问特定的IP地址"></a>允许所有节点访问特定的IP地址</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A POSTROUTING -d 202.114.0.242/32 -o eth1 -j MASQUERADE</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>执行完命令后，所有集群都可以访问202.114.0.242这个IP地址所在的服务器。<br>此时，需要在需要访问202.114.0.242这个IP的计算节点上面执行下面的操作。<br>首先登录到需要访问外网的节点，执行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route</span><br></pre></td></tr></table></figure></p>
+<p>查看结果中是否有以下记录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">default         node307         0.0.0.0         UG    0      0        0 eth0</span><br></pre></td></tr></table></figure></p>
+<p>如果存在上述内容，则直接可以连接外网，如果ping外网还是不同，一般有可能是DNS信息没有填写正确，可以编辑/etc/resolv.conf文件，在该文件头部加入一下信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nameserver 202.114.0.242</span><br><span class="line">nameserver 202.112.0.131</span><br></pre></td></tr></table></figure></p>
+<p>保存后，就可以正常访问外部网络了。</p>
+<h4 id="允许某一节点访问特定的IP地址"><a href="#允许某一节点访问特定的IP地址" class="headerlink" title="允许某一节点访问特定的IP地址"></a>允许某一节点访问特定的IP地址</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A POSTROUTING -s 11.11.0.1/32 -d 192.30.252.128/32 -o eth1 -j MASQUERADE</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>执行完命令后，允许node1（IP地址为11.11.0.1）访问github网站（IP地址为192.30.252.128）。</p>
+<h4 id="允许某一节点访问所有网站"><a href="#允许某一节点访问所有网站" class="headerlink" title="允许某一节点访问所有网站"></a>允许某一节点访问所有网站</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A POSTROUTING -s 11.11.0.1/32 -o eth1 -j MASQUERADE</span><br></pre></td></tr></table></figure></p>
+<p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<p>执行完命令后，node1（IP地址为11.11.0.1）具有全部外网访问权限。</p>
+<h4 id="配置端口转发规则"><a href="#配置端口转发规则" class="headerlink" title="配置端口转发规则"></a>配置端口转发规则</h4><p>允许集群外部访问内部节点的某一或多个端口，实际原理是SNAT和DNAT配置。<br>例如说。我希望访问集群node1(IP地址为11.11.0.1)的http服务(端口号为80)，此时管理节点的IP为99.99.1.1(虚构的一个外网IP地址)，则配置如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-A PREROUTING --dst 99.99.1.1 -p tcp --dport 8888 -j DNAT --to-destination 11.11.0.1:80</span><br><span class="line">-A POSTROUTING -d 11.11.0.1 -p tcp -m tcp --dport 80 -j SNAT --to-source 99.99.1.1</span><br></pre></td></tr></table></figure>
+<p>以上语句的意思是，将访问99.99.1.1:8888的数据包都转发到11.11.0.1:80，</p>
+<h4 id="集群DNS服务器信息"><a href="#集群DNS服务器信息" class="headerlink" title="集群DNS服务器信息"></a>集群DNS服务器信息</h4><p>以下是校内DNS服务器的信息，可以编辑/etc/resolv.conf文件进行设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nameserver 202.114.0.242</span><br><span class="line">nameserver 202.112.0.131</span><br></pre></td></tr></table></figure></p>
+<h3 id="网络故障处理"><a href="#网络故障处理" class="headerlink" title="网络故障处理"></a>网络故障处理</h3><h4 id="Infiniband网络故障"><a href="#Infiniband网络故障" class="headerlink" title="Infiniband网络故障"></a>Infiniband网络故障</h4><p><span id="Infiniband"></span><br><a href="http://www.mellanox.com/page/software_overview_ib" target="_blank" rel="external">Mellanox Infiniband驱动下载地址</a><br>上面是Infiniband驱动的官方下载地址，根据系统版本进行下载。</p>
+<p>Infiniband网络最多的故障就是状态不是Active，导致状态一直是PortConfigurationTraining，这个时候可以稍等2分钟，如果状态一直是这样，可以考虑重启一下openibd服务，如果重启后还是不行，可能是子网管理服务没有启动，这种情况下，应该停止集群所有节点的子网管理服务，opensmd服务，<strong>请务必记住，一个子网内部只能启动一个opensmd服务，启动多个会导致Infiniband网络出现问题，接着导致文件系统无法使用，直接导致集群无法正常计算</strong>，因此需要登录到运行opensmd服务的节点，<span id="ibpro">本集群默认在node310上开启opensmd服务，</span>命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service opensmd restart</span><br></pre></td></tr></table></figure></p>
+<p>如果提示服务不存在，那么问题的原因就是网络驱动没有正常安装，或者是出现了故障，这个时候可以采用重新安装驱动的方式来进行修复。</p>
+<p>Infiniband网络配置文件为/etc/sysconfig/network-scripts/ifcfg-ib0</p>
+<h4 id="以太网故障"><a href="#以太网故障" class="headerlink" title="以太网故障"></a>以太网故障</h4><p>以太网故障一般比较少，常见的故障可能是刀片机箱的交换模块断电了。交换模块断电的一个明显的特征是网络指示灯一个都不亮，这种情况在集群断电后首次启动时经常遇到。</p>
+<p><span id="power_module_error"></span><br>造成刀箱的网络交换模块无法正常工作的原因是，刀箱的电源模块在长时间断电之后没有正常启动或者由于电源模块功率过高而风扇转速太低导致电源过热保护，特点是指示灯为黄色，如果一个刀箱有2个电源模块亮黄灯，那么很有可能导致刀箱的交换模块无法正常启动。这个时候可以尝试一下办法来解决这个问题。</p>
+<p>将亮黄灯电源模块的电源线拔下，将电源模块拔下，等待1-2分钟之后，黄灯熄灭，然后把电源模块重新插入，并插上电源模块的电源线，如果一会之后，电源模块指示灯亮绿色，表示该电源模块可以正常工作。将所有的电源模块都进行这样的处理。直到所有的电源模块指示灯都是绿色的。</p>
+<p>然后将刀箱内部的所有刀片节点进行关机处理，关机后，在刀箱背面的左下角的有一个黑色的开关，这个开关是整个刀箱的电源开关，它控制刀箱所有模块的供电。找到后关闭它，等待5分钟后，重启打开该开关，如果不出意外情况，也就是所有的电源模块指示灯为绿色的情况下，一会刀箱的电源交换模块的网络指示灯就会正常亮起来了。如果还是不行，有可能就是交换模块出现故障了。</p>
+<p><strong>如果不能正常解决，直接打电话给官方客服进行报修啦。</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/HPC集群运维总结2-服务器维护.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/HPC集群运维总结2-服务器维护.html" itemprop="url">HPC集群运维总结2-服务器维护</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T20:20:20+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/HPC集群运维总结2-服务器维护.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/HPC集群运维总结2-服务器维护.html" class="cy_cmt_count" data-xid="HPC集群运维总结2-服务器维护.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/HPC集群运维总结2-服务器维护.html" class="leancloud_visitors" data-flag-title="HPC集群运维总结2-服务器维护">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  4,438
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  16分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h3 id="服务器硬件维护"><a href="#服务器硬件维护" class="headerlink" title="服务器硬件维护"></a>服务器硬件维护</h3><p>集群配置的服务器主要有三种，刀片服务器、存储服务器、GPU服务器，其中刀片服务器最多，存储服务器硬盘最多，GPU服务器配置的GPGPU卡最多。</p>
+<p>集群硬件主要包括了上述的三种服务器、H3C万兆以太网交换机、Mellanox InfniBand交换机、安全网关、PDU、PDM等设备。</p>
+<p>而其中最容易出现故障的就是硬盘和刀片服务器了。存储服务器硬盘故障最多，其次是计算刀片服务器容易出现主板烧坏的情况。下面将简要介绍这两种故障的发现和处理。</p>
+<p><span id="disk"></span></p>
+<h4 id="硬盘故障发现"><a href="#硬盘故障发现" class="headerlink" title="硬盘故障发现"></a>硬盘故障发现</h4><p>最常见的硬盘故障是存储服务器的故障，存储服务器型号是Sugon I640-G15，该存储服务器的存储配置信息为，有两块RAID卡，机箱前置面板和后置面板都有硬盘插槽，其中前面可以放24块SAS硬盘，后面可以放12块SAS硬盘，前置硬盘插槽由RAID0卡管理，后置硬盘插槽由RAID1卡管理，一定要记住顺序了，其实顺序非常好记忆的。</p>
+<p>每周需要有时间进行机房巡视，查看存储服务器硬盘的健康状况，这是一种最直接的发现问题的方式。</p>
+<p>另外一种发现故障的方式是采用软件的方式，而且软件方式更加方便、直观，最主要就是能够在磁盘亮红灯之前就发现故障盘，可以及早发现问题，因此推荐采用这种方式来进行故障盘的发现。</p>
+<p>集群使用的RAID卡品牌好像是Mega，厂家提供了两个工具来进行RAID信息配置和管理，MegaCLI和Mega RAID Storage Manager两个软件，顾名思义，MegaCLI是命令行工具，Mega RAID Storage Manager是图形化管理工具，推荐使用后者，因为配置方便、更加直观、操作简单。但是需要使用VNC连接到集群入口节点node307或者node308，然后通过Mega RAID Storage Manager连接到具体的存储服务器查看RAID阵列信息和磁盘信息，具体使用方法确实挺简单的，百度上面很多文章，这里就不再重复描述了。MegaCLI的优势就是，可以通过Shell脚本来提取磁盘信息，发现磁盘故障，因此可以使用MegaCLI编写磁盘健康监控脚本，由于时间有限，脚本没编写，不过很简单的。上面两种软件，已经被安装到了所有存储服务器，直接使用即可，如果存在问题，可以重新安装。</p>
+<h4 id="硬盘故障处理"><a href="#硬盘故障处理" class="headerlink" title="硬盘故障处理"></a>硬盘故障处理</h4><p>发现硬盘故障后，首先使用手机拍下存储服务器上面的序列号，直接拨打全国客服热线400-810-0466进行报修，我们是非专项客户，存储服务器产品报修，然后报序列号，他们会查产品是否在保修期内，如果在保，他们会发一块硬盘过来，大约3-5天过来更换。</p>
+<p>如果同一个服务器的同一个阵列，如前置阵列或者后置阵列上面出现两块硬盘闪红灯的情况，那么，不能等售后发货了，如果下一块磁盘出现故障，整个集群的数据都有可能丢失，这个时候的处理方式是，从最后的2台没有闲置的存储服务器上面找到一块硬盘，并且从RAID卡管理界面将该硬盘的RAID信息删除（具体做法后面可能会提到，也可以参考网上的MegaRAID的配置教程），然后拔掉这块硬盘，把硬盘从硬盘托上拆下来，换到坏掉的硬盘的所在的硬盘托架上面，并将好的硬盘插入到故障存储服务器上面，刚刚插上服务器时，硬盘指示灯还是会一直亮红色，大概5-10秒过后，RAID卡检测到新的硬盘插入后，如果硬盘上面没有之前的RAID信息，那么RAID卡会进行回写工作。</p>
+<p>这里稍微讲解一下RAID卡的工作原理，一般的RAID阵列都会配置1-2块热备盘，热备盘一般会选择ID号靠近最后的1-2块作为热备盘，具体情况可以通过RAID卡配置界面查看到。当阵列中的某一块磁盘（非热备盘）出现故障时，RAID卡根据RIAD级别以及阵列其他磁盘的信息，计算出坏掉的磁盘信息，并将信息写入到热备盘中，即RAID卡将坏掉的磁盘信息还原并写入到热备盘，这个过程可能会比较慢，通常由数据大小和磁盘大小来决定，一般也需要2-3个小时，热备盘写入完成后，阵列又可以正常工作了，其实在写热备盘的过程中，阵列还是可以工作，只是速度慢一些，因为缺少了一块磁盘信息，需要通过计算才能得到，因此在写热备盘的过程中，不能出现频繁I/O请求，否则可能导致RAID阵列崩溃，阵列数据完全丢失的情况，这一点可以通过关闭集群入口节点的登录功能或者限制用户计算来达到。</p>
+<p>需要注意的是，如果磁盘出现了故障，最好等到热备盘写完成之后，再插入新的硬盘，新的硬盘插上后，就开始回写过程，回写就是把热备盘的信息复制到新换上的硬盘当中，相当于原来的磁盘信息复制到新的磁盘上，当回写完成后，磁盘阵列又恢复了原来的状态，即原来的数据盘还是数据盘，热备盘还是热备盘，热备盘就不提供数据的读写服务了，只有当其他的磁盘坏掉是，热备盘才会开始工作，用于存储RAID计算出来的坏掉的磁盘的数据。</p>
+<p>这其中存在一个情况就是，如果新插入的磁盘上面含有其他RAID卡的信息，很可能就是我们集群的情况，因为最后两台存储服务器node325和node326节点上面本身就有RAID信息，所以将这两块RAID卡上面的硬盘拔下，插入到其他存储服务器时，其他服务器RAID卡会认为他们是外部存储设备，无法正常使用。因此插上带有RAID信息的磁盘时，红灯会一直亮起，无法进行回写工作。那么我们可以通过在好硬盘所在的存储服务器上面，打开RAID卡配置界面，将需要取出来的硬盘从原有的RAID阵列中删除，这样磁盘上面就不包含RAID信息了，插入到存在坏盘的存储服务器上面，就可以马上自动开始回写工作了。</p>
+<h4 id="计算刀片故障发现与处理"><a href="#计算刀片故障发现与处理" class="headerlink" title="计算刀片故障发现与处理"></a>计算刀片故障发现与处理</h4><p>首先简单介绍一下刀片服务器的构造。实验室的刀片类型是CB60-G15类型的，刀片服务器不能够独立存在，很多刀片同时排列在一起，统一有一个刀片机箱blade来进行管理。刀片机箱型号为TC4600，每个刀箱中可以放置14块CB60-G15刀片。</p>
+<p>刀箱一般包含有4个冗余电源模块、散热模块、交换模块、直通模块、控制模块等，电源模块每个最大功率是2000w，支持热插拔，散热模块提供刀箱内部热量的排出，交换模块负责刀箱内部多个刀片的网络互通以及整个刀箱与外部的网络连通，直通模块提供了每个刀片直接与外部网络连通的功能，控制模块提供了刀箱的页面化配置管理、刀片物理状态的获取等、电源、散热模块的功率、转速配置等。</p>
+<p>本集群的刀片机箱值安装了交换模块，没有安装直通模块，也就是只有一个以太网卡可以使用。</p>
+<p>计算刀片的故障发现非常容易，但是需要一定的耐心。计算刀片出现故障的前兆是，刀片经常出现死机的情况，有时候负载不是很高就开卡住或者反映特别慢，出现这种现象时，可以首先重新启动计算刀片的操作系统，然后再观察一段时间，如果情况依旧，很有可能是主板出现故障，老化或者有电容坏掉了。这个时候，最后进一步做判断，将计算刀片关机，并把另外一块好的计算刀片的硬盘拔下来，插入到怀疑有故障的刀片上面，启动，如果发现故障依旧，那么基本可以断定，该计算刀片的主板出问题了。</p>
+<p>计算刀片出现问题的时候，首先在前置面板几下刀片上面的一个数字，这个数字是刀片插槽的编号，然后到刀片所在刀箱的机柜后面，将对应编号的InfiniBand网线拔出来，直接拉那个蓝色的塑料圈圈就可以拔出来。然后返回到刀片正面，有个蓝色的小铁杆，直接往外拨，刀片就出来了一些，然后就可以把刀片整个拔出来了。但是这里不需要把刀片全部拔出来，只需要拔出一些，看到刀片前面的一个序列号标签，拿出手机拍照，记下序列号，然后拨打售后全国客服热线400-810-0466进行报修。大概3-5天之后，会有售后过来进行维修，一般而言就是更换刀片的主板，CPU、内存什么的的还是不会更换的。由于集群保修期大概到2017年12月份，因此需要早点发现故障刀片，尽快更换一批有故障的刀片服务器。</p>
+<h3 id="计算节点OS维护"><a href="#计算节点OS维护" class="headerlink" title="计算节点OS维护"></a>计算节点OS维护</h3><p>集群所有节点，管理节点、存储节点、计算节点、GPU节点上面默认安装的操作系统是Redhat Enterprise Linux6.2，RHEL6.2 for short，内核版本2.6.32，有非常少部分节点由于用户的需求安装了CentOS7.0或者CentOS7.3版本的操作系统。</p>
+<p>由于集群文件系统Lustre是与操作系统相关联的，导致升级计算节点操作系统是一件非常苦难的事情。尽管作为管理员，已经多次提过要升级全部节点的操作系统版本，以满足用户实验需要。但是由于此事真的是难上加上，包括需要一笔费用以及其中牵扯到的利益纠纷问题，因此一直没有升级。</p>
+<p>由于很多同学的实验可能需要Linux3.0以上版本的内核，甚至有些同学可能需要Linux4.0以上版本的内核，因此可以考虑给这些用户root权限，让用户自己升级内核，这样用户可以在升级后的内核里面进行自己的科研实验，但是升级完内核之后，用户将无法使用Lustre文件系统。可以考虑挂载NFS文件系统来进行文件的读取，NFS文件系统也是每台机器都进行了挂载，用户可以通过集群入口服务器上传文件到NFS文件系统，然后升级后的内核中可以读取到相应的文件。</p>
+<p>当集群的操作系统被破坏后，其他用户使用时存在问题，因此需要进行还原工作，鉴于集群经常存在这样的用户，他们会需要root权限进行一些操作，之后操作系统做了很多修改，再次分配给其他用户使用时会存在很多问题，因此需要进行系统重装。直接安装系统不仅要安装软件还要编译Lustre内核，非常复杂，一个比较好的办法是直接拷贝其他磁盘的系统，修改几个简单的配置文件，系统就搞定了，因此下面介绍两种方法进行系统快速还原。</p>
+<h4 id="使用再生龙进行系统备份和还原工作"><a href="#使用再生龙进行系统备份和还原工作" class="headerlink" title="使用再生龙进行系统备份和还原工作"></a>使用再生龙进行系统备份和还原工作</h4><p>再生龙工具非常的强大，如果集群需要恢复的系统特别多，那么可以采用这种方式，下面附上再生龙使用教程，百度上面也可以搜索到，参考文档进行使用。</p>
+<p><a href="http://clonezilla.nchc.org.tw/news/" target="_blank" rel="external">再生龙官网</a><br><a href="http://7xsnoh.com1.z0.glb.clouddn.com//clustermgmt/pdfClonezilla%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E.pdf" target="_blank" rel="external">再生龙详细使用文档</a></p>
+<p>我们需要将再生龙服务器版本刻录到U盘或者光盘上面，然后启动到再生龙进行操作。</p>
+<p>系统包括克隆和还原两个步骤，首先需要将一个计算节点的系统使用再生龙克隆到NFS文件系统或者另外一个大的磁盘上面，然后切换到再生龙的还原模式，启动需要还原的计算节点，从网络启动，然后进行还原工作。</p>
+<p>需要说明的是设置网卡的时候，只需要设置一个网卡eth0即可，因为eth1是直通模块。eth0的IP地址建议设置为11.11.4.100，子网掩码设置为255.255.0.0，NFS文件系统的IP地址是11.11.2.18，路径是/public/vpublic02，这个目录里面已经备份过几个计算节点的磁盘了，可以暂时使用，或者自己选择一个重新备份。</p>
+<h4 id="使用硬盘对拷进行重装系统"><a href="#使用硬盘对拷进行重装系统" class="headerlink" title="使用硬盘对拷进行重装系统"></a>使用硬盘对拷进行重装系统</h4><p><strong>数据无价，拷贝之前一定要确定磁盘的用户数据备份了。</strong></p>
+<p>首先将需要重装的节点上面的硬盘卸载下来，插入到一个负载不是很大的节点的备用硬盘仓中，然后使用fdisk -l来查看新插入的硬盘的编号，由于本集群的计算节点只有两个硬盘仓，所以后插入的硬盘的编号就是/dev/sdb了。</p>
+<h5 id="卸载Lustre和NFS挂载点"><a href="#卸载Lustre和NFS挂载点" class="headerlink" title="卸载Lustre和NFS挂载点"></a>卸载Lustre和NFS挂载点</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;&apos;/public&apos;,&apos;/home&apos;,&apos;/vpublic01&apos;,&apos;/vpublic02&apos;&#125;;</span><br><span class="line">do</span><br><span class="line">  umount $i;</span><br><span class="line">done;</span><br></pre></td></tr></table></figure>
+<h5 id="执行dd命令"><a href="#执行dd命令" class="headerlink" title="执行dd命令"></a>执行dd命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/sda of=/dev/sdb bs=32256 conv=notrunc,noerror &amp;</span><br></pre></td></tr></table></figure>
+<p>后面的&amp;表示以后台形式运行，运行之后会返回一个编号，就是这个进程的PID。</p>
+<p>执行如下命令来查看拷贝的进度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while kill -USR1 2643;</span><br><span class="line">do </span><br><span class="line">  echo;</span><br><span class="line">  sleep 10;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>把2643替换为你自己的进程PID就可以了。<br>这里的300GB的硬盘，大概拷贝需要40分钟左右，因为是Serial SCSI硬盘，速度稍微快一点。</p>
+<h5 id="修改IP地址"><a href="#修改IP地址" class="headerlink" title="修改IP地址"></a>修改IP地址</h5><p>修改Ethernet和IB网IP地址，通过修改/etc/sysconfig/network-scripts/中的ifcfg-ib0和ifcfg-br0两个文件中的IP地址即可。</p>
+<h5 id="删除rules文件"><a href="#删除rules文件" class="headerlink" title="删除rules文件"></a>删除rules文件</h5><p>查看/etc/udev/rules.d/70-persistent-net.rules文件，修改对应参数，我一般比较懒，直接删除，重启会重建。</p>
+<h5 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h5><p>修改/etc/sysconfig/network文件，在RHEL6中该文件存储的是系统主机名。RHEL7系统中，请使用<code>hostnamectl sethostname hostname</code>命令设置主机名，请将最后的hostname替换为你想设置的主机名。</p>
+<h5 id="磁盘检查"><a href="#磁盘检查" class="headerlink" title="磁盘检查"></a>磁盘检查</h5><p>很多时候，母机器上面有一些inode信息不一致或者坏掉的磁盘块，因此需要进行一下简单的修复工作。请依次执行一下命令，检查和修复磁盘。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fsck -y /dev/sdb1</span><br><span class="line">fsck -y /dev/sdb2</span><br></pre></td></tr></table></figure></p>
+<p>其中dev/sdb1和/dev/sdb2为需要还原系统的磁盘的分区编号，根据具体情况进行替换即可。</p>
+<h5 id="放回磁盘，启动系统"><a href="#放回磁盘，启动系统" class="headerlink" title="放回磁盘，启动系统"></a>放回磁盘，启动系统</h5><p>将硬盘取回，放到原节点，启动节点，则会进入一个初始化的过程，有时会由于存在磁盘中的块与索引信息不一致的情况，尽管之前做过检查，但是在插入到新机器上后，还会出现，它会提示你输入root密码进行修复或者按Ctrl-D取消，这时需要输入root密码，因为是拷贝的其他节点的数据，因此root密码也是被拷贝节点的密码。如果root密码忘记，可以将磁盘重新插入到一台机器，将那台机器的/etc/shadow文件拷贝到磁盘中，这样就相当于重置了root密码。输入root密码之后，有可能提示你磁盘有问题。这个时候需要进行修复。此时一般会提示你哪个分区有问题，例如/dev/sda1有问题或者是/dev/sda2有问题，那么需要我们进行修复，输入一下命令，建议将所有分区一次性修复。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#修复第一个分区，这个分区一般是引导分区</span><br><span class="line">fsck -y /dev/sda1</span><br><span class="line"></span><br><span class="line">#修复第二个分区，这个分区一般是主文件分区</span><br><span class="line">fsck -y /dev/sda2</span><br></pre></td></tr></table></figure></p>
+<p>有时会提示你是/dev/sda2有问题，但是建议也修复一下/dev/sda1，这样重启之后不会因为文件系统有小故障导致重新修复再次重启。</p>
+<p>输入reboot重启即可。</p>
+<h5 id="被拷贝机还原"><a href="#被拷贝机还原" class="headerlink" title="被拷贝机还原"></a>被拷贝机还原</h5><p>将被拷贝的机器的文件系统挂载还原。或者直接重启也可以。</p>
+<p><strong>再次强调，数据无价，拷贝之前一定要确定磁盘的用户数据已经备份了。</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/HPC集群运维总结3-用户与权限管理.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/HPC集群运维总结3-用户与权限管理.html" itemprop="url">HPC集群运维总结3-用户与权限管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T20:20:20+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/HPC集群运维总结3-用户与权限管理.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/HPC集群运维总结3-用户与权限管理.html" class="cy_cmt_count" data-xid="HPC集群运维总结3-用户与权限管理.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/HPC集群运维总结3-用户与权限管理.html" class="leancloud_visitors" data-flag-title="HPC集群运维总结3-用户与权限管理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  1,717
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  6分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h3 id="用户与权限管理"><a href="#用户与权限管理" class="headerlink" title="用户与权限管理"></a>用户与权限管理</h3><h4 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h4><h5 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h5><p>集群默认安装了clusconf软件，厂家的马少杰经理之前写的，主要用于集群的用户添加、开关机管理、批量执行命令、批量同步命令等。还是挺不错的，但是速度比较慢。特别是同步文件的时候，如果有几个节点存在问题，可能就会卡在那里半天，而且同步过程是顺序执行的，导致速度很慢。说白了，实际上是由于在进行远程执行命令的时候，没有考虑到失败的情况，也就是说没有添加失败时延，导致操作失败的时延差不多为30s，所以如果一批节点中，有几个节点拓机或者负载太高，会导致整个操作流程延长，所以，文件同步这一点来说，还是不太灵活。而pssh这个软件就比较好，如果连接失败，马上就返回，并且所有的节点的同步操作时并行执行的，所以速度非常快。因此我们结合了clusconf的方便和pssh的速度，来进行用户的添加。</p>
+<p>用户的添加实际上就是在管理节点添加了某一个用户，用户名存储在/etc/passwd文件，用户组信息存储在/etc/group文件，用户密码存储在/etc/shadown文件里面。实际上，添加集群用户的过程就是将这些文件复制到希望用户登录的节点上面。聪明的你应该很快就会发现，这个方式有几个弊端。</p>
+<ul>
+<li>每次添加用户，都需要进行文件的同步。</li>
+<li>一旦添加新用户，原有用户也可以登录新用户分配的节点。</li>
+<li>某些节点更换操作系统后，直接复制这些文件会导致该节点不可用。</li>
+<li>某个用户在管理节点或者部分节点更新密码，其他节点的密码也需要同步更新。</li>
+<li>其他未提及的弊端。</li>
+</ul>
+<p>其实有不少集群统一用户管理的方式。比如说NIS，LDAP的形式都可以很好的解决这种问题。时间关系和经历有限，所以没有部署这样的系统。</p>
+<p>好吧，感觉有点啰嗦了。切中正题，如何添加用户。有如下两个步骤：</p>
+<ul>
+<li>在管理节点添加用户。</li>
+<li>同步文件到计算节点。</li>
+</ul>
+<h5 id="管理节点用户添加"><a href="#管理节点用户添加" class="headerlink" title="管理节点用户添加"></a>管理节点用户添加</h5><p>集群的管理节点是node307和node308，Lustre文件系统的MDS服务器是node309和node310，NFS文件系统所在服务器是node324，所以不管用户需要使用多少节点，必须在这几个节点添加同一个用户，而且ID也必须是一样的，这样用户才可以在计算节点访问分布式文件系统和NFS文件系统。具体添加命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clusconf -p node -n `seq 307 310` 324 -ua tom</span><br><span class="line">#假设用户名是tom</span><br></pre></td></tr></table></figure></p>
+<h5 id="同步用户信息文件"><a href="#同步用户信息文件" class="headerlink" title="同步用户信息文件"></a>同步用户信息文件</h5><p>使用pssh软件来同步用户信息文件，主要是/etc/passwd和/etc/shadown文件。<br>前提条件是管理节点安装了基于Python的PSSH软件。执行如下命令同步这几个文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pscp -h node-list /etc/passwd /etc/</span><br><span class="line">pscp -h node-list /etc/shadow /etc/</span><br><span class="line">pscp -h node-list /etc/group /etc/</span><br></pre></td></tr></table></figure></p>
+<p>简要介绍一下pscp命令的使用吧。<br>-h选项后面跟着的就是包含了计算节点或者分配给用户的节点主机名或者IP地址的文件。文件的内容可能是如下形式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node1</span><br><span class="line">node2</span><br><span class="line">node3</span><br></pre></td></tr></table></figure></p>
+<p>也可以是IP地址的形式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.17.0.1</span><br><span class="line">172.17.0.2</span><br><span class="line">172.17.0.3</span><br></pre></td></tr></table></figure></p>
+<p>当然，也可以是主机和IP地址混合的形式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node1</span><br><span class="line">172.17.0.2</span><br><span class="line">node3</span><br></pre></td></tr></table></figure></p>
+<p>根据具体情况来定吧。我一般是使用一个脚本来生成这样的主机名文件。参考代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># 生成节点列表，根绝给定的起止号以及保存的文件名。</span><br><span class="line"># $1起始编号</span><br><span class="line"># $2终止编号</span><br><span class="line"># $3保存文件名</span><br><span class="line"></span><br><span class="line">start=0;</span><br><span class="line">end=1;</span><br><span class="line">if [ $1 ]</span><br><span class="line">then</span><br><span class="line">	start=$1;</span><br><span class="line">fi;</span><br><span class="line"></span><br><span class="line">if [ $2 ]</span><br><span class="line">then</span><br><span class="line">	end=$2;</span><br><span class="line">fi;</span><br><span class="line"></span><br><span class="line">filename=$start-$end-node-list;</span><br><span class="line">if [ $3 ]</span><br><span class="line">then</span><br><span class="line">	filename=$3;</span><br><span class="line">fi;</span><br><span class="line"></span><br><span class="line">for i in `seq $start $end`</span><br><span class="line">do</span><br><span class="line">	echo node$i &gt;&gt; $filename;</span><br><span class="line">done;</span><br><span class="line"></span><br><span class="line">echo &quot;nodelist from $start to $end is saved in $filename&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>pscp后面跟着两个文件或者目录，第一个是源目录或者源文件，第二个是目标目录和目标文件。<br>pscp命令的help信息如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pscp  [-vAr]  [-h  hosts_file]  [-H [user@]host[:port]] [-l user] [-p par] [-o outdir] [-e errdir] [-t timeout] [-O options] [-x args] [-X arg] local remote</span><br></pre></td></tr></table></figure></p>
+<p>默认情况下，这个同步的过程是非常快的，基本上是1-2s就可以搞定了。</p>
+<h5 id="一步到位的添加方法"><a href="#一步到位的添加方法" class="headerlink" title="一步到位的添加方法"></a>一步到位的添加方法</h5><p>如果分配给用户的节点不是很多的话， 使用上面的方式可能比较麻烦，这个时候，可使用集群默认的clusconf软件，可以用于用户的管理工作，常用的命令如下，例如说来了一个新的用户tom，需要给tom分配几个节点，比如说是100，101，105，106，107，下面简单介绍使用clusconf命令在以上节点添加用户tom。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clusconf -p node -n `seq 307 310` 100 101 `seq 105 107` -ua tom</span><br></pre></td></tr></table></figure></p>
+<p>-p node是指节点主机名的前缀，例如说node1的前缀是node，这个是固定写法。<br>-n 选项指定要进行操作的节点编号，无论用户分配哪些节点给用户，以下节点必须包含在里面，307和308节点是集群的入口节点，只有这两个节点才能登陆到集群，309和310是Lustre文件系统的元数据#服务器，如果没有在这两个节点添加用户，那么用户将无法登录到集群使用文件系统，很可能导致卡住。因此在进行添加用户时，一定要添加<code>seq 307 310</code>这句。其他节点的编号，可以使用<code>seq startindex endindex</code>方法进行生成，前提是节点编号连续。当节点编号不连续时，可以依次输入节点编号，空格分开。-ua tom的意思是添加用户tom，ua即useradd的意思</p>
+<p>由于目前仅仅使用clusconf的用户添加功能，所以只能介绍到这里，下面附上一个clusconf的使用教程，需要了解可以详细阅读。<a href="http://7xsnoh.com1.z0.glb.clouddn.com//clustermgmt/pdf/clusconf-1.4%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C.pdf" target="_blank" rel="external">clusconf1.4使用手册</a></p>
+<h4 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h4><h5 id="root权限管理"><a href="#root权限管理" class="headerlink" title="root权限管理"></a>root权限管理</h5><p>遵循最小化权限配置原则。尽量不给root权限。如果是普通的刀片节点，可以给root权限。<br>GPU节点，尽量不给，因为环境的恢复过程非常复杂，少则半天到一天，多则2-3天。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Linux内核空间分布.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux内核空间分布.html" itemprop="url">Linux内核空间分布</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T20:16:47+08:00">
+                2017-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/Linux内核空间分布.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/Linux内核空间分布.html" class="cy_cmt_count" data-xid="Linux内核空间分布.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/Linux内核空间分布.html" class="leancloud_visitors" data-flag-title="Linux内核空间分布">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  13
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  1分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://blog.chinaunix.net/uid-27177626-id-3436619.html" target="_blank" rel="external">内核空间非连续内存区的分配</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/undefined-reference-to-pthread-create.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/undefined-reference-to-pthread-create.html" itemprop="url">undefined reference to pthread_create</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-27T07:38:38+08:00">
+                2017-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux开发/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/undefined-reference-to-pthread-create.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/undefined-reference-to-pthread-create.html" class="cy_cmt_count" data-xid="undefined-reference-to-pthread-create.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/undefined-reference-to-pthread-create.html" class="leancloud_visitors" data-flag-title="undefined reference to pthread_create">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  123
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  1分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在使用pthread库进行线程开发的时候，如果包含了pthread.h头文件后，在编译代码的时候还是出现了如下错误。可能是没有在编译时没有链接相关的函数库。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">undefined reference to `pthread_create&apos;</span><br><span class="line">collect2: ld returned 1 exit status</span><br><span class="line">make: *** [threadid] Error 1</span><br></pre></td></tr></table></figure></p>
+<p>在编译时，加入-l pthread选项即可。<br>如果是用Makefile，也是一样的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CC = gcc</span><br><span class="line">CFLAGS = -I/home/cat/apue/apue.2e/include -Wall -g、</span><br><span class="line">threadid: threadid.o</span><br><span class="line">$(CC) $(CFLAGS) -o $@ $^ -lpthread</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/RDMA概述-转载.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/RDMA概述-转载.html" itemprop="url">RDMA概述-转载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T16:03:36+08:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
+                    <span itemprop="name">高性能计算</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/RDMA概述-转载.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/RDMA概述-转载.html" class="cy_cmt_count" data-xid="RDMA概述-转载.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/RDMA概述-转载.html" class="leancloud_visitors" data-flag-title="RDMA概述-转载">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  4,042
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  14分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>1 什么是RDMA<br>1.1 传统意义上的DMA</p>
+<p>—直接内存访问（DMA）方式,是一种完全由硬件执行I/O交换的工作方式。在这种方式中,DMA控制器从CPU完全接管对总线的控制,数据交换不经过CPU,而直接在内存和I/O设备之间进行。DMA工作时,由DMA控制器向内存发出地址和控制信号;进行地址修改;对传送字的个数计数;并且以中断方式向CPU报告传送操作的结束。DMA方式一般用于高速传送成组的数据。</p>
+<p>—使用DMA方式目的： 减少大批量数据传输时CPU的开销;方法：采用专用DMA控制器（DMAC）生成访存地址并控制访存过程;优点：操作均由硬件电路实现,传输速度快;CPU基本不干预,仅在初始化和结束时参与,CPU与外设并行工作,效率高。</p>
+<p>—DMA的数据块传送过程可分为三个阶段：传送前预处理;正式传送;传送后处理。　　DMA控制流程：1.预处理：由CPU执行I/O指令对DMAC进行初始化与启动。2. 数据传送：由DMAC控制总线进行数传。3.后处理：传送结束,DMAC向CPU发中断请求,报告DMA操作的结束。CPU响应,转入中断服务程序,完成DMA结束处理工作。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/RDMA概述-转载.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Draining-system-to-allow-starving-job-to-run.html" itemprop="url">Draining system to allow starving job to run</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T15:17:40+08:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/Draining-system-to-allow-starving-job-to-run.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html" class="cy_cmt_count" data-xid="Draining-system-to-allow-starving-job-to-run.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/Draining-system-to-allow-starving-job-to-run.html" class="leancloud_visitors" data-flag-title="Draining system to allow starving job to run">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  68
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  1分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Draining system to allow starving job to run</span><br></pre></td></tr></table></figure>
+<p>意思是，队列中还有排队非常久的饥饿进程，为了更公平合理使用队列，所以将新提交的作业做置为排队状态以让出资源运行排队的饥饿作业。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/qsub-script-is-written-in-DOS-Windows-text-format.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/qsub-script-is-written-in-DOS-Windows-text-format.html" itemprop="url">qsub:script is written in DOS/Windows text format</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T16:27:06+08:00">
+                2017-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/qsub-script-is-written-in-DOS-Windows-text-format.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://blog.zhangchi.xyz/qsub-script-is-written-in-DOS-Windows-text-format.html" class="cy_cmt_count" data-xid="qsub-script-is-written-in-DOS-Windows-text-format.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/qsub-script-is-written-in-DOS-Windows-text-format.html" class="leancloud_visitors" data-flag-title="qsub:script is written in DOS/Windows text format">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  140
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  1分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>dos格式文件传输到unix系统时，会在每行的结尾多一个^M（/r），当然也有可能看不到。但是在vim的时候，会在下面显示此文件的格式，比如 “dos.txt” [dos] 120L, 2532C 字样,表示是一个[dos]格式文件，如果是MAC系统的，会显示[MAC]。因为文件格式的原因有时会导致我们的unix程序，或者shell程序出现错误，那么需要把这些dos文件格式转换成unix格式，方法是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim dos.txt</span><br><span class="line">:set fileformat=unix</span><br><span class="line">:w</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/RedHat-CentOS-rpm-降级安装老版rpm包.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -699,1599 +2316,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/CentOS-RHEL下Lustre2-10-0-Client的安装.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CentOS-RHEL下Lustre2-10-0-Client的安装.html" itemprop="url">CentOS/RHEL下Lustre2.10.0 Client的安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T16:39:04+08:00">
-                2017-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/集群管理/" itemprop="url" rel="index">
-                    <span itemprop="name">集群管理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/CentOS-RHEL下Lustre2-10-0-Client的安装.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/CentOS-RHEL下Lustre2-10-0-Client的安装.html" class="cy_cmt_count" data-xid="CentOS-RHEL下Lustre2-10-0-Client的安装.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/CentOS-RHEL下Lustre2-10-0-Client的安装.html" class="leancloud_visitors" data-flag-title="CentOS/RHEL下Lustre2.10.0 Client的安装">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  1,043
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  4分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Lustre2-10-0-Client客户端安装-CentOS-RHEL"><a href="#Lustre2-10-0-Client客户端安装-CentOS-RHEL" class="headerlink" title="Lustre2.10.0 Client客户端安装-CentOS/RHEL"></a>Lustre2.10.0 Client客户端安装-CentOS/RHEL</h1><p>学校超算中心使用了Lustre文件系统，速度超级快，不是一般的文件系统可以比的，Top500的超级计算机中有50%以上使用了该文件系统。该文件系统也是命途多舛，几经波折最后被Intel老大收购了。目前比较新的版本的2.10.1这个版本。支持最新的RHEL/CentOS7.3。</p>
-<p>由于超算中心的系统是基于RHEL6.2的，比较老了，而很多HPC软件的新特性都是基于RHEL7.0来设计的，为了使用HPC软件新特性，因此安装了新的系统，由于Lustre的安装过程比较复杂，还需要编译内核，加载模块，所以一直都不敢尝试。</p>
-<p>但是无奈，如果不安装Lustre，并行文件系统没法用，计算速度大打折扣。因此还是硬着头皮安装了。由于目前网上有关的Lustre资料比较少，所以就分享一下自己装Lustre客户端的经验给大家了。其实新版本的安装过程简单了不少，以前的还需要重新编译内核，要复杂很多倍的。</p>
-<ul>
-<li><strong>下载client端相关的RPM包</strong><br>到这里<a href="https://downloads.hpdd.intel.com/public/lustre/" target="_blank" rel="external">Intel lustre官网</a>下载相关版本的lustre包，由于服务器端已经部署好了，不敢随意乱动，所以只安装了计算节点的Lustre client端，即客户端。</li>
-<li><strong>yum install kernel-devel kernel-headers </strong><br>安装编译软件需要的一些基本工具包，如果还差，可以一起安装好了，免得影响Lustre的编译。</li>
-<li><strong>rpm -ivh 安装相关的包</strong><br>实际上，可以直接安装网上下载的包，因为针对常见的CentOS版本，Intel已经帮我们编译好了。安装的时候，一定要注意了软件版本和内核版本的一致，否则无法正常安装。<br>举例说明，如果你在官网下载的路径是<br><a href="https://downloads.hpdd.intel.com/public/lustre/lustre-2.10.0/el7/client/RPMS/x86_64/" target="_blank" rel="external">https://downloads.hpdd.intel.com/public/lustre/lustre-2.10.0/el7/client/RPMS/x86_64/</a></li>
-</ul>
-<p>请注意，可以直接下载RPM目录下面的包即可，SRPMS是源文件的RPM包，主要针对官网没有编译好的系统版本，可能需要自己去编译。</p>
-<p>kmod-lustre-client-2.10.0-1.el7.x86_64.rpm<br>kmod-lustre-client-tests-2.10.0-1.el7.x86_64.rpm<br>lustre-client-2.10.0-1.el7.x86_64.rpm<br>lustre-client-debuginfo-2.10.0-1.el7.x86_64.rpm<br>lustre-client-dkms-2.10.0-1.el7.noarch.rpm<br>lustre-client-tests-2.10.0-1.el7.x86_64.rpm<br>lustre-iokit-2.10.0-1.el7.x86_64.rpm</p>
-<p>将以上包下载到需要挂载Lustre文件系统的服务器上，然后陆续开始安装这些包。如果你的机器联网了，那么可以使用yum install packagename来进行安装，因为这样可以帮你自动解决一些未安装的依赖包的问题。如果没有联网，那么老实使用rpm -ivh packagename的形式安装。</p>
-<p>安装也是有顺序的，大致的顺序如下：<br>kmod-lustre-client-2.10.0-1.el7.x86_64.rpm<br>kmod-lustre-client-tests-2.10.0-1.el7.x86_64.rpm<br>lustre-iokit-2.10.0-1.el7.x86_64.rpm<br>lustre-client-dkms-2.10.0-1.el7.noarch.rpm<br>lustre-client-2.10.0-1.el7.x86_64.rpm<br>lustre-client-debuginfo-2.10.0-1.el7.x86_64.rpm<br>lustre-client-tests-2.10.0-1.el7.x86_64.rpm</p>
-<ul>
-<li><strong>depmod -a</strong></li>
-<li><strong>modprobe lustre加载lustre模块</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modprobe lustre</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>加载Lustre文件系统有关模块。<br>如果是在以前，还需要在/etc/modprobe.d/目录下面添加一个lustre.conf文件，该文件配置了Lustre使用的网络信息。新版本的Lustre已经不需要了，文件系统客户端自动识别和配置了。但是还是贴出来给大家看看。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options lnet networks=&quot;tcp0(eth0)&quot;</span><br></pre></td></tr></table></figure>
-<p>如果你的网卡或者网桥的名字不是eth0，需要修改为网卡或网桥的名字，然后再执行modprobe lustre命令</p>
-<ul>
-<li><strong>挂载文件系统</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t lustre &quot;lsserver@tcp0:/sharefs&quot; /lustre</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>其中lsserver是Lustre服务器端的主机名，根据实际情况修改。<br>sharefs是Lustre服务器端提供的文件系统名称<br>/lustre是在客户端创建的挂载点。</p>
-<ul>
-<li><strong>开始使用</strong><br>正常挂载后，就可以像本地文件系统一样使用Lustre了。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/刀片服务器交换模块和直通模块区别.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/刀片服务器交换模块和直通模块区别.html" itemprop="url">刀片服务器交换模块和直通模块区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T16:02:58+08:00">
-                2017-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/集群管理/" itemprop="url" rel="index">
-                    <span itemprop="name">集群管理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/刀片服务器交换模块和直通模块区别.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/刀片服务器交换模块和直通模块区别.html" class="cy_cmt_count" data-xid="刀片服务器交换模块和直通模块区别.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/刀片服务器交换模块和直通模块区别.html" class="leancloud_visitors" data-flag-title="刀片服务器交换模块和直通模块区别">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  98
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  1分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>以blade center e 为例，直通模块只是相当于网线，把网卡的接口从刀片引出到机箱后面，各个刀片彼此不能交换数据。<br>而交换模块不同，相当于一个6口对外，14口对内的交换机，缺省设置下，各个刀片可以通过这个交换机互相访问，包括对外的端口。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/sshd-troubleshooting.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/sshd-troubleshooting.html" itemprop="url">sshd troubleshooting</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-10T11:25:01+08:00">
-                2017-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ssh/" itemprop="url" rel="index">
-                    <span itemprop="name">ssh</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/sshd-troubleshooting.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/sshd-troubleshooting.html" class="cy_cmt_count" data-xid="sshd-troubleshooting.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/sshd-troubleshooting.html" class="leancloud_visitors" data-flag-title="sshd troubleshooting">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  246
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  2分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>If you have ruled out any “external” factors, the following set of steps usually helps to narrow it down. So while this doesn’t directly answer your question, it may help tracking down the error cause.</p>
-<p>Troubleshooting sshd</p>
-<p>What I find generally very useful in any such cases is to start sshd without letting it daemonize. The problem in my case was that neither syslog nor auth.log showed anything meaningful.</p>
-<p>When I started it from the terminal I got:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># $(which sshd) -Ddp 10222</span><br></pre></td></tr></table></figure>
-<p>/etc/ssh/sshd_config line 8: address family must be specified before ListenAddress.<br>Much better! This error message allowed me to see what’s wrong and fix it. Neither of the log files contained this output.</p>
-<p>NB: at least on Ubuntu the $(which sshd) is the best method to satisfy sshd requirement of an absolute path. Otherwise you’ll get the following error: sshd re-exec requires execution with an absolute path. The -p 10222 makes sshd listen on that alternative port, overriding the configuration file - this is so that it doesn’t clash with potentially running sshd instances. Make sure to choose a free port here.</p>
-<p>Finally: connect to the alternative port (ssh -p 10222 user@server).</p>
-<p>This method has helped me many many times in finding issues, be it authentication issues or other types. To get really verbose output to stdout, use $(which sshd) -Ddddp 10222 (note the added dd to increase verbosity). For more debugging goodness check man sshd.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/MatlabR2016a-Crack.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/MatlabR2016a-Crack.html" itemprop="url">MatlabR2016a Crack</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-10T09:30:35+08:00">
-                2017-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/集群管理/" itemprop="url" rel="index">
-                    <span itemprop="name">集群管理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/MatlabR2016a-Crack.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/MatlabR2016a-Crack.html" class="cy_cmt_count" data-xid="MatlabR2016a-Crack.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/MatlabR2016a-Crack.html" class="leancloud_visitors" data-flag-title="MatlabR2016a Crack">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  423
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  2分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><ol>
-<li>首先要下载好Matlab R2016a及其破解文件;</li>
-<li>将下载好的Matlab R2016a及其破解文件解压;</li>
-</ol>
-<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><ol>
-<li><p>建立一个文件夹，直接挂载.iso文件。<br>sudo mkdir /mnt<br>用来挂载.iso文件，就跟windows里的虚拟光驱一样;</p>
-</li>
-<li><p>cd 到iso所在的路径，也就是你解压后的那个文件夹，存放iso的;</p>
-</li>
-<li><p>sudo mount -o loop R2016a_glnxa64.iso /mnt 把iso挂载到刚建的虚拟光驱中;</p>
-</li>
-<li><p>安装<br>$cd /mnt/<br>sudo ./install</p>
-</li>
-<li>接下来会打开matlab的安装界面(与Windows下一样)，然后输入密钥。然后一直下一步，直到安装完成，大约耗时1个小时。</li>
-</ol>
-<h4 id="Crack过程"><a href="#Crack过程" class="headerlink" title="Crack过程"></a>Crack过程</h4><ol>
-<li>创建licenses文件夹<br>进入MatlabR2016a的安装文件夹<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/MATLAB/R2016a/bin</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>新建“licenses”文件并赋予其权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir licenses</span><br><span class="line">sudo chmod 777 licenses</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/MatlabR2016a-Crack.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Linux-man-后数字涵义及作用.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux-man-后数字涵义及作用.html" itemprop="url">Linux man 后数字涵义及作用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T21:18:49+08:00">
-                2017-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/Linux-man-后数字涵义及作用.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/Linux-man-后数字涵义及作用.html" class="cy_cmt_count" data-xid="Linux-man-后数字涵义及作用.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/Linux-man-后数字涵义及作用.html" class="leancloud_visitors" data-flag-title="Linux man 后数字涵义及作用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  303
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  1分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>平时我们开发中碰到陌生的命令或者函数，通常会找man来帮助下，通过man后面加的数字可以看到关于命令或者函数更深层次的东西。<br>或者通过比较命令和函数加深了解你需要的知识。<br>如下是man后面的数字代表的含义。<br>Section 1<br>user commands (introduction)<br>Section 2<br>system calls (introduction)<br>Section 3<br>library functions (introduction)<br>Section 4<br>special files (introduction)<br>Section 5<br>file formats (introduction)<br>Section 6<br>games (introduction)<br>Section 7<br>conventions and miscellany (introduction)<br>Section 8<br>administration and privileged commands (introduction)<br>Section L<br>math library functions<br>Section N<br>tcl functions</p>
-<p>中文含义如下：<br>             1 用户命令， 可由任何人启动的。<br>2 系统调用， 即由内核提供的函数。</p>
-<p>3 例程， 即库函数。</p>
-<p>4 设备， 即/dev目录下的特殊文件。</p>
-<p>5 文件格式描述， 例如/etc/passwd。</p>
-<p>6 游戏， 不用解释啦！</p>
-<p>7 杂项， 例如宏命令包、惯例等。</p>
-<p>8 系统管理员工具， 只能由root启动。</p>
-<p>9 其他（Linux特定的）， 用来存放内核例行程序的文档。</p>
-<p>n 新文档， 可能要移到更适合的领域。</p>
-<p>o 老文档， 可能会在一段期限内保留。</p>
-<p>l 本地文档， 与本特定系统有关的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Intra-Node-Communication-Mechanisms.html" itemprop="url">Intra-Node Communication Mechanisms</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T08:51:47+08:00">
-                2017-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
-                    <span itemprop="name">论文阅读</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/Intra-Node-Communication-Mechanisms.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/Intra-Node-Communication-Mechanisms.html" class="cy_cmt_count" data-xid="Intra-Node-Communication-Mechanisms.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/Intra-Node-Communication-Mechanisms.html" class="leancloud_visitors" data-flag-title="Intra-Node Communication Mechanisms">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  63
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  1分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="NIC-Level-Loopback"><a href="#NIC-Level-Loopback" class="headerlink" title="NIC-Level Loopback"></a>NIC-Level Loopback</h5><p>Two DMA operations</p>
-<h5 id="User-space-Shared-Memory"><a href="#User-space-Shared-Memory" class="headerlink" title="User-space Shared Memory"></a>User-space Shared Memory</h5><p>The sending process copies the message to the shared memory area.<br>The receiving process then copy over the message to its own buffer.</p>
-<h5 id="Kernel-based-Shared-Memory"><a href="#Kernel-based-Shared-Memory" class="headerlink" title="Kernel based Shared Memory"></a>Kernel based Shared Memory</h5><ul>
-<li>The receiving process needs to bring the sending process’ buffer into its cache</li>
-<li>And the receiving process can write this buffer into its own receive buffer</li>
-</ul>
-<p><img src="http://7xsnoh.com1.z0.glb.clouddn.com/Intra-Node%20Communication%20Schemes.png" alt="Intra Node Communication Shemes"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Inter-vs-Intra.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Inter-vs-Intra.html" itemprop="url">Inter- vs Intra-</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-05T21:03:22+08:00">
-                2017-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/基础知识/" itemprop="url" rel="index">
-                    <span itemprop="name">基础知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/Inter-vs-Intra.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/Inter-vs-Intra.html" class="cy_cmt_count" data-xid="Inter-vs-Intra.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/Inter-vs-Intra.html" class="leancloud_visitors" data-flag-title="Inter- vs Intra-">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  332
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  2分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Inter- vs Intra-<br>What’s the difference between the interstate highway and the intrastate highway? Inter- is a prefix that means between two groups, and intra- is a prefix which means within or inside one group. Inter- and intra- are both prefixes, which are groups of letters that are placed at the beginning of a word in order to change its meaning.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Inter-vs-Intra.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZHANGCHI">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DIYER糍粑的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID.html" itemprop="url">理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-03T14:43:06+08:00">
-                2017-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://blog.zhangchi.xyz/理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID.html" class="cy_cmt_count" data-xid="理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID.html" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID.html" class="leancloud_visitors" data-flag-title="理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">浏览量 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数</span>
-                
-                <span title="字数">
-                  1,404
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">耗时</span>
-                
-                <span title="耗时">
-                  5分
-                </span>
-              
-	      
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>本文为转载，<a href="http://blog.csdn.net/demiaowu/article/details/39370355">原文出处</a></p>
-<h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><p>实际用户ID（RUID）：用于标识一个系统中用户是谁，一般是在登录之后，就被唯一确定的，就是登陆的用户的uid<br>有效用户ID（EUID）：用于系统决定用户对系统资源的权限。也就是说当用户做任何一个操作时，最终看它有没有权限，都是在判断有效用户ID是否有权限，如果有，则OK，否则报错不能执行。在正常情况下，一个用户登录之后（我们假设是A用户），A用户的有效用户ID和实际用户ID是相同的，但是如果A用户在某些场景中想要执行一些特权操作，而上面我们说到用户的任何操作，LINUX内核都是通过检验有效用户ID来判断当前执行这个操作的用户是否具有权限，显然是特权操作，A用户没有权限，所以A用户就只能通过一定的手段来修改当前的有效用户ID使其具有执行特权操作的权限。这里说明了下面为什么我们需要修改有效用户ID，就是想再某一时刻能够执行一些特权操作。下面在举例说明。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/理解保存设置用户ID，设置用户ID位，有效用户ID，实际用户ID.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2336,7 +2365,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">106</span>
+                <span class="site-state-item-count">114</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2358,7 +2387,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">113</span>
+                <span class="site-state-item-count">114</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
