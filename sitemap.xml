@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/shmget-permission-denied.html</loc>
+    
+    <lastmod>2018-02-24T03:22:56.351Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB.html</loc>
     
     <lastmod>2018-02-24T03:20:26.595Z</lastmod>
@@ -250,13 +257,6 @@
     <loc>http://blog.zhangchi.xyz/HYDU-create-process-utils-launch-launch-c-556-execvp-error-on-file-Permission-denied.html</loc>
     
     <lastmod>2017-05-24T15:28:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangchi.xyz/shmget-permission-denied.html</loc>
-    
-    <lastmod>2017-05-24T01:41:39.000Z</lastmod>
     
   </url>
   

@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/shmget-permission-denied.html</loc>
+    <lastmod>2018-02-24T03:22:56.351Z</lastmod>
+    <data>
+        <display>
+        <title>shmget:permission denied</title>
+        <pubTime>2017-05-24T01:39:42.000Z</pubTime>
+        
+        <tag>Shared Memory</tag>
+         
+        <tag>共享内存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux开发" url="http://blog.zhangchi.xyz/categories/Linux%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB.html</loc>
     <lastmod>2018-02-24T03:20:26.595Z</lastmod>
     <data>
@@ -781,28 +803,6 @@
            
              
               <breadCrumb title="高性能计算" url="http://blog.zhangchi.xyz/categories/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangchi.xyz/shmget-permission-denied.html</loc>
-    <lastmod>2017-05-24T01:41:39.000Z</lastmod>
-    <data>
-        <display>
-        <title>shmget:permission denied</title>
-        <pubTime>2017-05-24T01:39:42.000Z</pubTime>
-        
-        <tag>Shared Memory</tag>
-         
-        <tag>共享内存</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux系统编程" url="http://blog.zhangchi.xyz/categories/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
           
         </display>
     </data>
