@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/%E5%8F%B0%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E6%9C%BA%E6%9E%B6%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8E%E5%88%80%E7%89%87%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB.html</loc>
+    <lastmod>2018-02-24T03:26:54.993Z</lastmod>
+    <data>
+        <display>
+        <title>台式服务器、机架式服务器与刀片式服务器的区别</title>
+        <pubTime>2016-07-01T02:51:14.000Z</pubTime>
+        
+        <tag>服务器分类</tag>
+         
+         
+           
+             
+              <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/Linux%E5%86%85%E6%A0%B8%E6%BA%90%E6%96%87%E4%BB%B6%E7%BD%91%E5%9D%80.html</loc>
     <lastmod>2018-02-24T03:24:09.930Z</lastmod>
     <data>
@@ -1095,26 +1115,6 @@
            
              
               <breadCrumb title="论文阅读" url="http://blog.zhangchi.xyz/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangchi.xyz/%E5%8F%B0%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E6%9C%BA%E6%9E%B6%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8E%E5%88%80%E7%89%87%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB.html</loc>
-    <lastmod>2016-07-01T06:38:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>台式服务器、机架式服务器与刀片式服务器的区别</title>
-        <pubTime>2016-07-01T02:51:14.000Z</pubTime>
-        
-        <tag>服务器种类</tag>
-         
-         
-           
-             
-              <breadCrumb title="硬件" url="http://blog.zhangchi.xyz/categories/%E7%A1%AC%E4%BB%B6/"/>
           
         </display>
     </data>
