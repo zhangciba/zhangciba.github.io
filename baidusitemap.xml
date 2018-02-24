@@ -132,32 +132,6 @@
 
     
   <url>
-    <loc>http://blog.zhangchi.xyz/HPC%E9%9B%86%E7%BE%A4%E8%BF%90%E7%BB%B4%E6%80%BB%E7%BB%93.html</loc>
-    <lastmod>2018-02-09T02:30:33.939Z</lastmod>
-    <data>
-        <display>
-        <title>HPC集群运维总结</title>
-        <pubTime>2017-12-12T12:20:20.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>集群管理</tag>
-         
-        <tag>HPC</tag>
-         
-        <tag>运维</tag>
-         
-         
-           
-             
-              <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://blog.zhangchi.xyz/%E6%B8%85%E7%90%86Zabbix%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE.html</loc>
     <lastmod>2018-02-08T10:38:15.226Z</lastmod>
     <data>
@@ -654,9 +628,9 @@
         <title>Linux集群安装Gaussian09 Linda版本</title>
         <pubTime>2017-06-03T04:56:09.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>高性能计算</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>Gaussian</tag>
          
