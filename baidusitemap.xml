@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/Linux%E5%86%85%E6%A0%B8%E6%BA%90%E6%96%87%E4%BB%B6%E7%BD%91%E5%9D%80.html</loc>
+    <lastmod>2018-02-24T03:24:09.930Z</lastmod>
+    <data>
+        <display>
+        <title>Linux内核源文件网址</title>
+        <pubTime>2018-01-26T08:56:46.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>Linux Kernel</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux开发" url="http://blog.zhangchi.xyz/categories/Linux%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/shmget-permission-denied.html</loc>
     <lastmod>2018-02-24T03:22:56.351Z</lastmod>
     <data>
@@ -109,28 +131,6 @@
            
              
               <breadCrumb title="集群管理" url="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://blog.zhangchi.xyz/Linux%E5%86%85%E6%A0%B8%E6%BA%90%E6%96%87%E4%BB%B6%E7%BD%91%E5%9D%80.html</loc>
-    <lastmod>2018-01-26T08:57:39.939Z</lastmod>
-    <data>
-        <display>
-        <title>Linux内核源文件网址</title>
-        <pubTime>2018-01-26T08:56:46.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>Linux Kernel</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linx" url="http://blog.zhangchi.xyz/categories/Linx/"/>
           
         </display>
     </data>
