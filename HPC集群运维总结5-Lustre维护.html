@@ -98,7 +98,7 @@ Lustre维护科研教育网格集群采用了高性能分布式计算文件系�
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="[TOC]
 Lustre维护科研教育网格集群采用了高性能分布式计算文件系统Lustre，Top500超级计算机中有超过50%都是用了该文件系统。该文件系统的命运特别坎坷，先后转手了好几家公司，现在是Intel公司所属。Lustre原先是一套开源的产品，最初是美国能源部提出开发的，后来成立CFS公司，2007年转卖给Sun公司，2010年Sun公司被Oracle公司收购，2010年又卖给了Whamc">
-<meta property="og:updated_time" content="2018-02-24T07:26:57.257Z">
+<meta property="og:updated_time" content="2018-02-24T08:37:54.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HPC集群运维总结5-Lustre维护">
 <meta name="twitter:description" content="[TOC]
@@ -470,8 +470,7 @@ Lustre维护科研教育网格集群采用了高性能分布式计算文件系�
 
       
         <p>[TOC]</p>
-<h3 id="Lustre维护"><a href="#Lustre维护" class="headerlink" title="Lustre维护"></a>Lustre维护</h3><p><span id="Lustre"></span><br>科研教育网格集群采用了高性能分布式计算文件系统Lustre，Top500超级计算机中有超过50%都是用了该文件系统。该文件系统的命运特别坎坷，先后转手了好几家公司，现在是Intel公司所属。Lustre原先是一套开源的产品，最初是美国能源部提出开发的，后来成立CFS公司，2007年转卖给Sun公司，2010年Sun公司被Oracle公司收购，2010年又卖给了Whamcloud公司，最后于2012年被Intel收购。</p>
-<p>Lustre是一种基于对象存储的分布式文件系统，主要包含MDS(Metadata Server)和OSS(Object Storage Server)，实验室集群的node309和node310是MDS,311-323是OSS，其中309和310互为备份，310提供了/public目录的元数据，并备份node309中的元数据，309之前提供了/home目录，后来因为一些故障，导致309没有再次提供服务了，目前309仅仅作为/public元数据的一个备份，但是309和310必须要同时启动才能正常工作。之前311-318提供/home目录的数据文件存储，319-323提供/public目录的数据文件存储，但是由于之前出现过阵列故障，所以目前只有319-323提供了数据存储服务。总结，node309和node310提供元数据存储服务，node329-323提供数据存储服务，这几个服务器不能随意允许个人登录，也不允许任意关机，否则导致整个集群无法正常使用。</p>
+<h3 id="Lustre维护"><a href="#Lustre维护" class="headerlink" title="Lustre维护"></a>Lustre维护</h3><p><span id="Lustre"></span><br>科研教育网格集群采用了高性能分布式计算文件系统Lustre，Top500超级计算机中有超过50%都是用了该文件系统。该文件系统的命运特别坎坷，先后转手了好几家公司，现在是Intel公司所属。Lustre原先是一套开源的产品，最初是美国能源部提出开发的，后来成立CFS公司，2007年转卖给Sun公司，2010年Sun公司被Oracle公司收购，2010年又卖给了Whamcloud公司，最后于2012年被Intel收购。<br><a id="more"></a><br>Lustre是一种基于对象存储的分布式文件系统，主要包含MDS(Metadata Server)和OSS(Object Storage Server)，实验室集群的node309和node310是MDS,311-323是OSS，其中309和310互为备份，310提供了/public目录的元数据，并备份node309中的元数据，309之前提供了/home目录，后来因为一些故障，导致309没有再次提供服务了，目前309仅仅作为/public元数据的一个备份，但是309和310必须要同时启动才能正常工作。之前311-318提供/home目录的数据文件存储，319-323提供/public目录的数据文件存储，但是由于之前出现过阵列故障，所以目前只有319-323提供了数据存储服务。总结，node309和node310提供元数据存储服务，node329-323提供数据存储服务，这几个服务器不能随意允许个人登录，也不允许任意关机，否则导致整个集群无法正常使用。</p>
 <p>所有计算节点都预先安装了Lustre客户端软件，使用Lustre文件系统，需要保证内核中加载了Lustre文件系统网络模块，配置文件在/etc/modprobe.d/lustre.conf，其中的内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options lnet networks=&quot;o2ib0(ib0),tcp0(eth0)&quot;</span><br></pre></td></tr></table></figure></p>
 <p>Lustre文件系统的网络模块，其中配置了两种网络通道，第一种是Infiniband网络通道，另外一种是以太网通道。如果节点的InfiniBand网络通道出现问题，可以使用以太网，后面会介绍Infiniband网络出现问题时使用以太网挂载Lustre文件系统的方法。</p>
 <p>Lustre文件系统的挂载脚本是/etc/client_mount.local内部，内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sleep 20</span><br><span class="line">mount -t lustre &quot;inode310@o2ib0:inode309@o2ib0:node310@tcp0:node309@tcp0:/p100fs02&quot; /public</span><br><span class="line">#mount -t lustre &quot;inode309@o2ib0:inode310@o2ib0:node309@tcp0:node310@tcp0:/p100fs01&quot; /home</span><br><span class="line">mount --rbind /public/home /home</span><br></pre></td></tr></table></figure></p>

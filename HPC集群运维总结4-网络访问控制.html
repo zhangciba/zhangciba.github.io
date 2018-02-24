@@ -93,8 +93,7 @@
 <meta name="description" content="[TOC]
 网络访问控制集群主要通过安全网关硬件和iptables进行访问控制。
 安全网关配置了允许登录进入集群的IP类型以及开放的端口信息。具体的IP地址限制由iptables来进行限制。
-允许某一IP地址访问集群编辑/etc/sysconfig/iptables文件，1-A INPUT -s 99.99.1.1 -p tcp -m tcp -j ACCEPT
-然后执行如下命令，重启iptabl">
+允许某一IP地址访问集群编辑/etc/sysconfig/iptables文件，1-A INPUT -s 99.99.1.1 -p tcp -m tcp -j ACCEPT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HPC集群运维总结4-网络访问控制">
 <meta property="og:url" content="http://blog.zhangchi.xyz/HPC集群运维总结4-网络访问控制.html">
@@ -102,16 +101,14 @@
 <meta property="og:description" content="[TOC]
 网络访问控制集群主要通过安全网关硬件和iptables进行访问控制。
 安全网关配置了允许登录进入集群的IP类型以及开放的端口信息。具体的IP地址限制由iptables来进行限制。
-允许某一IP地址访问集群编辑/etc/sysconfig/iptables文件，1-A INPUT -s 99.99.1.1 -p tcp -m tcp -j ACCEPT
-然后执行如下命令，重启iptabl">
-<meta property="og:updated_time" content="2018-02-24T07:26:51.847Z">
+允许某一IP地址访问集群编辑/etc/sysconfig/iptables文件，1-A INPUT -s 99.99.1.1 -p tcp -m tcp -j ACCEPT">
+<meta property="og:updated_time" content="2018-02-24T08:38:04.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HPC集群运维总结4-网络访问控制">
 <meta name="twitter:description" content="[TOC]
 网络访问控制集群主要通过安全网关硬件和iptables进行访问控制。
 安全网关配置了允许登录进入集群的IP类型以及开放的端口信息。具体的IP地址限制由iptables来进行限制。
-允许某一IP地址访问集群编辑/etc/sysconfig/iptables文件，1-A INPUT -s 99.99.1.1 -p tcp -m tcp -j ACCEPT
-然后执行如下命令，重启iptabl">
+允许某一IP地址访问集群编辑/etc/sysconfig/iptables文件，1-A INPUT -s 99.99.1.1 -p tcp -m tcp -j ACCEPT">
 
 
 
@@ -482,6 +479,7 @@
 <h3 id="网络访问控制"><a href="#网络访问控制" class="headerlink" title="网络访问控制"></a>网络访问控制</h3><p>集群主要通过安全网关硬件和iptables进行访问控制。</p>
 <p>安全网关配置了允许登录进入集群的IP类型以及开放的端口信息。<br>具体的IP地址限制由iptables来进行限制。</p>
 <h4 id="允许某一IP地址访问集群"><a href="#允许某一IP地址访问集群" class="headerlink" title="允许某一IP地址访问集群"></a>允许某一IP地址访问集群</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -s 99.99.1.1 -p tcp -m tcp -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>然后执行如下命令，重启iptables服务，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
 <p>即可允许99.99.1.1这个IP地址登录到集群。</p>
 <h4 id="允许网段的IP地址访问集群"><a href="#允许网段的IP地址访问集群" class="headerlink" title="允许网段的IP地址访问集群"></a>允许网段的IP地址访问集群</h4><p>编辑/etc/sysconfig/iptables文件，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -s 99.99.1.1/24 -p tcp -m tcp -j ACCEPT</span><br></pre></td></tr></table></figure></p>
