@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/%E7%BA%A2%E9%BB%91%E6%A0%91%E6%BA%90%E7%A0%81.html</loc>
+    
+    <lastmod>2018-03-28T12:57:39.465Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/Are-cache-line-ping-pong-and-false-sharing-the-same.html</loc>
     
     <lastmod>2018-02-25T01:16:33.642Z</lastmod>
