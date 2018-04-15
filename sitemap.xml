@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.zhangchi.xyz/Linux-Namespace%E6%96%87%E7%AB%A0.html</loc>
+    
+    <lastmod>2018-04-15T12:53:21.809Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.zhangchi.xyz/%E7%BA%A2%E9%BB%91%E6%A0%91%E6%BA%90%E7%A0%81.html</loc>
     
     <lastmod>2018-03-28T12:57:39.465Z</lastmod>
@@ -124,13 +131,6 @@
     <loc>http://blog.zhangchi.xyz/Linux%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E5%8E%9F%E7%90%86%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F.html</loc>
     
     <lastmod>2018-01-10T07:01:39.520Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.zhangchi.xyz/Linux-Namespace%E6%96%87%E7%AB%A0.html</loc>
-    
-    <lastmod>2018-01-08T08:45:16.978Z</lastmod>
     
   </url>
   
