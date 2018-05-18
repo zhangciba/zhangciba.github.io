@@ -1,3 +1,4 @@
+http://blog.zhangchi.xyz/CentOS设置root用户邮箱.html
 http://blog.zhangchi.xyz/红黑树源码.html
 http://blog.zhangchi.xyz/Are-cache-line-ping-pong-and-false-sharing-the-same.html
 http://blog.zhangchi.xyz/mpich3-2-1-release.html
@@ -97,4 +98,3 @@ http://blog.zhangchi.xyz/论文阅读之MapReduce-simplified-data-processing-on-
 http://blog.zhangchi.xyz/yum-install或update问题解决.html
 http://blog.zhangchi.xyz/解决ssh会话连接超时问题.html
 http://blog.zhangchi.xyz/Flannel介绍及安装使用方法.html
-http://blog.zhangchi.xyz/Linux系统安全策略文章汇总.html
