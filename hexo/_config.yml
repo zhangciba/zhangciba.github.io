@@ -1,0 +1,108 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: DIYER糍粑的博客 
+subtitle: 快乐学习、快乐工作、快乐生活
+description: DIYER糍粑,CIBA,糍粑学习的地方
+author: ZHANGCHI 
+language: zh-Hans
+timezone:
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://blog.zhangchi.xyz
+root: /
+#permalink: :year/:month/:day/:title/
+permalink: :title.html
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+archive: 1
+category: 1
+tag: 1
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+# Category & Tag
+default_category:  
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: 
+      github: git@github.com:zhangciba/zhangciba.github.io.git,master
+      coding: git@git.coding.net:zhangciba/zhangciba.git,master
+
+#hexo sitemap网站地图
+sitemap:
+   path: sitemap.xml
+baidusitemap:
+   path: baidusitemap.xml
+
+deployer:
+  type : baidu_url_submitter
+
+baidu_url_submit:
+  count: 100 # 提交最新的一个链接
+  host: blog.zhangchi.xyz # 在百度站长平台中注册的域名
+  token: yv1o660I5H0AqLAz # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt # 文本文档的地址， 新链接会保存在此文本文档里
+
+algolia:
+  applicationID: 'NCCTAVOMGS'
+  apiKey: '90a1b37d9db46c7ad69df6b94bd751b9'
+  adminApiKey: '382f49a4839a6c261e72f1f6709965f5'
+  indexName: 'blog'
+  chunkSize: 5000
+  fields:
+    - title
+    - slug
+    - path
+    - content: strip
+
+disqus_shortname: adherence-cn
