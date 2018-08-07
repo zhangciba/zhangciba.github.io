@@ -75,8 +75,8 @@ theme: next
 deploy:
   type: git
   repo: 
-      github: git@github.com:zhangciba/zhangciba.github.io.git,master
-      coding: git@git.coding.net:zhangciba/zhangciba.git,master
+      github: ssh://git@github.com/zhangciba/zhangciba.github.io.git,master
+      coding: ssh://git@git.coding.net/zhangciba/zhangciba.git,master
 
 #hexo sitemap网站地图
 sitemap:
