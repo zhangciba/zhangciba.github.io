@@ -3,14 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.2.0"
+    "version": "3.7.1"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
     "bunyan": "^1.8.12",
-    "hexo": "^3.2.0",
+    "dtrace-provider": "^0.8.7",
+    "hexo": "^3.7.1",
     "hexo-algolia": "^0.1.1",
     "hexo-baidu-url-submit": "0.0.5",
+    "hexo-cli": "^1.1.0",
     "hexo-deployer-git": "^0.1.0",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-baidu-sitemap": "^0.1.2",
