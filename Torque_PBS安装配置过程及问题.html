@@ -1,0 +1,1171 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Torque,PBS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="DIYER糍粑的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="CSDN博客上面的安装参考教程 详细的拍错文档，值得参考Torque Troubleshooting文档 安装步骤简单归纳如下编译安装1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。">
+<meta name="keywords" content="Torque,PBS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Torque PBS安装配置过程及问题">
+<meta property="og:url" content="http://blog.zhangchi.xyz/Torque_PBS安装配置过程及问题.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="CSDN博客上面的安装参考教程 详细的拍错文档，值得参考Torque Troubleshooting文档 安装步骤简单归纳如下编译安装1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-22T08:33:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Torque PBS安装配置过程及问题">
+<meta name="twitter:description" content="CSDN博客上面的安装参考教程 详细的拍错文档，值得参考Torque Troubleshooting文档 安装步骤简单归纳如下编译安装1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'NCCTAVOMGS',
+      apiKey: '90a1b37d9db46c7ad69df6b94bd751b9',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索关键字","hits_empty":"没有找到与 [ ${query} ] 有关的内容","hits_stats":"${hits} 条记录，共耗时 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangchi.xyz/Torque_PBS安装配置过程及问题.html"/>
+
+
+
+
+
+  <title>Torque PBS安装配置过程及问题 | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77014447-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/Torque_PBS安装配置过程及问题.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Torque PBS安装配置过程及问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-09T21:22:59+08:00">
+                2017-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/Torque_PBS安装配置过程及问题.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="Torque_PBS安装配置过程及问题.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/Torque_PBS安装配置过程及问题.html" class="leancloud_visitors" data-flag-title="Torque PBS安装配置过程及问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  1,709
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  7分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CSDN博客上面的<a href="http://blog.csdn.net/dream_angel_z/article/details/44225669/" target="_blank" rel="noopener">安装参考教程</a></p>
+<p>详细的拍错文档，值得参考<a href="http://www.silas.net.br/doc.notes/hpc/torque.html" target="_blank" rel="noopener">Torque Troubleshooting文档</a></p>
+<h2 id="安装步骤简单归纳如下"><a href="#安装步骤简单归纳如下" class="headerlink" title="安装步骤简单归纳如下"></a>安装步骤简单归纳如下</h2><h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><p>1.集群/etc/hosts文件配置，将集群每个主机的名称和IP地址信息写入到/etc/hosts文件，并将该文件拷贝到每个节点上面，包括PBS服务器节点和PBS计算节点。<br><a id="more"></a></p>
+<p>2.配置集群所有节点之间的SSH免秘钥访问，最简单的方法就是在某一台机器生成了SSH密钥文件之后，统一将PBS用户主目录下的.ssh目录拷贝到所有集群其他节点对应的目录下面。实际上，使用PBS队列的集群一般都使用了NFS或者其他分布式文件系统来挂载/home目录，即，所有节点的/home目录信息是一致的，由NFS或其他分布式网络文件系统来提供，所以SSH免密钥登录配置是标准配置，一般集群都提供好了，如果没有提供，请自行配置，方法如前所述。</p>
+<p>3.下载Torque源码，并解压到当前目录下面。</p>
+<p>4.进入Torque源码目录，执行<code>./configure --prefix=/opt/troque</code>命令，如果编译过程中出现错误，根据错误提示解决问题即可，一般情况下都是某一种编译器缺失或者编译器不完整等问题，安装相关软件或者解决版本冲突即可。</p>
+<p>5.编译完成后，执行<code>make &amp; make install</code> 命令，编译并安装。</p>
+<p>6.安装完成后，执行<code>make packages</code>生成安装脚本。</p>
+<p>其中，3，4，5，6这四步是在PBS服务节点上面进行的。</p>
+<p>下面进行PBS服务节点和计算节点的安装配置工作。</p>
+<h3 id="PBS服务器节点配置"><a href="#PBS服务器节点配置" class="headerlink" title="PBS服务器节点配置"></a>PBS服务器节点配置</h3><p>S1.在上面的步骤5执行完成之后就已经安装好了。现在需要做的是配置工作。</p>
+<p>S2.首先将Torque源代码目录下$TORQUE_SOURCE_DIR/contrib/init.d/目录下面将pbs_server,pbs_sched.pbs_mom,trqauthd等四个文件拷贝到/etc/init.d/目录下面，其实就是将这四个服务器的脚本拷贝到系统服务脚本目录。然后执行下面的命令添加服务，并启动服务。<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;pbs_server,pbs_sched,trqauthd,pbs_mom&#125;</span><br><span class="line">do</span><br><span class="line">	chkconfig --add $i;</span><br><span class="line">	chkconfig $i on;</span><br><span class="line">	service $i start;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>好的，执行完命令之后，PBS服务器端的四个服务都已经启动了。</p>
+<p>S3.PBS各服务进程介绍<br>pbs_server主要负责接收计算节点的作业提交，位于服务节点<br>pbs_sched主要负责作业调度，位于服务节点<br>pbs_mom负责监控本机并执行作业，位于所有节点<br>trqauthd负责qsub、qdel、qstat命令执行时，连接到pbs_server的授权，位于所有节点</p>
+<p>S4.配置计算节点，默认torque安装目录是在/var/spool/torque。进入到/var/spool/torque/server_priv目录，编辑nodes文件，添加计算节点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node1 np=16</span><br><span class="line">node2 np=16</span><br><span class="line"> #以此类推，格式如下</span><br><span class="line"> #计算节点主机名  np=处理器个数</span><br></pre></td></tr></table></figure></p>
+<p>配置完成后，执行<code>service pbs_server restart</code>命令重启pbs_server服务，执行pbsnodes既可以看到节点信息。当然，这里还没有配置好计算节点，所以暂时没有显示任何信息。</p>
+<p>S5.配置系统环境变量<br>编辑profile文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>加入如下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TORQUE=/opt/torque</span><br><span class="line">MAUI=/opt/maui</span><br><span class="line">if [ &quot;`id -u`&quot; -eq 0 ];</span><br><span class="line">then</span><br><span class="line">    PATH=$PATH:$TORQUE/bin:$TORQUE/sbin:$TORQUE/bin:$MAUI/sbin:$MAUI/bin</span><br><span class="line">else</span><br><span class="line">    PATH=$PATH:$TORQUE/bin:$MAUI/bin</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<p>S5.服务节点基本配置完成，队列等配置后续再说。接下来安装和配置计算节点。</p>
+<h3 id="PBS计算节点安装配置"><a href="#PBS计算节点安装配置" class="headerlink" title="PBS计算节点安装配置"></a>PBS计算节点安装配置</h3><p>C1.将服务器端编译过的源代码中的torque-package-{clients,mom}-linux-x86_64.sh两个文件拷贝到计算节点/root目录，并且将源码目录下contrib/init.d/目录的pbs_mom、trqauthd两个文件拷贝到所有计算节点的/etc/init.d/目录，好的上面所述的两种文件都拷贝好了之后开始安装工作。</p>
+<p>C2.在每个计算节点的/root目录下面执行下面两个命令，安装PBS的客户端程序。<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./torque-package-clients-linux-x86_64.sh --install</span><br><span class="line">./torque-package-mom-linux-x86_64.sh --install</span><br></pre></td></tr></table></figure></p>
+<p>执行完上面的命令之后，PBS计算节点就安装好了。接下来进行PBS计算节点的配置工作。</p>
+<p>C3.进入/var/spool/torque/目录，查看server_name文件，查看里面的内容是不是PBS服务节点的名称，如果不是，则修改为PBS服务节点的主机名。例如说PBS主机名为master，那么server_name中的内容为<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">master</span><br></pre></td></tr></table></figure></p>
+<p>接着进入到/var/spool/torque/mom_priv/目录，配置config文件，如果没有则创建，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$pbsserver      master            # note: hostname running pbs_server</span><br><span class="line">$logevent       255               # bitmap of which events to log</span><br></pre></td></tr></table></figure></p>
+<p>如果已经存在，则修改master修改为你的PBS服务节点的主机名，如果不存在这个文件，那么按照上面的内容创建一个这样的文件。</p>
+<p>现在服务基本上已经配置好了。现在可以启动PBS计算节点的服务器了。</p>
+<p>C4.执行下面的命令配置PBS计算节点的服务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for i in &#123;trqauthd,pbs_mom&#125;</span><br><span class="line">     do</span><br><span class="line">         chkconfig --add $i;</span><br><span class="line">         chkconfig $i on;</span><br><span class="line">         service $i start;</span><br><span class="line">     done</span><br></pre></td></tr></table></figure>
+<p>C5.配置系统环境变量<br>编辑profile文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>加入如下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TORQUE=/opt/torque</span><br><span class="line">MAUI=/opt/maui</span><br><span class="line">if [ &quot;`id -u`&quot; -eq 0 ];</span><br><span class="line">then</span><br><span class="line">    PATH=$PATH:$TORQUE/bin:$TORQUE/sbin:$TORQUE/bin:$MAUI/sbin:$MAUI/bin</span><br><span class="line">else</span><br><span class="line">    PATH=$PATH:$TORQUE/bin:$MAUI/bin</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<p>如果不进行环境变量配置，那么执行命令时会提示该命令不存在的错误。</p>
+<h3 id="常见的问题及可能的解决办法"><a href="#常见的问题及可能的解决办法" class="headerlink" title="常见的问题及可能的解决办法"></a>常见的问题及可能的解决办法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">socket_connect_unix failed: 15137</span><br><span class="line">qnodes: cannot connect to server node308, error=15137 (could not connect to trqauthd)</span><br></pre></td></tr></table></figure>
+<p>遇到以上问题，一般的原因有以下两种：<br>1.管理节点和计算节点的trqauthd没有启动；<br>2./var/spool/torque/mom_priv中的config文件中的pbsserver参数设置有问题。<br>3.防火墙没有关闭。</p>
+<p>解决办法分别如下：<br>1.重启管理节点和所有计算节点的trqauthd服务，service trqauthd restart；<br>2.将config文件中的$pbsserver参数设置为正确的管理节点主机名；<br>3.将防火墙iptables或者firewalld等关闭，或者添加端口允许。</p>
+<h3 id="Torque队列配置"><a href="#Torque队列配置" class="headerlink" title="Torque队列配置"></a>Torque队列配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">qmgr -c &apos;set server operators += $USERNAME&apos;</span><br><span class="line">qmgr -c &apos;set server managers += $USERNAME&apos;</span><br><span class="line">qmgr -c &apos;set server scheduling = true&apos;</span><br><span class="line">qmgr -c &apos;set server keep_completed = 300&apos;</span><br><span class="line">qmgr -c &apos;set server mom_job_sync = true&apos;</span><br><span class="line">qmgr -c &apos;create queue batch&apos;</span><br><span class="line">qmgr -c &apos;set queue batch queue_type = execution&apos;</span><br><span class="line">qmgr -c &apos;set queue batch started = true&apos;</span><br><span class="line">qmgr -c &apos;set queue batch enabled = true&apos;</span><br><span class="line">qmgr -c &apos;set queue batch resources_default.walltime = 1:00:00&apos;</span><br><span class="line">qmgr -c &apos;set queue batch resources_default.nodes = 1&apos;</span><br><span class="line">qmgr -c &apos;set server default_queue = batch&apos;</span><br><span class="line">qmgr -c &apos;p s&apos;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注微信号进一步交流</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/wechapay.JPG" alt="ZHANGCHI WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/IMG_2777.JPG" alt="ZHANGCHI Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      ZHANGCHI
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://blog.zhangchi.xyz/Torque_PBS安装配置过程及问题.html" title="Torque PBS安装配置过程及问题">http://blog.zhangchi.xyz/Torque_PBS安装配置过程及问题.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Torque/" rel="tag"># Torque</a>
+          
+            <a href="/tags/PBS/" rel="tag"># PBS</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Windows操作系统安装.html" rel="next" title="Windows操作系统安装">
+                <i class="fa fa-chevron-left"></i> Windows操作系统安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/VIM正则表达式简要介绍.html" rel="prev" title="VIM正则表达式简要介绍">
+                VIM正则表达式简要介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,糍粑学习的地方</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">118</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">119</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangciba" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhangchixtacbn" target="_blank" title="Weibo" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank" title="知乎" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://adherence.cn" title="小燕子之家" target="_blank" rel="external nofollow">小燕子之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/zhangchi" title="博客园" target="_blank" rel="external nofollow">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/zhangchixtacbn" title="CSDN" target="_blank" rel="external nofollow">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhangchixtacbn.blog.163.com" title="网易博客" target="_blank" rel="external nofollow">网易博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://davi.space" title="Davi-Space" target="_blank" rel="external nofollow">Davi-Space</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jayxhj.com" title="豪杰写字的地方" target="_blank" rel="external nofollow">豪杰写字的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/ryanlamp/" title="大兵奋斗的地方" target="_blank" rel="external nofollow">大兵奋斗的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hust.edu.cn" title="华中科技大学" target="_blank" rel="external nofollow">华中科技大学</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装步骤简单归纳如下"><span class="nav-number">1.</span> <span class="nav-text">安装步骤简单归纳如下</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译安装"><span class="nav-number">1.1.</span> <span class="nav-text">编译安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PBS服务器节点配置"><span class="nav-number">1.2.</span> <span class="nav-text">PBS服务器节点配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PBS计算节点安装配置"><span class="nav-number">1.3.</span> <span class="nav-text">PBS计算节点安装配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的问题及可能的解决办法"><span class="nav-number">1.4.</span> <span class="nav-text">常见的问题及可能的解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Torque队列配置"><span class="nav-number">1.5.</span> <span class="nav-text">Torque队列配置</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+    
+        <span class="post-meta-divider">|</span>
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+        <span class="post-meta-divider">|</span>
+
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyt1YeKGz';
+      var conf = 'ad47d27725e364e61bc1caebba090e65';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Q2wCx7ylg0R2b3SjDM49UpFA-gzGzoHsz", "tMTqAIprel7Bdpgm463fDDsY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

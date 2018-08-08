@@ -1,0 +1,1199 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="高性能计算,HPC,论文阅读," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="DIYER糍粑的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Live Migration of Virtual Machines论文结构 Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。 Int">
+<meta name="keywords" content="高性能计算,HPC,论文阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读之Live Migration of Virtual Machines">
+<meta property="og:url" content="http://blog.zhangchi.xyz/论文阅读之Live-Migration-of-Virtual-Machines.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="Live Migration of Virtual Machines论文结构 Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。 Int">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-06-16T04:45:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论文阅读之Live Migration of Virtual Machines">
+<meta name="twitter:description" content="Live Migration of Virtual Machines论文结构 Abstract操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。 Int">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'NCCTAVOMGS',
+      apiKey: '90a1b37d9db46c7ad69df6b94bd751b9',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索关键字","hits_empty":"没有找到与 [ ${query} ] 有关的内容","hits_stats":"${hits} 条记录，共耗时 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangchi.xyz/论文阅读之Live-Migration-of-Virtual-Machines.html"/>
+
+
+
+
+
+  <title>论文阅读之Live Migration of Virtual Machines | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77014447-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/论文阅读之Live-Migration-of-Virtual-Machines.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">论文阅读之Live Migration of Virtual Machines</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-16T12:45:44+08:00">
+                2016-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/论文阅读之Live-Migration-of-Virtual-Machines.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="论文阅读之Live-Migration-of-Virtual-Machines.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/论文阅读之Live-Migration-of-Virtual-Machines.html" class="leancloud_visitors" data-flag-title="论文阅读之Live Migration of Virtual Machines">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  1,922
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  7分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Live-Migration-of-Virtual-Machines"><a href="#Live-Migration-of-Virtual-Machines" class="headerlink" title="Live Migration of Virtual Machines"></a>Live Migration of Virtual Machines</h3><h3 id="论文结构"><a href="#论文结构" class="headerlink" title="论文结构"></a>论文结构</h3><ul>
+<li>Abstract<br>操作系统实例的迁移是数据中心和集群管理员非常重要的工具，它可以实现软硬件之间的完美分离，用于实现错误管理，负载均衡以及低级系统维护。<br>本文作者将研究重点放在数据中心和集群环境下有服务运行的操作系统迁移的设计选项，作者引入了可写工作集的概念，并提供了在Xenp虚拟机管理器上面的设计、实现以及性能评估。</li>
+<li>Introduction<br>介绍了虚拟化技术带来了很多好处，在线系统迁移就是其中之一，系统迁移可以避免进程级别迁移带来的各种困难，其次系统迁移可以让整个内存状态得到转移，这意味着可以迁移一个在线的游戏服务器和流媒体服务器，第三，在线迁移能够将用户和数据中心或集群管理员的注意力分开。<a id="more"></a></li>
+<li>Realated Work<br>Collective projects研究了虚拟机迁移作为一个工具，但是不提供热迁移功能。进程迁移由于存在很多剩余的依赖问题而没有很好的解决，因此采用整个操作系统实例迁移是一个更好的办法。</li>
+<li><p>Design</p>
+<ul>
+<li><p>Migrating Memory<br>内存迁移分为三个过程：推、停止与拷贝、拉<br>将一部分内存页传输到目的机器；<br>停止机器，并将一部分内存拷贝到目的机器<br>新机器开始运行，并将没有转移的内存pull过来</p>
+<p>也有单纯停止与拷贝、按需迁移，它们分别会导致整体拓机和迁移时间过长、整体迁移时间过长的问题。</p>
+</li>
+<li>Local Resource<br>  虚拟机中的网络资源和本地存储的迁移是两个最重要的问题。<br>  迁移过程中要保持所有的网络连接数据都在新机器上面重现，需要在已经迁移的机器上面发出一个ARP回复，告诉其他机器，该IP地址已经改变了，其他机器将会把IP数据报发送到新的机器。但是有的路由器拒绝接受APR回复，所以该方案不适用于所情况。在交换机网络，迁移机器可以保持它的MAC地址，交换机可以检测到它迁移到了另外的端口。<br>  本文没有解决本地化磁盘迁移的问题，但是提出了几种可能的解决方案。</li>
+<li><p>Design Overview<br>  作者为了达到使虚拟机迁移之后的失败几率减小，将两台虚拟机之间的迁移当作事务。</p>
+<ul>
+<li>预先迁移：</li>
+<li>保护</li>
+<li>迭代预先拷贝</li>
+<li>停止与拷贝</li>
+<li>提交</li>
+<li>激活</li>
+</ul>
+</li>
+<li><p>Stage0:Pre-Migration</p>
+<ul>
+<li>Stage1:Reservation</li>
+<li>Stage2:Iterative Pre-Copy</li>
+<li>Stage3:Stop-and-Copy</li>
+<li>Stage4:Commitment</li>
+<li>Stage5:Activation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Writable Working Sets<br>  预拷贝最重要的问题是如何决定什么时候停止预拷贝。<br>  对于内存页面，作者分为两类，一类是基本上不会变化或者变化很少的，另一类是经常会改变的，作者将这个称之为可写工作集。<ul>
+<li>Measuring Writable Working Sets<br>  通过测试发现，可写工作集在不同的子基准测试程序之间变化很大。</li>
+<li>Estimating Migration Effectiveness<br>  通过测试显示，提高网络带宽对于减少虚拟机拓机时间非常有帮助。</li>
+</ul>
+</li>
+<li>Implementation Issues<ul>
+<li>Managed Migration<br>  这种迁移是通过运行在源和目的主机中运行的管理虚拟机中的迁移守护程序来实现的。</li>
+<li>Self Migration<br>  自我迁移是指迁移的主要功能都是在被迁移的机器本身。实现的难点在于传输一个一直的系统监测点。而且系统必须运行来保证传输它的最终状态。作者通过停止与拷贝两个阶段来解决这个难题。</li>
+<li>Dynamic Rate-Limiting<br>  通过预拷贝过程中脏页的数量来决定下一轮预拷贝的带宽，得到了最佳的带宽是50Mbit/sec，在最后的停止与拷贝阶段，可以通过最大化内存传输速度最小化服务停止时间。</li>
+<li>Rapid Page Dirtying<br>  操作系统中有一部分内存页的更新频率非常高，它们不仅具有时间的局部性，而且这些脏页一般具有物理聚集性（空间局部性），如果未检测到群中一页没有修改，则认为该群中的所有页都没有修改，为了避免这种弊端，可以采用假随机的顺序来检测虚拟机的物理页。</li>
+<li>Paravirtualized Optimizations<br>  半虚拟化技术可以让操作系统感知到实际和虚拟环境的差别，就迁移而言它可以通过通知系统本身需要进行迁移而进行一些优化，例如发现一些异常进程、释放缓存页等。</li>
+</ul>
+</li>
+<li><p>Evaluation</p>
+<ul>
+<li><p>Test Setup<br>  两台一样的Dell PE-2650服务器 2个双核至强2GHzCPU 2GB内存 BroadcomTG3网卡<br>  通过万兆以太网连接</p>
+</li>
+<li><p>Simple Web Server<br>  通过一台运行Apache1.3提供静态内容的虚拟机进行迁移测试，实验结果表明，高负载的服务器可以在对现有服务影响少以及较短拓机时间条件下进行迁移。</p>
+</li>
+<li>Complex Web Workload:SPECweb99<br>  SPECweb99具有更加复杂的页面请求，实验结果表明，一个具有重负荷的服务器只需要71s的时间进行迁移，而且没有对系统的服务质量造成影响。这进一步证明了迁移作为按需在线服务管理员的一个工具。</li>
+<li>Low-Latency Server:Quake3<br>  多人在线游戏服务器也是一个具有代表性的服务环境，作者对一个运行了Quake3的服务器进行了在线迁移，实验结果除了迁移的数据量比较少之外，其他的与SPECweb99结果一致，作者也从用户的角度考虑了迁移对于用户的影响，结果表明，迁移会导致50毫秒的延时，</li>
+<li>A Diabolical Workload:MMuncher<br>  这是一个极端的工作负载情况，一个512MB内存的虚拟机上面运行了一个C程序，这个C程序的功能是持续向256MB的区域写入内容。在第二个阶段，由于脏页产生的速度比网络的适配速度要高，作者的算法直接停止了第二阶段，进入第三阶段，导致了3.5秒的停机时间。但是实际情况中，不会有这样极端的负载情况。</li>
+</ul>
+</li>
+<li>Future Work<ul>
+<li>Cluster Management<br>  集群管理软件的一个挑战就是放置和移动虚拟机，作者目前正在着手开发一个基于Xen系统的集群控制器。</li>
+<li>Wide Area Network Redirection<br>  本文实验是在万兆网络中进行了，如果跨局域网，则会导致延迟很大。有人提出可以在TCP层解决链接迁移的问题。</li>
+<li>Migrating Block Devices<br>  NAS在现代数据中心占据了主要的位置，有些集群还会有本地存储。虚拟机集群本地存储的有效管理是作者希望将来进行深入研究的东西。</li>
+</ul>
+</li>
+<li>Conclusion<br>  通过在Xen虚拟机管理器中加入了热系统迁移，作者实现了集群和数据中心交互工作负载的迁移。作者的动态网络带宽适应保证了迁移工作对于正在运行的服务的影响最小以及将拓机时间减少至最低。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注微信号进一步交流</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/wechapay.JPG" alt="ZHANGCHI WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/IMG_2777.JPG" alt="ZHANGCHI Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      ZHANGCHI
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://blog.zhangchi.xyz/论文阅读之Live-Migration-of-Virtual-Machines.html" title="论文阅读之Live Migration of Virtual Machines">http://blog.zhangchi.xyz/论文阅读之Live-Migration-of-Virtual-Machines.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/高性能计算/" rel="tag"># 高性能计算</a>
+          
+            <a href="/tags/HPC/" rel="tag"># HPC</a>
+          
+            <a href="/tags/论文阅读/" rel="tag"># 论文阅读</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Debian下配置网络的方法.html" rel="next" title="Debian下配置网络的方法">
+                <i class="fa fa-chevron-left"></i> Debian下配置网络的方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Congress-Conference-Workshop-Symposium之间的区别.html" rel="prev" title="Congress Conference Workshop Symposium之间的区别">
+                Congress Conference Workshop Symposium之间的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,糍粑学习的地方</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">118</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">119</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangciba" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhangchixtacbn" target="_blank" title="Weibo" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank" title="知乎" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://adherence.cn" title="小燕子之家" target="_blank" rel="external nofollow">小燕子之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/zhangchi" title="博客园" target="_blank" rel="external nofollow">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/zhangchixtacbn" title="CSDN" target="_blank" rel="external nofollow">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhangchixtacbn.blog.163.com" title="网易博客" target="_blank" rel="external nofollow">网易博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://davi.space" title="Davi-Space" target="_blank" rel="external nofollow">Davi-Space</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jayxhj.com" title="豪杰写字的地方" target="_blank" rel="external nofollow">豪杰写字的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/ryanlamp/" title="大兵奋斗的地方" target="_blank" rel="external nofollow">大兵奋斗的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hust.edu.cn" title="华中科技大学" target="_blank" rel="external nofollow">华中科技大学</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Live-Migration-of-Virtual-Machines"><span class="nav-number">1.</span> <span class="nav-text">Live Migration of Virtual Machines</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#论文结构"><span class="nav-number">2.</span> <span class="nav-text">论文结构</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+    
+        <span class="post-meta-divider">|</span>
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+        <span class="post-meta-divider">|</span>
+
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyt1YeKGz';
+      var conf = 'ad47d27725e364e61bc1caebba090e65';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Q2wCx7ylg0R2b3SjDM49UpFA-gzGzoHsz", "tMTqAIprel7Bdpgm463fDDsY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1142 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="天河," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="DIYER糍粑的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="配置如下处理器16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Brid">
+<meta name="keywords" content="天河">
+<meta property="og:type" content="article">
+<meta property="og:title" content="天河二号超级计算机">
+<meta property="og:url" content="http://blog.zhangchi.xyz/天河二号超级计算机.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="配置如下处理器16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Brid">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-06-22T12:05:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="天河二号超级计算机">
+<meta name="twitter:description" content="配置如下处理器16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Brid">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'NCCTAVOMGS',
+      apiKey: '90a1b37d9db46c7ad69df6b94bd751b9',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索关键字","hits_empty":"没有找到与 [ ${query} ] 有关的内容","hits_stats":"${hits} 条记录，共耗时 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangchi.xyz/天河二号超级计算机.html"/>
+
+
+
+
+
+  <title>天河二号超级计算机 | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77014447-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/天河二号超级计算机.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">天河二号超级计算机</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-22T09:47:49+08:00">
+                2016-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/高性能计算/" itemprop="url" rel="index">
+                    <span itemprop="name">高性能计算</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/天河二号超级计算机.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="天河二号超级计算机.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/天河二号超级计算机.html" class="leancloud_visitors" data-flag-title="天河二号超级计算机">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  943
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  4分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="配置如下"><a href="#配置如下" class="headerlink" title="配置如下"></a>配置如下</h3><h4 id="处理器"><a href="#处理器" class="headerlink" title="处理器"></a>处理器</h4><p>16,000个运算节点，每节点配备两颗Xeon E5 12核心的中央处理器、三个Xeon Phi 57核心的协处理器（运算加速卡）。累计32,000颗Xeon E5主处理器和48,000个Xeon Phi协处理器，共312万个计算核心。<br>中央处理器为英特尔提供的，运作时钟频率为2.2GHz的Xeon E5-2692 12核心处理器，基于英特尔Ivy Bridge微架构（Ivy Bridge-EX核心），采用22纳米制程，峰值性能0.2112TFLOPS。<br>运算加速上，使用基于英特尔集成众核架构的Xeon Phi 31S1P协处理器，运行时钟为1.1GHz，每个使用61个核心中的57个（因为使用61个会存在运算周期协调问题），每核心籍由特殊的超线程技术能运作4个线程，产生峰值性能为1.003TFLOPS。<br><a id="more"></a></p>
+<h4 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h4><p>每个节点拥有64GB主存，而每个Xeon Phi协处理器板载8GB内存，故每节点共88GB内存，整体总计内存1.408PB。</p>
+<h4 id="外存"><a href="#外存" class="headerlink" title="外存"></a>外存</h4><p>12.4PB容量的硬盘阵列</p>
+<h4 id="主板、机架、机柜"><a href="#主板、机架、机柜" class="headerlink" title="主板、机架、机柜"></a>主板、机架、机柜</h4><p>主板、机架与机柜均由浪潮集团制造，共有125个机柜，每个机柜容纳4个机架，每个机架容纳16块主板，每个主板设置有两个计算节点。每个机柜还装有负载指示灯，根据机柜内主机的运算负载变更发光二极管的发光颜色。<br>每块主板上分为APU模块和CPM模块两部分，APU部分承载5块Xeon Phi，CPM部分承载1块Xeon Phi+4颗Xeon E5。<br>APU模块和CPM模块之间以CPU内部提供的PCI-E 3.0 16x接口进行连接，但实际由于Xeon Phi的硬件限制，仅支持至PCI-E 2.0 16x，单通道数据传输速率为10Gbps。</p>
+<h4 id="前端处理器"><a href="#前端处理器" class="headerlink" title="前端处理器"></a>前端处理器</h4><p>计算节点前端处理器为4096颗FT-1500 16核心SPARC V9架构的处理器，40纳米制程，运作时钟频率1.8GHz，热设计功耗65瓦，峰值性能144GFLOPS。</p>
+<h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><p>使用光电混合传输技术（Optoelectronics Hybrid Transport Technology），使用自制的TH Express-2主干拓扑结构网络连接，以13个大型路由器通过576个连接端口以光电传输介质与各个运算节点互联，控制器名为NRC，使用90纳米制程，单个控制器的数据吞吐量2.56Tbps，终端网络接口使用名为NIC的控制器，以PCI-E 2.0接口链接，数据传送速率6.36GB/s。</p>
+<h4 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h4><p>麒麟操作系统、基于SLURM（Simple Linux Utility for Resource Management，资源管理用单一Linux公用程序）的全局资源管理。<br>Ubuntu Linux。（Ubuntu OpenStack运行在256个高性能节点上，而且在接下来的数月将会增长至超过6400个节点。OpenStack和Ubuntu的编制工具Juju都将运行在天河二号上，使国防科技大学的合作伙伴和联盟机构能够快速部署和管理高性能云环境）</p>
+<h4 id="能耗"><a href="#能耗" class="headerlink" title="能耗"></a>能耗</h4><p>整机功耗17,808千瓦，在搭载水冷散热系统以后，功耗将达到24兆瓦，无论水冷系统的搭载与否，都是目前TOP500里功耗最大的<br>天河二号电费每年达1亿人民币<br>以6月17日公布的数据推算，每瓦性能为1.901GFLOPS，仍不及泰坦的每瓦2.143GFLOPS和IBM红杉每瓦2.177GFLOPS的成绩，但比”京”的每瓦0.830GFLOPS每和天河一号每瓦仅0.668GFLOPS都要高不少。</p>
+<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p><a href="http://lt.cjdby.net/thread-1928893-1-1.html" target="_blank" rel="noopener">天河二号使用率只有三成 个人可登录官网申请使用</a><br><a href="https://www.zhihu.com/question/21220111" target="_blank" rel="noopener">知乎:全球最快计算机天河二号的研发意义是什么</a></p>
+<p><a href="http://www.nscc-gz.cn/" target="_blank" rel="noopener">国家超算中心广州中心官方网址</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注微信号进一步交流</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/wechapay.JPG" alt="ZHANGCHI WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/IMG_2777.JPG" alt="ZHANGCHI Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      ZHANGCHI
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://blog.zhangchi.xyz/天河二号超级计算机.html" title="天河二号超级计算机">http://blog.zhangchi.xyz/天河二号超级计算机.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/天河/" rel="tag"># 天河</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/论文阅读之Live-Migration-of-Virtual-Machine-Based-on-Full-System-Trace-and-Replay.html" rel="next" title="论文阅读之Live Migration of Virtual Machine Based on Full System Trace and Replay">
+                <i class="fa fa-chevron-left"></i> 论文阅读之Live Migration of Virtual Machine Based on Full System Trace and Replay
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Evaluating-Container-Platforms-at-Scale.html" rel="prev" title="Evaluating Container Platforms at Scale">
+                Evaluating Container Platforms at Scale <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,糍粑学习的地方</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">118</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">119</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangciba" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhangchixtacbn" target="_blank" title="Weibo" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank" title="知乎" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://adherence.cn" title="小燕子之家" target="_blank" rel="external nofollow">小燕子之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/zhangchi" title="博客园" target="_blank" rel="external nofollow">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/zhangchixtacbn" title="CSDN" target="_blank" rel="external nofollow">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhangchixtacbn.blog.163.com" title="网易博客" target="_blank" rel="external nofollow">网易博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://davi.space" title="Davi-Space" target="_blank" rel="external nofollow">Davi-Space</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jayxhj.com" title="豪杰写字的地方" target="_blank" rel="external nofollow">豪杰写字的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/ryanlamp/" title="大兵奋斗的地方" target="_blank" rel="external nofollow">大兵奋斗的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hust.edu.cn" title="华中科技大学" target="_blank" rel="external nofollow">华中科技大学</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置如下"><span class="nav-number">1.</span> <span class="nav-text">配置如下</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理器"><span class="nav-number">1.1.</span> <span class="nav-text">处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存"><span class="nav-number">1.2.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外存"><span class="nav-number">1.3.</span> <span class="nav-text">外存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主板、机架、机柜"><span class="nav-number">1.4.</span> <span class="nav-text">主板、机架、机柜</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端处理器"><span class="nav-number">1.5.</span> <span class="nav-text">前端处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接"><span class="nav-number">1.6.</span> <span class="nav-text">连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统"><span class="nav-number">1.7.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#能耗"><span class="nav-number">1.8.</span> <span class="nav-text">能耗</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关文章"><span class="nav-number">2.</span> <span class="nav-text">相关文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+    
+        <span class="post-meta-divider">|</span>
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+        <span class="post-meta-divider">|</span>
+
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyt1YeKGz';
+      var conf = 'ad47d27725e364e61bc1caebba090e65';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Q2wCx7ylg0R2b3SjDM49UpFA-gzGzoHsz", "tMTqAIprel7Bdpgm463fDDsY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

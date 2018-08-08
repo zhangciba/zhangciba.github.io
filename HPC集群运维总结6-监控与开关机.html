@@ -1,0 +1,1211 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux,集群管理,运维,HPC," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="DIYER糍粑的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="[TOC] 集群软件环境集群目前所有软件都配置在/public/software目录下面，目前配置的有Intel编译器、OpenMPI、Mathlab2009、Matlab2016、lammps、FDTD等，还有很多需要的软件可能还没有安装。 很多集群的用户都喜欢在自己的目录下面安装计算软件，这就导致了同一个非常占用空间的软件在集群上面有多个副本，导致集群存储空间被大大浪费掉了。 因此最好是能够及">
+<meta name="keywords" content="Linux,集群管理,运维,HPC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HPC集群运维总结6-监控与开关机">
+<meta property="og:url" content="http://blog.zhangchi.xyz/HPC集群运维总结6-监控与开关机.html">
+<meta property="og:site_name" content="DIYER糍粑的博客">
+<meta property="og:description" content="[TOC] 集群软件环境集群目前所有软件都配置在/public/software目录下面，目前配置的有Intel编译器、OpenMPI、Mathlab2009、Matlab2016、lammps、FDTD等，还有很多需要的软件可能还没有安装。 很多集群的用户都喜欢在自己的目录下面安装计算软件，这就导致了同一个非常占用空间的软件在集群上面有多个副本，导致集群存储空间被大大浪费掉了。 因此最好是能够及">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-24T08:37:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HPC集群运维总结6-监控与开关机">
+<meta name="twitter:description" content="[TOC] 集群软件环境集群目前所有软件都配置在/public/software目录下面，目前配置的有Intel编译器、OpenMPI、Mathlab2009、Matlab2016、lammps、FDTD等，还有很多需要的软件可能还没有安装。 很多集群的用户都喜欢在自己的目录下面安装计算软件，这就导致了同一个非常占用空间的软件在集群上面有多个副本，导致集群存储空间被大大浪费掉了。 因此最好是能够及">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'NCCTAVOMGS',
+      apiKey: '90a1b37d9db46c7ad69df6b94bd751b9',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入搜索关键字","hits_empty":"没有找到与 [ ${query} ] 有关的内容","hits_stats":"${hits} 条记录，共耗时 ${time} 毫秒"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.zhangchi.xyz/HPC集群运维总结6-监控与开关机.html"/>
+
+
+
+
+
+  <title>HPC集群运维总结6-监控与开关机 | DIYER糍粑的博客</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-77014447-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b77ecb103df050a82108d6cf4aa776f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=zhangchixtacbn&web_id=zhangchixtacbn" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DIYER糍粑的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">快乐学习、快乐工作、快乐生活</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangchi.xyz/HPC集群运维总结6-监控与开关机.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZHANGCHI">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DIYER糍粑的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HPC集群运维总结6-监控与开关机</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T20:20:26+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集群管理/" itemprop="url" rel="index">
+                    <span itemprop="name">集群管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/HPC集群运维总结6-监控与开关机.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="HPC集群运维总结6-监控与开关机.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/HPC集群运维总结6-监控与开关机.html" class="leancloud_visitors" data-flag-title="HPC集群运维总结6-监控与开关机">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">浏览量 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数</span>
+                
+                <span title="字数">
+                  3,939
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">耗时</span>
+                
+                <span title="耗时">
+                  14分
+                </span>
+              
+	      
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h3 id="集群软件环境"><a href="#集群软件环境" class="headerlink" title="集群软件环境"></a>集群软件环境</h3><p>集群目前所有软件都配置在/public/software目录下面，目前配置的有Intel编译器、OpenMPI、Mathlab2009、Matlab2016、lammps、FDTD等，还有很多需要的软件可能还没有安装。</p>
+<p>很多集群的用户都喜欢在自己的目录下面安装计算软件，这就导致了同一个非常占用空间的软件在集群上面有多个副本，<strong>导致集群存储空间被大大浪费掉了。</strong></p>
+<p>因此最好是能够及时统计用户需要使用的软件的信息，并和软件用户一起将软件安装到/public/software目录下面，并告知其他用户直接使用该目录下面的软件即可。</p>
+<p>集群还安装了Torque5作业调度管理系统，目前主节点为node307，后期考虑将B区的所有节点都安装作业调度管理系统，并采用调度系统提交作业。</p>
+<p><strong>总而言之，集群软件尽量安装到/public/software目录下面，并编写一定的说明文档，告知用户使用方法，可以找一些已经有过安装和使用经验的用户进行交流，让他们提供这些资料。</strong><br><a id="more"></a></p>
+<h3 id="集群监控"><a href="#集群监控" class="headerlink" title="集群监控"></a>集群监控</h3><p>集群的监控工作的作用和意义就不再强调了，为了更好掌握集群每个节点的运行情况、资源使用情况，监控是必须的。本人之前在集群的所有节点上面都安装了zabbix2.14监控管理软件，zabbix有个非常大的好处就是报警处理做的比较好，目前主要针对机器网络不通、重启会进行报警，当前情况下设置了Email报警以及短信报警。zabbix监控管理软件的URL地址是^v^，这个保密，只对管理员开放咯。</p>
+<p>由于个人精力有限，没有深入一部配置zabbix的报警规则。另外本人重新编写了一个脚本，该脚本的作用是在白天没过2个小时扫描一下集群所有计算节点的温度，发现CPU温度超过90摄氏度的，则向终端用户发出警告，CPU温度超过95摄氏度的，直接进行关机处理。该脚本所在目录地址是/vpublic01/zhangchi/clustermgmt/temp-monitor/monitor.sh，使用操作系统的crontab进行定时执行。该脚本能够正确获取到温度信息的前提是，刀片的BMC管理模块是好的，而且在BIOS中设置了该刀片BMC模块的IP地址信息，而且网络是连通的。</p>
+<h3 id="集群关机与开机流程"><a href="#集群关机与开机流程" class="headerlink" title="集群关机与开机流程"></a>集群关机与开机流程</h3><p>一般而言，集群不需要进行关机处理，但是实验室暑假、春节期间由于长期没有人照看，需要进行关机处理，特别是暑假温度高、用户如果计算量上去，加上空调质量不是很好，很可能会导致难以预料的后果。</p>
+<p><span id="poweroff">集群关机流程如下：</span></p>
+<ul>
+<li>关闭所有的计算节点和GPU节点，编号是node1-node306，node327-node348</li>
+<li>关闭集群管理节点，node307-node308</li>
+<li>关闭对象存储服务器，node311-node326节点</li>
+<li>关闭元数据服务器，node309-node310节点</li>
+</ul>
+<p><span id="poweron">集群开机流程如下：</span></p>
+<ul>
+<li>启动元数据服务器，node309-node310节点</li>
+<li>等待5-10分钟</li>
+<li>启动对象存储服务器，node311-node326节点</li>
+<li>等待10-15分钟</li>
+<li>启动集群管理节点，node307-node308节点</li>
+<li>查看node307和node308上面的/public是否正常挂载，如果正常则执行下面的步骤</li>
+<li>如果不正常，则按照关机流程，重启元数据和对象存储服务器</li>
+<li>启动所有计算节点，node1-node306，node327-node348</li>
+</ul>
+<h3 id="集群断电与通电流程"><a href="#集群断电与通电流程" class="headerlink" title="集群断电与通电流程"></a>集群断电与通电流程</h3><p>集群如果关机只是暂时关机，而不是断电，那么执行普通的关机的命令关闭所有的服务器即可。<br>如果由于实验室长期无人看管，导致需要停止集群，那么需要进行断电处理。</p>
+<h4 id="机房电路简介"><a href="#机房电路简介" class="headerlink" title="机房电路简介"></a>机房电路简介</h4><p><strong>进行带电设备操作之前，请务必要主要安全，务必注意安全，务必注意安全！</strong><br><strong>请阅读资料确保安全后操作，请阅读资料确保安全后操作，请阅读资料确保安全后操作！</strong><br><em>管理员曾经因为不谨慎就被电过，幸好没出事，请一定要谨慎！</em></p>
+<p>本部分内容仅供参考，不保准准确性，请勿直接接触供电设备。进行有关电气设备操作之前，请务必与相关负责老师联系，做好防触电准备，请务必谨记，安全第一。</p>
+<p>下面介绍主机房电源的接入情况。<br>主机房有14个机柜，一般情况下，2个机柜共用一个PDM，少数机柜单独使用一个PDM，因此主机房有7个PDM，这些PDM上面有一个开关，关闭开关，就可以将其负责供电的机柜的断电。</p>
+<p>PDM主要分配在机柜2、机柜3、机柜6、机柜7、机柜9、机柜11、机柜13的最下面。</p>
+<p>这些PDM由配电房的UPS电源模块来进行供电。在配电房的配电柜里面有对应的开关，可以直接断掉这些PDM的供电。</p>
+<p>另外，主机房还有2个大型工业空调用于集群的制冷工作，这两个空调不是通过UPS进行供电的，走的是市电线路。</p>
+<p>主机房还有地板PEU，即从地上往上进行吹风的风扇，用于辅助空气流动，帮助集群进行扇热的，也是接的市电线路。</p>
+<p>主机房还有一个设备叫做新风，简要理解为一个电风扇，主要负责集群内部的空气和室外的空气交换的，这个设备也是走的市电线路。</p>
+<p>主机房还要照明设备、消防报警器、门禁设备等，这些也都是走的市电通道。</p>
+<p>总而言之，除了集群的机柜是使用UPS进行供电外，其他的所有设备都是市电进行供电。</p>
+<h4 id="配电房设备介绍"><a href="#配电房设备介绍" class="headerlink" title="配电房设备介绍"></a>配电房设备介绍</h4><p>配电房主要有UPS设备和配电柜、空调。<br>简要介绍一个各设备的摆布，走进配电房。</p>
+<p>最西边的两个乳白色的大箱子里面安装的是UPS铅酸电池组，平时巡检的时候，需要稍微闻一下是否存在异味，由于设备老化，电池已经处于危险期了。</p>
+<p>背面有4个柜子并列，左侧两个是配电柜，右侧两个是UPS的主机和控制箱。</p>
+<p>左侧第一个配电柜是市电配电柜，上面有一个市电总开关，控制整个机房的市电接入，一般情况不要动此开关。下面还有一排空气开关，这些开关的最左侧是UPS旁路开关，从左往右依次是配电室5P柜式空调开关、备用开关、主机房新风、ADU地板、主机房照明、电源室照明、主机房插座、电源室插座、电源室空调（壁挂式关空调，已经没有使用）、主机房精密空调一、主机房精密空调二。这些开关直接控制了相应设备的市电输入，如果需要断电，可以直接从这里进行控制。</p>
+<p>左侧第二个配电柜是UPS输出配电柜，上面有一个UPS输出总开关，该开关控制着集群所有机柜的供电，而且该供电是通过UPS进行输出的，所以一般情况不要断电。</p>
+<p>右侧从左往右第一个机柜是UPS的控制和监控柜，显示了一些UPS的运行信息以及UPS的几个主要开关。</p>
+<p>右侧最后一个机柜是UPS的控制电路柜，这里需要注意的是过滤网要定期的清洗。</p>
+<h4 id="集群断电流程"><a href="#集群断电流程" class="headerlink" title="集群断电流程"></a>集群断电流程</h4><ul>
+<li>集群关机，按照<a href="#poweroff">集群关机流程</a>部分描述的方法，将集群所有服务器按照正确顺序进行关机处理。</li>
+<li>关闭机柜2、机柜3、机柜6、机柜7、机柜9、机柜11、机柜13最下面的PDM的开关，从所有机柜的后面查看是不是所有服务器电源模块的指示灯都断电了。最明显的断电特征是，机房的声音变得很小了，基本上没有了，因为刀箱的散热模块断电了。</li>
+<li>关闭主机房两台精密空调，精密空调的右侧有个显示面板，显示面板的左侧有一个可以旋转开关，将开关旋转至Off即可关闭空调。在集群关机之后，可以关闭精密空调。</li>
+<li>到配电房左侧市电柜中关闭精密空调开关、主机房新风、主机房ADU地板的开关。</li>
+<li>回到主机房检查服务器、空调、地板、以及换气设备是否都已经停止工作了，确认好之后，关好主机房的门。</li>
+</ul>
+<p>经过以上步骤，主机房就基本上进行了断电，即服务器设备和空调设备都进行了断电，其他东西可以不用断电，因为功率比较小。</p>
+<p>配电房由于存在UPS电源设备以及配电柜，因此配电房里面的设备不能直接断电，而且配电房空调也不能断电。</p>
+<p>最后总结一下断电的流程：集群服务器设备断电-&gt;集群精密空调断电-&gt;其他辅助设备断电。</p>
+<h4 id="集群通电流程"><a href="#集群通电流程" class="headerlink" title="集群通电流程"></a>集群通电流程</h4><ul>
+<li>到配电房左侧市电柜中打开精密空调的开关。</li>
+<li>进入主机房，打开机柜2、机柜3、机柜6、机柜7、机柜9、机柜11、机柜13最下面的PDM的开关，从所有机柜的后面查看是不是所有服务器电源模块的指示灯都通电了。需要依次检查每个刀箱背后的4个电源模块是否正常运行，即，电源模块的指示灯是否全部是绿色，如果是绿色，表示正常。若有一个是黄色，则很有可能导致刀箱交换模块无法正常被供电，导致无法工作，这种情况导致的后果就是整个刀箱无法连接，也无法相互通信，所以通电后，第一件事请就是要保证所有刀箱的所有电源模块正常工作，如果无法正常工作，请参考<a href="#power_module_error">刀箱电源模块故障处理</a>进行处理。</li>
+<li>中间还有一点需要说明的就是，每个刀片服务器的前置面板的上方有一个白色的纸质标签，标签上面写着nodeXXX，即节点的主机名或者编号信息，这个标签是通过刀箱散热模块产生的向后的空气流动形成的吸引力吸在前置面板上面的，如果集群的刀箱断电后，散热模块停止运行，将会导致有些不是很稳的标签飘落下来，因此，集群断电之后，如果看到了标签落地，请将标签集中捡起来，并放到一个没有风的地方，最好用大一点的螺丝压住，然后等集群通电的时候，散热模块运行，标签可以稳定吸住之后，再将落下的标签贴上。</li>
+<li>开启主机房两台精密空调，精密空调的右侧有个显示面板，显示面板的左侧有一个可以旋转开关，将开关旋转至On即可启动空调。集群开机之前，请首先打开精密空调。</li>
+<li>到配电房左侧市电柜中打开主机房新风、主机房ADU地板的开关。</li>
+<li>集群开机，按照<a href="#poweron">集群开机流程</a>部分描述的方法，将集群所有服务器按照正确顺序进行开机处理。集群开机过程中，请务必注意服务器</li>
+</ul>
+<p>经过以上步骤，集群基本上已经通电并且开机了。</p>
+<p>最后总结一下通电的流程：集群机柜PDM通电-&gt;集群空调通电并开机-&gt;其他辅助设备通电运行-&gt;集群服务器通电并开机。</p>
+<h4 id="紧急情况处理"><a href="#紧急情况处理" class="headerlink" title="紧急情况处理"></a>紧急情况处理</h4><h5 id="停电"><a href="#停电" class="headerlink" title="停电"></a>停电</h5><p>由于机房的市电是从学校其他大楼接入过来的，所以可能存在这样的问题，E5楼停电了，校内会通知，但是机房基本上不受影响。其他大楼停电了，但是学校没有正常通知到E5楼，导致集群以外断电。</p>
+<p>集群具有UPS电源，理论上，最多可支持集群非IT设备运行30分钟左右时间。注意，空调，照明灯非IT设备的电源都未接入到UPS中，所以一旦市电断开，只有服务器，网络设备会正常运行，所以这个时候，机房的温度会陡然升高，可想而知，几百台机器疯狂散热，就算没有负载，机房温度也会升很高，如果是夏天，那可能直接导致机房起火了。</p>
+<p>所以一旦出现断电，温度过高，机房的火灾报警器会响起来，这时候，应该尽早进行关机处理。有时候来不及正常关机，可以直接跑到配电房里面，将UPS电源输出柜的电源开关全部断开，这样机器会全部断电，速度上更快，更早防止损失。</p>
+<p>目前这个问题还没有很好的解决办法，目前能够做的最好方式就是，及时关注学校的停电通知，及早做好相关的处理。另外，还有一个办法，就是需要添加特殊设备，能够实现市电断开报警或直接将UPS的的电池输出断开，就是把UPS当作一个大的配电箱来用，市电断开，集群立即全部都停电。这样就不会导致空调开着，集群还在运行，温度过高的情况出现了。</p>
+<p>近期看到阿里巴巴平台上面有一种断电告警设备，能够检测机房等市电断电情况，一旦断电，即将通过短信，电话等报警的方式通知接收人，这样可以在第一时间知道机房停电的事情，从而进行及时处理。</p>
+<p>个人想法，UPS电源的确是一个非常好的方式，不仅可以帮助机房IT设备稳定电压，而且还能在停电时采取正确关机方式，保证用户数据的安全和应用的数据一致性问题，整体来说是非常有效一种措施和设施，但是，如果停电后，UPS工作，但是管理员没有收到通知，最后电池耗尽了，导致关机，这种情况，有没有UPS都一样，甚至有了UPS还会出事情，严重情况会导致火灾。如果停电后，UPS供电，空调断电，机房继续工作，温度过高，特别是在夏天，机器工作20分钟，足以将机房温度升到70-100度直接导致火灾，所以机房一定要有断电通知的机制，否则，UPS不仅是摆设，还是危害。硬件设施重要，但是管理机制更加重要。</p>
+<h3 id="集群管理软件和技能"><a href="#集群管理软件和技能" class="headerlink" title="集群管理软件和技能"></a>集群管理软件和技能</h3><h4 id="管理软件推荐"><a href="#管理软件推荐" class="headerlink" title="管理软件推荐"></a>管理软件推荐</h4><p>pssh<br>shell<br>Linux<br>LSI RAID</p>
+<h4 id="需要的技能"><a href="#需要的技能" class="headerlink" title="需要的技能"></a>需要的技能</h4><p>Linux OS基本架构和原理的理解<br>Linux Shell编程，最好是熟练掌握<br>计算机网络知识</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://7xsnoh.com1.z0.glb.clouddn.com/WeChat.jpg" alt="ZHANGCHI wechat" style="width: 200px; max-width: 100%;"/>
+    <div>关注微信号进一步交流</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/wechapay.JPG" alt="ZHANGCHI WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xsnoh.com1.z0.glb.clouddn.com//pay/IMG_2777.JPG" alt="ZHANGCHI Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      ZHANGCHI
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://blog.zhangchi.xyz/HPC集群运维总结6-监控与开关机.html" title="HPC集群运维总结6-监控与开关机">http://blog.zhangchi.xyz/HPC集群运维总结6-监控与开关机.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/集群管理/" rel="tag"># 集群管理</a>
+          
+            <a href="/tags/运维/" rel="tag"># 运维</a>
+          
+            <a href="/tags/HPC/" rel="tag"># HPC</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/HPC集群运维总结5-Lustre维护.html" rel="next" title="HPC集群运维总结5-Lustre维护">
+                <i class="fa fa-chevron-left"></i> HPC集群运维总结5-Lustre维护
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/HPC集群运维总结7-故障处理.html" rel="prev" title="HPC集群运维总结7-故障处理">
+                HPC集群运维总结7-故障处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               alt="ZHANGCHI" />
+          <p class="site-author-name" itemprop="name">ZHANGCHI</p>
+           
+              <p class="site-description motion-element" itemprop="description">DIYER糍粑,CIBA,糍粑学习的地方</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">118</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">119</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangciba" target="_blank" title="GitHub" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zhangchixtacbn" target="_blank" title="Weibo" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhangchixtacbn" target="_blank" title="知乎" rel="external nofollow">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://adherence.cn" title="小燕子之家" target="_blank" rel="external nofollow">小燕子之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/zhangchi" title="博客园" target="_blank" rel="external nofollow">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/zhangchixtacbn" title="CSDN" target="_blank" rel="external nofollow">CSDN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhangchixtacbn.blog.163.com" title="网易博客" target="_blank" rel="external nofollow">网易博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://davi.space" title="Davi-Space" target="_blank" rel="external nofollow">Davi-Space</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.jayxhj.com" title="豪杰写字的地方" target="_blank" rel="external nofollow">豪杰写字的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/ryanlamp/" title="大兵奋斗的地方" target="_blank" rel="external nofollow">大兵奋斗的地方</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hust.edu.cn" title="华中科技大学" target="_blank" rel="external nofollow">华中科技大学</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#集群软件环境"><span class="nav-number">1.</span> <span class="nav-text">集群软件环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群监控"><span class="nav-number">2.</span> <span class="nav-text">集群监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群关机与开机流程"><span class="nav-number">3.</span> <span class="nav-text">集群关机与开机流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群断电与通电流程"><span class="nav-number">4.</span> <span class="nav-text">集群断电与通电流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机房电路简介"><span class="nav-number">4.1.</span> <span class="nav-text">机房电路简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配电房设备介绍"><span class="nav-number">4.2.</span> <span class="nav-text">配电房设备介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群断电流程"><span class="nav-number">4.3.</span> <span class="nav-text">集群断电流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群通电流程"><span class="nav-number">4.4.</span> <span class="nav-text">集群通电流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#紧急情况处理"><span class="nav-number">4.5.</span> <span class="nav-text">紧急情况处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#停电"><span class="nav-number">4.5.1.</span> <span class="nav-text">停电</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理软件和技能"><span class="nav-number">5.</span> <span class="nav-text">集群管理软件和技能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#管理软件推荐"><span class="nav-number">5.1.</span> <span class="nav-text">管理软件推荐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要的技能"><span class="nav-number">5.2.</span> <span class="nav-text">需要的技能</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+    
+        <span class="post-meta-divider">|</span>
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+        <span class="post-meta-divider">|</span>
+
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZHANGCHI</span>
+</div>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cyt1YeKGz';
+      var conf = 'ad47d27725e364e61bc1caebba090e65';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("Q2wCx7ylg0R2b3SjDM49UpFA-gzGzoHsz", "tMTqAIprel7Bdpgm463fDDsY");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
