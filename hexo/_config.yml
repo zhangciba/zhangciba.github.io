@@ -106,3 +106,8 @@ algolia:
     - content: strip
 
 disqus_shortname: adherence-cn
+
+footer:
+  # -------------------------------------------------------------
+  # visitors count
+  counter: true
