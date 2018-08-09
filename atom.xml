@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangchi.xyz/"/>
-  <updated>2018-08-07T11:59:48.176Z</updated>
+  <updated>2018-05-18T11:51:20.000Z</updated>
   <id>http://blog.zhangchi.xyz/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>测试啦</title>
-    <link href="http://blog.zhangchi.xyz/%E6%B5%8B%E8%AF%95%E5%95%A6.html"/>
-    <id>http://blog.zhangchi.xyz/测试啦.html</id>
-    <published>2018-08-07T11:59:25.000Z</published>
-    <updated>2018-08-07T11:59:48.176Z</updated>
-    
-    <content type="html"><![CDATA[<p>测试<br>测试<br>测试</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;测试&lt;br&gt;测试&lt;br&gt;测试&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>CentOS设置root用户邮箱</title>
@@ -563,6 +541,37 @@
       <category term="HPC" scheme="http://blog.zhangchi.xyz/tags/HPC/"/>
     
       <category term="RDMA" scheme="http://blog.zhangchi.xyz/tags/RDMA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Draining system to allow starving job to run</title>
+    <link href="http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html"/>
+    <id>http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html</id>
+    <published>2017-11-16T07:17:40.000Z</published>
+    <updated>2017-11-16T07:19:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Draining system to allow starving job to run</span><br></pre></td></tr></table></figure><p>意思是，队列中还有排队非常久的饥饿进程，为了更公平合理使用队列，所以将新提交的作业做置为排队状态以让出资源运行排队的饥饿作业。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span cla
+      
+    
+    </summary>
+    
+      <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
+    
+      <category term="Torque" scheme="http://blog.zhangchi.xyz/tags/Torque/"/>
+    
+      <category term="PBS" scheme="http://blog.zhangchi.xyz/tags/PBS/"/>
+    
+      <category term="Cluster" scheme="http://blog.zhangchi.xyz/tags/Cluster/"/>
     
   </entry>
   
