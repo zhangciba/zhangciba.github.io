@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangchi.xyz/"/>
-  <updated>2018-05-18T11:51:20.000Z</updated>
+  <updated>2018-08-28T07:58:43.981Z</updated>
   <id>http://blog.zhangchi.xyz/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>grub2修改启动顺序</title>
+    <link href="http://blog.zhangchi.xyz/grub2%E4%BF%AE%E6%94%B9%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F.html"/>
+    <id>http://blog.zhangchi.xyz/grub2修改启动顺序.html</id>
+    <published>2018-08-28T07:56:47.000Z</published>
+    <updated>2018-08-28T07:58:43.981Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>查看所有的entry</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@dpdk grub2]# awk -F \&apos; &apos;$1==&quot;menuentry &quot; &#123;print i++ &quot; : &quot; $2&#125;&apos; /etc/grub2.cfg</span><br><span class="line">0 : CentOS Linux (3.10.0-693.11.1.el7.x86_64) 7 (Core)</span><br><span class="line">1 : CentOS Linux (3.10.0-693.5.2.el7.x86_64) 7 (Core)</span><br><span class="line">2 : CentOS Linux (3.10.0-693.2.2.el7.x86_64) 7 (Core)</span><br><span class="line">3 : CentOS Linux (0-rescue-37138ca794604b28bca5b6394f5cd3c2) 7 (Core)</span><br></pre></td></tr></table></figure></li><li><p>查看当前default的entry</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@dpdk grub2]# grub2-editenv list</span><br><span class="line">saved_entry=CentOS Linux (3.10.0-693.11.1.el7.x86_64) 7 (Core)</span><br><span class="line">[root@dpdk grub2]#</span><br></pre></td></tr></table></figure></li><li><p>修改为指定的entry</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@dpdk grub2]# grub2-set-default 2</span><br><span class="line">[root@dpdk grub2]# grub2-editenv list</span><br><span class="line">saved_entry=2</span><br><span class="line">[root@dpdk grub2]#</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;查看所有的entry&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;li
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://blog.zhangchi.xyz/categories/Linux/"/>
+    
+    
+      <category term="grub2" scheme="http://blog.zhangchi.xyz/tags/grub2/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS设置root用户邮箱</title>
@@ -235,9 +262,9 @@
       <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-    
       <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
+    
+      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
       <category term="运维" scheme="http://blog.zhangchi.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
     
@@ -270,9 +297,9 @@
       <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-    
       <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
+    
+      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
       <category term="运维" scheme="http://blog.zhangchi.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
     
@@ -303,9 +330,9 @@
       <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-    
       <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
+    
+      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
       <category term="运维" scheme="http://blog.zhangchi.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
     
@@ -332,9 +359,9 @@
       <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-    
       <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
+    
+      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
       <category term="运维" scheme="http://blog.zhangchi.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
     
@@ -363,9 +390,9 @@
       <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-    
       <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
+    
+      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
       <category term="运维" scheme="http://blog.zhangchi.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
     
@@ -392,9 +419,9 @@
       <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-    
       <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
+    
+      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
       <category term="运维" scheme="http://blog.zhangchi.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
     
@@ -424,9 +451,9 @@
       <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-    
       <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
+    
+      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
       <category term="运维" scheme="http://blog.zhangchi.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
     
@@ -454,9 +481,9 @@
       <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
     
-      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-    
       <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
+    
+      <category term="集群管理" scheme="http://blog.zhangchi.xyz/tags/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
       <category term="运维" scheme="http://blog.zhangchi.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
     
@@ -541,37 +568,6 @@
       <category term="HPC" scheme="http://blog.zhangchi.xyz/tags/HPC/"/>
     
       <category term="RDMA" scheme="http://blog.zhangchi.xyz/tags/RDMA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Draining system to allow starving job to run</title>
-    <link href="http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html"/>
-    <id>http://blog.zhangchi.xyz/Draining-system-to-allow-starving-job-to-run.html</id>
-    <published>2017-11-16T07:17:40.000Z</published>
-    <updated>2017-11-16T07:19:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Draining system to allow starving job to run</span><br></pre></td></tr></table></figure><p>意思是，队列中还有排队非常久的饥饿进程，为了更公平合理使用队列，所以将新提交的作业做置为排队状态以让出资源运行排队的饥饿作业。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span cla
-      
-    
-    </summary>
-    
-      <category term="集群管理" scheme="http://blog.zhangchi.xyz/categories/%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
-    
-    
-      <category term="Linux" scheme="http://blog.zhangchi.xyz/tags/Linux/"/>
-    
-      <category term="Torque" scheme="http://blog.zhangchi.xyz/tags/Torque/"/>
-    
-      <category term="PBS" scheme="http://blog.zhangchi.xyz/tags/PBS/"/>
-    
-      <category term="Cluster" scheme="http://blog.zhangchi.xyz/tags/Cluster/"/>
     
   </entry>
   

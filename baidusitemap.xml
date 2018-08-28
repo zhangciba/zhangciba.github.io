@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/grub2%E4%BF%AE%E6%94%B9%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F.html</loc>
+    <lastmod>2018-08-28T07:58:43.981Z</lastmod>
+    <data>
+        <display>
+        <title>grub2修改启动顺序</title>
+        <pubTime>2018-08-28T07:56:47.000Z</pubTime>
+        
+        <tag>grub2</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://blog.zhangchi.xyz/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/CentOS%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E9%82%AE%E7%AE%B1.html</loc>
     <lastmod>2018-05-18T11:51:20.000Z</lastmod>
     <data>
@@ -119,9 +139,9 @@
         <title>HPC集群运维总结2-服务器维护</title>
         <pubTime>2017-12-12T12:20:22.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>运维</tag>
          
@@ -145,9 +165,9 @@
         <title>HPC集群运维总结3-用户与权限管理</title>
         <pubTime>2017-12-12T12:20:23.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>运维</tag>
          
@@ -171,9 +191,9 @@
         <title>HPC集群运维总结4-网络访问控制</title>
         <pubTime>2017-12-12T12:20:24.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>运维</tag>
          
@@ -197,9 +217,9 @@
         <title>HPC集群运维总结5-Lustre维护</title>
         <pubTime>2017-12-12T12:20:25.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>运维</tag>
          
@@ -223,9 +243,9 @@
         <title>HPC集群运维总结6-监控与开关机</title>
         <pubTime>2017-12-12T12:20:26.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>运维</tag>
          
@@ -249,9 +269,9 @@
         <title>HPC集群运维总结7-故障处理</title>
         <pubTime>2017-12-12T12:20:27.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>运维</tag>
          
@@ -275,9 +295,9 @@
         <title>HPC集群运维总结8-未尽事宜</title>
         <pubTime>2017-12-12T12:20:28.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>运维</tag>
          
@@ -301,9 +321,9 @@
         <title>HPC集群运维总结1-配置与职责</title>
         <pubTime>2017-12-12T12:20:01.000Z</pubTime>
         
-        <tag>集群管理</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>集群管理</tag>
          
         <tag>运维</tag>
          
