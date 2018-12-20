@@ -4,6 +4,21 @@
 
     
   <url>
+    <loc>http://blog.zhangchi.xyz/grep%E5%8C%B9%E9%85%8DTAB%E7%9A%84%E5%86%99%E6%B3%95.html</loc>
+    <lastmod>2018-12-20T02:52:20.121Z</lastmod>
+    <data>
+        <display>
+        <title>grep匹配TAB的写法</title>
+        <pubTime>2018-12-20T02:51:53.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.zhangchi.xyz/grub2%E4%BF%AE%E6%94%B9%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F.html</loc>
     <lastmod>2018-08-28T07:58:43.981Z</lastmod>
     <data>
@@ -139,9 +154,9 @@
         <title>HPC集群运维总结2-服务器维护</title>
         <pubTime>2017-12-12T12:20:22.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>集群管理</tag>
+         
+        <tag>Linux</tag>
          
         <tag>运维</tag>
          
@@ -165,9 +180,9 @@
         <title>HPC集群运维总结3-用户与权限管理</title>
         <pubTime>2017-12-12T12:20:23.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>集群管理</tag>
+         
+        <tag>Linux</tag>
          
         <tag>运维</tag>
          
@@ -191,9 +206,9 @@
         <title>HPC集群运维总结4-网络访问控制</title>
         <pubTime>2017-12-12T12:20:24.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>集群管理</tag>
+         
+        <tag>Linux</tag>
          
         <tag>运维</tag>
          
@@ -217,9 +232,9 @@
         <title>HPC集群运维总结5-Lustre维护</title>
         <pubTime>2017-12-12T12:20:25.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>集群管理</tag>
+         
+        <tag>Linux</tag>
          
         <tag>运维</tag>
          
@@ -243,9 +258,9 @@
         <title>HPC集群运维总结6-监控与开关机</title>
         <pubTime>2017-12-12T12:20:26.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>集群管理</tag>
+         
+        <tag>Linux</tag>
          
         <tag>运维</tag>
          
@@ -269,9 +284,9 @@
         <title>HPC集群运维总结7-故障处理</title>
         <pubTime>2017-12-12T12:20:27.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>集群管理</tag>
+         
+        <tag>Linux</tag>
          
         <tag>运维</tag>
          
@@ -295,9 +310,9 @@
         <title>HPC集群运维总结8-未尽事宜</title>
         <pubTime>2017-12-12T12:20:28.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>集群管理</tag>
+         
+        <tag>Linux</tag>
          
         <tag>运维</tag>
          
@@ -321,9 +336,9 @@
         <title>HPC集群运维总结1-配置与职责</title>
         <pubTime>2017-12-12T12:20:01.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>集群管理</tag>
+         
+        <tag>Linux</tag>
          
         <tag>运维</tag>
          
@@ -561,11 +576,11 @@
         <title>Draining system to allow starving job to run</title>
         <pubTime>2017-11-16T07:17:40.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>Torque</tag>
          
         <tag>PBS</tag>
+         
+        <tag>Linux</tag>
          
         <tag>Cluster</tag>
          
@@ -587,9 +602,9 @@
         <title>qsub:script is written in DOS/Windows text format</title>
         <pubTime>2017-11-15T08:27:06.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>Torque</tag>
+         
+        <tag>Linux</tag>
          
         <tag>HPC</tag>
          
@@ -633,13 +648,13 @@
         <title>CentOS7修改内核启动默认顺序</title>
         <pubTime>2017-11-15T02:02:44.000Z</pubTime>
         
+        <tag>Linux</tag>
+         
         <tag>grub2</tag>
          
         <tag>启动顺序</tag>
          
         <tag>CentOS7</tag>
-         
-        <tag>Linux</tag>
          
          
            
