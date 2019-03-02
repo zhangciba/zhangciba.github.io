@@ -15,4 +15,4 @@ The receiving process then copy over the message to its own buffer.
 * The receiving process needs to bring the sending process' buffer into its cache
 * And the receiving process can write this buffer into its own receive buffer
 
-![Intra Node Communication Shemes](http://7xsnoh.com1.z0.glb.clouddn.com/Intra-Node%20Communication%20Schemes.png)
+![Intra Node Communication Shemes](http://cdn.zhangchi.xyz/Intra-Node%20Communication%20Schemes.png)

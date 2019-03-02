@@ -12,6 +12,6 @@ tags: 集群自动监控
 
 脚本监控的截图如下。后期会对脚本进行拆分，划分为多个模块。例如温度监控模块、开关机模块、日志模块、统计报表模块，基于这个基础上，可以很容易开发一个集群监控系统，通过Web或者桌面App的形式来展示集群的历史信息，从而实现集群的科学管理。
 
-![monitor.sh-1](http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-1.png)
-![monitor.sh-2](http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-2.png)
-![monitor.sh-3](http://7xsnoh.com1.z0.glb.clouddn.com/monitor.sh-3.png)
+![monitor.sh-1](http://cdn.zhangchi.xyz/monitor.sh-1.png)
+![monitor.sh-2](http://cdn.zhangchi.xyz/monitor.sh-2.png)
+![monitor.sh-3](http://cdn.zhangchi.xyz/monitor.sh-3.png)

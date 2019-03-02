@@ -6,7 +6,7 @@ tags: [MPI,PBS,Torque]
 ---
 
 先看具体内容的截图。
-![朋友圈](http://7xsnoh.com1.z0.glb.clouddn.com//pic/Memoents0525.PNG)
+![朋友圈](http://cdn.zhangchi.xyz//pic/Memoents0525.PNG)
 
 <!--more-->
 在/home/sce目录下面，有一个PBS的脚本，脚本里面的内容如下：
@@ -27,7 +27,7 @@ qstat
 ```
 查看作业执行状况时，发现作业很快由运行状态R变成状态完成C了。
 查看作业的输出文件和错误文件。发现输出文件中没有任何信息，错误文件中报如下错误。
-![MPI_Abort](http://7xsnoh.com1.z0.glb.clouddn.com//pic/MPI_Abort_error.jpeg)
+![MPI_Abort](http://cdn.zhangchi.xyz//pic/MPI_Abort_error.jpeg)
 由于作业脚本中指定的CPU核数是16，所以有16个MPI_Abort问题，如果修改np参数的值，MPI_Abort的数量也跟着变为一致。
 
 最开始一致以为是MPI运行环境或者是Torque运行环境没有配置好。一直将精力放在这些环境的配置上面，重新安装了多次环境。环境配置成功之后，我又运行了MPI Hello World程序和计算PI值的程序，发现这两个程序无论是通过MPI直接运行，还是通过Torque多机器运行，都可以正常运行，虽然有一些报错，是XRC，也就是Infiniband驱动版本过旧的问题外，结果是正确的。
@@ -35,7 +35,7 @@ qstat
 由于手工执行job.sub中的mpirun命令，可以正常运行，所以认为作业本身没问题，认为是PBS调度系统的问题，或者MPI和PBS结合配置的地方有问题。
 
 就这样一直折腾着，后来发现运行Hello World和CPI程序可以的时候，隐约感觉是jos.sub有些问题。之后多次通过qsub job.sub提交作业，偶然间发现了在/home/sce下面有一个OUTPUT文件，发现这个文件的修改时间和作业提交时间很接近，而且这个文件原来是没有的，然后在提交脚本运行后，就出现了。于是查看了一下里面的内容，内容如下：
-![CONFIG_FILE](http://7xsnoh.com1.z0.glb.clouddn.com//pic/CONFIG_FILE_ERROR.jpeg)
+![CONFIG_FILE](http://cdn.zhangchi.xyz//pic/CONFIG_FILE_ERROR.jpeg)
 上面提示CONFIG文件不存在，于是我想会不会是工作路径的问题，本身job.sub脚本坐在目录/home/sce/
 app/DL_POLY/1/文件夹下面都有，但是通过Torque提交后，默认的工作目录是用户的主目录，因此找不到CONFIG文件，提示报错，于是我将脚本所在路径下面的所有文件都拷贝到了用户主目录/home/sec下面来，发现通过作业管理系统可以正常运行了。而且多机器情况下也可以正常运行。
 

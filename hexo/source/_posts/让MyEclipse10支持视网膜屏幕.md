@@ -16,7 +16,7 @@ toc: true
 
 ## 首先打开Finder，进入到应用程序的目录。
 如图1所示
-![打开应用程序目录](http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse01.png)
+![打开应用程序目录](http://cdn.zhangchi.xyz/myeclipse01.png)
 
 ## 编辑Info.plist文件
 然后进入MyEclipse的目录下面，可以看到MyEclipse10的图标，双手指点按，出来菜单，选择显示包内容，我们可以看到Info.plist文件，用XCode打开，点击‘+’号，添加一个键NSHighResolution Capable，并设置值为YES，保存，然后退出XCode。
@@ -33,11 +33,11 @@ toc: true
 
 ## 过程截图
 
-![显示包内容](http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse02.png)
-![显示包内容](http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse03.png)
-![打开Profile文件夹](http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse04.png)
+![显示包内容](http://cdn.zhangchi.xyz/myeclipse02.png)
+![显示包内容](http://cdn.zhangchi.xyz/myeclipse03.png)
+![打开Profile文件夹](http://cdn.zhangchi.xyz/myeclipse04.png)
 
-![再次显示包内容](http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse05.png)
-![编辑Info.plist文件](http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse06.png)
-![编辑Info.plist文件](http://7xsnoh.com2.z0.glb.clouddn.com/myeclipse07.png)
+![再次显示包内容](http://cdn.zhangchi.xyz/myeclipse05.png)
+![编辑Info.plist文件](http://cdn.zhangchi.xyz/myeclipse06.png)
+![编辑Info.plist文件](http://cdn.zhangchi.xyz/myeclipse07.png)
 

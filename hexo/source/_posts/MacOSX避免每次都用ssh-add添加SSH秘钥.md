@@ -17,6 +17,6 @@ categories: ssh
 <!-- more -->
 &#160; &#160; &#160; &#160;之后，其他的程序请求 ssh 秘钥的时候，会通过 Keychain 服务来请求。下面的截图里你可以看到我当前的机器上 Keychain 为我管理的有关 ssh 的秘钥，这其中包括我自己生成的四个，以及 Github Client App 自己使用的一个——前者几个都是供 ssh 相关的命令所使用，而后者则指明了仅供 Github.app 这个应用程序使用。 另外，它们都是 login keychains 也就是只有当前用户登录之后才会生效的，换了用户或是未登录状态是不能使用的，这就是 Keychain 服务所帮你做的事情。
 
-![KeyChain Access](http://7xsnoh.com2.z0.glb.clouddn.com/keychain%20access.png "KeyChain Access")
+![KeyChain Access](http://cdn.zhangchi.xyz/keychain%20access.png "KeyChain Access")
 
 

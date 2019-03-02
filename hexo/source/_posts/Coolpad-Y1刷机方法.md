@@ -30,13 +30,13 @@ tags: Coolpad Y1
 
 ##### 手机连接电脑
   酷派Y1手机的进入Fastboot的方式是这样的。手机在完全关机的情况下，可以先把电池卸载下来，然后装上去，请注意不要插上数据线。然后按着音量增大的键，一直按着，然后用数据线将手机连上电脑，出现下面的界面之后再松开。
-  ![fastboot界面](http://7xsnoh.com1.z0.glb.clouddn.com/coolpad_fastboot1.jpg)
+  ![fastboot界面](http://cdn.zhangchi.xyz/coolpad_fastboot1.jpg)
   
   出现这个界面之后，再按一下音量加，进入如下界面表示可以进行刷机了。
-  ![fastboot界面](http://7xsnoh.com1.z0.glb.clouddn.com/coolpad_fastboot2.jpg)
+  ![fastboot界面](http://cdn.zhangchi.xyz/coolpad_fastboot2.jpg)
   *请一定要保证手机电量充足，另外保证手机连接稳定，以免刷机过程中出现连接中断导致刷机失败的情况。*
   为了验证驱动是否安装成功，在Windows系统下面的设备管理器里面应该可以看到下面图片中的设备。打开设别管理器的方法是在计算机图标上面点击右键，出现设备管理器就可以进入了。
-  ![设备管理器中的酷派手机](http://7xsnoh.com1.z0.glb.clouddn.com/device_success.png)
+  ![设备管理器中的酷派手机](http://cdn.zhangchi.xyz/device_success.png)
   如果没有出现，点击计算机名，右键，扫描硬件改动即可。如果还是不行的话，可以重新安装驱动，然后重新将手机以fastboot方式连接电脑。（再次重复，将手机完全关机，按住音量加号键，插上数据线连接电脑，图片如前面所示）  
 
 ##### 解压CPB线刷包
@@ -45,21 +45,21 @@ tags: Coolpad Y1
  
 ##### 使用刷机工具进行刷机
   首先打开Coolpad Download Assistant软件，界面如下：
-  ![软件界面](http://7xsnoh.com1.z0.glb.clouddn.com/cds_step1.png)
+  ![软件界面](http://cdn.zhangchi.xyz/cds_step1.png)
   *确保手机已经连接上了*，连接方式参考之前的步骤
 
   其次选择刷机包文件，如图所示：
-  ![选择刷机包文件](http://7xsnoh.com1.z0.glb.clouddn.com/cds_step3.png)
+  ![选择刷机包文件](http://cdn.zhangchi.xyz/cds_step3.png)
 	
   然后开始刷机包验证，如图所示：
-  ![压缩包验证](http://7xsnoh.com1.z0.glb.clouddn.com/cds_step4.png)
-  ![压缩包验证](http://7xsnoh.com1.z0.glb.clouddn.com/cds_step5.png)
+  ![压缩包验证](http://cdn.zhangchi.xyz/cds_step4.png)
+  ![压缩包验证](http://cdn.zhangchi.xyz/cds_step5.png)
  
   校验完成之后就开始刷机了，如图所示：
-  ![刷机过程](http://7xsnoh.com1.z0.glb.clouddn.com/cds_step6.png)
+  ![刷机过程](http://cdn.zhangchi.xyz/cds_step6.png)
 
   等待10分钟左右，刷机完成，如图所示：
-  ![刷机完成](http://7xsnoh.com1.z0.glb.clouddn.com/cds_step7.png)
+  ![刷机完成](http://cdn.zhangchi.xyz/cds_step7.png)
 
 #### 刷机之后
   启动手机之后会卡在中国电信的欢迎界面，这个时候，可以拔掉电池，然后重新启动，就可以进入系统了。

@@ -115,7 +115,7 @@ clusconf -p node -n `seq 307 310` 100 101 `seq 105 107` -ua tom
 -p node是指节点主机名的前缀，例如说node1的前缀是node，这个是固定写法。
 -n 选项指定要进行操作的节点编号，无论用户分配哪些节点给用户，以下节点必须包含在里面，307和308节点是集群的入口节点，只有这两个节点才能登陆到集群，309和310是Lustre文件系统的元数据#服务器，如果没有在这两个节点添加用户，那么用户将无法登录到集群使用文件系统，很可能导致卡住。因此在进行添加用户时，一定要添加``seq 307 310``这句。其他节点的编号，可以使用``seq startindex endindex``方法进行生成，前提是节点编号连续。当节点编号不连续时，可以依次输入节点编号，空格分开。-ua tom的意思是添加用户tom，ua即useradd的意思
 
-由于目前仅仅使用clusconf的用户添加功能，所以只能介绍到这里，下面附上一个clusconf的使用教程，需要了解可以详细阅读。[clusconf1.4使用手册](http://7xsnoh.com1.z0.glb.clouddn.com//clustermgmt/pdf/clusconf-1.4%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C.pdf)
+由于目前仅仅使用clusconf的用户添加功能，所以只能介绍到这里，下面附上一个clusconf的使用教程，需要了解可以详细阅读。[clusconf1.4使用手册](http://cdn.zhangchi.xyz//clustermgmt/pdf/clusconf-1.4%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C.pdf)
 
 #### 权限管理
 ##### root权限管理

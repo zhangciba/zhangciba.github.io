@@ -63,7 +63,7 @@ tags: [集群管理,运维,Linux,HPC]
 再生龙工具非常的强大，如果集群需要恢复的系统特别多，那么可以采用这种方式，下面附上再生龙使用教程，百度上面也可以搜索到，参考文档进行使用。
 
 [再生龙官网](http://clonezilla.nchc.org.tw/news/)
-[再生龙详细使用文档](http://7xsnoh.com1.z0.glb.clouddn.com//clustermgmt/pdfClonezilla%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E.pdf)
+[再生龙详细使用文档](http://cdn.zhangchi.xyz//clustermgmt/pdfClonezilla%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E.pdf)
 
 我们需要将再生龙服务器版本刻录到U盘或者光盘上面，然后启动到再生龙进行操作。
 

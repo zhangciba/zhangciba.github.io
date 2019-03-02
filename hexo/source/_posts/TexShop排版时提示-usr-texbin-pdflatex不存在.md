@@ -23,5 +23,5 @@ LaTeX是论文写作的利器，可以极大方便我们的排版工作，因为
 其他的TeX编辑软件如果出现这样的情况，也可以采用相同的设置方法，将tex的路径修改为/Library/TeX/texbin就可以了。
 
 参考官方文档[ UpdatingForEIcaptian][1]
-[1]: http://7xsnoh.com2.z0.glb.clouddn.com/UpdatingForElCapitan.pdf
+[1]: http://cdn.zhangchi.xyz/UpdatingForElCapitan.pdf
 

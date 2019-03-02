@@ -33,13 +33,13 @@ VMware和XenServer分别通过vMtoion和XenMotion来支持虚拟机的热迁移�
 
 #### VMware中的高可用性。
 VMware平台采用VMware分布式资源调度器(DRS)，VMware HA，VMware FT以及vMotion来保证虚拟机环境的高可用性。
-![VMware HA:High-Level Architecture](http://7xsnoh.com1.z0.glb.clouddn.com/vmware-ha.png)
+![VMware HA:High-Level Architecture](http://cdn.zhangchi.xyz/vmware-ha.png)
 图中可以看出VMware HA是建立在故障转移集群上面的，所有的磁盘镜像需要存储在共享存储中。HA代理负责维护主机之间的心跳以及虚拟机虚拟中心服务器之间的心跳，以及应用程序与虚拟中心服务器之间的心跳。
 
 VMware高可用性可以处理Host failure，Guest OS failure，Application failure这三种失败。
 关于虚拟机迁移以及在新的主机上面启动虚拟机来说，分布式资源调度器根据集群主机的状态、虚拟机资源的消耗情况，以及一些附加规则等来选择虚拟机移植到的新主机的位置。
 图二展示的是目前VMware容错的实现版本，通过vLockStep协议，将所有的输入数据通过一个专用通道发送到备份机，并进行重放。vLockStep技术需要物理处理器的支持，目前已经与Intelli和AMD进行了合作。目前所有的x86服务器处理器都兼容vLockStep。要使用vLockStep，需要一条主机和备份机之间高速的网络，至少1Gbit。
-![VMware FT:vLockStep overview](http://7xsnoh.com1.z0.glb.clouddn.com/vmware-ft.png)
+![VMware FT:vLockStep overview](http://cdn.zhangchi.xyz/vmware-ft.png)
 VMWare基于目前实现的容错机制只能支持基于单个逻辑内核的虚拟机，为了保护多核虚拟机，VMware开发了对称多核处理器容错协议，该协议需要更高的网络带宽，最少10Gbit。
 
 #### XenServer平台的高可用性
@@ -54,12 +54,12 @@ Remus采用Active-Passive结合的配置，虚拟机状态被持续从主机复�
 
 通过在LXC（LinuX Container）上添加一些诸如版本和共享特性的Docker正在成为一个具有吸引力的提供容器的平台。然而高可用性的特性在Docker或LXC编写时并没有考虑。例如，Docker的检查点机制依赖于lxc-checkpoint，但是它至今还没有实现。作为一个备选方案，可以使用commit命令来对运行中的容器进行快照，然而，仅仅保存容器的文件变化以及放入新的镜像，但是没有考虑正在运行的进程中的状态。当另一个基于快照保存的镜像的容器在另外一个主机上启动时，在之前的容器上运行的进程的状态却没有保存下来。
 
-![表3-Docker和OpenVZ中高可用性特性的对比](http://7xsnoh.com1.z0.glb.clouddn.com/table-ft-feature.png)
+![表3-Docker和OpenVZ中高可用性特性的对比](http://cdn.zhangchi.xyz/table-ft-feature.png)
 相反，正如表3所示。进程迁移和检查点/回复的特性在OpenVZ是完整的，而且可以使用。这些特性是通过可以加载的内核模块机上一些用户空间功能来实现的。然而，和之前提到的一些已有工作一样，这种方式的主要缺点是，OpenVZ缺乏官方的与主流Linux内核的集成。于此同时，OpenVZ的这些特性是在2006年4月份提出的，它们至今没有被主流的Linux内核所接受。目前仅有定制的2.6.32内核上面具有OpenVZ的全部特性。使用老的内核会存在很多问题，注入安全和兼容性等。为了解决这个问题，一个新的研究方向被提出了，就是将检查点复杂性的大部分从老得内核去掉，将其加入到用户控件，这样可以减少内核修改的工作量。在书写这篇文章的时候,超过150个来自于CRIU的补丁已经加入到了内核的主线用于实现检查点/还原功能以及有与LXC集成的可能。同时注意到，目前没有其他容器平台支持主从之间失败检测、自动状态同步以及故障转移管理的特性。
 
 ##### CRIU中的检查点/还原和热迁移
 图4描述容器迁移的时间序列，OpenVZ和CRIU目前的实现和这些序列是一致的。
-![容器迁移的序列图](http://7xsnoh.com1.z0.glb.clouddn.com/seq-criu.png)
+![容器迁移的序列图](http://cdn.zhangchi.xyz/seq-criu.png)
 
 这种是实现的一个优势就是在传输内存或者文件系统同时过程中出现连接失败时，迁移进程可以回滚至源机器，在源机器上恢复容器。
 
@@ -67,13 +67,13 @@ Remus采用Active-Passive结合的配置，虚拟机状态被持续从主机复�
 
 * 文件系统变化追踪：基本动机是为了减少图4中第4阶段文件系统同步的时间。这是通过不断追踪文件系统的变化并只同步变化的部分来实现的。目前CRIU的优化是基于ploop,一个类似于Linux loop设备但是专门为容器设计的块设备。ploop的一个主要特性是写追踪，它允许讷河记录下一些列被修改的数据块的清单。这个清单能够用于在最少的容器拓机时间内高效地将一个ploop设置迁移至另外一个宿主机。ploop拷贝工具已经在用户空间实现了这个功能并且用于vzmigrate工具。
 * 延迟迁移：如图5中高亮部分所示，延迟加载的基本思想是仅仅传输内存页的少数子集至目标机器，并在目标宿主机上还原空气，并根据具体的需求从源机器上把剩下的页拉过来。有了延迟加载之后，容器可以不需要等待所有的内存也拷贝完，就可以在机器上重启。如果出现内存页缺失的情况，容器发送一个请求给源宿主机上的缺页守护进程来拉取缺失的内存页。通过这种方式来实现内存页的传输。最后，容器在任何空闲间隙，交换行为被强制执行，所有剩下的内存页将会从源宿主机上面传输过来。
-![Lazy Migration](http://7xsnoh.com1.z0.glb.clouddn.com/lazy-migration.png)
+![Lazy Migration](http://cdn.zhangchi.xyz/lazy-migration.png)
 延迟迁移的一个主要的难点在于无论是源还是目的宿主机需要保持容器的完整状态，这意味着在整个虚拟机迁移的过程中，源和目的宿主机之间的网络连接需要可靠。特别地，在目的
 宿主机上面还原的容器由于网络故障导致的不完整内存页而产生故障，然而回滚在这种情况下也没有多大的作用。
 
 * 迭代迁移
 另外一种优化（迭代迁移）就是在冻结容器之前进行内存页和文件系统的同步，这样可以大量减少容器在冻结之后需要迁移的数据的数量。然而，在数据传输过程中，内存页以及文件系统都有可能会被修改，因此，整个过程需要迭代执行。采用这种方式时，文件系统将会被同步迭代，与此同时，内存中的脏页也会在迭代过程中不断产生。
-![Iterative Migration](http://7xsnoh.com1.z0.glb.clouddn.com/iterative-migration.png)
+![Iterative Migration](http://cdn.zhangchi.xyz/iterative-migration.png)
 如图六所示，迭代进行在没有任何改变或达到设置的阈值时才会停止。
 
 #### 容器的集群

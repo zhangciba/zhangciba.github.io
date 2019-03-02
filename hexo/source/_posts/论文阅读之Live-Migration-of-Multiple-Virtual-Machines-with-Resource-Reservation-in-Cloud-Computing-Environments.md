@@ -10,7 +10,7 @@ tags: Live-Migration
 #### 虚拟机在线迁移框架
 如图[1](LMMVM)所示
 
-[LMMVM]:http://7xsnoh.com1.z0.glb.clouddn.com/lv-llvm.png "LLVM" 
+[LMMVM]:http://cdn.zhangchi.xyz/lv-llvm.png "LLVM" 
 主要有4个主要模块：迁移决策模块、迁移控制模块、资源预留模块以及资源监控模块。
 * 迁移决策模块： 核心模块，负责迁移的决策，它会通过机器学习历史数据来进行智能决策。目前的迁移策略有顺序迁移、并行迁移、工作量感应迁移策略。
 
@@ -42,41 +42,41 @@ tags: Live-Migration
 为了保证数据的准确性，作者对每一个实验配置进行了五次相同的实验，并删除了最大与最小数据，取平均值。
 
 #### 单个虚拟机迁移的性能开销
-![THE WORKLOAD PERFORMANCE OVERHEADS OF LIVE MIGRATION OF VIRTUAL MACHINES](http://7xsnoh.com1.z0.glb.clouddn.com/lv-table1.png)
+![THE WORKLOAD PERFORMANCE OVERHEADS OF LIVE MIGRATION OF VIRTUAL MACHINES](http://cdn.zhangchi.xyz/lv-table1.png)
 
-![DOWNTIME AND MIGRATION TIME OF DIFFERENT VIRTUAL MACHINE WORKLOADS UNDER LIVE MIGRATION](http://7xsnoh.com1.z0.glb.clouddn.com/lv-table2.png)
+![DOWNTIME AND MIGRATION TIME OF DIFFERENT VIRTUAL MACHINE WORKLOADS UNDER LIVE MIGRATION](http://cdn.zhangchi.xyz/lv-table2.png)
 
 表中可以看出由于SPECjbb和sysbench的工作量更加复杂，可能会消耗更多的内存，导致了整体迁移时间更长。
 
 #### 在源主机中进行资源预留
 本小节中，将会研究在源主机中采取资源预留策略之后对虚拟机热迁移性能的影响。
-![图2](http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig2.png)
-![图3](http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig3.png)
+![图2](http://cdn.zhangchi.xyz/lv-fig2.png)
+![图3](http://cdn.zhangchi.xyz/lv-fig3.png)
 
 图2和图3中阐述了当源主机中采取不同的资源预留策略时对迁移性能的影响。通过改变CAP的值来限制被迁移虚拟机消耗的CPU资源，内存资源的预留是通过使用Xen中的xm mem-set接口来动态调整的。
 
 通过图2和图3可以发现，CPU预留对于空闲虚拟机迁移和宕机时间没有太大影响，而随着预留内存的增加，虚拟机迁移的时间会随着增加，这是因为更多的内存会消耗更多的时间来转移内存数据。
-[图4](http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig4.png)
+[图4](http://cdn.zhangchi.xyz/lv-fig4.png)
 而在迁移运行SPECjbb任务的虚拟机时，预留的CPU资源越多，那么迁移的时间越短，但是操作50%之后，迁移时间不受影响，这是因为SPECjbb只需要一定数量的CPU。
 
 #### 在目标机器上采取资源预留策略
-![图5](http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig5.png)
-![图6](http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig6.png)
-![图7](http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig7.png)
+![图5](http://cdn.zhangchi.xyz/lv-fig5.png)
+![图6](http://cdn.zhangchi.xyz/lv-fig6.png)
+![图7](http://cdn.zhangchi.xyz/lv-fig7.png)
 在目标机器上是通过创建CPU捆绑的虚拟机来实现CPU资源预留，而通过创建空闲虚拟机并分配一定的内存来实现内存资源的预留。
 
 图5和6展示了在目标机器上使用不同的CPU和内存资源预留策略时对虚拟机在线迁移的性能影响。显然，宕机时间和迁移时间都维持在一个稳定的状态。图7展示了对一个运行ApacheWeb服务器的虚拟机进行迁移时Webbench测试的结果，还是非常稳定的。这是因为资源消耗仅仅与源机器相关。但是在目标机器上进行资源预留是不可或缺的，因为在多虚拟机迁移的情况下，不知道目标机器的情况会导致迁移失败。
 
 #### 多虚拟机在线并行迁移
 多虚拟机的在线热迁移，包括并行迁移在当今的数据中心是非常常见的。图8展示了将空闲虚拟机从4核机器迁移到8核机器的整体迁移时间。真实时间表示所有虚拟机迁移的平均时间，而计算时间指基于一个虚拟机迁移计算得到的时间。通过图8可以看出，实际时间比计算时间要长，而且两者之间的间隔随着虚拟机数量的增加而增加。
-![图8](http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig8.png)
+![图8](http://cdn.zhangchi.xyz/lv-fig8.png)
 造成这些的原因是4核机器上的资源有限，当机器数量较多时，系统资源不足以支持迁移程序，导致时间增加。当虚拟机数量较少时，由于没有达到资源的瓶颈，因此对虚拟机迁移的时间不会造成影响。
 
-![图9](http://7xsnoh.com1.z0.glb.clouddn.com/lv-fig9.png)
+![图9](http://cdn.zhangchi.xyz/lv-fig9.png)
 这个结论在图9中可以得到证明。把虚拟机从8核机器迁移到4核机器上时，由于机器上面的资源丰富，并行在线迁移的性能表现较好，实际迁移时间要比计算时间短。在比较图8和图9时，我们可以发现一个非常有趣的事情，从8核机器迁移到4核机器比从4核机器迁移到8核机器的时间要短，例如将8个虚拟机从8核迁移到4核机器时间是78.33秒，而从4核迁移到8核时间是117.18秒，从这个实验我们可以得出结论，当源机器上的资源充足时，可以提高多个虚拟机并行迁移的效率，否则导致性能还不足顺序迁移。
 
 #### 工作量感知的在线迁移策略
-![表3](http://7xsnoh.com1.z0.glb.clouddn.com/lv-table3.png)
+![表3](http://cdn.zhangchi.xyz/lv-table3.png)
 在传统的迁移方案下，如果目标机器资源充足，则可进行迁移，这是非常简单和方便的。如果我们将工作量因素考虑进去，可以得到更加具有效率的迁移方案。本节我们将考虑在迁移时协调了不同虚拟机之间工作量时的虚拟机工作量性能表现。
 
 表3比较了在不同迁移策略下，SPECjbb,IOZone,Sysbench,Webbench的性能表现，基线模式表示将虚拟机迁移至一个没有运行任何虚拟机的空闲机器。
