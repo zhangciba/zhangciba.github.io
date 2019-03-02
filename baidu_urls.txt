@@ -1,3 +1,4 @@
+http://blog.zhangchi.xyz/论文阅读之Live-Migration-of-Virtual-Machines.html
 http://blog.zhangchi.xyz/grep匹配TAB的写法.html
 http://blog.zhangchi.xyz/grub2修改启动顺序.html
 http://blog.zhangchi.xyz/CentOS设置root用户邮箱.html
@@ -66,7 +67,6 @@ http://blog.zhangchi.xyz/Evaluating-Container-Platforms-at-Scale.html
 http://blog.zhangchi.xyz/天河二号超级计算机.html
 http://blog.zhangchi.xyz/论文阅读之Live-Migration-of-Virtual-Machine-Based-on-Full-System-Trace-and-Replay.html
 http://blog.zhangchi.xyz/Congress-Conference-Workshop-Symposium之间的区别.html
-http://blog.zhangchi.xyz/论文阅读之Live-Migration-of-Virtual-Machines.html
 http://blog.zhangchi.xyz/Debian下配置网络的方法.html
 http://blog.zhangchi.xyz/LaTex图片周围空白很多的解决办法.html
 http://blog.zhangchi.xyz/LaTex一行中插入多个不同的图.html
