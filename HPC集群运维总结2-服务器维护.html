@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="DIYER糍粑的博客">
 <meta property="og:description" content="[TOC] 服务器硬件维护集群配置的服务器主要有三种，刀片服务器、存储服务器、GPU服务器，其中刀片服务器最多，存储服务器硬盘最多，GPU服务器配置的GPGPU卡最多。 集群硬件主要包括了上述的三种服务器、H3C万兆以太网交换机、Mellanox InfniBand交换机、安全网关、PDU、PDM等设备。 而其中最容易出现故障的就是硬盘和刀片服务器了。存储服务器硬盘故障最多，其次是计算刀片服务器容">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-24T08:38:22.000Z">
+<meta property="og:updated_time" content="2019-03-02T13:24:30.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HPC集群运维总结2-服务器维护">
 <meta name="twitter:description" content="[TOC] 服务器硬件维护集群配置的服务器主要有三种，刀片服务器、存储服务器、GPU服务器，其中刀片服务器最多，存储服务器硬盘最多，GPU服务器配置的GPGPU卡最多。 集群硬件主要包括了上述的三种服务器、H3C万兆以太网交换机、Mellanox InfniBand交换机、安全网关、PDU、PDM等设备。 而其中最容易出现故障的就是硬盘和刀片服务器了。存储服务器硬盘故障最多，其次是计算刀片服务器容">
@@ -335,7 +335,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZHANGCHI">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png">
+      <meta itemprop="image" content="http://cdn.zhangchi.xyz/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -495,7 +495,7 @@
 <p>由于很多同学的实验可能需要Linux3.0以上版本的内核，甚至有些同学可能需要Linux4.0以上版本的内核，因此可以考虑给这些用户root权限，让用户自己升级内核，这样用户可以在升级后的内核里面进行自己的科研实验，但是升级完内核之后，用户将无法使用Lustre文件系统。可以考虑挂载NFS文件系统来进行文件的读取，NFS文件系统也是每台机器都进行了挂载，用户可以通过集群入口服务器上传文件到NFS文件系统，然后升级后的内核中可以读取到相应的文件。</p>
 <p>当集群的操作系统被破坏后，其他用户使用时存在问题，因此需要进行还原工作，鉴于集群经常存在这样的用户，他们会需要root权限进行一些操作，之后操作系统做了很多修改，再次分配给其他用户使用时会存在很多问题，因此需要进行系统重装。直接安装系统不仅要安装软件还要编译Lustre内核，非常复杂，一个比较好的办法是直接拷贝其他磁盘的系统，修改几个简单的配置文件，系统就搞定了，因此下面介绍两种方法进行系统快速还原。</p>
 <h4 id="使用再生龙进行系统备份和还原工作"><a href="#使用再生龙进行系统备份和还原工作" class="headerlink" title="使用再生龙进行系统备份和还原工作"></a>使用再生龙进行系统备份和还原工作</h4><p>再生龙工具非常的强大，如果集群需要恢复的系统特别多，那么可以采用这种方式，下面附上再生龙使用教程，百度上面也可以搜索到，参考文档进行使用。</p>
-<p><a href="http://clonezilla.nchc.org.tw/news/" target="_blank" rel="noopener">再生龙官网</a><br><a href="http://7xsnoh.com1.z0.glb.clouddn.com//clustermgmt/pdfClonezilla%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E.pdf" target="_blank" rel="noopener">再生龙详细使用文档</a></p>
+<p><a href="http://clonezilla.nchc.org.tw/news/" target="_blank" rel="noopener">再生龙官网</a><br><a href="http://cdn.zhangchi.xyz//clustermgmt/pdfClonezilla%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E.pdf" target="_blank" rel="noopener">再生龙详细使用文档</a></p>
 <p>我们需要将再生龙服务器版本刻录到U盘或者光盘上面，然后启动到再生龙进行操作。</p>
 <p>系统包括克隆和还原两个步骤，首先需要将一个计算节点的系统使用再生龙克隆到NFS文件系统或者另外一个大的磁盘上面，然后切换到再生龙的还原模式，启动需要还原的计算节点，从网络启动，然后进行还原工作。</p>
 <p>需要说明的是设置网卡的时候，只需要设置一个网卡eth0即可，因为eth1是直通模块。eth0的IP地址建议设置为11.11.4.100，子网掩码设置为255.255.0.0，NFS文件系统的IP地址是11.11.2.18，路径是/public/vpublic02，这个目录里面已经备份过几个计算节点的磁盘了，可以暂时使用，或者自己选择一个重新备份。</p>
@@ -717,7 +717,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://7xsnoh.com2.z0.glb.clouddn.com/avatar.png"
+               src="http://cdn.zhangchi.xyz/avatar.png"
                alt="ZHANGCHI" />
           <p class="site-author-name" itemprop="name">ZHANGCHI</p>
            
